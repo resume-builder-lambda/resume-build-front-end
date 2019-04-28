@@ -9,6 +9,7 @@ import SendIcon from '@material-ui/icons/Send';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import ShareIcon from '@material-ui/icons/Share';
 
 export const mainListItems = (
   <div>
@@ -47,12 +48,12 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <div>
-    <ListSubheader inset>Saved reports</ListSubheader>
+    
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <ShareIcon />
       </ListItemIcon>
-      <ListItemText primary="Current month" />
+      <ListItemText primary="Share" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
