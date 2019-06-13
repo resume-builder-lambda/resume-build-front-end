@@ -82,12 +82,16 @@ function Register(props) {
         <form className={classes.form}>
             
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Username:</InputLabel>
+            <InputLabel htmlFor="email">Email:</InputLabel>
             <Input id="email" name="email" type="email" autoComplete="email" autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="section">Username:</InputLabel>
-            <Input id="section" name="section" type="dropdown" autoComplete="section" autoFocus />
+            <InputLabel htmlFor="role">Role:</InputLabel>
+            <Input id="role" name="role" type="role" autoComplete="role" autoFocus />
+          </FormControl>
+          <FormControl margin="normal" required fullWidth>
+            <InputLabel htmlFor="section">Section:</InputLabel>
+            <Input id="section" name="section" autoComplete="section" autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="username">Username:</InputLabel>
@@ -97,10 +101,6 @@ function Register(props) {
             <InputLabel htmlFor="password">Password</InputLabel>
             <Input name="password" type="password" id="password" autoComplete="current-password" />
           </FormControl>
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
           <StyledButton
             type="submit"
             fullWidth
@@ -111,6 +111,8 @@ function Register(props) {
               Register
           </StyledButton>
         </form>
+        <span style={{marginTop: '1rem'}}>Or if you already have an account</span>
+        <a style={{textDecoration:'none'}} href='#'>Log In</a>
       </Paper>
     </main>
   );
