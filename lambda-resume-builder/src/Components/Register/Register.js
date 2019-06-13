@@ -8,7 +8,6 @@ import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Logo from '../Images/Lamda_Logo.svg'
@@ -73,13 +72,13 @@ const StyledButton = withStyles({
 
 function Register(props) {
   const { classes } = props;
-  const [age, setAge] = React.useState('');
+  const [section, setSection] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('Student');
 
 
   function handleChange(event) {
-    setAge(event.target.value);
+    setSection(event.target.value);
     setValue(event.target.value);
   }
 
@@ -127,11 +126,11 @@ function Register(props) {
                 open={open}
                 onClose={handleClose}
                 onOpen={handleOpen}
-                value={age}
+                value={section}
                 onChange={handleChange}
                 inputProps={{
-                name: 'age',
-                id: 'demo-controlled-open-select',
+                name: 'section',
+                id: 'section',
                 }}
         > 
         
