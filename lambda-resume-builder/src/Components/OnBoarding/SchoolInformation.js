@@ -15,21 +15,11 @@ function SchoolInfo() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="firstName"
-            name="firstName"
-            label="First name"
+            id="schoolName"
+            name="schoolName"
+            label="School Name"
             fullWidth
-            autoComplete="fname"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="lastName"
-            name="lastName"
-            label="Last name"
-            fullWidth
-            autoComplete="lname"
+            autoComplete="sName"
           />
         </Grid>
         <Grid item xs={12}>
@@ -82,12 +72,6 @@ function SchoolInfo() {
             label="Country"
             fullWidth
             autoComplete="billing country"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Use this address on resume"
           />
         </Grid>
       </Grid>
