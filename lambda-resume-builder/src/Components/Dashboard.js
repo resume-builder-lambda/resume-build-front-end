@@ -117,6 +117,7 @@ class Dashboard extends React.Component {
         <CssBaseline />
         <AppBar
           position="absolute"
+          color="default"
           className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
         >
           <Toolbar disableGutters={!this.state.open} className={classes.toolbar}>
