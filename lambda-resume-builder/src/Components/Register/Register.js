@@ -3,8 +3,11 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Logo from '../Images/Lamda_Logo.svg'
@@ -69,6 +72,23 @@ const StyledButton = withStyles({
 
 function Register(props) {
   const { classes } = props;
+  const [section, setSection] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState('Student');
+
+
+  function handleChange(event) {
+    setSection(event.target.value);
+    setValue(event.target.value);
+  }
+
+  function handleClose() {
+    setOpen(false);
+  }
+
+  function handleOpen() {
+    setOpen(true);
+  }
 
   return (
     <main className={classes.main}>
@@ -81,26 +101,58 @@ function Register(props) {
     
         <form className={classes.form}>
             
-          <FormControl margin="normal" required fullWidth>
+          <FormControl margin="normal" required fullWidth> 
             <InputLabel htmlFor="email">Email:</InputLabel>
             <Input id="email" name="email" type="email" autoComplete="email" autoFocus />
           </FormControl>
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="role">Role:</InputLabel>
-            <Input id="role" name="role" type="role" autoComplete="role" autoFocus />
+          
+          <FormControl margin="normal" required fullWidth> 
+            
+            <RadioGroup
+          aria-label="Role"
+          name="role"
+          className={classes.group}
+          value={value}
+          onChange={handleChange}
+        >
+          <FormControlLabel value="Student" control={<Radio />} label="Student" />
+          <FormControlLabel value="Career Coach" control={<Radio />} label="Career Coach" />
+        </RadioGroup>
           </FormControl>
-          <FormControl margin="normal" required fullWidth>
+
+          <FormControl margin="normal" required fullWidth> 
             <InputLabel htmlFor="section">Section:</InputLabel>
-            <Input id="section" name="section" autoComplete="section" autoFocus />
-          </FormControl>
-          <FormControl margin="normal" required fullWidth>
+            <Select
+                open={open}
+                onClose={handleClose}
+                onOpen={handleOpen}
+                value={section}
+                onChange={handleChange}
+                inputProps={{
+                name: 'section',
+                id: 'section',
+                }}
+        > 
+        
+          <MenuItem value="">  
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={'Web18'}>Web18</MenuItem>
+          <MenuItem value={'Web19'}>Web19</MenuItem>
+          <MenuItem value={'Web20'}>Web20</MenuItem>
+        </Select>
+          </FormControl> 
+
+          <FormControl margin="normal" required fullWidth> 
             <InputLabel htmlFor="username">Username:</InputLabel>
             <Input id="username" name="username" autoComplete="username" autoFocus />
           </FormControl>
-          <FormControl margin="normal" required fullWidth>
+
+          <FormControl margin="normal" required fullWidth> 
             <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" />
+            <Input name="password" type="password" id="password" autoComplete="current-password" ></Input>
           </FormControl>
+            
           <StyledButton
             type="submit"
             fullWidth
