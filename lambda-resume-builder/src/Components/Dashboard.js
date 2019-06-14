@@ -130,7 +130,7 @@ class Dashboard extends React.Component {
                 this.state.open && classes.menuButtonHidden,
               )}
             >
-            <MenuIcon />
+              <MenuIcon />
             </IconButton>
             <Typography
               component="h1"
@@ -139,7 +139,7 @@ class Dashboard extends React.Component {
               noWrap
               className={classes.title}
             >
-              Builder
+              Resume Builder
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -171,13 +171,13 @@ class Dashboard extends React.Component {
             Placeholder
           </Typography>
           <Typography component="div" className={classes.chartContainer}>
-            
+
           </Typography>
           <Typography variant="h4" gutterBottom component="h2">
             Placeholder
           </Typography>
           <div className={classes.tableContainer}>
-           
+
           </div>
         </main>
       </div>
