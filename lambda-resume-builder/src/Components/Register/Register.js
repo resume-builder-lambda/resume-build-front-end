@@ -92,13 +92,18 @@ function Register(props) {
 
   return (
     <main className={classes.main}>
+     
       <CssBaseline />
+      <p style={{width: '100%'}}>Welcome to Lambda's resume builder, if you are a new user, please take a moment to create an account.  Once your account is created you will be taken
+        to the quick and easy onboarding process.  Here you will answer questions based on your schooling, work history and basic information about yourself that will
+        help to speed up the process of building you a resume that will get you noticed.
+      </p>
       <Paper className={classes.paper}>
         
         <img style={lambdaLogo} src={Logo}/>
         <span>Resume Builder User Registration</span>
        
-    
+
         <form className={classes.form}>
             
           <FormControl margin="normal" required fullWidth> 
@@ -140,16 +145,17 @@ function Register(props) {
           <MenuItem value={'Web18'}>Web18</MenuItem>
           <MenuItem value={'Web19'}>Web19</MenuItem>
           <MenuItem value={'Web20'}>Web20</MenuItem>
+          <MenuItem value={'Web21'}>Web21</MenuItem>
         </Select>
           </FormControl> 
 
           <FormControl margin="normal" required fullWidth> 
-            <InputLabel htmlFor="username">Username:</InputLabel>
+            <InputLabel htmlFor="username"> New Username:</InputLabel>
             <Input id="username" name="username" autoComplete="username" autoFocus />
           </FormControl>
 
           <FormControl margin="normal" required fullWidth> 
-            <InputLabel htmlFor="password">Password</InputLabel>
+            <InputLabel htmlFor="password">New Password</InputLabel>
             <Input name="password" type="password" id="password" autoComplete="current-password" ></Input>
           </FormControl>
             
