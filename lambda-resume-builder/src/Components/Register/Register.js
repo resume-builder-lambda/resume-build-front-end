@@ -74,13 +74,21 @@ function Register(props) {
   const { classes } = props;
   const [section, setSection] = React.useState('');
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState('Student');
+  const [role, setRole] = React.useState('');
 
 
   function handleChange(event) {
-    setSection(event.target.value);
-    setValue(event.target.value);
+   
+    
+    setRole(event.target.value);
   }
+
+  function handleSectionChange(event) {
+   
+    setSection(event.target.value);
+    
+  }
+
 
   function handleClose() {
     setOpen(false);
@@ -117,8 +125,12 @@ function Register(props) {
           aria-label="Role"
           name="role"
           className={classes.group}
-          value={value}
+          value={role}
           onChange={handleChange}
+          inputProps={{
+            name: 'role',
+            id: 'role',
+            }}
         >
           <FormControlLabel value="Student" control={<Radio />} label="Student" />
           <FormControlLabel value="Career Coach" control={<Radio />} label="Career Coach" />
@@ -132,7 +144,7 @@ function Register(props) {
                 onClose={handleClose}
                 onOpen={handleOpen}
                 value={section}
-                onChange={handleChange}
+                onChange={handleSectionChange}
                 inputProps={{
                 name: 'section',
                 id: 'section',
