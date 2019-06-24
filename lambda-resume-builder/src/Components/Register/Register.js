@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -70,11 +70,20 @@ const StyledButton = withStyles({
     padding: '5px'
 }
 
-function Register(props) {
-  const { classes } = props;
-  const [section, setSection] = React.useState('');
-  const [open, setOpen] = React.useState(false);
-  const [role, setRole] = React.useState('');
+class Register extends Component {
+  constructor(props){
+    super(props)
+    this.state = [
+      
+    ]
+      
+    
+    
+    const { classes } = props;
+    const [section, setSection] = React.useState('');
+    const [open, setOpen] = React.useState(false);
+    const [role, setRole] = React.useState('');
+
 
 
   function handleChange(event) {
@@ -97,7 +106,7 @@ function Register(props) {
   function handleOpen() {
     setOpen(true);
   }
-
+  
   return (
     <main className={classes.main}>
      
@@ -187,7 +196,7 @@ function Register(props) {
     </main>
   );
 }
-
+}
 
 
 export default withStyles(styles)(Register);
