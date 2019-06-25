@@ -9,11 +9,25 @@ export const LOGIN_FAILURE ="LOGIN_FAILURE"
 export const register = user => dispatch => {
     console.log("action call, POST", user);
     dispatch({ type: REGISTER });
-    axios
-      .post('https://lambda-resume-builder.herokuapp.com/', user) 
+    let requestBody = {query:`
+    mutation{
+      createUser(userInput:{
+        email:"${user.email}",
+        password:"${user.password}",
+        role: "${user.role}"
+      }){
+        _id
+        email
+      }
+    }
+    `}
+      fetch('https://lambda-resume-builder.herokuapp.com/', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: {"content-type": "application/json"}
+      }) 
       .then(res => {
         console.log("REGISTERED", res);
-        localStorage.setItem('token', res.data.token);
         dispatch({ type: REGISTER_SUCCESS, payload: res.data });
        
       })

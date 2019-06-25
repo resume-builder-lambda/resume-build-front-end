@@ -13,7 +13,7 @@ class App extends Component {
       <div className="App">
 
         {/* <Dashboard /> */}
-        <Register/>
+        <Checkout/>
 
 
       </div>

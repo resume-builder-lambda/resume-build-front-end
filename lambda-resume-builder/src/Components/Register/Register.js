@@ -78,16 +78,10 @@ const Register = (props) =>  {
     role: "",
     email: "",
     password: ""})
+
     const { classes } = props;
-    const [section, setSection] = React.useState('');
-    const [open, setOpen] = React.useState(false);
-    const [role, setRole] = React.useState('');
-
-
-
-  function handleChange(event) {
-   
     
+   function handleChange(event) {
     setState({...state, [event.target.name]:event.target.value});
   }
 
@@ -166,5 +160,7 @@ const mapStateToProps = state => (
 
 
 
-export default withStyles
-  (styles)(Register);
+export default connect (mapStateToProps, {
+  register
+})
+(withStyles (styles)(Register));
