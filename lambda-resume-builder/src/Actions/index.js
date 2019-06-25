@@ -1,4 +1,3 @@
-import axios from 'axios'
 
 export const REGISTER = "REGISTER"
 export const REGISTER_SUCCESS ="REGISTER_SUCCESS"
@@ -37,13 +36,29 @@ export const register = user => dispatch => {
   export const login = creds => dispatch => {
     console.log("action call, LOGGING_IN")
     dispatch({ type: LOGGING_IN});
-    return axios
-        .post("https://school-itc.herokuapp.com/api/accounts/login", creds)
+    let requestBody = {query:`
+    query{
+      login(email:"${creds.email}", password:"${creds.password}"){
+        
+        token
+      }
+    }
+    `}
+        fetch("https://lambda-resume-builder.herokuapp.com/", {
+          method: 'POST',
+          body: JSON.stringify(requestBody),
+          headers: {"content-type" : "application/json"}
+        })
         .then(res => {
-            console.log(res);
-            localStorage.setItem('token', res.data.token);
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data.token});
+            console.log('this is the response', res);
+            return res.json();
+           
                
+        })
+        .then(res => {
+          console.log('second response', res)
+           localStorage.setItem('token', res.data.login.token);
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data.login.token});
         })
         .catch(err => {
             console.log(err);

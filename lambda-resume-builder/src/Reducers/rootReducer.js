@@ -1,7 +1,9 @@
 import {
     REGISTER,
     REGISTER_SUCCESS,
-   
+    LOGGING_IN,
+    LOGIN_SUCCESS ,
+    LOGIN_FAILURE
 } from '../Actions';
 
 const initialState = {
@@ -24,9 +26,11 @@ const rootReducer = (state = initialState, action) => {
         case REGISTER_SUCCESS:
             return {
                 ...state,
+                savingUser: true,
                 user: action.payload
             }
-       
+
+        
     default: return state;    
     }
     
