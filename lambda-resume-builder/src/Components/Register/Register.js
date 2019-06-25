@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -70,26 +70,31 @@ const StyledButton = withStyles({
     padding: '5px'
 }
 
-function Register(props) {
-  const { classes } = props;
-  const [section, setSection] = React.useState('');
-  const [open, setOpen] = React.useState(false);
-  const [role, setRole] = React.useState('');
+const Register = (props) =>  {
+  
+   
+  
+    const [state, setState]= React.useState(
+    {first_name:"",
+    last_name:"",
+    section: "",
+    role: "",
+    email: "",
+    password: ""})
+    const { classes } = props;
+    const [section, setSection] = React.useState('');
+    const [open, setOpen] = React.useState(false);
+    const [role, setRole] = React.useState('');
+
 
 
   function handleChange(event) {
    
     
-    setRole(event.target.value);
+    setState({...state, [event.target.name]:event.target.value});
   }
 
-  function handleSectionChange(event) {
-   
-    setSection(event.target.value);
-    
-  }
-
-
+  
   function handleClose() {
     setOpen(false);
   }
@@ -97,7 +102,7 @@ function Register(props) {
   function handleOpen() {
     setOpen(true);
   }
-
+  
   return (
     <main className={classes.main}>
      
@@ -144,7 +149,7 @@ function Register(props) {
                 onClose={handleClose}
                 onOpen={handleOpen}
                 value={section}
-                onChange={handleSectionChange}
+                onChange={handleChange}
                 inputProps={{
                 name: 'section',
                 id: 'section',
@@ -186,8 +191,8 @@ function Register(props) {
       </Paper>
     </main>
   );
-}
 
+}
 
 
 export default withStyles(styles)(Register);
