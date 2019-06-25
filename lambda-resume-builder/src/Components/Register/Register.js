@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+import {register} from "../../Actions";
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
@@ -155,5 +157,14 @@ const Register = (props) =>  {
 
 }
 
+const mapStateToProps = state => (
+    
+  {
+    register: state.register
+  }
+);
 
-export default withStyles(styles)(Register);
+
+
+export default withStyles
+  (styles)(Register);
