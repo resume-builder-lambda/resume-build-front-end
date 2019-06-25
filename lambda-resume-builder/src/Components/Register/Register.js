@@ -70,15 +70,17 @@ const StyledButton = withStyles({
     padding: '5px'
 }
 
-class Register extends Component {
-  constructor(props){
-    super(props)
-    this.state = [
-      
-    ]
-      
-    
-    
+const Register = (props) =>  {
+  
+   
+  
+    const [state, setState]= React.useState(
+    {first_name:"",
+    last_name:"",
+    section: "",
+    role: "",
+    email: "",
+    password: ""})
     const { classes } = props;
     const [section, setSection] = React.useState('');
     const [open, setOpen] = React.useState(false);
@@ -89,16 +91,10 @@ class Register extends Component {
   function handleChange(event) {
    
     
-    setRole(event.target.value);
+    setState({...state, [event.target.name]:event.target.value});
   }
 
-  function handleSectionChange(event) {
-   
-    setSection(event.target.value);
-    
-  }
-
-
+  
   function handleClose() {
     setOpen(false);
   }
@@ -153,7 +149,7 @@ class Register extends Component {
                 onClose={handleClose}
                 onOpen={handleOpen}
                 value={section}
-                onChange={handleSectionChange}
+                onChange={handleChange}
                 inputProps={{
                 name: 'section',
                 id: 'section',
@@ -195,7 +191,7 @@ class Register extends Component {
       </Paper>
     </main>
   );
-}
+
 }
 
 
