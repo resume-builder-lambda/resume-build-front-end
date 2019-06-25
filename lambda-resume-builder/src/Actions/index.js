@@ -16,7 +16,9 @@ export const register = user => dispatch => {
         role: "${user.role}"
       }){
         _id
-        email
+        token
+        tokenExp
+        
       }
     }
     `}
@@ -26,8 +28,12 @@ export const register = user => dispatch => {
         headers: {"content-type": "application/json"}
       }) 
       .then(res => {
+        return res.json();
+      })
+      .then(res => {
         console.log("REGISTERED", res);
         dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+        localStorage.setItem('token', res.data.createUser.token);
        
       })
       .catch(err => ({ err }));
