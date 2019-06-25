@@ -1,5 +1,6 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import { connect } from "react-redux";
+import {login} from "../../Actions";
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
@@ -69,6 +70,25 @@ const StyledButton = withStyles({
 
 function SignIn(props) {
   const { classes } = props;
+  const [state, setState]= React.useState(
+    {
+    
+    email: "",
+    password: ""})
+
+
+    
+   function handleChange(event) {
+    setState({...state, [event.target.name]:event.target.value});
+  }
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    await props.login(state);
+    
+  }
+
+  
 
   return (
     <main className={classes.main}>
@@ -79,14 +99,14 @@ function SignIn(props) {
         <span>Resume Builder</span>
        
     
-        <form className={classes.form}>
+        <form onSubmit={handleSubmit} className={classes.form}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="username">Username:</InputLabel>
-            <Input id="username" name="username" autoComplete="username" autoFocus />
+            <InputLabel htmlFor="email">Email:</InputLabel>
+            <Input id="email" name="email" autoComplete="email" onChange={handleChange} autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" />
+            <Input name="password" type="password" id="password" autoComplete="current-password" onChange={handleChange}/>
           </FormControl>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -107,6 +127,18 @@ function SignIn(props) {
   );
 }
 
+const mapStateToProps = state => (
+    
+  {
+    login: state.login
+  }
+);
 
 
-export default withStyles(styles)(SignIn);
+
+
+
+export default connect (mapStateToProps, {
+  login
+})
+  (withStyles(styles)(SignIn));
