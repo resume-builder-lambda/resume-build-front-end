@@ -59,7 +59,7 @@ export const secondaryListItems = (
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Last quarter" />
+      <ListItemText primary="Inspect Old Reume" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
