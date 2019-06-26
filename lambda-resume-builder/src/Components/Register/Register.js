@@ -101,7 +101,7 @@ const Register = (props) =>  {
       <Paper className={classes.paper} style={{marginTop:"250px"}}>
         
         <img style={lambdaLogo} src={Logo}/>
-        <span>Resume Builder User Registration</span>
+        <span>Career Readiness Portal</span>
        
 
         <form onSubmit={handleSubmit} className={classes.form} >
@@ -115,9 +115,10 @@ const Register = (props) =>  {
             <InputLabel htmlFor="password">New Password</InputLabel>
             <Input name="password" type="password" value={state.password} onChange={handleChange} id="password" autoComplete="current-password" ></Input>
           </FormControl>
-          <FormControl margin="normal" required fullWidth> 
+          <FormControl margin="normal" required fullWidth style={{color: "green"}}> 
             
             <RadioGroup
+          
           aria-label="Role"
           name="role"
           className={classes.group}

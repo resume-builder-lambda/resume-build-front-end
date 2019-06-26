@@ -96,7 +96,7 @@ function SignIn(props) {
       <Paper className={classes.paper}>
         
         <img style={lambdaLogo} src={Logo}/>
-        <span>Resume Builder</span>
+        <span>Career Readiness Portal</span>
        
     
         <form onSubmit={handleSubmit} className={classes.form}>

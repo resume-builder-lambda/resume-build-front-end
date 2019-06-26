@@ -22,7 +22,7 @@ export const register = user => dispatch => {
       }
     }
     `}
-      fetch('https://lambda-resume-builder.herokuapp.com/', {
+      fetch('https://lambda-resume-crp.herokuapp.com/', {
         method: 'POST',
         body: JSON.stringify(requestBody),
         headers: {"content-type": "application/json"}
@@ -50,7 +50,7 @@ export const register = user => dispatch => {
       }
     }
     `}
-        fetch("https://lambda-resume-builder.herokuapp.com/", {
+        fetch("https://lambda-resume-crp.herokuapp.com/", {
           method: 'POST',
           body: JSON.stringify(requestBody),
           headers: {"content-type" : "application/json"}
