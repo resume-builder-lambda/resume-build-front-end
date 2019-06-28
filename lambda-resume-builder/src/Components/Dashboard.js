@@ -182,6 +182,7 @@ class Dashboard extends React.Component {
         </main>
       </div>
     );
+    
   }
 }
 
