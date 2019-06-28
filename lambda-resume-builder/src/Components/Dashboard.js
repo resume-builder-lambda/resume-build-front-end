@@ -139,7 +139,7 @@ class Dashboard extends React.Component {
               noWrap
               className={classes.title}
             >
-              Resume Builder
+              Career Readiness Portal Dashboard
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -177,7 +177,7 @@ class Dashboard extends React.Component {
             Placeholder
           </Typography>
           <div className={classes.tableContainer}>
-
+            
           </div>
         </main>
       </div>

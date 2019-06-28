@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import LogIn from './Components/LogIn'
-import Navigation from './Components/Navigation'
 import Dashboard from './Components/Dashboard'
-import Checkout from './Components/OnBoarding/Checkout'
 import './App.css';
 import Register from './Components/Register';
+import  { Route } from 'react-router-dom';
+import PrivateRoute from './Components/PrivateRoute'
+
 
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-
-        {/* <Dashboard /> */}
-        <Register/>
-
-
+      <div className="App"> 
+        
+        <Route exact path="/" render = {props => {
+          return (<LogIn {...props}/>)
+        }} />
+        <Route path="/register" component={Register}/>
+         <PrivateRoute 
+            path="/dashboard" 
+            component={() => <Dashboard data={this.props.data} />}
+          />
       </div>
     );
   }

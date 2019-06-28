@@ -1,3 +1,4 @@
+import jwt_decode from 'jwt-decode';
 
 export const REGISTER = "REGISTER"
 export const REGISTER_SUCCESS ="REGISTER_SUCCESS"
@@ -22,7 +23,7 @@ export const register = user => dispatch => {
       }
     }
     `}
-      fetch('https://lambda-resume-builder.herokuapp.com/', {
+      fetch('https://lambda-crp.herokuapp.com/', {
         method: 'POST',
         body: JSON.stringify(requestBody),
         headers: {"content-type": "application/json"}
@@ -38,7 +39,7 @@ export const register = user => dispatch => {
       })
       .catch(err => ({ err }));
   };
-
+  //login action 
   export const login = creds => dispatch => {
     console.log("action call, LOGGING_IN")
     dispatch({ type: LOGGING_IN});
@@ -50,7 +51,7 @@ export const register = user => dispatch => {
       }
     }
     `}
-        fetch("https://lambda-resume-builder.herokuapp.com/", {
+        fetch("https://lambda-crp.herokuapp.com/", {
           method: 'POST',
           body: JSON.stringify(requestBody),
           headers: {"content-type" : "application/json"}
@@ -64,8 +65,13 @@ export const register = user => dispatch => {
         .then(res => {
           console.log('second response', res)
            localStorage.setItem('token', res.data.login.token);
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data.login.token});
+           const admin = jwt_decode(localStorage.getItem('token'))
+           console.log('admin', admin)
+            dispatch({ type: REGISTER_SUCCESS, payload: res.data.login.token});
         })
+      
+        
+
         .catch(err => {
             console.log(err);
             dispatch({ type: LOGIN_FAILURE, payload: err})
