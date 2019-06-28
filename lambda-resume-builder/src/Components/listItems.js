@@ -53,13 +53,13 @@ export const secondaryListItems = (
       <ListItemIcon>
         <ShareIcon />
       </ListItemIcon>
-      <ListItemText primary="Share" />
+      <ListItemText primary="Poop" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Last quarter" />
+      <ListItemText primary="Poop" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>

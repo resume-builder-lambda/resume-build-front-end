@@ -85,9 +85,17 @@ const Register = (props) =>  {
     setState({...state, [event.target.name]:event.target.value});
   }
 
+  const redirect = () => {
+    console.log('Props', props)
+    window.location.pathname = '/dashboard';
+    
+   }
+
  const handleSubmit = async event => {
     event.preventDefault();
     await props.register(state);
+    setTimeout( () => redirect(), 1000)
+
     
   }
 
@@ -98,7 +106,7 @@ const Register = (props) =>  {
       <CssBaseline />
       <p style={{width: '100%'}}>
       </p>
-      <Paper className={classes.paper} style={{marginTop:"250px"}}>
+      <Paper className={classes.paper} >
         
         <img style={lambdaLogo} src={Logo}/>
         <span>Career Readiness Portal</span>

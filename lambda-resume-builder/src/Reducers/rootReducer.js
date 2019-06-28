@@ -10,6 +10,7 @@ const initialState = {
     
     savingUser: false,
     loggingIn: false,
+    loggedIn: false
   
 }
 
@@ -26,6 +27,7 @@ const rootReducer = (state = initialState, action) => {
         case REGISTER_SUCCESS:
             return {
                 ...state,
+                loggedIn: true, 
                 savingUser: true,
                 user: action.payload
             }

@@ -12,7 +12,7 @@ import Logo from '../Images/Lamda_Logo.svg'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-
+import { Link, NavLink, Redirect } from 'react-router-dom'
 
 
 const styles = theme => ({
@@ -82,11 +82,21 @@ function SignIn(props) {
     setState({...state, [event.target.name]:event.target.value});
   }
 
-  const handleSubmit = async event => {
-    event.preventDefault();
-    await props.login(state);
+  const redirect = () => {
+    console.log('Props', props)
+    window.location.pathname = '/dashboard';
     
-  }
+   }
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    props.login(state)
+    setTimeout( () => redirect(), 1000)
+
+    }
+
+
+
 
   
 
@@ -121,7 +131,10 @@ function SignIn(props) {
           >
             Sign in
           </StyledButton>
+          
         </form>
+        <p>Don't have an account?</p>
+        <NavLink to="/register" >Register Here</NavLink>
       </Paper>
     </main>
   );
@@ -130,7 +143,8 @@ function SignIn(props) {
 const mapStateToProps = state => (
     
   {
-    login: state.login
+    login: state.login,
+    loggedIn: state.loggedIn
   }
 );
 
