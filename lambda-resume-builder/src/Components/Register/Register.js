@@ -1,10 +1,9 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import { connect } from "react-redux";
+import {register} from "../../Actions";
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -70,87 +69,77 @@ const StyledButton = withStyles({
     padding: '5px'
 }
 
-function Register(props) {
-  const { classes } = props;
-  const [section, setSection] = React.useState('');
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState('Student');
+const Register = (props) =>  {
+  
+   
+  
+    const [state, setState]= React.useState(
+    {
+    role: "",
+    email: "",
+    password: ""})
 
-
-  function handleChange(event) {
-    setSection(event.target.value);
-    setValue(event.target.value);
+    const { classes } = props;
+    
+   function handleChange(event) {
+    setState({...state, [event.target.name]:event.target.value});
   }
 
-  function handleClose() {
-    setOpen(false);
+  const redirect = () => {
+    console.log('Props', props)
+    window.location.pathname = '/dashboard';
+    
+   }
+
+ const handleSubmit = async event => {
+    event.preventDefault();
+    await props.register(state);
+    setTimeout( () => redirect(), 1000)
+
+    
   }
 
-  function handleOpen() {
-    setOpen(true);
-  }
-
+  
   return (
     <main className={classes.main}>
+     
       <CssBaseline />
-      <Paper className={classes.paper}>
+      <p style={{width: '100%'}}>
+      </p>
+      <Paper className={classes.paper} >
         
         <img style={lambdaLogo} src={Logo}/>
-        <span>Resume Builder User Registration</span>
+        <span>Career Readiness Portal</span>
        
-    
-        <form className={classes.form}>
+
+        <form onSubmit={handleSubmit} className={classes.form} >
             
           <FormControl margin="normal" required fullWidth> 
             <InputLabel htmlFor="email">Email:</InputLabel>
-            <Input id="email" name="email" type="email" autoComplete="email" autoFocus />
+            <Input id="email" name="email" type="email" value={state.email} onChange={handleChange} autoComplete="email" autoFocus />
           </FormControl>
           
           <FormControl margin="normal" required fullWidth> 
+            <InputLabel htmlFor="password">New Password</InputLabel>
+            <Input name="password" type="password" value={state.password} onChange={handleChange} id="password" autoComplete="current-password" ></Input>
+          </FormControl>
+          <FormControl margin="normal" required fullWidth style={{color: "green"}}> 
             
             <RadioGroup
+          
           aria-label="Role"
           name="role"
           className={classes.group}
-          value={value}
+          value={state.role}
           onChange={handleChange}
+          inputProps={{
+            name: 'role',
+            id: 'role',
+            }}
         >
           <FormControlLabel value="Student" control={<Radio />} label="Student" />
           <FormControlLabel value="Career Coach" control={<Radio />} label="Career Coach" />
         </RadioGroup>
-          </FormControl>
-
-          <FormControl margin="normal" required fullWidth> 
-            <InputLabel htmlFor="section">Section:</InputLabel>
-            <Select
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                value={section}
-                onChange={handleChange}
-                inputProps={{
-                name: 'section',
-                id: 'section',
-                }}
-        > 
-        
-          <MenuItem value="">  
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={'Web18'}>Web18</MenuItem>
-          <MenuItem value={'Web19'}>Web19</MenuItem>
-          <MenuItem value={'Web20'}>Web20</MenuItem>
-        </Select>
-          </FormControl> 
-
-          <FormControl margin="normal" required fullWidth> 
-            <InputLabel htmlFor="username">Username:</InputLabel>
-            <Input id="username" name="username" autoComplete="username" autoFocus />
-          </FormControl>
-
-          <FormControl margin="normal" required fullWidth> 
-            <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" ></Input>
           </FormControl>
             
           <StyledButton
@@ -168,8 +157,19 @@ function Register(props) {
       </Paper>
     </main>
   );
+
 }
 
+const mapStateToProps = state => (
+    
+  {
+    register: state.register
+  }
+);
 
 
-export default withStyles(styles)(Register);
+
+export default connect (mapStateToProps, {
+  register
+})
+(withStyles (styles)(Register));

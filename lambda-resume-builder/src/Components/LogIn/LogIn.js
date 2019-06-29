@@ -1,5 +1,6 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import { connect } from "react-redux";
+import {login} from "../../Actions";
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,7 +12,7 @@ import Logo from '../Images/Lamda_Logo.svg'
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-
+import { Link, NavLink, Redirect } from 'react-router-dom'
 
 
 const styles = theme => ({
@@ -69,6 +70,35 @@ const StyledButton = withStyles({
 
 function SignIn(props) {
   const { classes } = props;
+  const [state, setState]= React.useState(
+    {
+    
+    email: "",
+    password: ""})
+
+
+    
+   function handleChange(event) {
+    setState({...state, [event.target.name]:event.target.value});
+  }
+
+  const redirect = () => {
+    console.log('Props', props)
+    window.location.pathname = '/dashboard';
+    
+   }
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    props.login(state)
+    setTimeout( () => redirect(), 1000)
+
+    }
+
+
+
+
+  
 
   return (
     <main className={classes.main}>
@@ -76,17 +106,17 @@ function SignIn(props) {
       <Paper className={classes.paper}>
         
         <img style={lambdaLogo} src={Logo}/>
-        <span>Resume Builder</span>
+        <span>Career Readiness Portal</span>
        
     
-        <form className={classes.form}>
+        <form onSubmit={handleSubmit} className={classes.form}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="username">Username:</InputLabel>
-            <Input id="username" name="username" autoComplete="username" autoFocus />
+            <InputLabel htmlFor="email">Email:</InputLabel>
+            <Input id="email" name="email" autoComplete="email" onChange={handleChange} autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" />
+            <Input name="password" type="password" id="password" autoComplete="current-password" onChange={handleChange}/>
           </FormControl>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -101,12 +131,28 @@ function SignIn(props) {
           >
             Sign in
           </StyledButton>
+          
         </form>
+        <p>Don't have an account?</p>
+        <NavLink to="/register" >Register Here</NavLink>
       </Paper>
     </main>
   );
 }
 
+const mapStateToProps = state => (
+    
+  {
+    login: state.login,
+    loggedIn: state.loggedIn
+  }
+);
 
 
-export default withStyles(styles)(SignIn);
+
+
+
+export default connect (mapStateToProps, {
+  login
+})
+  (withStyles(styles)(SignIn));
