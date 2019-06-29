@@ -91,9 +91,9 @@ const Register = (props) =>  {
     
    }
 
- const handleSubmit = async event => {
+ const handleSubmit =  event => {
     event.preventDefault();
-    await props.register(state);
+     props.register(state);
     setTimeout( () => redirect(), 1000)
 
     

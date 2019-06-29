@@ -3,7 +3,15 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 
-class EndorsementChecklist extends React{
+const EndorsementChecklist = () => {
+   
+        return (
+            <h1>This Is The Endorsements Checklist Component</h1>
+        )
+    
+        
+    
+    
     
 }
 

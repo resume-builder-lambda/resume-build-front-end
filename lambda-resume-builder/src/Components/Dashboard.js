@@ -15,6 +15,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import Calendar from '../Components/Calendar/Calendar';
+import Assignments from '../Components/Assignments/Assignments';
+import Endorsement from '../Components/EndorsementChecklist/EndorsementChecklist';
 
 
 const drawerWidth = 240;
@@ -109,6 +114,8 @@ class Dashboard extends React.Component {
     this.setState({ open: false });
   };
 
+
+
   render() {
     const { classes } = this.props;
 
@@ -167,22 +174,22 @@ class Dashboard extends React.Component {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <Typography variant="h4" gutterBottom component="h2">
-            Placeholder
-          </Typography>
-          <Typography component="div" className={classes.chartContainer}>
-
-          </Typography>
-          <Typography variant="h4" gutterBottom component="h2">
-            Placeholder
-          </Typography>
+          <Router>
+            <Route exact path="/dashboard/assignments" render = {props => {
+            return (<Assignments {...props}/>)
+               }} />
+               <Route exact path="/dashboard/calendar" render = {props => {
+            return (<Calendar {...props}/>)
+               }} />
+            
+          </Router>
           <div className={classes.tableContainer}>
             
           </div>
         </main>
       </div>
     );
-    
+
   }
 }
 

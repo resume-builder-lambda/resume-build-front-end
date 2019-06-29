@@ -9,63 +9,49 @@ import SendIcon from '@material-ui/icons/Send';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
-import ShareIcon from '@material-ui/icons/Share';
+import CalendarIcon from '@material-ui/icons/CalendarToday';
+import CancelIcon from '@material-ui/icons/Cancel';
+import {Link} from 'react-router-dom'
+
+function handleLogOut ()  {
+  
+  localStorage.removeItem('token')
+  window.location.pathname = '/';
+  
+}
+
+
 
 export const mainListItems = (
   <div>
+    <Link to = "/dashboard/assignments">
+    <ListItem button >
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Assignments"/>
+    </ListItem>
+    </Link>
+    <Link to = "/dashboard/calendar">
     <ListItem button>
       <ListItemIcon>
-        <DashboardIcon />
+        <CalendarIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemText primary="Calendar"/>
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <CreateIcon />
-      </ListItemIcon>
-      <ListItemText primary="Edit" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <SendIcon />
-      </ListItemIcon>
-      <ListItemText primary="Send" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItem>
+   </Link> 
   </div>
 );
 
 export const secondaryListItems = (
   <div>
     
-    <ListItem button>
+    
+    <ListItem button onClick = {handleLogOut}>
       <ListItemIcon>
-        <ShareIcon />
+        <CancelIcon />
       </ListItemIcon>
-      <ListItemText primary="Poop" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Poop" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
+      <ListItemText primary="Log Out"/>
     </ListItem>
   </div>
 );
