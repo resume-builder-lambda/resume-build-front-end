@@ -12,7 +12,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
         <Route exact path="/" render={props => {
           return (<LogIn {...props} />)
         }} />

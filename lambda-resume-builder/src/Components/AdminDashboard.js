@@ -130,7 +130,7 @@ class CareerCoachDashboard extends React.Component {
                 this.state.open && classes.menuButtonHidden,
               )}
             >
-            <MenuIcon />
+              <MenuIcon />
             </IconButton>
             <Typography
               component="h1"
@@ -171,13 +171,13 @@ class CareerCoachDashboard extends React.Component {
             Placeholder
           </Typography>
           <Typography component="div" className={classes.chartContainer}>
-            
+
           </Typography>
           <Typography variant="h4" gutterBottom component="h2">
             Placeholder
           </Typography>
           <div className={classes.tableContainer}>
-           
+
           </div>
         </main>
       </div>
