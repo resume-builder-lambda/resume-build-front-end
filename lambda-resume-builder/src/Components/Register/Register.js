@@ -19,6 +19,7 @@ const Register = (props) => {
     setTimeout(() => window.location.pathname = '/dashboard', 1000)
   }
 
+  console.log(fields.role)
 
   return (
     <main className={classes.main}>
@@ -100,7 +101,7 @@ const Register = (props) => {
               />
 
               <FormControlLabel
-                value="Career Coach"
+                value="Admin"
                 control={<Radio />}
                 label="Career Coach"
               />

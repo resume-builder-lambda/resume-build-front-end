@@ -41,7 +41,7 @@ const register = user => dispatch => {
     .catch(err => ({ err }))
 }
 
-//login action 
+// login action 
 const login = creds => dispatch => {
 
   console.log("action call, LOGGING_IN")
