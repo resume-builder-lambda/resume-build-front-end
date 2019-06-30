@@ -5,12 +5,7 @@ import CalendarIcon from '@material-ui/icons/CalendarToday'
 import CancelIcon from '@material-ui/icons/Cancel'
 import { Link } from 'react-router-dom'
 
-function handleLogOut() {
-  localStorage.removeItem('token')
-  window.location.pathname = '/'
-}
-
-
+import Cookies from 'js-cookie'
 
 const mainListItems = (
   <div>
@@ -43,6 +38,12 @@ const secondaryListItems = (
     </ListItem>
   </div>
 )
+
+function handleLogOut() {
+  localStorage.removeItem('token')
+  window.location.pathname = '/'
+  Cookies.remove('creds')
+}
 
 export {
   mainListItems,

@@ -10,7 +10,7 @@ import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../Mat
 
 const Register = (props) => {
 
-  let { fields, handleChanges, submit } = useForm(handleSubmit)
+  const { fields, handleChanges, submit } = useForm(handleSubmit)
 
   const { classes } = props
 
@@ -29,13 +29,20 @@ const Register = (props) => {
 
       <Paper className={classes.paper} >
 
-        <img alt='' style={lambdaLogo} src={Logo} />
+        <img alt='Lambda Logo' style={lambdaLogo} src={Logo} />
 
         <span>Career Readiness Portal</span>
 
-        <form onSubmit={submit} className={classes.form} >
+        <form
+          onSubmit={submit}
+          className={classes.form}
+        >
 
-          <FormControl margin="normal" required fullWidth>
+          <FormControl
+            margin="normal"
+            required
+            fullWidth
+          >
 
             <InputLabel htmlFor="email">Email:</InputLabel>
 
@@ -43,7 +50,6 @@ const Register = (props) => {
               id="email"
               name="email"
               type="email"
-              value={fields.email}
               onChange={handleChanges} autoComplete="email"
               autoFocus
             />
@@ -61,7 +67,6 @@ const Register = (props) => {
             <Input
               name="password"
               type="password"
-              value={fields.password}
               onChange={handleChanges}
               id="password"
               autoComplete="current-password"
@@ -73,16 +78,16 @@ const Register = (props) => {
             margin="normal"
             required
             fullWidth
-            style={{ color: "green" }}>
+            style={{ color: "green" }}
+          >
 
             <RadioGroup
 
               aria-label="Role"
               name="role"
               className={classes.group}
-              value={fields.role}
               onChange={handleChanges}
-              inputProps={{
+              inputprops={{
                 name: 'role',
                 id: 'role',
               }}

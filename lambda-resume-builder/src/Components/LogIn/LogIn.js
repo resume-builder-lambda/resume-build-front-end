@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from "react-redux"
 import { login } from "../../Actions"
 import { CssBaseline, FormControl, Checkbox, Input, InputLabel, Paper, FormControlLabel } from '@material-ui/core'
@@ -6,18 +6,38 @@ import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 
+import Cookies from 'js-cookie'
+
 import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../MaterialUI/styles'
 
 function SignIn(props) {
 
-  let { fields, handleChanges, submit } = useForm(handleSubmit)
+  const { fields, handleChanges, submit } = useForm(handleSubmit)
 
   const { classes } = props
+
+  const creds = Cookies.get('creds') &&
+    JSON.parse(Cookies.get('creds'))
 
   function handleSubmit() {
     props.login(fields)
     setTimeout(() => window.location.pathname = '/dashboard', 1000)
   }
+
+  // Attempts to log in with creds stored in cookies
+  useEffect(() => {
+    const attempt = () => {
+
+      if (creds) {
+        props.login(creds)
+        setTimeout(() => window.location.pathname = '/dashboard', 1000)
+      }
+
+    }
+
+    attempt()
+
+  }, [creds])
 
   return (
     <main className={classes.main}>
@@ -26,7 +46,7 @@ function SignIn(props) {
 
       <Paper className={classes.paper}>
 
-        <img style={lambdaLogo} src={Logo} alt='' />
+        <img alt='Lambda Logo' style={lambdaLogo} src={Logo} />
 
         <span>Career Readiness Portal</span>
 
@@ -106,9 +126,5 @@ const mapStateToProps = state => ({
   login: state.login,
   loggedIn: state.loggedIn
 })
-
-
-
-
 
 export default connect(mapStateToProps, { login })(withStyles(styles)(SignIn))
