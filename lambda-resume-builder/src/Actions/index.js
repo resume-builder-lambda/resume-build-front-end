@@ -4,12 +4,11 @@ import Cookies from 'js-cookie'
 
 const REGISTER = "REGISTER"
 const REGISTER_SUCCESS = "REGISTER_SUCCESS"
-const LOGGING_IN = "LOGGING_IN"
-const LOGIN_FAILURE = "LOGIN_FAILURE"
 
 const register = user => dispatch => {
-  console.log("action call, POST", user)
+
   dispatch({ type: REGISTER })
+
   let requestBody = {
     query: `
       mutation{
@@ -25,6 +24,7 @@ const register = user => dispatch => {
         }
       }
     `}
+
   fetch('https://lambda-crp.herokuapp.com/', {
     method: 'POST',
     body: JSON.stringify(requestBody),
@@ -38,15 +38,11 @@ const register = user => dispatch => {
       localStorage.setItem('token', res.data.createUser.token)
       dispatch({ type: REGISTER_SUCCESS, payload: res.data })
     })
-    .catch(err => ({ err }))
+    .catch(err => console.log(err))
+
 }
 
-// login action 
 const login = creds => dispatch => {
-
-  console.log("action call, LOGGING_IN")
-
-  dispatch({ type: LOGGING_IN })
 
   let requestBody = {
     query: `
@@ -75,17 +71,12 @@ const login = creds => dispatch => {
       console.log('admin', admin)
       dispatch({ type: REGISTER_SUCCESS, payload: token })
     })
-    .catch(err => {
-      console.log(err)
-      dispatch({ type: LOGIN_FAILURE, payload: err })
-    })
+    .catch(err => console.log(err))
 }
 
 export {
   REGISTER,
   REGISTER_SUCCESS,
-  LOGGING_IN,
-  LOGIN_FAILURE,
   register,
   login,
 }

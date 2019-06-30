@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import LogIn from './Components/LogIn'
 import Dashboard from './Components/Dashboard'
-import './App.scss';
-import Register from './Components/Register';
-import { Route } from 'react-router-dom';
+import './App.scss'
+import Register from './Components/Register'
+import { Route } from 'react-router-dom'
 import PrivateRoute from './Components/PrivateRoute'
-
-
 
 class App extends Component {
   render() {
@@ -21,8 +19,8 @@ class App extends Component {
           component={() => <Dashboard data={this.props.data} />}
         />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

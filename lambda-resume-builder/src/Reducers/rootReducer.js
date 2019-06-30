@@ -1,14 +1,9 @@
-import {
-    REGISTER,
-    REGISTER_SUCCESS,
-} from '../Actions';
+import { REGISTER, REGISTER_SUCCESS } from '../Actions'
 
 const initialState = {
-
     savingUser: false,
     loggingIn: false,
     loggedIn: false
-
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -30,9 +25,9 @@ const rootReducer = (state = initialState, action) => {
             }
 
 
-        default: return state;
+        default: return state
     }
 
 }
 
-export default rootReducer;
+export default rootReducer
