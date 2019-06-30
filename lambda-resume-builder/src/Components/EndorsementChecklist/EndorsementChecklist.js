@@ -1,7 +1,4 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
+import React from 'react'
 
 const EndorsementChecklist = () => {
 
@@ -11,16 +8,6 @@ const EndorsementChecklist = () => {
 
     )
 
-
-
-
-
 }
-
-
-
-
-
-
 
 export default EndorsementChecklist
