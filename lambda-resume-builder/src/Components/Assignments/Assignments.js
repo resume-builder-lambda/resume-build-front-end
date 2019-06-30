@@ -1,7 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types';
-// import classNames from 'classnames';
-
 
 const Assignments = () => {
 
@@ -9,16 +6,6 @@ const Assignments = () => {
         <h1>This Is The Assignments Checklist Component</h1>
     )
 
-
-
-
-
 }
-
-
-
-
-
-
 
 export default Assignments

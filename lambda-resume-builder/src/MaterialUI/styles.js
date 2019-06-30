@@ -1,6 +1,15 @@
+import Button from '@material-ui/core/Button';
+import withStyles from '@material-ui/core/styles/withStyles';
+
 const drawerWidth = 240
 
-export function dashboard(theme) {
+const lambdaLogo = {
+    height: '40px',
+    width: '120px',
+    padding: '5px'
+}
+
+function dashboard(theme) {
 
     return ({
         root: {
@@ -81,7 +90,7 @@ export function dashboard(theme) {
 
 }
 
-export function register(theme) {
+function register(theme) {
 
     return ({
         main: {
@@ -117,7 +126,7 @@ export function register(theme) {
 
 }
 
-export function login(theme) {
+function login(theme) {
 
     return ({
         main: {
@@ -151,4 +160,28 @@ export function login(theme) {
         },
     })
 
+}
+
+const StyledButton = withStyles({
+    root: {
+        background: '#bb1333',
+        borderRadius: 3,
+        border: 0,
+        color: 'white',
+        height: 48,
+        padding: '0 30px',
+        boxShadow: '0 3px 5px 2px #D0CECF',
+    },
+    label: {
+        textTransform: 'capitalize',
+    },
+})(Button)
+
+export {
+    lambdaLogo,
+    dashboard,
+    register,
+    login,
+    StyledButton,
+    withStyles
 }
