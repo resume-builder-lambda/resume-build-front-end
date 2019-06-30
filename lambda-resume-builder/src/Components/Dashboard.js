@@ -12,7 +12,7 @@ import Assignments from '../Components/Assignments'
 
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 
-function Dashboard(props) {
+const Dashboard = props => {
 
   const [state, setState] = useState({
     open: true,

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EndorsementChecklist = () => {
+const EndorsementChecklist = props => {
 
     return (
 

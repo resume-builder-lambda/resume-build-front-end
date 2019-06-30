@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Grid, TextField, FormControlLabel, Checkbox } from '@material-ui/core'
 
-const PaymentForm = () => {
+const PaymentForm = props => {
 
   return (
 

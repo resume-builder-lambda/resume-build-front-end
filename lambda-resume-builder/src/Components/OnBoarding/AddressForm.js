@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Typography, TextField, FormControlLabel, Checkbox } from '@material-ui/core'
 
-const AddressForm = () => {
+const AddressForm = props => {
   return (
     <>
 

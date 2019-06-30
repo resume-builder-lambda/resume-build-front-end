@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Typography, TextField } from '@material-ui/core'
 
-const WorkForm = () => {
+const WorkForm = props => {
 
   return (
 
