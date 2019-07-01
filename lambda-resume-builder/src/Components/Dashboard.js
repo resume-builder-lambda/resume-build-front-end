@@ -12,6 +12,7 @@ import Assignments from '../Components/Assignments'
 
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 
+
 const Dashboard = props => {
 
   const [state, setState] = useState({
@@ -29,7 +30,7 @@ const Dashboard = props => {
   const { classes } = props
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{fontFamily: "Lato"}}>
 
       <CssBaseline />
 

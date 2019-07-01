@@ -19,7 +19,7 @@ const mainListItems = (
     </Link>
     <Link to="/dashboard/calendar">
       <ListItem button>
-        <ListItemIcon>
+        <ListItemIcon style={{color: "red"}}>
           <CalendarIcon />
         </ListItemIcon>
         <ListItemText primary="Calendar" />
