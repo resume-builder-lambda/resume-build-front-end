@@ -1,28 +1,19 @@
-import AppBar from '@material-ui/core/AppBar'
 import React from 'react'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 
-const lambdaLogo={
-    height: '60px',
-    padding: '5px'
-}
+import { lambdaLogo } from '../../MaterialUI/styles'
 
 const NavBar = () => {
-    return(
+    return (
         <div>
-        <AppBar position="static">
-            <Toolbar>
-                <Typography variant="title" color="inherit">
-              
-                </Typography>
-                <img style={lambdaLogo} src={Logo}/>
-            </Toolbar>
-           
-        </AppBar>
-        
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="title" color="inherit"></Typography>
+                    <img alt='Lambda Logo' style={lambdaLogo} src={Logo} />
+                </Toolbar>
+            </AppBar>
         </div>
     )
 }
-export default NavBar;
+export default NavBar

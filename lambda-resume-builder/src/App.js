@@ -1,29 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react'
+import { Route } from 'react-router-dom'
 import LogIn from './Components/LogIn'
-import Dashboard from './Components/Dashboard'
-import './App.css';
-import Register from './Components/Register';
-import  { Route } from 'react-router-dom';
+import Register from './Components/Register'
 import PrivateRoute from './Components/PrivateRoute'
+import Dashboard from './Components/Dashboard'
 
+import './App.scss'
 
+const App = props => {
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App"> 
-        
-        <Route exact path="/" render = {props => {
-          return (<LogIn {...props}/>)
+  return (
+
+    <div className="App">
+
+      <Route exact path="/"
+        render={props => {
+          return (<LogIn {...props} />)
         }} />
-        <Route path="/register" component={Register}/>
-         <PrivateRoute 
-            path="/dashboard" 
-            component={() => <Dashboard data={this.props.data} />}
-          />
-      </div>
-    );
-  }
+
+      <Route path="/register"
+        component={Register}
+      />
+
+      <PrivateRoute
+        path="/dashboard"
+        component={() => <Dashboard data={this.props.data} />}
+      />
+
+    </div>
+
+  )
+
 }
 
-export default App;
+export default App
