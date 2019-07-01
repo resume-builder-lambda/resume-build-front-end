@@ -1,16 +1,23 @@
-import { REGISTER, REGISTER_SUCCESS } from '../Actions'
+import {
+    REGISTER,
+    REGISTER_SUCCESS,
+   
+} from '../Actions';
 
 const initialState = {
+    
     savingUser: false,
     loggingIn: false,
     loggedIn: false
-}
+    
+  
+} 
 
 const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-
+    switch(action.type) {
+    
         case REGISTER:
-
+        
             return {
                 ...state,
                 register: action.payload
@@ -19,15 +26,15 @@ const rootReducer = (state = initialState, action) => {
         case REGISTER_SUCCESS:
             return {
                 ...state,
-                loggedIn: true,
+                loggedIn: true, 
                 savingUser: true,
                 user: action.payload
             }
 
-
-        default: return state
+        
+    default: return state;    
     }
-
+    
 }
 
-export default rootReducer
+export default rootReducer;

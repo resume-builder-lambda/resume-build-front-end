@@ -24,7 +24,7 @@ const App = props => {
 
       <PrivateRoute
         path="/dashboard"
-        component={() => <Dashboard data={this.props.data} />}
+        component={() => <Dashboard data={props.data} />}
       />
 
     </div>
