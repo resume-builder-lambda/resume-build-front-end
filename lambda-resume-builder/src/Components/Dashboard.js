@@ -30,7 +30,7 @@ const Dashboard = props => {
   const { classes } = props
 
   return (
-    <div className={classes.root} style={{fontFamily: "Lato"}}>
+    <div className={classes.root}>
 
       <CssBaseline />
 

@@ -11,18 +11,26 @@ const mainListItems = (
   <div>
     <Link to="/dashboard/assignments">
       <ListItem button >
-        <ListItemIcon>
+        <ListItemIcon style={{color: "#bb1333"}}>
           <AssignmentIcon />
-        </ListItemIcon>
+        </ListItemIcon >
         <ListItemText primary="Assignments" />
       </ListItem>
     </Link>
     <Link to="/dashboard/calendar">
       <ListItem button>
-        <ListItemIcon style={{color: "red"}}>
+        <ListItemIcon style={{color: "#bb1333"}}>
           <CalendarIcon />
         </ListItemIcon>
         <ListItemText primary="Calendar" />
+      </ListItem>
+    </Link>
+    <Link to="/dashboard/calendar">
+      <ListItem button>
+        <ListItemIcon style={{color: "#bb1333"}}>
+          <CalendarIcon />
+        </ListItemIcon>
+        <ListItemText primary="Endorsement Checklist" />
       </ListItem>
     </Link>
   </div>
