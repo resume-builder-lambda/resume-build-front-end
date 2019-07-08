@@ -5,6 +5,9 @@ import { CssBaseline, FormControl, Checkbox, Input, InputLabel, Paper, FormContr
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
+import GLogo from '../Images/G-Sign-In-Normal.png'
+import LLogo from '../Images/Sign-in-Large.png'
+import GHLogo from '../Images/GitHub-Logo.png'
 
 import Cookies from 'js-cookie'
 
@@ -109,8 +112,37 @@ function SignIn(props) {
           >
             Sign in
           </StyledButton>
+          <StyledButton
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            <img src={GHLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/> Sign in with GitHub
+          </StyledButton>
+          <StyledButton
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            <img src={LLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Sign in with LinkedIn
+          </StyledButton>
+          <StyledButton
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            <img src={GLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Sign in with Google
+          </StyledButton>
 
         </form>
+       
+        
 
         <p>Don't have an account?</p>
 
