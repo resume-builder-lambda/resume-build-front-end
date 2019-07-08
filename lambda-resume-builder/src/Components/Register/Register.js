@@ -130,7 +130,7 @@ const Register = (props) => {
             color="primary"
             className={classes.submit}
           >
-            <img src={GHLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/> Sign in with GitHub
+            <img src={GHLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/> Register in with GitHub
           </Button>
           <Button
             type="submit"
@@ -139,7 +139,7 @@ const Register = (props) => {
             color="primary"
             className={classes.submit}
           >
-            <img src={LLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Sign in with LinkedIn
+            <img src={LLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Register in with LinkedIn
           </Button>
           <Button
             type="submit"
@@ -148,7 +148,7 @@ const Register = (props) => {
             color="primary"
             className={classes.submit}
           >
-            <img src={GLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Sign in with Google
+            <img src={GLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Register in with Google
           </Button>
 
         </form>
