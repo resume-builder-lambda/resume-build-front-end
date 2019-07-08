@@ -78,41 +78,7 @@ const Register = (props) => {
 
           </FormControl>
 
-          <FormControl
-            margin="normal"
-            required
-            fullWidth
-            style={{ color: "green" }}
-          >
-
-            <RadioGroup
-
-              aria-label="Role"
-              name="role"
-              className={classes.group}
-              onChange={handleChanges}
-              inputprops={{
-                name: 'role',
-                id: 'role',
-              }}
-            >
-
-              <FormControlLabel
-                value="Student"
-                control={<Radio />}
-                label="Student"
-              />
-
-              <FormControlLabel
-                value="Admin"
-                control={<Radio />}
-                label="Career Coach"
-              />
-
-            </RadioGroup>
-
-          </FormControl>
-
+        
           <StyledButton
             type="submit"
             fullWidth
