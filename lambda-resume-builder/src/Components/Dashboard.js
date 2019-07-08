@@ -8,9 +8,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 import { mainListItems, secondaryListItems } from './listItems'
 import Calendar from '../Components/Calendar'
 import Assignments from '../Components/Assignments'
-// import Endorsement from '../Components/EndorsementChecklist/EndorsementChecklist'
-
+import Endorsement from '../Components/EndorsementChecklist/EndorsementChecklist'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
+
 
 
 const Dashboard = props => {
@@ -127,6 +127,8 @@ const Dashboard = props => {
               return <Assignments />
             case 'calendar':
               return <Calendar />
+            case 'endorsement':
+              return <Endorsement/>
             default:
               return
           }

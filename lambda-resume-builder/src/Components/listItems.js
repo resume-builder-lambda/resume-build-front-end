@@ -25,7 +25,7 @@ const mainListItems = (
         <ListItemText primary="Calendar" />
       </ListItem>
     </Link>
-    <Link to="/dashboard/calendar">
+    <Link to="/dashboard/endorsement">
       <ListItem button>
         <ListItemIcon style={{color: "#bb1333"}}>
           <CalendarIcon />
