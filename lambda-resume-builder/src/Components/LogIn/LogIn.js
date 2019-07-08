@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from "react-redux"
 import { login } from "../../Actions"
-import { CssBaseline, FormControl, Checkbox, Input, InputLabel, Paper, FormControlLabel } from '@material-ui/core'
+import { CssBaseline, FormControl, Checkbox, Input, InputLabel, Paper, FormControlLabel, Button} from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
@@ -112,7 +112,7 @@ function SignIn(props) {
           >
             Sign in
           </StyledButton>
-          <StyledButton
+          <Button
             type="submit"
             fullWidth
             variant="contained"
@@ -120,8 +120,8 @@ function SignIn(props) {
             className={classes.submit}
           >
             <img src={GHLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/> Sign in with GitHub
-          </StyledButton>
-          <StyledButton
+          </Button>
+          <Button
             type="submit"
             fullWidth
             variant="contained"
@@ -129,8 +129,8 @@ function SignIn(props) {
             className={classes.submit}
           >
             <img src={LLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Sign in with LinkedIn
-          </StyledButton>
-          <StyledButton
+          </Button>
+          <Button
             type="submit"
             fullWidth
             variant="contained"
@@ -138,7 +138,7 @@ function SignIn(props) {
             className={classes.submit}
           >
             <img src={GLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Sign in with Google
-          </StyledButton>
+          </Button>
 
         </form>
        
