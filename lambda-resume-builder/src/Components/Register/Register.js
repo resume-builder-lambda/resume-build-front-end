@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from "react-redux"
 import { register } from "../../Actions"
-import { CssBaseline, FormControl, Radio, RadioGroup, FormControlLabel, Input, InputLabel, Paper } from '@material-ui/core'
+import { CssBaseline, FormControl, Radio, RadioGroup, FormControlLabel, Input, InputLabel, Paper, Button } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
+import GLogo from '../Images/G-Sign-In-Normal.png'
+import LLogo from '../Images/Sign-in-Large.png'
+import GHLogo from '../Images/GitHub-Logo.png'
 
 import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../MaterialUI/styles'
 
@@ -75,41 +78,7 @@ const Register = (props) => {
 
           </FormControl>
 
-          <FormControl
-            margin="normal"
-            required
-            fullWidth
-            style={{ color: "green" }}
-          >
-
-            <RadioGroup
-
-              aria-label="Role"
-              name="role"
-              className={classes.group}
-              onChange={handleChanges}
-              inputprops={{
-                name: 'role',
-                id: 'role',
-              }}
-            >
-
-              <FormControlLabel
-                value="Student"
-                control={<Radio />}
-                label="Student"
-              />
-
-              <FormControlLabel
-                value="Admin"
-                control={<Radio />}
-                label="Career Coach"
-              />
-
-            </RadioGroup>
-
-          </FormControl>
-
+        
           <StyledButton
             type="submit"
             fullWidth
@@ -119,6 +88,34 @@ const Register = (props) => {
           >
             Register
             </StyledButton>
+
+            <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            <img src={GHLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/> Register in with GitHub
+          </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            <img src={LLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Register in with LinkedIn
+          </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            <img src={GLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Register in with Google
+          </Button>
 
         </form>
 
