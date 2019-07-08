@@ -38,6 +38,7 @@ You can find the project at :
 * GraphQL
 
 #### [Back end] built using:
+* GraphQL
 * MongoDB Atlas
 * OAuth
 
