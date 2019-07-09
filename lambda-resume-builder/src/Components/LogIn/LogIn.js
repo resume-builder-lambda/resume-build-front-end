@@ -9,9 +9,13 @@ import GLogo from '../Images/G-Sign-In-Normal.png'
 import LLogo from '../Images/Sign-in-Large.png'
 import GHLogo from '../Images/GitHub-Logo.png'
 
+import GoogleLogin from 'react-google-login'
+
 import Cookies from 'js-cookie'
 
 import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../MaterialUI/styles'
+
+const responseGoogle = res => console.log(res)
 
 function SignIn(props) {
 
@@ -130,15 +134,25 @@ function SignIn(props) {
           >
             <img alt='' src={LLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} />Sign in with LinkedIn
           </Button>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            <img alt='' src={GLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} />Sign in with Google
-          </Button>
+          <GoogleLogin
+            clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
+            render={renderProps => (
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+              >
+                <img alt='' src={GLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} />Sign in with Google
+                </Button>
+            )}
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
 
         </form>
 
