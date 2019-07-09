@@ -39,7 +39,7 @@ function SignIn(props) {
     }
 
     props.googleLogin(google)
-    setTimeout(() => window.location.pathname = '/dashboard', 1000)
+    // setTimeout(() => window.location.pathname = '/dashboard', 1000)
 
   }
 
