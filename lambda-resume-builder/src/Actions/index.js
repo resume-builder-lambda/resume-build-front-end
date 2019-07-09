@@ -21,7 +21,6 @@ const register = user => dispatch => {
           _id
           token
           tokenExp
-          
         }
       }
     `}
@@ -67,6 +66,7 @@ const login = creds => dispatch => {
       const { token } = res.data.login
       console.log('second response', res)
       localStorage.setItem('token', token)
+      Cookies.set('token', token)
       Cookies.set('creds', JSON.stringify(creds))
       const admin = jwt_decode(token)
       console.log('admin', admin)
@@ -75,17 +75,26 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
-const googleLogin = google => dispatch => {
+const createGoogleUser = google => dispatch => {
+
+  console.log(google)
 
   let requestBody = {
     query: `
-      query{
-        googleLogin(token: ${google.token}, image: ${google.image}, email: ${google.email}, name: ${google.name}){
+      mutation{
+        createGoogleUser(googleData:{
+          token: "${google.token}", 
+          image: "${google.image}", 
+          email: "${google.email}", 
+          name: "${google.name}", 
+          password: "${google.password}"
+        }){
+          _id
           token
+          tokenExp
         }
       }
-    `
-  }
+  `}
 
   fetch('https://lambda-crp.herokuapp.com/', {
     method: 'POST',
@@ -96,8 +105,13 @@ const googleLogin = google => dispatch => {
       return res.json()
     })
     .then(res => {
-      const { token } = res.data.googleLogin
-      console.log(token)
+      const { token } = res.data.createGoogleUser
+      console.log('second response', res)
+      localStorage.setItem('token', token)
+      Cookies.set('token', token)
+      const admin = jwt_decode(token)
+      console.log('admin', admin)
+      dispatch({ type: REGISTER_SUCCESS, payload: token })
     })
 
 }
@@ -108,5 +122,5 @@ export {
   GOOGLE_LOGIN,
   register,
   login,
-  googleLogin,
+  createGoogleUser,
 }
