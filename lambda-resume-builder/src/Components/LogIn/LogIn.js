@@ -32,7 +32,7 @@ function SignIn(props) {
     console.log('res', res)
 
     const google = {
-      token: res.profileObj.accessToken,
+      token: res.profileObj.access_token,
       image: res.profileObj.imageUrl,
       name: res.profileObj.name,
       email: res.profileObj.email
