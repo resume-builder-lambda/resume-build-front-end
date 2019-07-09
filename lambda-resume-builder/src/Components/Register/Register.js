@@ -145,7 +145,7 @@ const Register = (props) => {
                   height: '25px',
                   width: '25px',
                   marginRight: '10px'
-                }} />Sign in with Google
+                }} />Register with Google
                 </Button>
             )}
             onSuccess={responseGoogle}
