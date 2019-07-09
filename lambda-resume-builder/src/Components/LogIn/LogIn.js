@@ -10,7 +10,6 @@ import LLogo from '../Images/Sign-in-Large.png'
 import GHLogo from '../Images/GitHub-Logo.png'
 
 import GoogleLogin from 'react-google-login'
-import GitHubLogin from 'github-login'
 
 import Cookies from 'js-cookie'
 
@@ -18,7 +17,7 @@ import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../Mat
 
 const responseGoogle = res => console.log(res)
 
-const githubapi = "https://github.com/login/oauth/authorize?client_id=8c8935780c16571f5bc8&scope=user&redirect_uri=$https://crp.netlify.com"
+// const githubapi = "https://github.com/login/oauth/authorize?client_id=8c8935780c16571f5bc8&scope=user&redirect_uri=$https://crp.netlify.com"
 
 function SignIn(props) {
 
@@ -119,24 +118,17 @@ function SignIn(props) {
           >
             Sign in
           </StyledButton>
-          <GitHubLogin
-            clientId='8c8935780c16571f5bc8'
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-          //   render={renderProps => (
-          //     <Button
-          //       id='GitHub'
-          //       onClick={(e) => e.preventDefault()}
-          //       type="submit"
-          //       fullWidth
-          //       variant="contained"
-          //       color="primary"
-          //       className={classes.submit}
-          //     >
-          //       <img alt='' src={GHLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} /> Sign in with GitHub
-          // </Button>
-          //   )}
-          />
+          <Button
+            id='GitHub'
+            onClick={(e) => e.preventDefault()}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            <img alt='GitHub Logo' src={GHLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} /> Sign in with GitHub
+          </Button>
           <Button
             type="submit"
             fullWidth
@@ -144,7 +136,7 @@ function SignIn(props) {
             color="primary"
             className={classes.submit}
           >
-            <img alt='' src={LLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} />Sign in with LinkedIn
+            <img alt='LinkedIn Logo' src={LLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} />Sign in with LinkedIn
           </Button>
           <GoogleLogin
             clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
@@ -158,7 +150,7 @@ function SignIn(props) {
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
               >
-                <img alt='' src={GLogo} style={{
+                <img alt='Google Logo' src={GLogo} style={{
                   height: '25px',
                   width: '25px',
                   marginRight: '10px'
