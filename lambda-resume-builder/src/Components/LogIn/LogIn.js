@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from "react-redux"
-import { login } from "../../Actions"
+import { login, googleLogin } from "../../Actions"
 import { CssBaseline, FormControl, Checkbox, Input, InputLabel, Paper, FormControlLabel, Button } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
@@ -15,9 +15,8 @@ import Cookies from 'js-cookie'
 
 import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../MaterialUI/styles'
 
-const responseGoogle = res => console.log(res)
 
-// const githubapi = "https://github.com/login/oauth/authorize?client_id=8c8935780c16571f5bc8&scope=user&redirect_uri=$https://crp.netlify.com"
+// const githubapi = "https://github.com/login/oauth/authorize?client_id=8c8935780c16571f5bc8&redirect_uri=https://www.crp.netlify.com"
 
 function SignIn(props) {
 
@@ -27,6 +26,22 @@ function SignIn(props) {
 
   const creds = Cookies.get('creds') &&
     JSON.parse(Cookies.get('creds'))
+
+  const responseGoogle = res => {
+
+    console.log('res', res)
+
+    const google = {
+      token: res.profileObj.accessToken,
+      image: res.profileObj.imageUrl,
+      name: res.profileObj.name,
+      email: res.profileObj.email
+    }
+
+    props.googleLogin(google)
+    setTimeout(() => window.location.pathname = '/dashboard', 1000)
+
+  }
 
   function handleSubmit() {
     props.login(fields)
@@ -177,8 +192,7 @@ function SignIn(props) {
 }
 
 const mapStateToProps = state => ({
-  login: state.login,
-  loggedIn: state.loggedIn
+  state
 })
 
-export default connect(mapStateToProps, { login })(withStyles(styles)(SignIn))
+export default connect(mapStateToProps, { login, googleLogin })(withStyles(styles)(SignIn))
