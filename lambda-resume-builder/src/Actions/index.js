@@ -77,6 +77,8 @@ const login = creds => dispatch => {
 
 const googleLogin = google => dispatch => {
 
+  console.log(google)
+
   let requestBody = {
     query: `
       query{

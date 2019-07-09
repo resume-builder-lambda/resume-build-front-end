@@ -38,6 +38,8 @@ function SignIn(props) {
       email: res.profileObj.email
     }
 
+    console.log(google)
+
     props.googleLogin(google)
     // setTimeout(() => window.location.pathname = '/dashboard', 1000)
 
