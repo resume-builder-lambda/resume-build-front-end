@@ -76,14 +76,30 @@ const login = creds => dispatch => {
 }
 
 const createGithubUser= () => {
-  fetch('https://github.com/login/oauth/authorize/', {
+  fetch('https://github.com/login/oauth/authorize/?client_id=8c8935780c16571f5bc8&&scope=user&&state=secret&&redirect_uri=https://www.crp.netlify.com', {
     method: 'GET',
+    mode:'cors',
     headers: { "client_id": "8c8935780c16571f5bc8", "scope": "user", "state": "secret", "redirect_ur": "https://www.crp.netlify.com"}
   })
   .then(res => {
     console.log(res.data)
+   
   })
-
+  .then(
+    fetch('https://github.com/login/oauth/access_token?client_id=8c8935780c16571f5bc8&&client_secret=7f1b87f962d2665748742ad6ddaba452507a2649&&state=secret&&code=', {
+      method: 'POST',
+      headers: { "client_id": "8c8935780c16571f5bc8", "client_secret": "7f1b87f962d2665748742ad6ddaba452507a2649",  "state": "secret"}
+    })
+    .then(res => {
+      console.log(res.data)
+    })
+    .then(
+      fetch('https://api.github.com/user?access_token=')
+    )
+  .then(res => {
+    console.log(res.data)
+  })
+  )
 }
 
 const createGoogleUser = google => dispatch => {
