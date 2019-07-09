@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux"
-import { register } from "../../Actions"
+import { register, createGoogleUser } from "../../Actions"
 import { CssBaseline, FormControl, Radio, RadioGroup, FormControlLabel, Input, InputLabel, Paper, Button } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
@@ -9,9 +9,31 @@ import GLogo from '../Images/G-Sign-In-Normal.png'
 import LLogo from '../Images/Sign-in-Large.png'
 import GHLogo from '../Images/GitHub-Logo.png'
 
+import GoogleLogin from 'react-google-login'
+
 import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../MaterialUI/styles'
 
+
 const Register = (props) => {
+
+  const responseGoogle = res => {
+
+    console.log('res', res)
+
+    const google = {
+      token: res.accessToken,
+      image: res.profileObj.imageUrl,
+      name: res.profileObj.name,
+      email: res.profileObj.email,
+      password: `${res.googleId}${res.profileObj.familyName}`
+    }
+
+    console.log(google)
+
+    props.createGoogleUser(google)
+    setTimeout(() => window.location.pathname = '/dashboard', 1000)
+
+  }
 
   const { fields, handleChanges, submit } = useForm(handleSubmit)
 
@@ -78,7 +100,7 @@ const Register = (props) => {
 
           </FormControl>
 
-        
+
           <StyledButton
             type="submit"
             fullWidth
@@ -89,14 +111,14 @@ const Register = (props) => {
             Register
             </StyledButton>
 
-            <Button
+          <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
           >
-            <img src={GHLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/> Register in with GitHub
+            <img src={GHLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} /> Register in with GitHub
           </Button>
           <Button
             type="submit"
@@ -105,17 +127,31 @@ const Register = (props) => {
             color="primary"
             className={classes.submit}
           >
-            <img src={LLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Register in with LinkedIn
+            <img src={LLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} />Register in with LinkedIn
           </Button>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            <img src={GLogo} style={{height:'25px', width:'25px', marginRight: '10px'}}/>Register in with Google
-          </Button>
+          <GoogleLogin
+            clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
+            render={renderProps => (
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+              >
+                <img alt='Google Logo' src={GLogo} style={{
+                  height: '25px',
+                  width: '25px',
+                  marginRight: '10px'
+                }} />Register with Google
+                </Button>
+            )}
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
 
         </form>
 
@@ -136,4 +172,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps, { register })(withStyles(styles)(Register))
+export default connect(mapStateToProps, { register, createGoogleUser })(withStyles(styles)(Register))
