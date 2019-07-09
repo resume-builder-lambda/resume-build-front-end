@@ -80,12 +80,7 @@ const googleLogin = google => dispatch => {
   let requestBody = {
     query: `
       query{
-        googleLogin(
-          token: ${google.token}, 
-          image: ${google.image}, 
-          email: ${google.email}, 
-          name: ${google.name}
-          ){
+        googleLogin(token: ${google.token}, image: ${google.image}, email: ${google.email}, name: ${google.name}){
           token
         }
       }
