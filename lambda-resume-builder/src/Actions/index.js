@@ -2,8 +2,9 @@ import jwt_decode from 'jwt-decode'
 
 import Cookies from 'js-cookie'
 
-const REGISTER = "REGISTER"
-const REGISTER_SUCCESS = "REGISTER_SUCCESS"
+const REGISTER = "REGISTER",
+  REGISTER_SUCCESS = "REGISTER_SUCCESS",
+  GOOGLE_LOGIN = "GOOGLE_LOGIN"
 
 const register = user => dispatch => {
 
@@ -74,9 +75,38 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
+const googleLogin = google => dispatch => {
+
+  let requestBody = {
+    query: `
+      query{
+        googleLogin(token: ${google.token}, image: ${google.image}, email: ${google.email}, name: ${google.name}){
+          token
+        }
+      }
+    `
+  }
+
+  fetch('https://lambda-crp.herokuapp.com/', {
+    method: 'POST',
+    body: JSON.stringify(requestBody),
+    headers: { "content-type": "application/json" }
+  })
+    .then(res => {
+      return res.json()
+    })
+    .then(res => {
+      const { token } = res.data.googleLogin
+      console.log(token)
+    })
+
+}
+
 export {
   REGISTER,
   REGISTER_SUCCESS,
+  GOOGLE_LOGIN,
   register,
   login,
+  googleLogin,
 }
