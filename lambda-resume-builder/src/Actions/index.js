@@ -75,6 +75,17 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
+const createGithubUser= () => {
+  fetch('https://github.com/login/oauth/authorize/', {
+    method: 'GET',
+    headers: { "client_id": "8c8935780c16571f5bc8", "scope": "user", "state": "secret", "redirect_ur": "https://www.crp.netlify.com"}
+  })
+  .then(res => {
+    console.log(res.data)
+  })
+
+}
+
 const createGoogleUser = google => dispatch => {
 
   console.log(google)
@@ -123,4 +134,5 @@ export {
   register,
   login,
   createGoogleUser,
+  createGithubUser,
 }
