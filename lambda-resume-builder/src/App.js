@@ -26,7 +26,11 @@ const App = props => {
         component={() => <Dashboard data={props.data} />}
       />
 
-      <CookieConsent>
+      <CookieConsent
+        debug={true}
+        expires={new Date().setSeconds(2)}
+        enableDeclineButton
+      >
         This website uses cookies to enhance the user experience.
       </CookieConsent>
     </div>
