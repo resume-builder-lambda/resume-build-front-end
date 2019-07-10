@@ -2,8 +2,9 @@ import jwt_decode from 'jwt-decode'
 
 import Cookies from 'js-cookie'
 
-const REGISTER = "REGISTER"
-const REGISTER_SUCCESS = "REGISTER_SUCCESS"
+
+const REGISTER = "REGISTER",
+  REGISTER_SUCCESS = "REGISTER_SUCCESS"
 
 const register = user => dispatch => {
 
@@ -20,7 +21,6 @@ const register = user => dispatch => {
           _id
           token
           tokenExp
-          
         }
       }
     `}
@@ -66,6 +66,7 @@ const login = creds => dispatch => {
       const { token } = res.data.login
       console.log('second response', res)
       localStorage.setItem('token', token)
+      Cookies.set('token', token)
       Cookies.set('creds', JSON.stringify(creds))
       const admin = jwt_decode(token)
       console.log('admin', admin)
@@ -74,9 +75,82 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
+
+const createGithubUser= () => {
+
+  window.location.href = 'https://github.com/login/oauth/authorize/?client_id=8c8935780c16571f5bc8&&scope=user&&state=secret&&redirect_uri=https://www.crp.netlify.com'
+ 
+const code = window.location.href.match(/\?code=(.*)/) && window.location.href.match(/\?code=(.*)/)[1]
+
+console.log(code)
+
+if(code){
+
+
+  fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
+        .then(response => response.json())
+        .then(({ token }) => {
+          console.log({
+            token
+          })
+           fetch(`https://api.github.com/user?access_token=${token}`, {
+              method: 'GET',
+              headers: { "content-type": "application/json" }
+            })
+          .then(res => res.json())
+          .then(res => {
+            console.log(res)
+          })
+
+        })
+}       
+        }
+const createGoogleUser = google => dispatch => {
+
+  console.log(google)
+
+  let requestBody = {
+    query: `
+      mutation{
+        createGoogleUser(googleData:{
+          token: "${google.token}", 
+          image: "${google.image}", 
+          email: "${google.email}", 
+          name: "${google.name}", 
+          password: "${google.password}"
+        }){
+          _id
+          token
+          tokenExp
+        }
+      }
+  `}
+
+  fetch('https://lambda-crp.herokuapp.com/', {
+    method: 'POST',
+    body: JSON.stringify(requestBody),
+    headers: { "content-type": "application/json" }
+  })
+    .then(res => {
+      return res.json()
+    })
+    .then(res => {
+      const { token } = res.data.createGoogleUser
+      console.log('second response', res)
+      localStorage.setItem('token', token)
+      Cookies.set('token', token)
+      const admin = jwt_decode(token)
+      console.log('admin', admin)
+      dispatch({ type: REGISTER_SUCCESS, payload: token })
+    })
+
+}
+
 export {
   REGISTER,
   REGISTER_SUCCESS,
   register,
   login,
+  createGoogleUser,
+  createGithubUser,
 }

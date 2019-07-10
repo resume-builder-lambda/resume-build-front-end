@@ -1,36 +1,36 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import LogIn from './Components/LogIn'
-import Register from './Components/Register'
-import PrivateRoute from './Components/PrivateRoute'
-import Dashboard from './Components/Dashboard'
+import React from 'react';
+import { Route } from 'react-router-dom';
+import CookieConsent from 'react-cookie-consent';
+import LogIn from './Components/LogIn';
+import Register from './Components/Register';
+import PrivateRoute from './Components/PrivateRoute';
+import Dashboard from './Components/Dashboard';
 
-import './App.scss'
+import './App.scss';
 
 const App = props => {
-
   return (
-
-    <div className="App">
-
-      <Route exact path="/"
+    <div className='App'>
+      <Route
+        exact
+        path='/'
         render={props => {
-          return (<LogIn {...props} />)
-        }} />
-
-      <Route path="/register"
-        component={Register}
+          return <LogIn {...props} />;
+        }}
       />
+
+      <Route path='/register' component={Register} />
 
       <PrivateRoute
-        path="/dashboard"
-        component={() => <Dashboard data={this.props.data} />}
+        path='/dashboard'
+        component={() => <Dashboard data={props.data} />}
       />
 
+      <CookieConsent>
+        This website uses cookies to enhance the user experience.
+      </CookieConsent>
     </div>
+  );
+};
 
-  )
-
-}
-
-export default App
+export default App;
