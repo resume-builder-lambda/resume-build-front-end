@@ -67,6 +67,7 @@ function SignIn(props) {
     attempt()
 
   }, [creds])
+  
 
   return (
     <main className={classes.main}>
@@ -179,6 +180,8 @@ function SignIn(props) {
                   marginRight: '10px'
                 }} />Sign in with Google
                 </Button>
+
+
             )}
             onSuccess={responseGoogle}
             onFailure={responseGoogle}

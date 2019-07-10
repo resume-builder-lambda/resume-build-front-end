@@ -2,6 +2,7 @@ import jwt_decode from 'jwt-decode'
 
 import Cookies from 'js-cookie'
 
+
 const REGISTER = "REGISTER",
   REGISTER_SUCCESS = "REGISTER_SUCCESS",
   GOOGLE_LOGIN = "GOOGLE_LOGIN"
@@ -75,33 +76,26 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
-const createGithubUser= () => {
-  fetch('https://github.com/login/oauth/authorize/?client_id=8c8935780c16571f5bc8&&scope=user&&state=secret&&redirect_uri=https://www.crp.netlify.com', {
-    method: 'GET',
-    mode:'cors',
-    headers: { "client_id": "8c8935780c16571f5bc8", "scope": "user", "state": "secret", "redirect_ur": "https://www.crp.netlify.com"}
-  })
-  .then(res => {
-    console.log(res.data)
-   
-  })
-  .then(
-    fetch('https://github.com/login/oauth/access_token?client_id=8c8935780c16571f5bc8&&client_secret=7f1b87f962d2665748742ad6ddaba452507a2649&&state=secret&&code=', {
-      method: 'POST',
-      headers: { "client_id": "8c8935780c16571f5bc8", "client_secret": "7f1b87f962d2665748742ad6ddaba452507a2649",  "state": "secret"}
-    })
-    .then(res => {
-      console.log(res.data)
-    })
-    .then(
-      fetch('https://api.github.com/user?access_token=')
-    )
-  .then(res => {
-    console.log(res.data)
-  })
-  )
-}
 
+const code = '3bd3019ca0b989fa4ab0'
+const createGithubUser= () => {
+ 
+  fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
+        .then(response => response.json())
+        .then(({ token }) => {
+          console.log({
+            token
+          })
+           fetch(`https://api.github.com/user?access_token=${token}`, {
+              method: 'GET',
+              headers: { "content-type": "application/json" }
+            })
+          .then(res => res.json())
+          .then(res => {
+            console.log(res)
+          })
+
+        })}
 const createGoogleUser = google => dispatch => {
 
   console.log(google)
