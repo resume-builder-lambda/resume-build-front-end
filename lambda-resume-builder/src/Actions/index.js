@@ -77,6 +77,8 @@ const login = creds => dispatch => {
 
 
 const createGithubUser= () => {
+
+  window.location.href = 'https://github.com/login/oauth/authorize/?client_id=8c8935780c16571f5bc8&&scope=user&&state=secret&&redirect_uri=https://www.crp.netlify.com'
  
 const code = window.location.href.match(/\?code=(.*)/) && window.location.href.match(/\?code=(.*)/)[1]
 
