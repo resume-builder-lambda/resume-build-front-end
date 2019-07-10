@@ -115,8 +115,8 @@ const createGoogleUser = google => dispatch => {
       return res.json()
     })
     .then(res => {
-      const { token } = res.data.createGoogleUser
       console.log('second response', res)
+      const { token } = res.data.createGoogleUser
       localStorage.setItem('token', token)
       Cookies.set('token', token)
       const admin = jwt_decode(token)
