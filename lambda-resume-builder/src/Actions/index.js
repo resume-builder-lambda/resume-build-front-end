@@ -2,9 +2,9 @@ import jwt_decode from 'jwt-decode'
 
 import Cookies from 'js-cookie'
 
+
 const REGISTER = "REGISTER",
-  REGISTER_SUCCESS = "REGISTER_SUCCESS",
-  GOOGLE_LOGIN = "GOOGLE_LOGIN"
+  REGISTER_SUCCESS = "REGISTER_SUCCESS"
 
 const register = user => dispatch => {
 
@@ -75,17 +75,34 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
+
 const createGithubUser= () => {
-  fetch('https://github.com/login/oauth/authorize/', {
-    method: 'GET',
-    headers: { "client_id": "8c8935780c16571f5bc8", "scope": "user", "state": "secret", "redirect_ur": "https://www.crp.netlify.com"}
-  })
-  .then(res => {
-    console.log(res.data)
-  })
+ 
+const code = window.location.href.match(/\?code=(.*)/) && window.location.href.match(/\?code=(.*)/)[1]
 
-}
+console.log(code)
 
+if(code){
+
+
+  fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
+        .then(response => response.json())
+        .then(({ token }) => {
+          console.log({
+            token
+          })
+           fetch(`https://api.github.com/user?access_token=${token}`, {
+              method: 'GET',
+              headers: { "content-type": "application/json" }
+            })
+          .then(res => res.json())
+          .then(res => {
+            console.log(res)
+          })
+
+        })
+}       
+        }
 const createGoogleUser = google => dispatch => {
 
   console.log(google)
@@ -130,7 +147,6 @@ const createGoogleUser = google => dispatch => {
 export {
   REGISTER,
   REGISTER_SUCCESS,
-  GOOGLE_LOGIN,
   register,
   login,
   createGoogleUser,

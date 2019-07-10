@@ -5,6 +5,7 @@ import Register from './Components/Register'
 import PrivateRoute from './Components/PrivateRoute'
 import Dashboard from './Components/Dashboard'
 
+
 import './App.scss'
 
 const App = props => {

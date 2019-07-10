@@ -67,6 +67,7 @@ function SignIn(props) {
     attempt()
 
   }, [creds])
+  
 
   return (
     <main className={classes.main}>
@@ -138,6 +139,8 @@ function SignIn(props) {
           >
             Sign in
           </StyledButton>
+
+          <a href='https://github.com/login/oauth/authorize/?client_id=8c8935780c16571f5bc8&&scope=user&&state=secret&&redirect_uri=https://www.crp.netlify.com'>
           <Button
             id='GitHub'
             onClick={(e) => {
@@ -152,6 +155,9 @@ function SignIn(props) {
           >
             <img alt='GitHub Logo' src={GHLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} /> Sign in with GitHub
           </Button>
+</a>
+
+
           <Button
             type="submit"
             fullWidth
@@ -179,6 +185,8 @@ function SignIn(props) {
                   marginRight: '10px'
                 }} />Sign in with Google
                 </Button>
+
+
             )}
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
