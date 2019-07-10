@@ -25,7 +25,7 @@ const register = user => dispatch => {
       }
     `}
 
-  fetch('https://lambda-crp.herokuapp.com/', {
+  fetch('https://lambda-crp.herokuapp.com/graphql', {
     method: 'POST',
     body: JSON.stringify(requestBody),
     headers: { "content-type": "application/json" }
@@ -53,7 +53,7 @@ const login = creds => dispatch => {
       }
     `}
 
-  fetch("https://lambda-crp.herokuapp.com/", {
+  fetch("https://lambda-crp.herokuapp.com/graphql", {
     method: 'POST',
     body: JSON.stringify(requestBody),
     headers: { "content-type": "application/json" }
@@ -76,35 +76,15 @@ const login = creds => dispatch => {
 }
 
 
-const createGithubUser= () => {
+const createGithubUser = () => {
 
-  window.location.href = 'https://github.com/login/oauth/authorize/?client_id=8c8935780c16571f5bc8&&scope=user&&state=secret&&redirect_uri=https://www.crp.netlify.com'
- 
-const code = window.location.href.match(/\?code=(.*)/) && window.location.href.match(/\?code=(.*)/)[1]
+  fetch(`https://lambda-crp.herokuapp.com/auth/github`, {
+    method: 'GET',
+    headers: { "content-type": "application/json" }
+  })
+    .then(res => console.log(res))
 
-console.log(code)
-
-if(code){
-
-
-  fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
-        .then(response => response.json())
-        .then(({ token }) => {
-          console.log({
-            token
-          })
-           fetch(`https://api.github.com/user?access_token=${token}`, {
-              method: 'GET',
-              headers: { "content-type": "application/json" }
-            })
-          .then(res => res.json())
-          .then(res => {
-            console.log(res)
-          })
-
-        })
-}       
-        }
+}
 const createGoogleUser = google => dispatch => {
 
   console.log(google)
@@ -126,7 +106,7 @@ const createGoogleUser = google => dispatch => {
       }
   `}
 
-  fetch('https://lambda-crp.herokuapp.com/', {
+  fetch('https://lambda-crp.herokuapp.com/graphql', {
     method: 'POST',
     body: JSON.stringify(requestBody),
     headers: { "content-type": "application/json" }
