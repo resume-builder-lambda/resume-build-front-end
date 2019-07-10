@@ -11,7 +11,7 @@
 
 <br>
 <br>
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8b97a0b5-abe5-4c73-a538-89a15287daf5/deploy-status)](https://app.netlify.com/sites/crp/deploys)
+
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 ![version](https://img.shields.io/badge/Version-1.0.0-red.svg)
