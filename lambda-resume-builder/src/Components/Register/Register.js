@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from "react-redux"
 import { register, createGoogleUser } from "../../Actions"
-import { CssBaseline, FormControl, Radio, RadioGroup, FormControlLabel, Input, InputLabel, Paper, Button } from '@material-ui/core'
+import { CssBaseline, FormControl, Input, InputLabel, Paper, Button } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
@@ -118,7 +118,7 @@ const Register = (props) => {
             color="primary"
             className={classes.submit}
           >
-            <img src={GHLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} /> Register in with GitHub
+            <img alt='GitHub Logo' src={GHLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} /> Register in with GitHub
           </Button>
           <Button
             type="submit"
@@ -127,7 +127,7 @@ const Register = (props) => {
             color="primary"
             className={classes.submit}
           >
-            <img src={LLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} />Register in with LinkedIn
+            <img alt='LinkedIn Logo' src={LLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} />Register in with LinkedIn
           </Button>
           <GoogleLogin
             clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
