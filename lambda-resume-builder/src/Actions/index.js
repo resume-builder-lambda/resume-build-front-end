@@ -4,8 +4,7 @@ import Cookies from 'js-cookie'
 
 
 const REGISTER = "REGISTER",
-  REGISTER_SUCCESS = "REGISTER_SUCCESS",
-  GOOGLE_LOGIN = "GOOGLE_LOGIN"
+  REGISTER_SUCCESS = "REGISTER_SUCCESS"
 
 const register = user => dispatch => {
 
@@ -77,9 +76,17 @@ const login = creds => dispatch => {
 }
 
 
-const code = '3bd3019ca0b989fa4ab0'
 const createGithubUser= () => {
+
+  window.location.href = 'https://github.com/login/oauth/authorize/?client_id=8c8935780c16571f5bc8&&scope=user&&state=secret&&redirect_uri=https://www.crp.netlify.com'
  
+const code = window.location.href.match(/\?code=(.*)/) && window.location.href.match(/\?code=(.*)/)[1]
+
+console.log(code)
+
+if(code){
+
+
   fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
         .then(response => response.json())
         .then(({ token }) => {
@@ -95,7 +102,9 @@ const createGithubUser= () => {
             console.log(res)
           })
 
-        })}
+        })
+}       
+        }
 const createGoogleUser = google => dispatch => {
 
   console.log(google)
@@ -140,7 +149,6 @@ const createGoogleUser = google => dispatch => {
 export {
   REGISTER,
   REGISTER_SUCCESS,
-  GOOGLE_LOGIN,
   register,
   login,
   createGoogleUser,
