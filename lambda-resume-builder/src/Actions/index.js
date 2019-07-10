@@ -76,9 +76,15 @@ const login = creds => dispatch => {
 }
 
 
-const code = '3bd3019ca0b989fa4ab0'
 const createGithubUser= () => {
  
+const code = window.location.href.match(/\?code=(.*)/) && window.location.href.match(/\?code=(.*)/)[1]
+
+console.log(code)
+
+if(code){
+
+
   fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
         .then(response => response.json())
         .then(({ token }) => {
@@ -94,7 +100,9 @@ const createGithubUser= () => {
             console.log(res)
           })
 
-        })}
+        })
+}       
+        }
 const createGoogleUser = google => dispatch => {
 
   console.log(google)
