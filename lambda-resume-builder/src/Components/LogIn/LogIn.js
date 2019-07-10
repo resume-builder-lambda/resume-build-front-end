@@ -10,6 +10,7 @@ import LLogo from '../Images/Sign-in-Large.png'
 import GHLogo from '../Images/GitHub-Logo.png'
 
 import GoogleLogin from 'react-google-login'
+import {createGithubUser} from '../../Actions'
 
 import Cookies from 'js-cookie'
 
@@ -45,6 +46,7 @@ function SignIn(props) {
     setTimeout(() => window.location.pathname = '/dashboard', 1000)
 
   }
+
 
   function handleSubmit() {
     props.login(fields)
@@ -138,7 +140,10 @@ function SignIn(props) {
           </StyledButton>
           <Button
             id='GitHub'
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => {
+              e.preventDefault() 
+              createGithubUser()}
+            } 
             type="submit"
             fullWidth
             variant="contained"
