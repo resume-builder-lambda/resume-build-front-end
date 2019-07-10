@@ -3,8 +3,7 @@ import jwt_decode from 'jwt-decode'
 import Cookies from 'js-cookie'
 
 const REGISTER = "REGISTER",
-  REGISTER_SUCCESS = "REGISTER_SUCCESS",
-  GOOGLE_LOGIN = "GOOGLE_LOGIN"
+  REGISTER_SUCCESS = "REGISTER_SUCCESS"
 
 const register = user => dispatch => {
 
@@ -119,7 +118,6 @@ const createGoogleUser = google => dispatch => {
 export {
   REGISTER,
   REGISTER_SUCCESS,
-  GOOGLE_LOGIN,
   register,
   login,
   createGoogleUser,
