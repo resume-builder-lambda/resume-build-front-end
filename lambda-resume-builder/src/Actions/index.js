@@ -95,7 +95,7 @@ const createGithubUser = code => dispatch => {
             let requestBody = {
               query: `
                 mutation{
-                  createGitHubUser(githubData:{
+                  createGitHubUser(gitHubData:{
                     token: "${user.token}",
                     image: "${user.image}",
                     email: "${user.email}",
