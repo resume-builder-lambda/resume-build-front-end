@@ -74,8 +74,8 @@ const Dashboard = props => {
           <IconButton color="inherit">
 
             <Badge
-              badgeContent={4}
-              color="secondary"
+              badgeContent={69}
+              color="primary"
             >
 
               <NotificationsIcon />

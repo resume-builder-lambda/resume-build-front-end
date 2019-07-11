@@ -1,22 +1,27 @@
 import React from 'react'
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
-import AssignmentIcon from '@material-ui/icons/Assignment'
-import CalendarIcon from '@material-ui/icons/CalendarToday'
-import CancelIcon from '@material-ui/icons/Cancel'
+import { ListItem, ListItemIcon, ListItemText, Tooltip } from '@material-ui/core'
+import AssignmentIcon from '@material-ui/icons/AssignmentOutlined'
+import CalendarIcon from '@material-ui/icons/DateRangeOutlined'
+import CheckIcon from '@material-ui/icons/VerifiedUserOutlined'
+import CancelIcon from '@material-ui/icons/ExitToApp'
 import { Link } from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
 const mainListItems = (
   <div>
+    
     <Link style={{textDecoration: 'none'}} to="/dashboard/assignments">
       <ListItem button >
         <ListItemIcon style={{color: "#bb1333"}}>
+        <Tooltip title="Training" placement='right'>
           <AssignmentIcon />
+          </Tooltip>
         </ListItemIcon >
-        <ListItemText primary="Assignments" />
+        <ListItemText primary="Training Modules" />
       </ListItem>
     </Link>
+    
     <Link style={{textDecoration: 'none'}} to="/dashboard/calendar">
       <ListItem button>
         <ListItemIcon style={{color: "#bb1333"}}>
@@ -28,7 +33,7 @@ const mainListItems = (
     <Link style={{textDecoration: 'none'}} to="/dashboard/endorsement">
       <ListItem button>
         <ListItemIcon style={{color: "#bb1333"}}>
-          <CalendarIcon />
+          <CheckIcon />
         </ListItemIcon>
         <ListItemText primary="Endorsement " />
       </ListItem>
@@ -40,7 +45,7 @@ const secondaryListItems = (
   <div>
     <ListItem button onClick={handleLogOut}>
       <ListItemIcon>
-        <CancelIcon />
+        <CancelIcon style={{ transform: 'rotate(180deg)'}} />
       </ListItemIcon>
       <ListItemText primary="Log Out" />
     </ListItem>
