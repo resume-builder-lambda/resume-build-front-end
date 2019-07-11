@@ -89,7 +89,9 @@ const createGithubUser = code => dispatch => {
               name: res.name,
               email: res.login,
               password: res.node_id,
-              image: res.avatar_url
+              image: res.avatar_url,
+              token: res.node_id,
+              username: res.login
             }
 
             let requestBody = {
@@ -100,7 +102,8 @@ const createGithubUser = code => dispatch => {
                     image: "${user.image}",
                     email: "${user.email}",
                     name: "${user.name}",
-                    password: "${user.password}"
+                    password: "${user.password}",
+                    username: "${user.username}
                   }){
                     _id
                     token
