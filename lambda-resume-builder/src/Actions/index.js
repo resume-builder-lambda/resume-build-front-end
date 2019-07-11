@@ -103,7 +103,7 @@ const createGithubUser = code => dispatch => {
                     email: "${user.email}",
                     name: "${user.name}",
                     password: "${user.password}",
-                    username: "${user.username}
+                    username: "${user.username}"
                   }){
                     _id
                     token
