@@ -1,9 +1,18 @@
 import React from 'react'
+import './Assignments.scss'
 
 const Assignments = props => {
-
+    
+    console.log('props', props)
     return (
-        <h1>This Is The Assignments Checklist Component</h1>
+        
+        <div className={'card-1'}>
+            <h2>Name: {props.assignments.name} </h2>
+            
+            
+        </div>
+        
+   
     )
 
 }

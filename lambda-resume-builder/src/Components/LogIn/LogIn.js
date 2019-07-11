@@ -69,11 +69,11 @@ function SignIn(props) {
 
   }, [creds])
 
-  if (!Cookies.get('token')) {
-    return (
-      <Register />
-    )
-  }
+  // if (!Cookies.get('token')) {
+  //   return (
+  //     // <Register />
+  //   )
+  // }
 
   return (
 
