@@ -73,7 +73,7 @@ function SignIn(props) {
       if (ghCookie) {
         const code = window.location.href.match(/\?code=(.*)/) &&
           window.location.href.match(/\?code=(.*)/)[1]
-        console.log(code)
+        props.createGithubUser(code)
       }
 
     }
