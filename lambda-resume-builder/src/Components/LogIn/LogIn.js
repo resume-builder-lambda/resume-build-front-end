@@ -72,7 +72,7 @@ function SignIn(props) {
           window.location.href.match(/\?code=(.*)/)[1]
         console.log(code)
       }
-      
+
     }
 
     github()
@@ -145,12 +145,20 @@ function SignIn(props) {
 
           <div style={{ marginTop: '25px' }}>
 
-            <img className={'oauth'} alt='GitHub Logo' src={GHLogo} id='GitHub' onClick={(e) => {
-              e.preventDefault()
-              createGithubUser()
-            }} />
+            <img
+              className={'oauth'}
+              alt='GitHub Logo'
+              src={GHLogo}
+              id='GitHub'
+              onClick={createGithubUser()}
+            />
 
-            <img className={'oauth'} onClick={() => createGithubUser()} alt='LinkedIn Logo' src={linkedin} />
+            <img
+              className={'oauth'}
+              alt='LinkedIn Logo'
+              src={linkedin}
+              onClick={() => createGithubUser()}
+            />
 
             <GoogleLogin
               clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"

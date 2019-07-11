@@ -3,13 +3,10 @@ import jwt_decode from 'jwt-decode'
 import Cookies from 'js-cookie'
 
 
-const REGISTER = "REGISTER",
-  REGISTER_SUCCESS = "REGISTER_SUCCESS",
+const REGISTER_SUCCESS = "REGISTER_SUCCESS",
   GITHUB = 'GITHUB'
 
 const register = user => dispatch => {
-
-  dispatch({ type: REGISTER })
 
   let requestBody = {
     query: `
@@ -77,9 +74,11 @@ const login = creds => dispatch => {
 }
 
 
-const createGithubUser = () => {
+const createGithubUser = () => dispatch => {
 
   window.location = 'http://localhost:5000/auth/github'
+
+  dispatch({ type: GITHUB })
 
 }
 
@@ -125,7 +124,6 @@ const createGoogleUser = google => dispatch => {
 }
 
 export {
-  REGISTER,
   REGISTER_SUCCESS,
   GITHUB,
   register,
