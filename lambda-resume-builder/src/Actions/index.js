@@ -82,13 +82,15 @@ const createGithubUser = code => dispatch => {
         res.json()
         console.log(res)
       })
+  } else {
+
+    Cookies.set('github', true)
+
+    window.location = 'http://localhost:5000/auth/github'
+
+    dispatch({ type: GITHUB })
+
   }
-
-  Cookies.set('github', true)
-
-  window.location = 'http://localhost:5000/auth/github'
-
-  dispatch({ type: GITHUB })
 
 }
 
