@@ -80,7 +80,12 @@ const createGithubUser = code => dispatch => {
     fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
       .then(res => res.json())
       .then(({ token }) => {
-        console.log(token)
+        fetch(`https://api.github.com/user?access_token=${token}`,
+          { headers: { "content-type": "application/json" } })
+          .then(res => res.json())
+          .then(res => {
+            console.log(res)
+          })
       })
   } else {
 
