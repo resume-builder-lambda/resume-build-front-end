@@ -74,7 +74,15 @@ const login = creds => dispatch => {
 }
 
 
-const createGithubUser = () => dispatch => {
+const createGithubUser = code => dispatch => {
+
+  if (code) {
+    fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
+      .then(res => {
+        res.json()
+        console.log(res)
+      })
+  }
 
   Cookies.set('github', true)
 
