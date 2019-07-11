@@ -6,9 +6,9 @@ import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 import GLogo from '../Images/G-Sign-In-Normal.png'
-import LLogo from '../Images/Sign-in-Large.png'
+import linkedin from '../Images/linkedin.png'
 import GHLogo from '../Images/GitHub-Logo.png'
-
+import './login.scss'
 import GoogleLogin from 'react-google-login'
 import { createGithubUser } from '../../Actions'
 import Register from '../Register'
@@ -129,14 +129,6 @@ function SignIn(props) {
 
           </FormControl>
 
-          <FormControlLabel
-            control={<Checkbox
-              value="remember"
-              color="primary"
-            />}
-            label="Remember me"
-          />
-
           <StyledButton
             type="submit"
             fullWidth
@@ -147,56 +139,25 @@ function SignIn(props) {
             Sign in
           </StyledButton>
 
-          <Button
-            id='GitHub'
-            onClick={(e) => {
+          <div style={{marginTop: '25px'}}>
+
+          <img className={'oauth'} alt='GitHub Logo' src={GHLogo} id='GitHub' onClick={(e) => {
               e.preventDefault()
               createGithubUser()
-            }
-            }
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            <img alt='GitHub Logo' src={GHLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} /> Sign in with GitHub
-          </Button>
+            }} />
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            <img alt='LinkedIn Logo' src={LLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} />Sign in with LinkedIn
-          </Button>
+            <img className={'oauth'} onClick={createGithubUser()}alt='LinkedIn Logo' src={linkedin} />
+
           <GoogleLogin
             clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
             render={renderProps => (
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-              >
-                <img alt='Google Logo' src={GLogo} style={{
-                  height: '25px',
-                  width: '25px',
-                  marginRight: '10px'
-                }} />Sign in with Google
-                </Button>
-
-
+              <img className={'oauth'} onClick={renderProps.onClick} alt='Google Logo' src={GLogo} />
             )}
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             cookiePolicy={'single_host_origin'}
           />
+         </div>
 
         </form>
 

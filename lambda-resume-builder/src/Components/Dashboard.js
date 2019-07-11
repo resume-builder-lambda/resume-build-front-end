@@ -16,7 +16,7 @@ import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 const Dashboard = props => {
 
   const [state, setState] = useState({
-    open: true,
+    open: false,
     path: window.location.pathname.split('/')[2]
   })
 
@@ -74,8 +74,8 @@ const Dashboard = props => {
           <IconButton color="inherit">
 
             <Badge
-              badgeContent={4}
-              color="secondary"
+              badgeContent={69}
+              color="primary"
             >
 
               <NotificationsIcon />
