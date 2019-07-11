@@ -14,6 +14,7 @@ const dashboard = theme => {
     return ({
         root: {
             display: 'flex',
+            
         },
         toolbar: {
             paddingRight: 24,
@@ -30,7 +31,9 @@ const dashboard = theme => {
             transition: theme.transitions.create(['width', 'margin'], {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,
+                
             }),
+            backgroundColor: '#BB1333'
         },
         appBarShift: {
             marginLeft: drawerWidth,

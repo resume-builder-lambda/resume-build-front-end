@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "github-login": "^1.0.12",
-    "linkedin-login-for-react": "^1.2.3",
-    "prop-types": "^15.7.2"
-  }
-}

@@ -22,7 +22,7 @@ const App = props => {
       <Route path="/register"
         component={Register}
       />
-
+      
       <PrivateRoute
         path="/dashboard"
         component={() => <Dashboard data={props.data} />}

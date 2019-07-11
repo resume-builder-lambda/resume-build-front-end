@@ -10,7 +10,8 @@ import LLogo from '../Images/Sign-in-Large.png'
 import GHLogo from '../Images/GitHub-Logo.png'
 
 import GoogleLogin from 'react-google-login'
-import {createGithubUser} from '../../Actions'
+import { createGithubUser } from '../../Actions'
+import Register from '../Register'
 
 import Cookies from 'js-cookie'
 
@@ -67,9 +68,15 @@ function SignIn(props) {
     attempt()
 
   }, [creds])
-  
+
+  // if (!Cookies.get('token')) {
+  //   return (
+  //     // <Register />
+  //   )
+  // }
 
   return (
+
     <main className={classes.main}>
 
       <CssBaseline />
@@ -143,9 +150,10 @@ function SignIn(props) {
           <Button
             id='GitHub'
             onClick={(e) => {
-              e.preventDefault() 
-              createGithubUser()}
-            } 
+              e.preventDefault()
+              createGithubUser()
+            }
+            }
             type="submit"
             fullWidth
             variant="contained"

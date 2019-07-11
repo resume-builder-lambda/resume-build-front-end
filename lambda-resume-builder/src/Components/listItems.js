@@ -9,7 +9,7 @@ import Cookies from 'js-cookie'
 
 const mainListItems = (
   <div>
-    <Link to="/dashboard/assignments">
+    <Link style={{textDecoration: 'none'}} to="/dashboard/assignments">
       <ListItem button >
         <ListItemIcon style={{color: "#bb1333"}}>
           <AssignmentIcon />
@@ -17,7 +17,7 @@ const mainListItems = (
         <ListItemText primary="Assignments" />
       </ListItem>
     </Link>
-    <Link to="/dashboard/calendar">
+    <Link style={{textDecoration: 'none'}} to="/dashboard/calendar">
       <ListItem button>
         <ListItemIcon style={{color: "#bb1333"}}>
           <CalendarIcon />
@@ -25,12 +25,12 @@ const mainListItems = (
         <ListItemText primary="Calendar" />
       </ListItem>
     </Link>
-    <Link to="/dashboard/endorsement">
+    <Link style={{textDecoration: 'none'}} to="/dashboard/endorsement">
       <ListItem button>
         <ListItemIcon style={{color: "#bb1333"}}>
           <CalendarIcon />
         </ListItemIcon>
-        <ListItemText primary="Endorsement Checklist" />
+        <ListItemText primary="Endorsement " />
       </ListItem>
     </Link>
   </div>

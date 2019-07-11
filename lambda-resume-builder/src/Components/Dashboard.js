@@ -7,7 +7,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import { mainListItems, secondaryListItems } from './listItems'
 import Calendar from '../Components/Calendar'
-import Assignments from '../Components/Assignments'
+import AssignmentList from '../Components/Assignments/AssignmentList'
 import Endorsement from '../Components/EndorsementChecklist/EndorsementChecklist'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 
@@ -36,7 +36,7 @@ const Dashboard = props => {
 
       <AppBar
         position="absolute"
-        color="default"
+        // color="secondary"
         className={classNames(
           classes.appBar,
           state.open && classes.appBarShift
@@ -124,7 +124,7 @@ const Dashboard = props => {
         {(() => {
           switch (window.location.pathname.split('/')[2]) {
             case 'assignments':
-              return <Assignments />
+              return <AssignmentList />
             case 'calendar':
               return <Calendar />
             case 'endorsement':
@@ -135,7 +135,7 @@ const Dashboard = props => {
         })()}
 
         <div className={classes.tableContainer}>
-
+        <div id='sample'></div>
         </div>
 
       </main>
