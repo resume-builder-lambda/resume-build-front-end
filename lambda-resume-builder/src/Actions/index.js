@@ -80,9 +80,9 @@ const createGithubUser = code => dispatch => {
     fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`,
       { method: 'POST' }
     )
-      .then(res => {
-        res.json()
-        console.log(res)
+      .then(res => res.json())
+      .then(({ token }) => {
+        console.log(token)
       })
   } else {
 
