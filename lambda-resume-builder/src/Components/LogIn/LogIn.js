@@ -129,14 +129,6 @@ function SignIn(props) {
 
           </FormControl>
 
-          <FormControlLabel
-            control={<Checkbox
-              value="remember"
-              color="primary"
-            />}
-            label="Remember me"
-          />
-
           <StyledButton
             type="submit"
             fullWidth
