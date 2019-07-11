@@ -77,6 +77,7 @@ const login = creds => dispatch => {
 const createGithubUser = code => dispatch => {
 
   if (code) {
+
     fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
       .then(res => res.json())
       .then(({ token }) => {
@@ -84,14 +85,57 @@ const createGithubUser = code => dispatch => {
           { headers: { "content-type": "application/json" } })
           .then(res => res.json())
           .then(res => {
-            console.log(res)
+            const user = {
+              name: res.name,
+              email: res.login,
+              password: res.node_id,
+              image: res.avatar_url
+            }
+
+            let requestBody = {
+              query: `
+                mutation{
+                  createGitHubUser(githubData:{
+                    token: "${user.token}",
+                    image: "${user.image}",
+                    email: "${user.email}",
+                    name: "${user.name}",
+                    password: "${user.password}"
+                  }){
+                    _id
+                    token
+                    tokenExp
+                  }
+                }
+            `}
+
+            fetch('https://lambda-crp.herokuapp.com/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: { "content-type": "application/json" }
+            })
+              .then(res => {
+                return res.json()
+              })
+              .then(res => {
+                console.log('second response', res)
+                const { token } = res.data.createGitHubUser
+                localStorage.setItem('token', token)
+                Cookies.set('token', token)
+                const admin = jwt_decode(token)
+                console.log('admin', admin)
+                dispatch({ type: REGISTER_SUCCESS, payload: token })
+              })
+
+
           })
       })
+
   } else {
 
     Cookies.set('github', true)
 
-    window.location = 'http://localhost:5000/auth/github'
+    window.location = 'https://lambda-crp.herokuapp.com/auth/github'
 
     dispatch({ type: GITHUB })
 
