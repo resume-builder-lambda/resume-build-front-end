@@ -58,17 +58,26 @@ function SignIn(props) {
         setTimeout(() => window.location.pathname = '/dashboard', 1000)
       }
 
-      if (props.github) {
-        const code = window.location.href.match(/\?code=(.*)/) &&
-          window.location.href.match(/\?code=(.*)/)[1]
-        props.createGithubUser(code)
-      }
-
     }
 
     attempt()
 
-  }, [creds, props.github])
+  }, [creds])
+
+  useEffect(() => {
+    const github = () => {
+
+      if (props.github) {
+        const code = window.location.href.match(/\?code=(.*)/) &&
+          window.location.href.match(/\?code=(.*)/)[1]
+        console.log(code)
+      }
+      
+    }
+
+    github()
+
+  }, [props.github])
 
   return (
 

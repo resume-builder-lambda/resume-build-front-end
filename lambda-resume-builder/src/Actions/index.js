@@ -77,9 +77,7 @@ const login = creds => dispatch => {
 }
 
 
-const createGithubUser = code => {
-
-  console.log(code)
+const createGithubUser = () => {
 
   window.location = 'http://localhost:5000/auth/github'
 
