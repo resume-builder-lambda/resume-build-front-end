@@ -77,9 +77,7 @@ const login = creds => dispatch => {
 const createGithubUser = code => dispatch => {
 
   if (code) {
-    fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`,
-      { method: 'POST' }
-    )
+    fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
       .then(res => res.json())
       .then(({ token }) => {
         console.log(token)
