@@ -76,6 +76,8 @@ const login = creds => dispatch => {
 
 const createGithubUser = () => dispatch => {
 
+  Cookies.set('github', true)
+
   window.location = 'http://localhost:5000/auth/github'
 
   dispatch({ type: GITHUB })

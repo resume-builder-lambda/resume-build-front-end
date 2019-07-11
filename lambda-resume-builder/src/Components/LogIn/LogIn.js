@@ -24,6 +24,9 @@ function SignIn(props) {
   const creds = Cookies.get('creds') &&
     JSON.parse(Cookies.get('creds'))
 
+  const ghCookie = Cookies.get('github') &&
+    Cookies.get('github')
+
   const responseGoogle = res => {
 
     console.log('res', res)
@@ -67,7 +70,7 @@ function SignIn(props) {
   useEffect(() => {
     const github = () => {
 
-      if (props.github) {
+      if (ghCookie) {
         const code = window.location.href.match(/\?code=(.*)/) &&
           window.location.href.match(/\?code=(.*)/)[1]
         console.log(code)
@@ -77,7 +80,7 @@ function SignIn(props) {
 
     github()
 
-  }, [props.github])
+  }, [ghCookie])
 
   return (
 
