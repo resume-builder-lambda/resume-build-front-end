@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-const drawerWidth = 240
+const drawerWidth = 200
 
 const lambdaLogo = {
     height: '40px',

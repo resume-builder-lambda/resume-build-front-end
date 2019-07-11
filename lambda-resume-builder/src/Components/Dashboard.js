@@ -16,7 +16,7 @@ import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 const Dashboard = props => {
 
   const [state, setState] = useState({
-    open: true,
+    open: false,
     path: window.location.pathname.split('/')[2]
   })
 
