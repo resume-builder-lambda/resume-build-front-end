@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from "react-redux"
-import { login } from "../../Actions"
-import { CssBaseline, FormControl, Checkbox, Input, InputLabel, Paper, FormControlLabel, Button } from '@material-ui/core'
+import { login, createGithubUser } from "../../Actions"
+import { CssBaseline, FormControl, Input, InputLabel, Paper } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
@@ -10,15 +10,10 @@ import linkedin from '../Images/linkedin.png'
 import GHLogo from '../Images/GitHub-Logo.png'
 import './login.scss'
 import GoogleLogin from 'react-google-login'
-import { createGithubUser } from '../../Actions'
-import Register from '../Register'
 
 import Cookies from 'js-cookie'
 
 import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../MaterialUI/styles'
-
-
-// const githubapi = "https://github.com/login/oauth/authorize?client_id=8c8935780c16571f5bc8&redirect_uri=https://www.crp.netlify.com"
 
 function SignIn(props) {
 
@@ -63,17 +58,17 @@ function SignIn(props) {
         setTimeout(() => window.location.pathname = '/dashboard', 1000)
       }
 
+      if (props.github) {
+        const code = window.location.href.match(/\?code=(.*)/) &&
+          window.location.href.match(/\?code=(.*)/)[1]
+        props.createGithubUser(code)
+      }
+
     }
 
     attempt()
 
-  }, [creds])
-
-  // if (!Cookies.get('token')) {
-  //   return (
-  //     // <Register />
-  //   )
-  // }
+  }, [creds, props.github])
 
   return (
 
@@ -139,25 +134,25 @@ function SignIn(props) {
             Sign in
           </StyledButton>
 
-          <div style={{marginTop: '25px'}}>
+          <div style={{ marginTop: '25px' }}>
 
-          <img className={'oauth'} alt='GitHub Logo' src={GHLogo} id='GitHub' onClick={(e) => {
+            <img className={'oauth'} alt='GitHub Logo' src={GHLogo} id='GitHub' onClick={(e) => {
               e.preventDefault()
               createGithubUser()
             }} />
 
-            <img className={'oauth'} onClick={createGithubUser()}alt='LinkedIn Logo' src={linkedin} />
+            <img className={'oauth'} onClick={() => createGithubUser()} alt='LinkedIn Logo' src={linkedin} />
 
-          <GoogleLogin
-            clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
-            render={renderProps => (
-              <img className={'oauth'} onClick={renderProps.onClick} alt='Google Logo' src={GLogo} />
-            )}
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-          />
-         </div>
+            <GoogleLogin
+              clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
+              render={renderProps => (
+                <img className={'oauth'} onClick={renderProps.onClick} alt='Google Logo' src={GLogo} />
+              )}
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={'single_host_origin'}
+            />
+          </div>
 
         </form>
 
@@ -174,7 +169,8 @@ function SignIn(props) {
 }
 
 const mapStateToProps = state => ({
-  state
+  ...state,
+  github: state.github
 })
 
-export default connect(mapStateToProps, { login })(withStyles(styles)(SignIn))
+export default connect(mapStateToProps, { login, createGithubUser })(withStyles(styles)(SignIn))

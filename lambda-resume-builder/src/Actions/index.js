@@ -4,7 +4,8 @@ import Cookies from 'js-cookie'
 
 
 const REGISTER = "REGISTER",
-  REGISTER_SUCCESS = "REGISTER_SUCCESS"
+  REGISTER_SUCCESS = "REGISTER_SUCCESS",
+  GITHUB = 'GITHUB'
 
 const register = user => dispatch => {
 
@@ -76,15 +77,14 @@ const login = creds => dispatch => {
 }
 
 
-const createGithubUser = () => {
+const createGithubUser = code => {
 
-  fetch(`https://lambda-crp.herokuapp.com/auth/github`, {
-    method: 'GET',
-    headers: { "content-type": "application/json" }
-  })
-    .then(res => console.log(res))
+  console.log(code)
+
+  window.location = 'http://localhost:5000/auth/github'
 
 }
+
 const createGoogleUser = google => dispatch => {
 
   console.log(google)
@@ -129,6 +129,7 @@ const createGoogleUser = google => dispatch => {
 export {
   REGISTER,
   REGISTER_SUCCESS,
+  GITHUB,
   register,
   login,
   createGoogleUser,

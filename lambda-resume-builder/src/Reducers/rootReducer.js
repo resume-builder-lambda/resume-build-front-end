@@ -1,6 +1,7 @@
 import {
     REGISTER,
     REGISTER_SUCCESS,
+    GITHUB,
 
 } from '../Actions';
 
@@ -28,6 +29,11 @@ const rootReducer = (state = initialState, action) => {
                 loggedIn: true,
                 savingUser: true,
                 user: action.payload
+            }
+
+        case GITHUB:
+            return {
+                github: true
             }
 
 
