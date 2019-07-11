@@ -10,7 +10,8 @@ import LLogo from '../Images/Sign-in-Large.png'
 import GHLogo from '../Images/GitHub-Logo.png'
 
 import GoogleLogin from 'react-google-login'
-import {createGithubUser} from '../../Actions'
+import { createGithubUser } from '../../Actions'
+import Register from '../Register'
 
 import Cookies from 'js-cookie'
 
@@ -67,9 +68,15 @@ function SignIn(props) {
     attempt()
 
   }, [creds])
-  
+
+  if (!Cookies.get('token')) {
+    return (
+      <Register />
+    )
+  }
 
   return (
+
     <main className={classes.main}>
 
       <CssBaseline />
@@ -140,13 +147,13 @@ function SignIn(props) {
             Sign in
           </StyledButton>
 
-          <a href='https://github.com/login/oauth/authorize/?client_id=8c8935780c16571f5bc8&&scope=user&&state=secret&&redirect_uri=https://www.crp.netlify.com'>
           <Button
             id='GitHub'
             onClick={(e) => {
-              e.preventDefault() 
-              createGithubUser()}
-            } 
+              e.preventDefault()
+              createGithubUser()
+            }
+            }
             type="submit"
             fullWidth
             variant="contained"
@@ -155,8 +162,6 @@ function SignIn(props) {
           >
             <img alt='GitHub Logo' src={GHLogo} style={{ height: '25px', width: '25px', marginRight: '10px' }} /> Sign in with GitHub
           </Button>
-</a>
-
 
           <Button
             type="submit"
