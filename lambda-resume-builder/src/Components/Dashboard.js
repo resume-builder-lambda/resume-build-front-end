@@ -9,6 +9,7 @@ import { mainListItems, secondaryListItems } from './listItems'
 import Calendar from '../Components/Calendar'
 import AssignmentList from '../Components/Assignments/AssignmentList'
 import Endorsement from '../Components/EndorsementChecklist/EndorsementChecklist'
+import {AssignmentUpload} from '../Components/AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 
 
@@ -129,6 +130,8 @@ const Dashboard = props => {
               return <Calendar />
             case 'endorsement':
               return <Endorsement/>
+              case 'assignment-upload':
+                return <AssignmentUpload/>
             default:
               return
           }
