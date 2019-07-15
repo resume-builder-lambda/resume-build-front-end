@@ -3,12 +3,10 @@ import jwt_decode from 'jwt-decode'
 import Cookies from 'js-cookie'
 
 
-const REGISTER = "REGISTER",
-  REGISTER_SUCCESS = "REGISTER_SUCCESS"
+const REGISTER_SUCCESS = "REGISTER_SUCCESS",
+  GITHUB = 'GITHUB'
 
 const register = user => dispatch => {
-
-  dispatch({ type: REGISTER })
 
   let requestBody = {
     query: `
@@ -76,15 +74,78 @@ const login = creds => dispatch => {
 }
 
 
-const createGithubUser = () => {
+const createGithubUser = code => dispatch => {
 
-  fetch(`https://lambda-crp.herokuapp.com/auth/github`, {
-    method: 'GET',
-    headers: { "content-type": "application/json" }
-  })
-    .then(res => console.log(res))
+  if (code) {
+
+    fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
+      .then(res => res.json())
+      .then(({ token }) => {
+        fetch(`https://api.github.com/user?access_token=${token}`,
+          { headers: { "content-type": "application/json" } })
+          .then(res => res.json())
+          .then(res => {
+            const user = {
+              name: res.name,
+              email: res.login,
+              password: res.node_id,
+              image: res.avatar_url,
+              token: res.node_id,
+              username: res.login
+            }
+
+            let requestBody = {
+              query: `
+                mutation{
+                  createGitHubUser(gitHubData:{
+                    token: "${user.token}",
+                    image: "${user.image}",
+                    email: "${user.email}",
+                    name: "${user.name}",
+                    password: "${user.password}",
+                    username: "${user.username}"
+                  }){
+                    _id
+                    token
+                    tokenExp
+                  }
+                }
+            `}
+
+            fetch('https://lambda-crp.herokuapp.com/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: { "content-type": "application/json" }
+            })
+              .then(res => {
+                return res.json()
+              })
+              .then(res => {
+                console.log('second response', res)
+                const { token } = res.data.createGitHubUser
+                localStorage.setItem('token', token)
+                Cookies.set('token', token)
+                const admin = jwt_decode(token)
+                console.log('admin', admin)
+                dispatch({ type: REGISTER_SUCCESS, payload: token })
+              })
+
+
+          })
+      })
+
+  } else {
+
+    Cookies.set('github', true)
+
+    window.location = 'https://lambda-crp.herokuapp.com/auth/github'
+
+    dispatch({ type: GITHUB })
+
+  }
 
 }
+
 const createGoogleUser = google => dispatch => {
 
   console.log(google)
@@ -127,8 +188,8 @@ const createGoogleUser = google => dispatch => {
 }
 
 export {
-  REGISTER,
   REGISTER_SUCCESS,
+  GITHUB,
   register,
   login,
   createGoogleUser,
