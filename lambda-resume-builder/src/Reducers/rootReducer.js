@@ -27,7 +27,6 @@ const rootReducer = (state = initialState, action) => {
                 github: true
             }
 
-
         default: return state;
     }
 
