@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from "react-redux"
-import { login, createGithubUser } from "../../Actions"
+import { login } from "../../Actions"
 import { CssBaseline, FormControl, Input, InputLabel, Paper } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
@@ -24,8 +24,35 @@ function SignIn(props) {
   const creds = Cookies.get('creds') &&
     JSON.parse(Cookies.get('creds'))
 
-  const ghCookie = Cookies.get('github') &&
-    Cookies.get('github')
+  const gitHubLogin = () => {
+
+    const code = window.location.href.match(/\?code=(.*)/) &&
+      window.location.href.match(/\?code=(.*)/)[1]
+
+    if (!code) {
+
+      window.location = 'https://lambda-crp.herokuapp.com/auth/github'
+
+    } else {
+
+      fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
+        .then(res => res.json())
+        .then(({ token }) => {
+          fetch(`https://api.github.com/user?access_token=${token}`,
+            { headers: { "content-type": "application/json" } })
+            .then(res => res.json())
+            .then(res => {
+              console.log('login res', res)
+              props.login({
+                email: res.login,
+                password: res.node_id
+              })
+            })
+        })
+
+    }
+
+  }
 
   const responseGoogle = res => {
 
@@ -66,21 +93,6 @@ function SignIn(props) {
     attempt()
 
   }, [creds])
-
-  useEffect(() => {
-    const github = () => {
-
-      if (ghCookie) {
-        const code = window.location.href.match(/\?code=(.*)/) &&
-          window.location.href.match(/\?code=(.*)/)[1]
-        props.createGithubUser(code)
-      }
-
-    }
-
-    github()
-
-  }, [ghCookie])
 
   return (
 
@@ -153,14 +165,14 @@ function SignIn(props) {
               alt='GitHub Logo'
               src={GHLogo}
               id='GitHub'
-              onClick={createGithubUser()}
+              onClick={Cookies.get('github') ? gitHubLogin() : () => gitHubLogin()}
             />
 
             <img
               className={'oauth'}
               alt='LinkedIn Logo'
               src={linkedin}
-              onClick={() => createGithubUser()}
+              onClick={(e) => e.preventDefault()}
             />
 
             <GoogleLogin
@@ -193,4 +205,4 @@ const mapStateToProps = state => ({
   github: state.github
 })
 
-export default connect(mapStateToProps, { login, createGithubUser })(withStyles(styles)(SignIn))
+export default connect(mapStateToProps, { login })(withStyles(styles)(SignIn))

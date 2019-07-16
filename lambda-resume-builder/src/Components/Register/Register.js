@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from "react-redux"
-import { register, createGoogleUser } from "../../Actions"
-import { CssBaseline, FormControl, Input, InputLabel, Paper, Button } from '@material-ui/core'
+import { register, createGoogleUser, createGithubUser } from "../../Actions"
+import { CssBaseline, FormControl, Input, InputLabel, Paper } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
@@ -10,6 +10,8 @@ import linkedin from '../Images/linkedin.png'
 import GHLogo from '../Images/GitHub-Logo.png'
 import './register.scss'
 import GoogleLogin from 'react-google-login'
+
+import Cookies from 'js-cookie'
 
 import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../MaterialUI/styles'
 
@@ -43,6 +45,27 @@ const Register = (props) => {
     props.register(fields)
     setTimeout(() => window.location.pathname = '/dashboard', 1000)
   }
+
+  const ghCookie = Cookies.get('github') &&
+    Cookies.get('github')
+
+  useEffect(() => {
+    const github = () => {
+
+      if (ghCookie) {
+
+        const code = window.location.href.match(/\?code=(.*)/) &&
+          window.location.href.match(/\?code=(.*)/)[1]
+
+        props.createGithubUser(code)
+
+      }
+
+    }
+
+    github()
+
+  }, [ghCookie])
 
   console.log(fields.role)
 
@@ -112,24 +135,26 @@ const Register = (props) => {
             </StyledButton>
 
 
-          <div style={{marginTop: '25px'}}>
-          <img className={'oauth'} alt='GitHub Logo' src={GHLogo} id='GitHub' onClick={(e) => {
-              e.preventDefault()
-              
-            }} />
+          <div style={{ marginTop: '25px' }}>
+            <img
+              className={'oauth'}
+              alt='GitHub Logo'
+              src={GHLogo}
+              id='GitHub'
+              onClick={createGithubUser()} />
 
-            <img className={'oauth'}  alt='LinkedIn Logo' src={linkedin} />
+            <img className={'oauth'} alt='LinkedIn Logo' src={linkedin} />
 
-          <GoogleLogin
-            clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
-            render={renderProps => (
-              <img className={'oauth'} onClick={renderProps.onClick} alt='Google Logo' src={GLogo}  /> 
-            )}
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-          />
-        </div>
+            <GoogleLogin
+              clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
+              render={renderProps => (
+                <img className={'oauth'} onClick={renderProps.onClick} alt='Google Logo' src={GLogo} />
+              )}
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={'single_host_origin'}
+            />
+          </div>
 
         </form>
 
