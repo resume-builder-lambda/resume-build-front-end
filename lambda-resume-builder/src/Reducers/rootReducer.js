@@ -1,7 +1,4 @@
-import {
-    REGISTER_SUCCESS,
-    GITHUB,
-} from '../Actions';
+import { SUCCESS } from '../Actions'
 
 const initialState = {
 
@@ -14,7 +11,7 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case REGISTER_SUCCESS:
+        case SUCCESS:
             return {
                 ...state,
                 loggedIn: true,
@@ -22,14 +19,9 @@ const rootReducer = (state = initialState, action) => {
                 user: action.payload
             }
 
-        case GITHUB:
-            return {
-                github: true
-            }
-
-        default: return state;
+        default: return state
     }
 
 }
 
-export default rootReducer;
+export default rootReducer

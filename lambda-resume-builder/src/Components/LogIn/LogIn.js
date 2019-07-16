@@ -26,9 +26,6 @@ function SignIn(props) {
 
   const gitHubLogin = () => {
 
-    const ghCookie = Cookies.get('github') &&
-      Cookies.get('github')
-
     const code = window.location.href.match(/\?code=(.*)/) &&
       window.location.href.match(/\?code=(.*)/)[1]
 

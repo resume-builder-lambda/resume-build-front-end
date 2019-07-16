@@ -3,8 +3,7 @@ import jwt_decode from 'jwt-decode'
 import Cookies from 'js-cookie'
 
 
-const REGISTER_SUCCESS = "REGISTER_SUCCESS",
-  GITHUB = 'GITHUB'
+const SUCCESS = "SUCCESS"
 
 const register = user => dispatch => {
 
@@ -34,7 +33,7 @@ const register = user => dispatch => {
     .then(res => {
       console.log("REGISTERED", res)
       localStorage.setItem('token', res.data.createUser.token)
-      dispatch({ type: REGISTER_SUCCESS, payload: res.data })
+      dispatch({ type: SUCCESS, payload: res.data })
     })
     .catch(err => console.log(err))
 
@@ -63,12 +62,11 @@ const login = creds => dispatch => {
     .then(res => {
       const { token } = res.data.login
       console.log('second response', res)
-      localStorage.setItem('token', token)
       Cookies.set('token', token)
       Cookies.set('creds', JSON.stringify(creds))
       const admin = jwt_decode(token)
       console.log('admin', admin)
-      dispatch({ type: REGISTER_SUCCESS, payload: token })
+      dispatch({ type: SUCCESS, payload: token })
     })
     .catch(err => console.log(err))
 }
@@ -123,11 +121,10 @@ const createGithubUser = code => dispatch => {
               .then(res => {
                 console.log('second response', res)
                 const { token } = res.data.createGitHubUser
-                localStorage.setItem('token', token)
                 Cookies.set('token', token)
                 const admin = jwt_decode(token)
                 console.log('admin', admin)
-                dispatch({ type: REGISTER_SUCCESS, payload: token })
+                dispatch({ type: SUCCESS, payload: token })
               })
 
 
@@ -139,8 +136,6 @@ const createGithubUser = code => dispatch => {
     Cookies.set('github', true)
 
     window.location = 'https://lambda-crp.herokuapp.com/auth/github'
-
-    dispatch({ type: GITHUB })
 
   }
 
@@ -182,14 +177,13 @@ const createGoogleUser = google => dispatch => {
       Cookies.set('token', token)
       const admin = jwt_decode(token)
       console.log('admin', admin)
-      dispatch({ type: REGISTER_SUCCESS, payload: token })
+      dispatch({ type: SUCCESS, payload: token })
     })
 
 }
 
 export {
-  REGISTER_SUCCESS,
-  GITHUB,
+  SUCCESS,
   register,
   login,
   createGoogleUser,

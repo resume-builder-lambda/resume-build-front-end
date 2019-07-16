@@ -18,9 +18,6 @@ import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../Mat
 
 const Register = (props) => {
 
-  const ghCookie = Cookies.get('github') &&
-    Cookies.get('github')
-
   const responseGoogle = res => {
 
     console.log('res', res)
@@ -49,13 +46,19 @@ const Register = (props) => {
     setTimeout(() => window.location.pathname = '/dashboard', 1000)
   }
 
+  const ghCookie = Cookies.get('github') &&
+    Cookies.get('github')
+
   useEffect(() => {
     const github = () => {
 
       if (ghCookie) {
+
         const code = window.location.href.match(/\?code=(.*)/) &&
           window.location.href.match(/\?code=(.*)/)[1]
+
         props.createGithubUser(code)
+
       }
 
     }
