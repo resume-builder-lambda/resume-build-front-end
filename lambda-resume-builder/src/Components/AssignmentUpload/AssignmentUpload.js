@@ -39,11 +39,11 @@ export class AssignmentUpload extends SampleBase {
     }
     listTemplate(data) {
         return (<span>
-        <span className='fileListwrapper'><span className={`icon template-icons sf-icon-${data.type}`}></span>
-        <span className='upload-name file-name'>{data.name} ({data.size} bytes)</span>
-        <span className='upload-status'>{data.status}</span></span>
-        <span className='e-icons e-file-remove-btn' title='Remove'></span>
-    </span>);
+            <span className='fileListwrapper'><span className={`icon template-icons sf-icon-${data.type}`}></span>
+                <span className='upload-name file-name'>{data.name} ({data.size} bytes)</span>
+                <span className='upload-status'>{data.status}</span></span>
+            <span className='e-icons e-file-remove-btn' title='Remove'></span>
+        </span>);
     }
     onUploadSuccess(args) {
         let li = this.getLiElement(args);
@@ -91,25 +91,25 @@ export class AssignmentUpload extends SampleBase {
     }
     render() {
         return (<div className='control-pane'>
-        <div className='control-section row uploadpreview'>
-            <div className='col-lg-12 control-section upload-custom'>
-            <div className='customdrop_wrapper'>
-                <div className="dropArea_wrap" id="customTarget">
-                <div className="font-icons">
-                    <span className="e-icons sf-icon-pdf"></span>
-                    <span className="e-icons sf-icon-txt"></span>
-                    <span className="e-icons sf-icon-png"></span>
+            <div className='control-section row uploadpreview'>
+                <div className='col-lg-12 control-section upload-custom'>
+                    <div className='customdrop_wrapper'>
+                        <div className="dropArea_wrap" id="customTarget">
+                            <div className="font-icons">
+                                <span className="e-icons sf-icon-pdf"></span>
+                                <span className="e-icons sf-icon-txt"></span>
+                                <span className="e-icons sf-icon-png"></span>
+                            </div>
+                            <span className="dropText" id="dropText">Drop files here to upload</span>
+                        </div>
+                        <div id="customdropArea">
+                            <span id="drop" className="customdropArea"><a href="#" id="browse"><u>Browse</u></a> </span>
+
+                            <UploaderComponent id='UploadFiles' type='file' ref={(scope) => { this.uploadObj = scope; }} asyncSettings={this.asyncSettings} selected={this.onSelect.bind(this)} removing={this.onRemoveFile.bind(this)} progress={this.onUploadInProgress.bind(this)} success={this.onUploadSuccess.bind(this)} failure={this.onUploadFailed.bind(this)} allowedExtensions={this.allowedExtensions} template={this.listTemplate} dropArea={this.target}></UploaderComponent>
+                        </div>
+                    </div>
                 </div>
-                <span className="dropText" id="dropText">Drop files here to upload</span>
             </div>
-            <div id="customdropArea">
-                <span id="drop" className="customdropArea"><a href="" id="browse"><u>Browse</u></a> </span>  
-                            
-            <UploaderComponent id='UploadFiles' type='file' ref={(scope) => { this.uploadObj = scope; }} asyncSettings={this.asyncSettings} selected={this.onSelect.bind(this)} removing={this.onRemoveFile.bind(this)} progress={this.onUploadInProgress.bind(this)} success={this.onUploadSuccess.bind(this)} failure={this.onUploadFailed.bind(this)} allowedExtensions={this.allowedExtensions} template={this.listTemplate} dropArea={this.target}></UploaderComponent>
-            </div>
-        </div>
-        </div>
-        </div>
         </div>);
     }
 }
