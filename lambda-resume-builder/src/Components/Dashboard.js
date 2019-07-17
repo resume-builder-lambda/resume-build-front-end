@@ -6,10 +6,10 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import { mainListItems, secondaryListItems } from './listItems'
-import Calendar from '../Components/Calendar'
-import AssignmentList from '../Components/Assignments/AssignmentList'
-import Endorsement from '../Components/EndorsementChecklist/EndorsementChecklist'
-import {AssignmentUpload} from '../Components/AssignmentUpload/AssignmentUpload.js'
+import Calendar from './Calendar'
+import AssignmentList from './Assignments/AssignmentList'
+import Endorsement from './EndorsementChecklist/EndorsementChecklist'
+import { AssignmentUpload } from './AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 
 
@@ -129,16 +129,16 @@ const Dashboard = props => {
             case 'calendar':
               return <Calendar />
             case 'endorsement':
-              return <Endorsement/>
-              case 'assignment-upload':
-                return <AssignmentUpload/>
+              return <Endorsement />
+            case 'assignment-upload':
+              return <AssignmentUpload />
             default:
               return
           }
         })()}
 
         <div className={classes.tableContainer}>
-        <div id='sample'></div>
+          <div id='sample'></div>
         </div>
 
       </main>

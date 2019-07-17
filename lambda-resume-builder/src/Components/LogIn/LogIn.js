@@ -176,7 +176,7 @@ function SignIn(props) {
             />
 
             <GoogleLogin
-              clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               render={renderProps => (
                 <img className={'oauth'} onClick={renderProps.onClick} alt='Google Logo' src={GLogo} />
               )}
