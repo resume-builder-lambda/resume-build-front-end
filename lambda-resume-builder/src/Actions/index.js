@@ -73,7 +73,7 @@ const login = creds => dispatch => {
 
 const createLinkedInUser = () => {
 
-  fetch('https://www.linkedin.com/oauth/v2/authorization', {
+  fetch('https://www.linkedin.com/oauth/v2/authorization/', {
     headers: {
       response_type: 'code',
       redirect_uri: 'https://career-rp.com',
