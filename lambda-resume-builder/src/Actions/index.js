@@ -75,7 +75,7 @@ const createLinkedInUser = () => {
 
   fetch('https://www.linkedin.com/oauth/v2/authorization', {
     headers: {
-      response_type: code,
+      response_type: 'code',
       redirect_uri: 'https://career-rp.com',
       client_id: `${process.env.REACT_APP_LINKEDIN_CLIENT_ID}`,
       client_secret: `${process.env.REACT_APP_LINKEDIN_CLIENT_SECRET}`,
