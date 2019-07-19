@@ -73,12 +73,13 @@ const login = creds => dispatch => {
 
 const createLinkedInUser = () => {
 
-  fetch('https://www.linkedin.com/oauth/v2/accessToken', {
-    method: 'POST',
+  fetch('https://www.linkedin.com/oauth/v2/authorization', {
     headers: {
-      grant_type: 'client_credentials',
+      response_type: code,
+      redirect_uri: 'https://career-rp.com',
       client_id: `${process.env.REACT_APP_LINKEDIN_CLIENT_ID}`,
       client_secret: `${process.env.REACT_APP_LINKEDIN_CLIENT_SECRET}`,
+      scope: 'r_liteprofile'
     }
   })
     .then(res => console.log(res))
