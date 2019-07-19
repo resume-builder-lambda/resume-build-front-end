@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from "react-redux"
-import { register, createGoogleUser, createGithubUser } from "../../Actions"
+import { register, createGoogleUser, createGithubUser, createLinkedInUser } from "../../Actions"
 import { CssBaseline, FormControl, Input, InputLabel, Paper } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
@@ -141,17 +141,18 @@ const Register = (props) => {
               alt='GitHub Logo'
               src={GHLogo}
               id='GitHub'
-              onClick={createGithubUser()}
+              onClick={() => createGithubUser()}
             />
 
             <img
               className={'oauth'}
               alt='LinkedIn Logo'
               src={linkedin}
+              onClick={() => createLinkedInUser()}
             />
 
             <GoogleLogin
-              clientId="770851102940-n34cdukc3asba2rh5g7l2fo1u1nm0clf.apps.googleusercontent.com"
+              clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
               render={renderProps => (
                 <img className={'oauth'} onClick={renderProps.onClick} alt='Google Logo' src={GLogo} />
               )}
@@ -180,4 +181,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps, { register, createGoogleUser })(withStyles(styles)(Register))
+export default connect(mapStateToProps, { register, createGoogleUser, createLinkedInUser })(withStyles(styles)(Register))
