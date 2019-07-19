@@ -79,8 +79,6 @@ const createLinkedInUser = () => {
       grant_type: 'client_credentials',
       client_id: `${process.env.REACT_APP_LINKEDIN_CLIENT_ID}`,
       client_secret: `${process.env.REACT_APP_LINKEDIN_CLIENT_SECRET}`,
-      'Access-Control-Allow-Origin': '*',
-      'content-type': 'application/x-www-form-urlencoded'
     }
   })
     .then(res => console.log(res))
