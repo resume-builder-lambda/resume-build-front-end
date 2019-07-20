@@ -81,7 +81,7 @@ const createLinkedInUser = code => {
 
   } else {
 
-    console.log(code)
+    window.location = `https://www.linkedin.com/oauth/v2/accessToken?Content-Type=x-www-form-urlencoded&grant_type=authorization_code&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_REGISTER_URI}&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&client_secret=${process.env.REACT_APP_LINKEDIN_CLIENT_SECRET}`
 
   }
 
