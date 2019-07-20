@@ -75,7 +75,7 @@ const createLinkedInUser = code => {
 
   if (!code) {
 
-    window.location = `https://lambda-crp.herokuapp.com/auth/github`
+    window.location = `https://lambda-crp.herokuapp.com/auth/linkedin`
 
     Cookies.set('linkedIn', true)
 
