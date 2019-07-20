@@ -83,6 +83,7 @@ const createLinkedInUser = code => {
 
     fetch(`https://www.linkedin.com/oauth/v2/accessToken?grant_type=authorization_code&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_REGISTER_URI}&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&client_secret=${process.env.REACT_APP_LINKEDIN_CLIENT_SECRET}`, {
       method: 'POST',
+      'Host': 'https://www.career-rp.com',
       headers: {
         'Content-Type': 'x-www-form-urlencoded'
       }
