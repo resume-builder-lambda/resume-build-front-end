@@ -67,7 +67,17 @@ const Register = (props) => {
 
   }, [ghCookie])
 
-  console.log(fields.role)
+  const liCookie = Cookies.get('linkedIn') &&
+    Cookies.get('linkedIn')
+
+  useEffect(() => {
+
+    const code = window.location.href.match(/\?code=(.*)/) &&
+      window.location.href.match(/\?code=(.*)/)[1]
+
+    props.createLinkedInUser(code)
+
+  }, [liCookie])
 
   return (
     <main className={classes.main}>

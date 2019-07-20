@@ -71,9 +71,31 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
-const createLinkedInUser = () => {
+const createLinkedInUser = code => {
+  if (!code) {
 
-  window.location = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
+    window.location = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_REGISTER_URI}`
+
+    Cookies.set('linkedIn', true)
+
+  } else {
+
+    fetch('https://www.linkedin.com/oauth/v2/accessToken', {
+      method: 'POST',
+      headers: {
+        'content-type': 'x-www-form-urlencoded',
+        grant_type: 'authorization_code',
+        code: code,
+        redirect_uri: process.env.REACT_APP_REDIRECT_REGISTER_URI,
+        client_id: process.env.REACT_APP_LINKEDIN_CLIENT_ID,
+        client_secret: process.env.REACT_APP_LINKEDIN_CLIENT_SECRET
+      }
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+
+  }
+
 }
 
 
