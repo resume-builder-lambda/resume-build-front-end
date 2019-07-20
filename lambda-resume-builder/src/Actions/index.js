@@ -75,23 +75,13 @@ const createLinkedInUser = code => {
 
   if (!code) {
 
-    window.location = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_REGISTER_URI}`
+    window.location = `https://lambda-crp.herokuapp.com/auth/github`
 
     Cookies.set('linkedIn', true)
 
   } else {
 
-    // https://www.linkedin.com/oauth/v2/accessToken?grant_type=authorization_code&code=${code}&redirect_uri=${process.env.REACT_APP_REDIRECT_REGISTER_URI}&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&client_secret=${process.env.REACT_APP_LINKEDIN_CLIENT_SECRET}
-
-    fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`, {
-      method: 'POST',
-      'Host': 'https://www.career-rp.com',
-      headers: {
-        'Content-Type': 'x-www-form-urlencoded'
-      }
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+    console.log(code)
 
   }
 
