@@ -75,7 +75,7 @@ const createLinkedInUser = code => {
 
   if (!code) {
 
-    window.location = `https://lambda-crp.herokuapp.com/auth/linkedin`
+    window.location = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_REGISTER_URI}`
 
     Cookies.set('linkedIn', true)
 
