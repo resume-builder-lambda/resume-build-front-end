@@ -73,7 +73,7 @@ const login = creds => dispatch => {
 
 const createLinkedInUser = () => {
 
-  window.location = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}
+  window.location = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
 }
 
 
@@ -83,22 +83,22 @@ const createGithubUser = code => dispatch => {
 
     fetch(`https://crp-gatekeeper.herokuapp.com/authenticate/${code}`)
       .then(res => res.json())
-    .then(({ token }) => {
-      fetch(`https://api.github.com/user?access_token=${token}`,
-        { headers: { "content-type": "application/json" } })
-        .then(res => res.json())
-        .then(res => {
-          const user = {
-            name: res.name,
-            email: res.login,
-            password: res.node_id,
-            image: res.avatar_url,
-            token: res.node_id,
-            username: res.login
-          }
+      .then(({ token }) => {
+        fetch(`https://api.github.com/user?access_token=${token}`,
+          { headers: { "content-type": "application/json" } })
+          .then(res => res.json())
+          .then(res => {
+            const user = {
+              name: res.name,
+              email: res.login,
+              password: res.node_id,
+              image: res.avatar_url,
+              token: res.node_id,
+              username: res.login
+            }
 
-          let requestBody = {
-            query: `
+            let requestBody = {
+              query: `
                 mutation{
                   createGitHubUser(gitHubData:{
                     token: "${user.token}",
@@ -115,32 +115,32 @@ const createGithubUser = code => dispatch => {
                 }
             `}
 
-          fetch('https://lambda-crp.herokuapp.com/graphql', {
-            method: 'POST',
-            body: JSON.stringify(requestBody),
-            headers: { "content-type": "application/json" }
+            fetch('https://lambda-crp.herokuapp.com/graphql', {
+              method: 'POST',
+              body: JSON.stringify(requestBody),
+              headers: { "content-type": "application/json" }
+            })
+              .then(res => {
+                return res.json()
+              })
+              .then(res => {
+                console.log('second response', res)
+                const { token } = res.data.createGitHubUser
+                Cookies.set('token', token)
+                const admin = jwt_decode(token)
+                console.log('admin', admin)
+                dispatch({ type: SUCCESS, payload: token })
+              })
+
+
           })
-            .then(res => {
-              return res.json()
-            })
-            .then(res => {
-              console.log('second response', res)
-              const { token } = res.data.createGitHubUser
-              Cookies.set('token', token)
-              const admin = jwt_decode(token)
-              console.log('admin', admin)
-              dispatch({ type: SUCCESS, payload: token })
-            })
+      })
 
+  } else {
 
-        })
-    })
+    Cookies.set('github', true)
 
-} else {
-
-  Cookies.set('github', true)
-
-window.location = 'https://lambda-crp.herokuapp.com/auth/github'
+    window.location = 'https://lambda-crp.herokuapp.com/auth/github'
 
   }
 
