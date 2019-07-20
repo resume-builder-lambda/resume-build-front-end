@@ -50,6 +50,7 @@ const Register = (props) => {
     Cookies.get('github')
 
   useEffect(() => {
+
     const github = () => {
 
       if (ghCookie) {
@@ -72,10 +73,16 @@ const Register = (props) => {
 
   useEffect(() => {
 
-    const code = window.location.href.match(/\?code=(.*)/) &&
-      window.location.href.match(/\?code=(.*)/)[1]
+    const linkedIn = () => {
 
-    props.createLinkedInUser(code)
+      const code = window.location.href.match(/\?code=(.*)/) &&
+        window.location.href.match(/\?code=(.*)/)[1]
+
+      props.createLinkedInUser(code)
+
+    }
+
+    linkedIn()
 
   }, [liCookie])
 
