@@ -71,19 +71,31 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
-const createLinkedInUser = () => {
+const createLinkedInUser = code => {
 
-  fetch('https://www.linkedin.com/oauth/v2/accessToken', {
-    headers: {
-      grant_type: 'client_credentials',
-      client_id: `${process.env.REACT_APP_LINKEDIN_CLIENT_ID}`,
-      client_secret: `${process.env.REACT_APP_LINKEDIN_CLIENT_SECRET}`,
-      'Access-Control-Allow-Origin': '*',
-      'content-type': 'application/json'
-    }
-  })
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+  if (!code) {
+
+    window.location = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_REGISTER_URI}&scope=r_liteprofile%20r_emailaddress%20w_member_social`
+
+    Cookies.set('linkedIn', true)
+
+  } else {
+
+    console.log(code)
+
+    fetch(`https://lambda-crp.herokuapp.com/auth/linkedin`, {
+      method: 'POST',
+      headers: {
+        code: code
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => console.log(err))
+
+  }
 
 }
 

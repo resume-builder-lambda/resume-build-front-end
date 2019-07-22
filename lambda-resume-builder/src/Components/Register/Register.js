@@ -50,6 +50,7 @@ const Register = (props) => {
     Cookies.get('github')
 
   useEffect(() => {
+
     const github = () => {
 
       if (ghCookie) {
@@ -57,7 +58,7 @@ const Register = (props) => {
         const code = window.location.href.match(/\?code=(.*)/) &&
           window.location.href.match(/\?code=(.*)/)[1]
 
-        props.createGithubUser(code)
+        createGithubUser(code)
 
       }
 
@@ -67,7 +68,27 @@ const Register = (props) => {
 
   }, [ghCookie])
 
-  console.log(fields.role)
+  const liCookie = Cookies.get('linkedIn') &&
+    Cookies.get('linkedIn')
+
+  useEffect(() => {
+
+    const linkedIn = () => {
+
+      if (liCookie) {
+
+        const code = window.location.href.match(/\?code=(.*)/) &&
+          window.location.href.match(/\?code=(.*)/)[1]
+
+        createLinkedInUser(code)
+
+      }
+
+    }
+
+    linkedIn()
+
+  }, [liCookie])
 
   return (
     <main className={classes.main}>
@@ -141,14 +162,14 @@ const Register = (props) => {
               alt='GitHub Logo'
               src={GHLogo}
               id='GitHub'
-              onClick={() => createGithubUser()}
+              onClick={createGithubUser()}
             />
 
             <img
               className={'oauth'}
               alt='LinkedIn Logo'
               src={linkedin}
-              onClick={() => createLinkedInUser()}
+              onClick={createLinkedInUser()}
             />
 
             <GoogleLogin
@@ -181,4 +202,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps, { register, createGoogleUser, createLinkedInUser })(withStyles(styles)(Register))
+export default connect(mapStateToProps, { register, createGoogleUser, createGithubUser, createLinkedInUser })(withStyles(styles)(Register))
