@@ -145,10 +145,13 @@ const Dashboard = props => {
       </main>
             <CookieConsent
                   location="bottom"
-                  buttonText="Ok"
+                  enableDeclineButton={true}
+                  debug={true}
+                  declineButtonText="I decline"
+                  buttonText="I understand"
                   cookieName="cookieConsent"
-                  style={{ background: "#2B373B" }}
-                  buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+                  style={{ background: "#BB1333" , marginBottom:'15px'}}
+                  buttonStyle={{ color: "#BB1333", fontSize: "13px", background:'white' }}
                   expires={150}
                   >
                   This website uses cookies to enhance the user experience.{" "}
