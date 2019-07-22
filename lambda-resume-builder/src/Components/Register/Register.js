@@ -70,6 +70,8 @@ const Register = (props) => {
 
   useEffect(() => {
 
+    console.log(props.linkedin)
+
     const linkedIn = () => {
 
       const code = window.location.href.match(/\?code=(.*)/) &&
@@ -80,8 +82,6 @@ const Register = (props) => {
     }
 
     if (props.linkedIn) {
-
-      Cookies.set('linkedIn', false)
 
       linkedIn()
 
