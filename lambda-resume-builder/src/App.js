@@ -16,7 +16,7 @@ const App = props => {
 
       <Route exact path="/"
         render={props => {
-          return (<LogIn {...props} />)
+          return (<LogIn {...props}  />)
         }} />
 
       <Route path="/register"
