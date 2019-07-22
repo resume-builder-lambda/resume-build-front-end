@@ -75,7 +75,7 @@ const Register = (props) => {
 
     const linkedIn = () => {
 
-      if (liCookie) {
+      if (liCookie !== false) {
 
         const code = window.location.href.match(/\?code=(.*)/) &&
           window.location.href.match(/\?code=(.*)/)[1]
