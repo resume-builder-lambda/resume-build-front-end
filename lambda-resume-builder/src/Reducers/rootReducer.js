@@ -1,4 +1,4 @@
-import { SUCCESS } from '../Actions'
+import { SUCCESS, LINKEDIN_CLICKED, LINKEDIN_REQUEST } from '../Actions'
 
 const initialState = {
 
@@ -17,6 +17,18 @@ const rootReducer = (state = initialState, action) => {
                 loggedIn: true,
                 savingUser: true,
                 user: action.payload
+            }
+
+        case LINKEDIN_CLICKED:
+            return {
+                ...state,
+                linkedIn: true
+            }
+
+        case LINKEDIN_REQUEST:
+            return {
+                ...state,
+                linkedIn: false
             }
 
         default: return state
