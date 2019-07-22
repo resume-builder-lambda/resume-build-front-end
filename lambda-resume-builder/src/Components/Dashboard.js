@@ -11,6 +11,7 @@ import AssignmentList from './Assignments/AssignmentList'
 import Endorsement from './EndorsementChecklist/EndorsementChecklist'
 import { AssignmentUpload } from './AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
+import CookieConsent from "react-cookie-consent";
 
 
 
@@ -142,6 +143,19 @@ const Dashboard = props => {
         </div>
 
       </main>
+            <CookieConsent
+                  location="bottom"
+                  buttonText="Ok"
+                  cookieName="cookieConsent"
+                  style={{ background: "#2B373B" }}
+                  buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+                  expires={150}
+                  >
+                  This website uses cookies to enhance the user experience.{" "}
+                  <span style={{ fontSize: "10px" }}>
+                  
+                  </span>
+            </CookieConsent>
 
     </div>
   )
