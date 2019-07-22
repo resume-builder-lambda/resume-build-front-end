@@ -71,7 +71,7 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
-const createLinkedInUser = code => dispatch => {
+const createLinkedInUser = code => {
 
   if (!code) {
 
@@ -80,6 +80,8 @@ const createLinkedInUser = code => dispatch => {
     Cookies.set('linkedIn', true)
 
   } else {
+
+    console.log(code)
 
     fetch(`https://lambda-crp.herokuapp.com/auth/linkedin`, {
       method: 'POST',
