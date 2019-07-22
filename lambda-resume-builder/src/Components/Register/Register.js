@@ -75,18 +75,20 @@ const Register = (props) => {
 
     const linkedIn = () => {
 
-      if (liCookie !== false) {
+      const code = window.location.href.match(/\?code=(.*)/) &&
+        window.location.href.match(/\?code=(.*)/)[1]
 
-        const code = window.location.href.match(/\?code=(.*)/) &&
-          window.location.href.match(/\?code=(.*)/)[1]
-
-        createLinkedInUser(code)
-
-      }
+      createLinkedInUser(code)
 
     }
 
-    linkedIn()
+    if (liCookie !== false) {
+
+      Cookies.set('linkedIn', false)
+
+      linkedIn()
+
+    }
 
   }, [liCookie])
 
