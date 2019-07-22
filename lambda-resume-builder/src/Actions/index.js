@@ -87,7 +87,7 @@ const createLinkedInUser = code => {
         code: code
       }
     })
-      .then(res => console.log(res.body.getReader()))
+      .then(res => res.body.getReader().then(thennage => console.log(thennage)))
       .catch(err => console.log(err))
 
   }
