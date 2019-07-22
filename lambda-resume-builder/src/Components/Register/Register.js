@@ -82,7 +82,7 @@ const Register = (props) => {
 
     }
 
-    if (liCookie !== false) {
+    if (liCookie === true) {
 
       Cookies.set('linkedIn', false)
 
