@@ -18,8 +18,22 @@ const ColdOutreach = () => {
             > - Links to templates and resources to get you started are in thread
             > - Submit screenshots of your event RSVPs or your group posts to your PM on Friday.
         </p> 
-
-        <h5>Additional resources to help with all of the above in thread!</h5>
+        <h3>Additional Resources</h3>
+        <ul>
+            <li>
+                <a href='https://docs.google.com/spreadsheets/d/1NCAaKLBLu8YQayvffvR4tmxnggcx84O9yVjH06Yf1yo/edit?usp=sharing'>Networking tracker* (go to “people in my network” tab)</a>
+            </li>
+            <li>
+                <a href='https://docs.google.com/document/d/1_psIFrb87SnKHHF8oJnCZxXwI6SszCXssmpEoRwzkCA/edit?usp=sharing'>*Networking convo starters*</a>
+            </li>
+            <li>
+                <a href='https://docs.google.com/document/d/1owl_mvOeXt08TfEQlfYGimRzQ9QIDLY1ewBgK7SHC5I/edit?usp=sharing'>*Networking and outreach templates*</a>
+           </li>
+           <li>
+                <a href='https://docs.google.com/document/d/1HLfnzpXFY3vn1UzBEhE1g7pNnEzNZIfS2Dw6b3FORj8/edit?usp=sharing'>*LinkedIn outreach templates* (300 characters or less)*</a>
+           </li>
+        </ul>
+        
         <div style={{marginTop: '50px'}}>
         <AssignmentUpload/>
         </div>
