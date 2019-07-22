@@ -2,6 +2,9 @@ import React from 'react';
 import Assignments from './Assignments';
 import networking from '../Images/networking.jpg'
 import social from '../Images/social.jpg'
+import group from '../Images/group.jpg'
+import financial from '../Images/financial.jpg'
+import story from '../Images/story.jpg'
 import interview from '../Images/interview.jpg'
 import resume from '../Images/resume.jpg'
 import imposter from '../Images/imposter.jpg'
@@ -10,13 +13,14 @@ import productivity from '../Images/productivity.jpg'
 
 const assignments = [
 
-    {name: 'Cold Outreach', description: '', img: `${social}` },
-    {name: 'Mastering The Job Interview', description: 'How to walk into an interview prepared and full of confidence.', img: `${interview}` },
-    {name: 'Resume', description: 'How to write an attention getting resume that no HR can pass up pulling.', img: `${resume}` },
-    {name: 'Networking', description: 'Growing you career network through social media and meetups', img: `${networking}` },
-    {name: 'Imposter Syndrome', description: 'Overcoming imposter syndrome and understanding you belong.', img: `${imposter}` },
-    {name: 'Productivity', description: 'Learning how to manage your time and avoid burnout as a developer.', img: `${productivity}` },
-    
+    {name: 'Cold Outreach',  img: `${social}` },
+    {name: 'Intro to Careers and the Tech Field', img: `${interview}` },
+    {name: 'Financial Planning and Knowing Your Worth', img: `${financial}` },
+    {name: 'Team Dynamics and Feedback: success working in a group',img: `${group}` },
+    {name: 'Networking Strategies', img: `${networking}` },
+    {name: 'Portfolios and Artifacts', img: `${productivity}` },
+    {name: 'Sharing Your Story', img: `${story}` },
+    {name: 'Intro to Resumes',  img: `${resume}` },
    
 ]
 
