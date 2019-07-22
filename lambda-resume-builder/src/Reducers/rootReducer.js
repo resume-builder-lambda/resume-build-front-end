@@ -1,4 +1,4 @@
-import { SUCCESS, LINKEDINRES } from '../Actions'
+import { SUCCESS } from '../Actions'
 
 const initialState = {
 
@@ -17,12 +17,6 @@ const rootReducer = (state = initialState, action) => {
                 loggedIn: true,
                 savingUser: true,
                 user: action.payload
-            }
-
-        case LINKEDINRES:
-            return {
-                ...state,
-                linkedinhappening: true
             }
 
         default: return state

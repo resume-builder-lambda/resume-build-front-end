@@ -58,7 +58,7 @@ const Register = (props) => {
         const code = window.location.href.match(/\?code=(.*)/) &&
           window.location.href.match(/\?code=(.*)/)[1]
 
-        props.createGithubUser(code)
+        createGithubUser(code)
 
       }
 
@@ -75,12 +75,12 @@ const Register = (props) => {
 
     const linkedIn = () => {
 
-      if (props.linkedinhappening) {
+      if (liCookie) {
 
         const code = window.location.href.match(/\?code=(.*)/) &&
           window.location.href.match(/\?code=(.*)/)[1]
 
-        props.createLinkedInUser(code)
+        createLinkedInUser(code)
 
       }
 
@@ -197,10 +197,9 @@ const Register = (props) => {
 }
 
 const mapStateToProps = state => ({
-  register: state.register,
-  linkedinhappening: state.linkedinhappening
+  register: state.register
 })
 
 
 
-export default connect(mapStateToProps, { register, createGoogleUser, createLinkedInUser })(withStyles(styles)(Register))
+export default connect(mapStateToProps, { register, createGoogleUser, createGithubUser, createLinkedInUser })(withStyles(styles)(Register))

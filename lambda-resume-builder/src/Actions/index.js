@@ -3,8 +3,7 @@ import jwt_decode from 'jwt-decode'
 import Cookies from 'js-cookie'
 
 
-const SUCCESS = "SUCCESS",
-  LINKEDINRES = 'LINKEDINRES'
+const SUCCESS = "SUCCESS"
 
 const register = user => dispatch => {
 
@@ -212,7 +211,6 @@ const createGoogleUser = google => dispatch => {
 
 export {
   SUCCESS,
-  LINKEDINRES,
   register,
   login,
   createGoogleUser,
