@@ -7,10 +7,12 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import { mainListItems, secondaryListItems } from './listItems'
 import Calendar from './Calendar'
+import ColdOutreach from './Assignments/ColdOutreach/ColdOutreach'
 import AssignmentList from './Assignments/AssignmentList'
 import Endorsement from './EndorsementChecklist/EndorsementChecklist'
 import { AssignmentUpload } from './AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
+import CookieConsent from "react-cookie-consent";
 
 
 
@@ -132,6 +134,8 @@ const Dashboard = props => {
               return <Endorsement />
             case 'assignment-upload':
               return <AssignmentUpload />
+            case 'cold-outreach':
+              return <ColdOutreach/>
             default:
               return
           }
@@ -142,6 +146,22 @@ const Dashboard = props => {
         </div>
 
       </main>
+            <CookieConsent
+                  location="bottom"
+                  enableDeclineButton={true}
+                  debug={true}
+                  declineButtonText="I decline"
+                  buttonText="I understand"
+                  cookieName="cookieConsent"
+                  style={{ background: "#BB1333" , marginBottom:'15px'}}
+                  buttonStyle={{ color: "#BB1333", fontSize: "13px", background:'white' }}
+                  expires={150}
+                  >
+                  This website uses cookies to enhance the user experience.{" "}
+                  <span style={{ fontSize: "10px" }}>
+                  
+                  </span>
+            </CookieConsent>
 
     </div>
   )
