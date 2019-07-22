@@ -33,16 +33,6 @@ const mainListItems = (
         <ListItemText primary="Calendar" />
       </ListItem>
     </Link>
-    <Link style={{ textDecoration: 'none' }} to="/dashboard/assignment-upload">
-      <ListItem button>
-        <ListItemIcon style={{ color: "#bb1333" }}>
-          <Tooltip title='Upload' placement='right'>
-            <AddBoxIcon />
-          </Tooltip>
-        </ListItemIcon>
-        <ListItemText primary="Upload" />
-      </ListItem>
-    </Link>
     <Link style={{ textDecoration: 'none' }} to="/dashboard/endorsement">
       <ListItem button>
         <ListItemIcon style={{ color: "#bb1333" }}>
