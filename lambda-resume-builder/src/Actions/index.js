@@ -3,7 +3,8 @@ import jwt_decode from 'jwt-decode'
 import Cookies from 'js-cookie'
 
 
-const SUCCESS = "SUCCESS"
+const SUCCESS = "SUCCESS",
+  LINKEDINRES = 'LINKEDINRES'
 
 const register = user => dispatch => {
 
@@ -71,7 +72,7 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
-const createLinkedInUser = code => {
+const createLinkedInUser = code => dispatch => {
 
   if (!code) {
 
@@ -88,7 +89,10 @@ const createLinkedInUser = code => {
       }
     })
       .then(res => res.json())
-      .then(res => console.log(res))
+      .then(res => {
+        dispatch({ type: LINKEDINRES })
+        console.log(res)
+      })
       .catch(err => console.log(err))
 
   }
@@ -208,6 +212,7 @@ const createGoogleUser = google => dispatch => {
 
 export {
   SUCCESS,
+  LINKEDINRES,
   register,
   login,
   createGoogleUser,

@@ -75,10 +75,14 @@ const Register = (props) => {
 
     const linkedIn = () => {
 
-      const code = window.location.href.match(/\?code=(.*)/) &&
-        window.location.href.match(/\?code=(.*)/)[1]
+      if (props.linkedinhappening) {
 
-      props.createLinkedInUser(code)
+        const code = window.location.href.match(/\?code=(.*)/) &&
+          window.location.href.match(/\?code=(.*)/)[1]
+
+        props.createLinkedInUser(code)
+
+      }
 
     }
 
@@ -193,7 +197,8 @@ const Register = (props) => {
 }
 
 const mapStateToProps = state => ({
-  register: state.register
+  register: state.register,
+  linkedinhappening: state.linkedinhappening
 })
 
 
