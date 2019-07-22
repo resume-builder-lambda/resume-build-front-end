@@ -11,43 +11,43 @@ import Cookies from 'js-cookie'
 
 const mainListItems = (
   <div>
-    
-    <Link style={{textDecoration: 'none'}} to="/dashboard/assignments">
+
+    <Link style={{ textDecoration: 'none' }} to="/dashboard/assignments">
       <ListItem button >
-        <ListItemIcon style={{color: "#bb1333"}}>
-        <Tooltip title="Training Modules" placement='right'>
-          <AssignmentIcon />
+        <ListItemIcon style={{ color: "#bb1333" }}>
+          <Tooltip title="Training Modules" placement='right'>
+            <AssignmentIcon />
           </Tooltip>
         </ListItemIcon >
         <ListItemText primary="Training Modules" />
       </ListItem>
     </Link>
-    
-    <Link style={{textDecoration: 'none'}} to="/dashboard/calendar">
+
+    <Link style={{ textDecoration: 'none' }} to="/dashboard/calendar">
       <ListItem button>
-        <ListItemIcon style={{color: "#bb1333"}}>
-        <Tooltip title='Calendar' placement='right'>
-          <CalendarIcon />
+        <ListItemIcon style={{ color: "#bb1333" }}>
+          <Tooltip title='Calendar' placement='right'>
+            <CalendarIcon />
           </Tooltip>
         </ListItemIcon>
         <ListItemText primary="Calendar" />
       </ListItem>
     </Link>
-    <Link style={{textDecoration: 'none'}} to="/dashboard/assignment-upload">
+    <Link style={{ textDecoration: 'none' }} to="/dashboard/assignment-upload">
       <ListItem button>
-        <ListItemIcon style={{color: "#bb1333"}}>
-        <Tooltip title='Upload' placement='right'>
-          <AddBoxIcon />
+        <ListItemIcon style={{ color: "#bb1333" }}>
+          <Tooltip title='Upload' placement='right'>
+            <AddBoxIcon />
           </Tooltip>
         </ListItemIcon>
         <ListItemText primary="Upload" />
       </ListItem>
     </Link>
-    <Link style={{textDecoration: 'none'}} to="/dashboard/endorsement">
+    <Link style={{ textDecoration: 'none' }} to="/dashboard/endorsement">
       <ListItem button>
-        <ListItemIcon style={{color: "#bb1333"}}>
-        <Tooltip title='Endorsement Verification' placement='right'>
-          <CheckIcon />
+        <ListItemIcon style={{ color: "#bb1333" }}>
+          <Tooltip title='Endorsement Verification' placement='right'>
+            <CheckIcon />
           </Tooltip>
         </ListItemIcon>
         <ListItemText primary="Endorsement " />
@@ -61,7 +61,7 @@ const secondaryListItems = (
     <ListItem button onClick={handleLogOut}>
       <ListItemIcon>
         <Tooltip title='LogOut' placement='right'>
-        <CancelIcon style={{ transform: 'rotate(180deg)'}} />
+          <CancelIcon style={{ transform: 'rotate(180deg)' }} />
         </Tooltip>
       </ListItemIcon>
       <ListItemText primary="Log Out" />
@@ -70,9 +70,10 @@ const secondaryListItems = (
 )
 
 function handleLogOut() {
-  localStorage.removeItem('token')
-  window.location.pathname = '/'
+  Cookies.remove('github')
   Cookies.remove('creds')
+  Cookies.remove('token')
+  window.location.pathname = '/'
 }
 
 export {
