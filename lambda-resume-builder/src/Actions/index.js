@@ -81,7 +81,7 @@ const createLinkedInUser = code => {
 
   } else {
 
-    console.log(code)
+    Cookies.set('linkedIn', false)
 
     fetch(`https://lambda-crp.herokuapp.com/auth/linkedin`, {
       method: 'POST',
