@@ -69,7 +69,7 @@ const Register = (props) => {
   }, [ghCookie])
 
   const liCookie = Cookies.get('linkedIn') &&
-    Cookies.get('linkedIn')
+    Cookies.get('linkedIn') === 'true'
 
   useEffect(() => {
 
@@ -82,7 +82,7 @@ const Register = (props) => {
 
     }
 
-    if (liCookie === 'true') {
+    if (liCookie) {
 
       Cookies.set('linkedIn', false)
 
