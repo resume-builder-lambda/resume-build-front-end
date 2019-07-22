@@ -162,14 +162,14 @@ const Register = (props) => {
               alt='GitHub Logo'
               src={GHLogo}
               id='GitHub'
-              onClick={() => createGithubUser()}
+              onClick={createGithubUser}
             />
 
             <img
               className={'oauth'}
               alt='LinkedIn Logo'
               src={linkedin}
-              onClick={() => createLinkedInUser()}
+              onClick={createLinkedInUser}
             />
 
             <GoogleLogin
