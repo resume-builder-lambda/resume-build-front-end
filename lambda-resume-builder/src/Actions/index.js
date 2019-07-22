@@ -3,7 +3,9 @@ import jwt_decode from 'jwt-decode'
 import Cookies from 'js-cookie'
 
 
-const SUCCESS = "SUCCESS"
+const SUCCESS = "SUCCESS",
+  LINKEDIN_CLICKED = 'LINKEDIN_CLICKED',
+  LINKEDIN_REQUEST = 'LINKEDIN_REQUEST'
 
 const register = user => dispatch => {
 
@@ -71,17 +73,17 @@ const login = creds => dispatch => {
     .catch(err => console.log(err))
 }
 
-const createLinkedInUser = code => {
+const createLinkedInUser = code => dispatch => {
 
   if (!code) {
 
     window.location = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_REGISTER_URI}&scope=r_liteprofile%20r_emailaddress%20w_member_social`
 
-    Cookies.set('linkedIn', true)
+    dispatch({ type: LINKEDIN_CLICKED })
 
   } else {
 
-    Cookies.set('linkedIn', false)
+    dispatch({ type: LINKEDIN_REQUEST })
 
     fetch(`https://lambda-crp.herokuapp.com/auth/linkedin`, {
       method: 'POST',
@@ -96,6 +98,7 @@ const createLinkedInUser = code => {
       .catch(err => console.log(err))
 
   }
+
 
 }
 
@@ -212,6 +215,8 @@ const createGoogleUser = google => dispatch => {
 
 export {
   SUCCESS,
+  LINKEDIN_CLICKED,
+  LINKEDIN_REQUEST,
   register,
   login,
   createGoogleUser,
