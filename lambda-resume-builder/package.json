@@ -22,6 +22,7 @@
     "react-cookie-consent": "^2.3.2",
     "react-dom": "^16.8.6",
     "react-google-login": "^5.0.4",
+    "react-jss": "^8.6.1",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "2.1.8",
