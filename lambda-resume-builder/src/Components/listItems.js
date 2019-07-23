@@ -4,6 +4,7 @@ import AssignmentIcon from '@material-ui/icons/AssignmentOutlined'
 import CalendarIcon from '@material-ui/icons/DateRangeOutlined'
 import CheckIcon from '@material-ui/icons/VerifiedUserOutlined'
 import CancelIcon from '@material-ui/icons/ExitToApp'
+import AppliedIcon from '@material-ui/icons/FindInPageOutlined'
 import { Link } from 'react-router-dom'
 
 import Cookies from 'js-cookie'
@@ -32,6 +33,18 @@ const mainListItems = (
         <ListItemText primary="Calendar" />
       </ListItem>
     </Link>
+
+    <Link style={{ textDecoration: 'none' }} to="/dashboard/applied-jobs">
+      <ListItem button>
+        <ListItemIcon style={{ color: "#bb1333" }}>
+          <Tooltip title='Job Search' placement='right'>
+            <AppliedIcon />
+          </Tooltip>
+        </ListItemIcon>
+        <ListItemText primary="Job Search" />
+      </ListItem>
+    </Link>
+
     <Link style={{ textDecoration: 'none' }} to="/dashboard/endorsement">
       <ListItem button>
         <ListItemIcon style={{ color: "#bb1333" }}>

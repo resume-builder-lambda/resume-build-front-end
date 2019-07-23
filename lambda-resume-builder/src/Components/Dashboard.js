@@ -11,6 +11,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 import { mainListItems, secondaryListItems } from './listItems'
 import Calendar from './Calendar'
 import ColdOutreach from './Assignments/ColdOutreach/ColdOutreach'
+import Applied from './JobSearch/AppliedJobs.js'
 import ComingSoon from './Assignments/ComingSoon/ComingSoon'
 import AssignmentList from './Assignments/AssignmentList'
 import Endorsement from './EndorsementChecklist/EndorsementChecklist'
@@ -153,6 +154,8 @@ const Dashboard = props => {
               return <Endorsement />
             case 'assignment-upload':
               return <AssignmentUpload />
+            case 'applied-jobs':
+              return <Applied/>
             case 'cold-outreach':
               return <ColdOutreach/>
               case 'coming-soon':
