@@ -34,10 +34,13 @@ const register = user => dispatch => {
     })
     .then(res => {
       console.log("REGISTERED", res)
-      localStorage.setItem('token', res.data.createUser.token)
+      Cookies.set('token', res.data.createUser.token)
       dispatch({ type: SUCCESS, payload: res.data })
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err)
+      debugger
+    })
 
 }
 
@@ -82,13 +85,15 @@ const createLinkedInUser = code => dispatch => {
       left = window.screen.width / 2 - width / 2,
       top = window.screen.height / 2 - height / 2
 
-    window.open(
+    var li = window.open(
 
       `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_LINKEDIN_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_REGISTER_URI}&scope=r_liteprofile%20r_emailaddress%20w_member_social`,
       'LinkedIn',
       `menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=${width}, height=${height}, top=${top},left=${left}`
 
     )
+
+    console.log(li)
 
     dispatch({ type: LINKEDIN_CLICKED })
 
@@ -177,7 +182,18 @@ const createGithubUser = code => dispatch => {
 
     Cookies.set('github', true)
 
-    window.location = 'https://lambda-crp.herokuapp.com/auth/github'
+    const width = 450,
+      height = 730,
+      left = window.screen.width / 2 - width / 2,
+      top = window.screen.height / 2 - height / 2
+
+    var gh = window.open(
+
+      'https://lambda-crp.herokuapp.com/auth/github',
+      'GitHub',
+      `menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=${width}, height=${height}, top=${top},left=${left}`
+
+    )
 
   }
 
