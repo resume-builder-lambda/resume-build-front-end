@@ -84,7 +84,7 @@ const dashboard = theme => {
             marginLeft: -22,
         },
         tableContainer: {
-            height: 320,
+            height: 'max-content',
         },
         h5: {
             marginBottom: theme.spacing.unit * 2,

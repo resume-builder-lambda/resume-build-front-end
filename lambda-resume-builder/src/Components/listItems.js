@@ -1,7 +1,6 @@
 import React from 'react'
 import { ListItem, ListItemIcon, ListItemText, Tooltip } from '@material-ui/core'
 import AssignmentIcon from '@material-ui/icons/AssignmentOutlined'
-import AddBoxIcon from '@material-ui/icons/AddOutlined'
 import CalendarIcon from '@material-ui/icons/DateRangeOutlined'
 import CheckIcon from '@material-ui/icons/VerifiedUserOutlined'
 import CancelIcon from '@material-ui/icons/ExitToApp'
