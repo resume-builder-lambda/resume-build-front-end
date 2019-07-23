@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from "react-redux"
 import { register, createGoogleUser, createGithubUser, createLinkedInUser } from "../../Actions"
-import { CssBaseline, FormControl, Input, InputLabel, Paper } from '@material-ui/core'
+import { CssBaseline, FormControl, Input, InputLabel, Paper, Button } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
@@ -144,15 +144,9 @@ const Register = (props) => {
           </FormControl>
 
 
-          <StyledButton
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+          <Button variant="outlined" color="secondary" className={classes.submit}type="submit" fullWidth style={{padding:'8px'}} >
             Register
-            </StyledButton>
+          </Button>
 
 
           <div style={{ marginTop: '25px' }}>
