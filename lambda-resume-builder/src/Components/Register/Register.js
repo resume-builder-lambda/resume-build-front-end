@@ -43,7 +43,7 @@ const Register = (props) => {
 
   function handleSubmit() {
     props.register(fields)
-    setTimeout(() => window.location.pathname = '/dashboard', 1000)
+    setTimeout(() => window.location.pathname = '/dashboard', 2000)
   }
 
   const ghCookie = Cookies.get('github') &&
@@ -70,7 +70,7 @@ const Register = (props) => {
 
   useEffect(() => {
 
-    console.log(props.linkedin)
+    console.log(props)
 
     const linkedIn = () => {
 
@@ -195,10 +195,12 @@ const Register = (props) => {
 
 }
 
-const mapStateToProps = state => ({
-  register: state.register,
-  linkedIn: state.linkedIn
-})
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    linkedIn: state.linkedIn
+  }
+}
 
 
 

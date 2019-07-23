@@ -4,7 +4,8 @@ const initialState = {
 
     savingUser: false,
     loggingIn: false,
-    loggedIn: false
+    loggedIn: false,
+    linkedIn: false
 
 }
 
@@ -31,7 +32,8 @@ const rootReducer = (state = initialState, action) => {
                 linkedIn: false
             }
 
-        default: return state
+        default:
+            return { ...state }
     }
 
 }
