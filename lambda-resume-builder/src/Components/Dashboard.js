@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Badge, IconButton, Divider, Typography, List, Toolbar, AppBar, Drawer, CssBaseline } from '@material-ui/core'
+import { Badge, IconButton, Divider, Typography, List, Toolbar, AppBar, Drawer, CssBaseline} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import { mainListItems, secondaryListItems } from './listItems'
 import Calendar from './Calendar'
 import ColdOutreach from './Assignments/ColdOutreach/ColdOutreach'
+import Applied from './JobSearch/AppliedJobs.js'
 import ComingSoon from './Assignments/ComingSoon/ComingSoon'
 import AssignmentList from './Assignments/AssignmentList'
+import Profile from './Profile/Profile'
 import Endorsement from './EndorsementChecklist/EndorsementChecklist'
 import { AssignmentUpload } from './AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
@@ -17,7 +19,9 @@ import CookieConsent from "react-cookie-consent";
 
 
 
+
 const Dashboard = props => {
+  
 
   const [state, setState] = useState({
     open: false,
@@ -127,6 +131,8 @@ const Dashboard = props => {
 
         {(() => {
           switch (window.location.pathname.split('/')[2]) {
+            case 'profile':
+              return <Profile/>
             case 'assignments':
               return <AssignmentList />
             case 'calendar':
@@ -135,6 +141,8 @@ const Dashboard = props => {
               return <Endorsement />
             case 'assignment-upload':
               return <AssignmentUpload />
+            case 'applied-jobs':
+              return <Applied/>
             case 'cold-outreach':
               return <ColdOutreach/>
               case 'coming-soon':
@@ -144,15 +152,13 @@ const Dashboard = props => {
           }
         })()}
 
-        <div className={classes.tableContainer}>
-          <div id='sample'></div>
-        </div>
+        
 
       </main>
             <CookieConsent
                   location="bottom"
                   enableDeclineButton={true}
-                  debug={true}
+                  // debug={true}
                   declineButtonText="I decline"
                   buttonText="I understand"
                   cookieName="cookieConsent"

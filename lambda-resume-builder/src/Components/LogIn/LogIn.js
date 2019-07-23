@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from "react-redux"
 import { login } from "../../Actions"
-import { CssBaseline, FormControl, Input, InputLabel, Paper } from '@material-ui/core'
+import { CssBaseline, FormControl, Input, InputLabel, Paper, Button } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
@@ -69,14 +69,14 @@ function SignIn(props) {
     console.log(google)
 
     props.login(google)
-    setTimeout(() => window.location.pathname = '/dashboard', 1000)
+    setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
 
   }
 
 
   function handleSubmit() {
     props.login(fields)
-    setTimeout(() => window.location.pathname = '/dashboard', 1000)
+    setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
   }
 
   // Attempts to log in with creds stored in cookies
@@ -85,7 +85,7 @@ function SignIn(props) {
 
       if (creds) {
         props.login(creds)
-        setTimeout(() => window.location.pathname = '/dashboard', 1000)
+        setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
       }
 
     }
@@ -148,15 +148,9 @@ function SignIn(props) {
 
           </FormControl>
 
-          <StyledButton
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+          <Button variant="outlined" color="secondary" className={classes.submit}type="submit" fullWidth style={{padding:'8px'}} >
             Sign in
-          </StyledButton>
+          </Button>
 
           <div style={{ marginTop: '25px' }}>
 
