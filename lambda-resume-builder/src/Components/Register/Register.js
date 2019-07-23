@@ -33,7 +33,7 @@ const Register = (props) => {
     console.log(google)
 
     props.createGoogleUser(google)
-    setTimeout(() => window.location.pathname = '/dashboard', 1000)
+    setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
 
   }
 
@@ -43,7 +43,7 @@ const Register = (props) => {
 
   function handleSubmit() {
     props.register(fields)
-    setTimeout(() => window.location.pathname = '/dashboard', 2000)
+    setTimeout(() => window.location.pathname = '/dashboard/profile', 2000)
   }
 
   const ghCookie = Cookies.get('github') &&

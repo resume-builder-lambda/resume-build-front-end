@@ -5,12 +5,24 @@ import CalendarIcon from '@material-ui/icons/DateRangeOutlined'
 import CheckIcon from '@material-ui/icons/VerifiedUserOutlined'
 import CancelIcon from '@material-ui/icons/ExitToApp'
 import AppliedIcon from '@material-ui/icons/FindInPageOutlined'
+import HomeIcon from '@material-ui/icons/HomeOutlined'
 import { Link } from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
 const mainListItems = (
   <div>
+
+    <Link style={{ textDecoration: 'none' }} to="/dashboard/profile">
+      <ListItem button >
+        <ListItemIcon style={{ color: "#bb1333" }}>
+          <Tooltip title="Home" placement='right'>
+            <HomeIcon />
+          </Tooltip>
+        </ListItemIcon >
+        <ListItemText primary="Home" />
+      </ListItem>
+    </Link>
 
     <Link style={{ textDecoration: 'none' }} to="/dashboard/assignments">
       <ListItem button >

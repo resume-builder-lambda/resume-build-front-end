@@ -2,9 +2,6 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Badge, IconButton, Divider, Typography, List, Toolbar, AppBar, Drawer, CssBaseline} from '@material-ui/core'
-import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import NotificationsIcon from '@material-ui/icons/Notifications'
@@ -14,29 +11,17 @@ import ColdOutreach from './Assignments/ColdOutreach/ColdOutreach'
 import Applied from './JobSearch/AppliedJobs.js'
 import ComingSoon from './Assignments/ComingSoon/ComingSoon'
 import AssignmentList from './Assignments/AssignmentList'
+import Profile from './Profile/Profile'
 import Endorsement from './EndorsementChecklist/EndorsementChecklist'
 import { AssignmentUpload } from './AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
-import avatar from './Images/avataaars.png'
 import CookieConsent from "react-cookie-consent";
-import {assignments} from '../Components/Assignments/AssignmentList'
-import Accord from '../Components/Accordian/Accordian'
+
 
 
 
 const Dashboard = props => {
-  const [checkState, setCheckState] = React.useState({
-    checkedA: false,
-    checkedB: false,
-    checkedC: false,
-    checkedD: false,
-    
-  });
-
-  const handleChange = name => event => {
-    event.stopPropagation()
-    setCheckState({ ...checkState, [name]: event.target.checked });
-  };
+  
 
   const [state, setState] = useState({
     open: false,
@@ -146,6 +131,8 @@ const Dashboard = props => {
 
         {(() => {
           switch (window.location.pathname.split('/')[2]) {
+            case 'profile':
+              return <Profile/>
             case 'assignments':
               return <AssignmentList />
             case 'calendar':
@@ -165,91 +152,7 @@ const Dashboard = props => {
           }
         })()}
 
-        <div className={classes.tableContainer} style={{marginBottom: '100px'}}>
-          
-          <div style={{marginBottom:'30px'}}>
-           
-            <img src={avatar} style={{ height: '200px', width:'200px', marginBottom:'30px'}}/>
-            <p>Student McStudent</p>
-            <p>Web18</p>
-           
-          </div>
-          <div style={{display:'flex'}}>
-            <div style={{width:'48%', marginTop: '5px'}}>
-          <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px', background:'#BB1333', color:'white'}}>Career Goal Checkup</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}><b>SMART Goals</b></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}><b>Placeholder</b></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}>Goal #1 <Checkbox
-        checked={checkState.checkedA}
-        onChange={handleChange('checkedA')}
-        value="checkedA"
-        color="primary"
-        inputProps={{
-          'aria-label': 'secondary checkbox',
-        }}
-      /></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px', visibility:'hidden'}}></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}>Goal #2 <Checkbox
-        checked={checkState.checkedB}
-        onChange={handleChange('checkedB')}
-        value="checkedB"
-        color="primary"
-        inputProps={{
-          'aria-label': 'secondary checkbox',
-        }}
-      /></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px', visibility:'hidden'}}></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}>Goal #3 <Checkbox
-        checked={checkState.checkedC}
-        onChange={handleChange('checkedC')}
-        value="checkedC"
-        color="primary"
-        inputProps={{
-          'aria-label': 'secondary checkbox',
-        }}
-      /></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px', visibility:'hidden'}}></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}>Goal #4 <Checkbox
-        checked={checkState.checkedD}
-        onChange={handleChange('checkedD')}
-        value="checkedD"
-        color="primary"
-        inputProps={{
-          'aria-label': 'secondary checkbox',
-        }}
-      /></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px', visibility:'hidden'}}></Paper>
-        </Grid>
-      </Grid>
-      </div>
-      <div style={{width:'48%'}}>
-          {assignments.map( (assignment, index) => <Accord key={index} assigns={assignment.assigns} title={assignment.name}/> )}
-        </div>
-          </div>
-        </div>
-
+        
 
       </main>
             <CookieConsent

@@ -69,14 +69,14 @@ function SignIn(props) {
     console.log(google)
 
     props.login(google)
-    setTimeout(() => window.location.pathname = '/dashboard', 1000)
+    setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
 
   }
 
 
   function handleSubmit() {
     props.login(fields)
-    setTimeout(() => window.location.pathname = '/dashboard', 1000)
+    setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
   }
 
   // Attempts to log in with creds stored in cookies
@@ -85,7 +85,7 @@ function SignIn(props) {
 
       if (creds) {
         props.login(creds)
-        setTimeout(() => window.location.pathname = '/dashboard', 1000)
+        setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
       }
 
     }
