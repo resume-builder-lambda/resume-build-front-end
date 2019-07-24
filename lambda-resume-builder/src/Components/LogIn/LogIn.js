@@ -10,7 +10,7 @@ import linkedin from '../Images/linkedin.png'
 import GHLogo from '../Images/GitHub-Logo.png'
 import './login.scss'
 import GoogleLogin from 'react-google-login'
-import Logo1 from '../Images/crp.png'
+import Logo1 from '../Images/final.png'
 
 import Cookies from 'js-cookie'
 
@@ -103,7 +103,7 @@ function SignIn(props) {
 
       <Paper className={classes.paper}>
 
-        <img alt='Lambda Logo' style={lambdaLogo} src={Logo} />
+        {/* <img alt='Lambda Logo' style={lambdaLogo} src={Logo} /> */}
         <img alt='Logo' style={{height:'150px', width:'150px'}} src={Logo1} />
 
         {/* <span>Career Readiness Portal</span> */}
