@@ -18,7 +18,7 @@ import Button from '@material-ui/core/Button';
 
 const StyledTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: '#3F51B5',
+    backgroundColor: '#2F2C4B',
     color: 'white',
     fontSize:'12px'
   },
