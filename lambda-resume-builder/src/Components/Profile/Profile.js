@@ -8,7 +8,7 @@ import {assignments} from '../Assignments/AssignmentList'
 import Accord from '../Accordian/Accordian'
 import { makeStyles } from '@material-ui/styles';
 
-
+import './profile.scss'
 
 
 const Profile = (props) => {
@@ -46,8 +46,9 @@ const Profile = (props) => {
             <p>Web18</p>
            
           </div>
-          <div style={{display:'flex'}}>
-            <div style={{width:'48%', marginTop: '5px'}}>
+
+          <div style={{display:'flex'}} className="profile">
+            <div style={{width:'48%', marginTop: '5px'}} className='smart-goals'>
           <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper} style={{padding:'10px', margin:'5px', background:'#BB1333', color:'white'}}>Career Goal Checkup</Paper>
@@ -116,9 +117,11 @@ const Profile = (props) => {
         </Grid>
       </Grid>
       </div>
-      <div style={{width:'48%'}}>
+
+      <div style={{width:'48%'}} className='profile-assignments'>
           {assignments.map( (assignment, index) => <Accord key={index} assigns={assignment.assigns} title={assignment.name}/> )}
         </div>
+
           </div>
         </div>
 
