@@ -73,7 +73,7 @@ const Profile = (props) => {
           <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}><b>SMART Goals</b></Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}><b>Placeholder</b></Paper>
+          <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}><b>Stats</b></Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}>Goal #1 <Checkbox
@@ -87,7 +87,7 @@ const Profile = (props) => {
       /></Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px', visibility:'hidden'}}></Paper>
+          <Paper className={classes.paper} style={{padding:'23px 10px', margin:'5px'}}>Lessons:   2/12</Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}>Goal #2 <Checkbox
@@ -101,7 +101,7 @@ const Profile = (props) => {
       /></Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px', visibility:'hidden'}}></Paper>
+          <Paper className={classes.paper} style={{padding:'23px 10px', margin:'5px'}}>Resume: Complete</Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}>Goal #3 <Checkbox
@@ -115,7 +115,7 @@ const Profile = (props) => {
       /></Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper} style={{padding:'10px', margin:'5px', visibility:'hidden'}}></Paper>
+          <Paper className={classes.paper} style={{padding:'23px 10px', margin:'5px'}}>Portfolio: *In Progress*</Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}>Goal #4 <Checkbox
@@ -135,7 +135,7 @@ const Profile = (props) => {
       </div>
 
       <div style={{width:'48%'}} className='profile-assignments'>
-          {assignments.map( (assignment, index) => <Accord key={index} assigns={assignment.assigns} title={assignment.name}/> )}
+          {assignments.map( (assignment, index) => <Accord key={index} assigns={assignment.assigns} title={assignment.name} /> )}
         </div>
 
           </div>
