@@ -15,6 +15,7 @@ import Profile from './Profile/Profile'
 import Endorsement from './EndorsementChecklist/EndorsementChecklist'
 import { AssignmentUpload } from './AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
+import Logo from '../Components/Images/Lambda_Logo_White.png'
 import CookieConsent from "react-cookie-consent";
 
 
@@ -76,7 +77,7 @@ const Dashboard = props => {
             noWrap
             className={classes.title}
           >
-            Career Readiness Portal Dashboard
+            <img src={Logo}  style={{height: 'auto', width: '100px', marginRight: '30px'}}/> 
             </Typography>
 
           <IconButton color="inherit">
