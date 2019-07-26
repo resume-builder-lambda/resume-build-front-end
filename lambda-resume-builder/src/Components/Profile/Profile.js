@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper';
@@ -7,6 +7,7 @@ import avatar from '../Images/avataaars.png'
 import {assignments} from '../Assignments/AssignmentList'
 import Accord from '../Accordian/Accordian'
 import { makeStyles } from '@material-ui/styles';
+import Swal from 'sweetalert2'
 
 import './profile.scss'
 
@@ -22,7 +23,8 @@ const Profile = (props) => {
 
   const handleChange = name => event => {
     event.stopPropagation()
-    setCheckState({ ...checkState, [name]: event.target.checked });
+    setCheckState({ ...checkState, [name]: event.target.checked })
+    
   };
 
   const useStyles = makeStyles(theme => ({
@@ -31,10 +33,24 @@ const Profile = (props) => {
     },
   }));
   
-  
-    const classes = useStyles();
+     useEffect(() => {
+      const success = () =>{
+        Swal.fire({
+          type: 'success',
+          title: 'Wow!',
+          text: 'You Have Completed Your Goals',
+          footer: '<a href>Keep Up The Great Work!!!</a>'
+        })
+      }
+    if(checkState.checkedA === true && checkState.checkedB === true && checkState.checkedC === true && checkState.checkedD === true){
+      success()
+    }
+    },[checkState.checkedA, checkState.checkedB, checkState.checkedC, checkState.checkedD]);
 
- 
+
+  const classes = useStyles();
+
+
 
     return(
         <div  style={{marginBottom: '100px'}}>
@@ -104,7 +120,7 @@ const Profile = (props) => {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper} style={{padding:'10px', margin:'5px'}}>Goal #4 <Checkbox
         checked={checkState.checkedD}
-        onChange={handleChange('checkedD')}
+        onChange={handleChange('checkedD') }
         value="checkedD"
         color="primary"
         inputProps={{
