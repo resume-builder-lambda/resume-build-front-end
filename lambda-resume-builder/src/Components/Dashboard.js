@@ -90,7 +90,7 @@ const Dashboard = props => {
           <IconButton color="inherit">
 
             <Badge
-              badgeContent={99}
+              badgeContent={1}
               color="primary"
             >
 
