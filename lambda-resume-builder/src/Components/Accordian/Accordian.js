@@ -32,9 +32,8 @@ export default function Accord(props) {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
-          
-        >
-          <Typography className={classes.heading} style={{fontSize:'16px'}}>{props.title}</Typography>
+          >
+        <Typography className={classes.heading} style={{fontSize:'16px'}}>{props.title}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
         <Typography style={{marginLeft:'0'}}>
