@@ -183,8 +183,6 @@ function SignIn(props) {
 
         </form>
 
-
-
         <p>Don't have an account?</p>
 
         <NavLink to="/register">Register Here</NavLink>
