@@ -1,11 +1,13 @@
 import React from 'react'
+import Logo from '../Images/lambdalogo.svg'
 
 const EndorsementChecklist = props => {
-
+   
     return (
 
-        <h1>This Is The Endorsements Checklist Component</h1>
-
+        <div id='logo'>
+        
+        </div>
     )
 
 }

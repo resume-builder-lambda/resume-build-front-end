@@ -18,6 +18,7 @@ const dashboard = theme => {
         },
         toolbar: {
             paddingRight: 24,
+            backgroundColor: '#BB1333'
         },
         toolbarIcon: {
             display: 'flex',
@@ -237,6 +238,8 @@ const login = theme => {
         },
         submit: {
             marginTop: theme.spacing.unit * 3,
+            border: '1px solid #BB1333 ',
+            color: '#BB1333'
         },
     })
 
