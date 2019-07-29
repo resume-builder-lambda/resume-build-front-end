@@ -77,7 +77,6 @@ function SignIn(props) {
 
   function handleSubmit() {
     props.login(fields)
-    setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
   }
 
   // Attempts to log in with creds stored in cookies
@@ -112,7 +111,7 @@ function SignIn(props) {
 
 
         <form
-          onSubmit={submit}
+          onSubmit={(e) => submit(e)}
           className={classes.form}
         >
 

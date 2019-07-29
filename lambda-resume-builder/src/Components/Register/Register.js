@@ -103,7 +103,7 @@ const Register = (props) => {
         <span>Career Readiness Portal</span>
 
         <form
-          onSubmit={submit}
+          onSubmit={(e) => submit(e)}
           className={classes.form}
         >
 
@@ -144,7 +144,7 @@ const Register = (props) => {
           </FormControl>
 
 
-          <Button variant="outlined" color="secondary" className={classes.submit}type="submit" fullWidth style={{padding:'8px'}} >
+          <Button variant="outlined" color="secondary" className={classes.submit} type="submit" fullWidth style={{ padding: '8px' }} >
             Register
           </Button>
 
