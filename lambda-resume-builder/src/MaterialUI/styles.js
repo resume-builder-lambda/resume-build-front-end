@@ -34,7 +34,7 @@ const dashboard = theme => {
                 duration: theme.transitions.duration.leavingScreen,
                 
             }),
-            backgroundColor: '#BB1333'
+            backgroundColor: 'black'
         },
         appBarShift: {
             marginLeft: drawerWidth,
