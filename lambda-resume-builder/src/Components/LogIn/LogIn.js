@@ -77,7 +77,6 @@ function SignIn(props) {
 
   function handleSubmit() {
     props.login(fields)
-    setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
   }
 
   // Attempts to log in with creds stored in cookies
@@ -106,13 +105,13 @@ function SignIn(props) {
       <Paper className={classes.paper}>
 
         {/* <img alt='Lambda Logo' style={lambdaLogo} src={Logo} /> */}
-        <img alt='Logo' style={{height:'150px', width:'150px'}} src={Logo1} />
+        <img alt='Logo' style={{ height: '150px', width: '150px' }} src={Logo1} />
 
         {/* <span>Career Readiness Portal</span> */}
 
 
         <form
-          onSubmit={submit}
+          onSubmit={(e) => submit(e)}
           className={classes.form}
         >
 
@@ -152,7 +151,7 @@ function SignIn(props) {
 
           </FormControl>
 
-          <Button variant="outlined" color="secondary" className={classes.submit}type="submit" fullWidth style={{padding:'8px'}} >
+          <Button variant="outlined" color="secondary" className={classes.submit} type="submit" fullWidth style={{ padding: '8px' }} >
             Sign in
           </Button>
 
@@ -185,6 +184,8 @@ function SignIn(props) {
           </div>
 
         </form>
+
+
 
         <p>Don't have an account?</p>
 
