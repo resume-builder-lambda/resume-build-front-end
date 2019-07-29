@@ -11,6 +11,7 @@ import GHLogo from '../Images/GitHub-Logo.png'
 import './login.scss'
 import GoogleLogin from 'react-google-login'
 import Logo1 from '../Images/final.png'
+import LinkedIn from './LinkedIn'
 
 import Cookies from 'js-cookie'
 
@@ -106,7 +107,7 @@ function SignIn(props) {
       <Paper className={classes.paper}>
 
         {/* <img alt='Lambda Logo' style={lambdaLogo} src={Logo} /> */}
-        <img alt='Logo' style={{height:'150px', width:'150px'}} src={Logo1} />
+        <img alt='Logo' style={{ height: '150px', width: '150px' }} src={Logo1} />
 
         {/* <span>Career Readiness Portal</span> */}
 
@@ -152,7 +153,7 @@ function SignIn(props) {
 
           </FormControl>
 
-          <Button variant="outlined" color="secondary" className={classes.submit}type="submit" fullWidth style={{padding:'8px'}} >
+          <Button variant="outlined" color="secondary" className={classes.submit} type="submit" fullWidth style={{ padding: '8px' }} >
             Sign in
           </Button>
 
@@ -166,12 +167,14 @@ function SignIn(props) {
               onClick={Cookies.get('github') ? gitHubLogin() : () => gitHubLogin()}
             />
 
-            <img
+            {/* <img
               className={'oauth'}
               alt='LinkedIn Logo'
               src={linkedin}
               onClick={(e) => e.preventDefault()}
-            />
+            /> */}
+
+            <LinkedIn />
 
             <GoogleLogin
               clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
