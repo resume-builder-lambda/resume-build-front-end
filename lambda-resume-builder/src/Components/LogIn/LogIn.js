@@ -11,7 +11,6 @@ import GHLogo from '../Images/GitHub-Logo.png'
 import './login.scss'
 import GoogleLogin from 'react-google-login'
 import Logo1 from '../Images/final.png'
-import LinkedIn from './LinkedIn'
 
 import Cookies from 'js-cookie'
 
@@ -167,14 +166,12 @@ function SignIn(props) {
               onClick={Cookies.get('github') ? gitHubLogin() : () => gitHubLogin()}
             />
 
-            {/* <img
+            <img
               className={'oauth'}
               alt='LinkedIn Logo'
               src={linkedin}
               onClick={(e) => e.preventDefault()}
-            /> */}
-
-            <LinkedIn />
+            />
 
             <GoogleLogin
               clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
