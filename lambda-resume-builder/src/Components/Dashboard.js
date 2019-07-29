@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Badge, IconButton, Divider, Typography, List, Toolbar, AppBar, Drawer, CssBaseline} from '@material-ui/core'
@@ -16,7 +16,13 @@ import Endorsement from './EndorsementChecklist/EndorsementChecklist'
 import { AssignmentUpload } from './AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 import Logo from '../Components/Images/Lambda_Logo_White.png'
+import moment from 'moment-timezone'
 import CookieConsent from "react-cookie-consent";
+
+
+  
+
+
 
 
 
@@ -77,13 +83,14 @@ const Dashboard = props => {
             noWrap
             className={classes.title}
           >
-            <img src={Logo}  style={{height: 'auto', width: '100px', marginRight: '30px'}}/> 
+            <img src={Logo}  style={{height: 'auto', width: '100px'}}/> 
+            <p> {moment().tz("America/Los_Angeles").format('MMMM Do YYYY, h:mm:ss a')}</p>
             </Typography>
 
           <IconButton color="inherit">
 
             <Badge
-              badgeContent={99}
+              badgeContent={1}
               color="primary"
             >
 
