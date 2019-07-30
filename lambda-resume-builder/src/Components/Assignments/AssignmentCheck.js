@@ -1,26 +1,32 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AssignmentCheck = (props) => {
 	return (
 		<div
 			style={{
-				color: props.complete ? 'green' : 'red',
-				textDecoration: props.complete ? 'line-through' : 'none',
-				textAlign: 'left',
-				height: 'auto',
-				margin: '10px'
+				color          : props.complete ? 'green' : 'black',
+				textDecoration : props.complete ? 'line-through' : 'none',
+				textAlign      : 'left',
+				height         : 'auto',
+				display        : 'flex',
+				flexDirection  : 'column',
+				flexWrap       : 'wrap',
+				margin         : '10px auto',
+				overflow       : 'hidden'
 			}}
 		>
-			<span
+			<p
 				style={{
-					width: '100%',
-					fontSize: '13px'
+					wordWrap : 'break-word',
+
+					fontSize : '13px'
 				}}
 			>
 				{props.assignment}
-			</span>
+			</p>
 		</div>
-	)
-}
+	);
+};
 
-export default AssignmentCheck
+export default AssignmentCheck;
