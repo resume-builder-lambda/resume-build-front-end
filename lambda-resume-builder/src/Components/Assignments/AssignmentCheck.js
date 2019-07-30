@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const AssignmentCheck = props => {
 
@@ -23,7 +23,7 @@ const AssignmentCheck = props => {
 
 			{props.url && <a href={`${props.url}`}>{props.url}</a>}
 		</div>
-	);
-};
+	)
+}
 
-export default AssignmentCheck;
+export default AssignmentCheck
