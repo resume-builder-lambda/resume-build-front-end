@@ -1,6 +1,6 @@
-import React from 'react';
-import Assignments from './Assignments';
-import { assignments } from './list';
+import React from 'react'
+import Assignments from './Assignments'
+import { assignments } from './list'
 
 const AssignmentsList = () => {
 	return (
@@ -9,8 +9,8 @@ const AssignmentsList = () => {
 				<Assignments assignments={assignment} image={assignment.img} link={assignment.link} />
 			))}
 		</div>
-	);
-};
+	)
+}
 
-export { assignments };
+export { assignments }
 export default AssignmentsList;

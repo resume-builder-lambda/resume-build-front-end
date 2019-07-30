@@ -8,22 +8,19 @@ const AssignmentCheck = (props) => {
 				textDecoration : props.complete ? 'line-through' : 'none',
 				textAlign      : 'left',
 				height         : 'auto',
-				display        : 'flex',
-				flexDirection  : 'column',
-				flexWrap       : 'wrap',
-				margin         : '10px auto',
-				overflow       : 'hidden'
+				margin         : '10px'
 			}}
 		>
-			<p
+			<span
 				style={{
-					wordWrap : 'break-word',
-
+					width    : '100%',
 					fontSize : '13px'
 				}}
 			>
 				{props.assignment}
-			</p>
+			</span>
+
+			{props.url && <a href={`${props.url}`}>{props.url}</a>}
 		</div>
 	);
 };

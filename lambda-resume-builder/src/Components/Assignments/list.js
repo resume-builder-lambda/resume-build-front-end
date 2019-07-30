@@ -41,13 +41,14 @@ export const assignments = [
 		link    : '/dashboard/coming-soon',
 		assigns : [
 			{
-				name     : `1. Complete the budgeting spreadsheet (or budgeting app/tool of your choice) and prepare a paragraph to discuss with your PM and group what you learned about your current or goal 				financial habits in your end-of-sprint standup meeting (you should not share your actual budget with your PM, or any personal information that makes you uncomfortable!
-							Budgeting spreadsheet:docs.google.com/spreadsheets/d/1Avpn9zSrcvMbWCr7FomzHRuPHGAOTnc3tZ_x7nwNb2c/edit?usp=sharing`,
+				name     : `1. Complete the budgeting spreadsheet (or budgeting app/tool of your choice) and prepare a paragraph to discuss with your PM and group what you learned about your current or goal financial habits in your end-of-sprint standup meeting (you should not share your actual budget with your PM, or any personal information that makes you uncomfortable! Budgeting spreadsheet:`,
+
+				url      : `docs.google.com/spreadsheets/d/1Avpn9zSrcvMbWCr7FomzHRuPHGAOTnc3tZ_x7nwNb2c/edit?usp=sharing`,
 				complete : false
 			},
 
 			{
-				name     : `2. Research 5 job titles that you are interested in and would be qualified for.Research the average salary and standard benefits for these roles.Document the high end and low end for these roles, your non- negotiables(benefits), and your walk - away figure for each title.`,
+				name     : `2. Research 5 job titles that you are interested in and would be qualified for.Research the average salary and standard benefits for these roles.Document the high end and low end for these roles, your non-negotiables(benefits), and your walk - away figure for each title.`,
 				complete : false
 			}
 		]
@@ -273,30 +274,30 @@ export const assignments = [
 		link    : '/dashboard/coming-soon',
 		assigns : [
 			{
-				name: `1. Set at least 3 SMART goals that will guide you through your search. These should be goals that you revisit every week or two to stay on track`
+				name : `1. Set at least 3 SMART goals that will guide you through your search. These should be goals that you revisit every week or two to stay on track`
 			},
 			{
-				name: `- One goal should be around networking, one around your online presence(GitHub, Dribbble, portfolio site, etc.), and one around researching jobs and companies in the field`
+				name : `- One goal should be around networking, one around your online presence(GitHub, Dribbble, portfolio site, etc.), and one around researching jobs and companies in the field`
 			},
 			{
-				name: `- If you are already actively doing the above(to the point where having additional goals would not be helpful, then you may set goals for different aspects of your search, but they should focus on the most important elements of creating a strong professional brand via your professional connections, artifacts(portfolio, resume, github, etc.), and research / knowledgeability about your field.`
+				name : `- If you are already actively doing the above(to the point where having additional goals would not be helpful, then you may set goals for different aspects of your search, but they should focus on the most important elements of creating a strong professional brand via your professional connections, artifacts(portfolio, resume, github, etc.), and research / knowledgeability about your field.`
 			},
 			{
-				name: `- If you want help setting SMART goals, find an overview here: https://docs.google.com/document/d/1mURVmfv-I1Y1AAi_sTcUYxtMIseTvWJVS_3JN9-PGdY/edit?usp=sharing`
+				name : `- If you want help setting SMART goals, find an overview here: https://docs.google.com/document/d/1mURVmfv-I1Y1AAi_sTcUYxtMIseTvWJVS_3JN9-PGdY/edit?usp=sharing`
 			},
 
 			{ name: `2. Job Search Strategy` },
 			{
-				name: `- Create a Huntr account if you don’t have one already(https://app.huntr.co/lambda-school/signup) and add at least 5 companies you’re interested in. Bonus if you know people who work at these companies already!`
+				name : `- Create a Huntr account if you don’t have one already(https://app.huntr.co/lambda-school/signup) and add at least 5 companies you’re interested in. Bonus if you know people who work at these companies already!`
 			},
 			{
-				name: `- For these companies, search their job postings to find any jobs that you are interested in.Go through the job descriptions and map out what qualifications you meet, what qualifications you don’t fully meet, and list out key stories / examples to back up your experience in these areas. `
+				name : `- For these companies, search their job postings to find any jobs that you are interested in.Go through the job descriptions and map out what qualifications you meet, what qualifications you don’t fully meet, and list out key stories / examples to back up your experience in these areas. `
 			},
 			{
-				name: ` - Want additional practice ? Update your resume and a cover letter so they are specifically tailored to each of these roles(you should have a different resume / cover letter for each role, unless two really are almost identical in their description!)`
+				name : ` - Want additional practice ? Update your resume and a cover letter so they are specifically tailored to each of these roles(you should have a different resume / cover letter for each role, unless two really are almost identical in their description!)`
 			},
 			{
-				name: `- Submit a written summary(and your resume / cover letter edits, if you do them) to your PM with your weekly sprint retro.`
+				name : `- Submit a written summary(and your resume / cover letter edits, if you do them) to your PM with your weekly sprint retro.`
 			}
 		]
 	}
