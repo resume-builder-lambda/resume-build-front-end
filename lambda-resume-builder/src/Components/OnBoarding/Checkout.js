@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { checkout as styles, withStyles } from '../../MaterialUI/styles'
 import { CssBaseline, AppBar, Toolbar, Paper, Stepper, Step, StepLabel, Button, Typography } from '@material-ui/core'
+
 import AddressForm from './AddressForm'
 import SchoolInfo from './SchoolInformation'
-import PaymentForm from './PaymentForm'
 import Review from './ReviewForm'
 import WorkExperience from './WorkExperince'
 
@@ -29,6 +29,7 @@ const Checkout = props => {
   const { activeStep } = state
 
   return (
+
     <>
 
       <CssBaseline />
@@ -118,6 +119,7 @@ const Checkout = props => {
         </Paper>
       </main>
     </>
+
   )
 
   function getStepContent(step) {

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+
 import LogIn from './Components/LogIn'
 import Register from './Components/Register'
 import PrivateRoute from './Components/PrivateRoute'
 import Dashboard from './Components/Dashboard'
-import JssProvider from 'react-jss/lib/JssProvider';
 
 
 
@@ -18,7 +18,7 @@ const App = props => {
 
       <Route exact path="/"
         render={props => {
-          return (<LogIn {...props}  />)
+          return (<LogIn {...props} />)
         }} />
 
       <Route path="/register"

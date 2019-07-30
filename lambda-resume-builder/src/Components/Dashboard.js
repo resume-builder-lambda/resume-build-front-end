@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Badge, IconButton, Divider, Typography, List, Toolbar, AppBar, Drawer, CssBaseline} from '@material-ui/core'
+import { Badge, IconButton, Divider, Typography, List, Toolbar, AppBar, Drawer, CssBaseline } from '@material-ui/core'
+import moment from 'moment-timezone'
+import CookieConsent from "react-cookie-consent"
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import NotificationsIcon from '@material-ui/icons/Notifications'
-import { mainListItems, secondaryListItems } from './listItems'
-import Calendar from './Calendar'
-import ColdOutreach from './Assignments/ColdOutreach/ColdOutreach'
+
 import Applied from './JobSearch/AppliedJobs.js'
 import ComingSoon from './Assignments/ComingSoon/ComingSoon'
 import AssignmentList from './Assignments/AssignmentList'
@@ -15,14 +15,13 @@ import Profile from './Profile/Profile'
 import Endorsement from './EndorsementChecklist/EndorsementChecklist'
 import { AssignmentUpload } from './AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
+import ColdOutreach from './Assignments/ColdOutreach/ColdOutreach'
+import { mainListItems, secondaryListItems } from './listItems'
+import Calendar from './Calendar'
+
 import Logo from '../Components/Images/Lambda_Logo_White.png'
-import CookieConsent from "react-cookie-consent";
-
-
-
 
 const Dashboard = props => {
-  
 
   const [state, setState] = useState({
     open: false,
@@ -39,10 +38,9 @@ const Dashboard = props => {
   const { classes } = props
 
   return (
+
     <div className={classes.root}>
-
       <CssBaseline />
-
       <AppBar
         position="absolute"
         // color="secondary"
@@ -51,7 +49,6 @@ const Dashboard = props => {
           state.open && classes.appBarShift
         )}
       >
-
         <Toolbar
           disableGutters={!state.open}
           className={classes.toolbar}
@@ -67,7 +64,6 @@ const Dashboard = props => {
             )}
           >
             <MenuIcon />
-
           </IconButton>
 
           <Typography
@@ -76,25 +72,22 @@ const Dashboard = props => {
             color="inherit"
             noWrap
             className={classes.title}
+
           >
-            <img src={Logo}  style={{height: 'auto', width: '100px', marginRight: '30px'}}/> 
-            </Typography>
+            <img alt='Lambda Logo' src={Logo} style={{ height: 'auto', width: '100px' }} />
+            <p> {moment().tz("America/Los_Angeles").format('MMMM Do YYYY, h:mm:ss a')}</p>
+          </Typography>
 
           <IconButton color="inherit">
-
             <Badge
-              badgeContent={99}
+              badgeContent={1}
               color="primary"
             >
-
               <NotificationsIcon />
-
             </Badge>
-
           </IconButton>
 
         </Toolbar>
-
       </AppBar>
 
       <Drawer
@@ -106,14 +99,11 @@ const Dashboard = props => {
         }}
         open={state.open}
       >
+
         <div className={classes.toolbarIcon}>
-
           <IconButton onClick={handleDrawer}>
-
             <ChevronLeftIcon />
-
           </IconButton>
-
         </div>
 
         <Divider />
@@ -127,13 +117,11 @@ const Dashboard = props => {
       </Drawer>
 
       <main className={classes.content}>
-
         <div className={classes.appBarSpacer} />
-
         {(() => {
           switch (window.location.pathname.split('/')[2]) {
             case 'profile':
-              return <Profile/>
+              return <Profile />
             case 'assignments':
               return <AssignmentList />
             case 'calendar':
@@ -143,37 +131,36 @@ const Dashboard = props => {
             case 'assignment-upload':
               return <AssignmentUpload />
             case 'applied-jobs':
-              return <Applied/>
+              return <Applied />
             case 'cold-outreach':
-              return <ColdOutreach/>
-              case 'coming-soon':
-                return<ComingSoon/>
+              return <ColdOutreach />
+            case 'coming-soon':
+              return <ComingSoon />
             default:
               return
           }
         })()}
-
-        
-
       </main>
-            <CookieConsent
-                  location="bottom"
-                  enableDeclineButton={true}
-                  // debug={true}
-                  declineButtonText="I decline"
-                  buttonText="I understand"
-                  cookieName="cookieConsent"
-                  style={{ background: "#BB1333" , marginBottom:'15px'}}
-                  buttonStyle={{ color: "#BB1333", fontSize: "13px", background:'white' }}
-                  expires={150}
-                  >
-                  This website uses cookies to enhance the user experience.{" "}
-                  <span style={{ fontSize: "10px" }}>
-                  
-                  </span>
-            </CookieConsent>
+
+      <CookieConsent
+        location="bottom"
+        enableDeclineButton={true}
+        // debug={true}
+        declineButtonText="I decline"
+        buttonText="I understand"
+        cookieName="cookieConsent"
+        style={{ background: "#BB1333", marginBottom: '15px' }}
+        buttonStyle={{ color: "#BB1333", fontSize: "13px", background: 'white' }}
+        expires={150}
+      >
+        This website uses cookies to enhance the user experience.{" "}
+        <span style={{ fontSize: "10px" }}>
+
+        </span>
+      </CookieConsent>
 
     </div>
+
   )
 
 }

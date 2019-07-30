@@ -1,22 +1,19 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from "react-redux"
-import { register, createGoogleUser, createGithubUser, createLinkedInUser } from "../../Actions"
 import { CssBaseline, FormControl, Input, InputLabel, Paper, Button } from '@material-ui/core'
-import Logo from '../Images/Lamda_Logo.svg'
+import GoogleLogin from 'react-google-login'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
+
+import { login as styles, withStyles, lambdaLogo } from '../../MaterialUI/styles'
+import { register, createGoogleUser } from "../../Actions"
+
 import GLogo from '../Images/G-Sign-In-Normal.png'
-import linkedin from '../Images/linkedin.png'
-import GHLogo from '../Images/GitHub-Logo.png'
+import Logo from '../Images/Lamda_Logo.svg'
+
 import './register.scss'
-import GoogleLogin from 'react-google-login'
 
-import Cookies from 'js-cookie'
-
-import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../MaterialUI/styles'
-
-
-const Register = (props) => {
+const Register = props => {
 
   const responseGoogle = res => {
 
@@ -46,75 +43,29 @@ const Register = (props) => {
     setTimeout(() => window.location.pathname = '/dashboard/profile', 2000)
   }
 
-  const ghCookie = Cookies.get('github') &&
-    Cookies.get('github')
-
-  useEffect(() => {
-
-    const github = () => {
-
-      if (ghCookie) {
-
-        const code = window.location.href.match(/\?code=(.*)/) &&
-          window.location.href.match(/\?code=(.*)/)[1]
-
-        createGithubUser(code)
-
-      }
-
-    }
-
-    github()
-
-  }, [ghCookie])
-
-  useEffect(() => {
-
-    console.log(props)
-
-    const linkedIn = () => {
-
-      const code = window.location.href.match(/\?code=(.*)/) &&
-        window.location.href.match(/\?code=(.*)/)[1]
-
-      createLinkedInUser(code)
-
-    }
-
-    if (props.linkedIn) {
-
-      linkedIn()
-
-    }
-
-  }, [props.linkedIn])
-
   return (
+
     <main className={classes.main}>
-
       <CssBaseline />
-
       <p style={{ width: '100%' }}></p>
-
       <Paper className={classes.paper} >
-
-        <img alt='Lambda Logo' style={lambdaLogo} src={Logo} />
-
+        <img
+          alt='Lambda Logo'
+          style={lambdaLogo}
+          src={Logo}
+        />
         <span>Career Readiness Portal</span>
 
         <form
-          onSubmit={submit}
+          onSubmit={(e) => submit(e)}
           className={classes.form}
         >
-
           <FormControl
             margin="normal"
             required
             fullWidth
           >
-
             <InputLabel htmlFor="email">Email:</InputLabel>
-
             <Input
               id="email"
               name="email"
@@ -122,7 +73,6 @@ const Register = (props) => {
               onChange={handleChanges} autoComplete="email"
               autoFocus
             />
-
           </FormControl>
 
           <FormControl
@@ -130,9 +80,7 @@ const Register = (props) => {
             required
             fullWidth
           >
-
             <InputLabel htmlFor="password">New Password</InputLabel>
-
             <Input
               name="password"
               type="password"
@@ -140,31 +88,18 @@ const Register = (props) => {
               id="password"
               autoComplete="current-password"
             />
-
           </FormControl>
 
-
-          <Button variant="outlined" color="secondary" className={classes.submit}type="submit" fullWidth style={{padding:'8px'}} >
-            Register
-          </Button>
-
+          <Button
+            variant="outlined"
+            color="secondary"
+            className={classes.submit}
+            type="submit"
+            fullWidth
+            style={{ padding: '8px' }}
+          >Register</Button>
 
           <div style={{ marginTop: '25px' }}>
-            <img
-              className={'oauth'}
-              alt='GitHub Logo'
-              src={GHLogo}
-              id='GitHub'
-              onClick={createGithubUser()}
-            />
-
-            <img
-              className={'oauth'}
-              alt='LinkedIn Logo'
-              src={linkedin}
-              onClick={createLinkedInUser()}
-            />
-
             <GoogleLogin
               clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
               render={renderProps => (
@@ -175,27 +110,24 @@ const Register = (props) => {
               cookiePolicy={'single_host_origin'}
             />
           </div>
-
         </form>
 
         <p>Already have an account?</p>
-
         <NavLink to='/'>Log In</NavLink>
-
       </Paper>
-
     </main>
+
   )
 
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
-    linkedIn: state.linkedIn
+    github: state.github
   }
 }
 
-
-
-export default connect(mapStateToProps, { register, createGoogleUser, createGithubUser, createLinkedInUser })(withStyles(styles)(Register))
+export default connect(
+  mapStateToProps,
+  { register, createGoogleUser }
+)(withStyles(styles)(Register))

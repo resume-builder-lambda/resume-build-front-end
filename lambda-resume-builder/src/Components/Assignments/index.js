@@ -1,3 +1,3 @@
-import Assignments from "./Assignments";
+import Assignments from "./Assignments"
 
 export default Assignments

@@ -1,3 +1,3 @@
-import EndorsementChecklist from "./EndorsementChecklist";
+import EndorsementChecklist from "./EndorsementChecklist"
 
 export default EndorsementChecklist
