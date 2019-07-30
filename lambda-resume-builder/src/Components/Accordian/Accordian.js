@@ -28,7 +28,7 @@ export default function Accord(props) {
 						{props.title}
 					</Typography>
 				</ExpansionPanelSummary>
-				<ExpansionPanelDetails>
+				<ExpansionPanelDetails style={{display: 'flex', flexDirection:'column'}}>
 					<Typography style={{ marginLeft: '0' }}>
 						{props.assigns.map((assignment, index) => (
 							<AssignCheck key={index} complete={assignment.complete} url={assignment.url} assignment={assignment.name} />
