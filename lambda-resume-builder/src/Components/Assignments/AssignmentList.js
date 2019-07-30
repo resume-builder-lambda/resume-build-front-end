@@ -18,7 +18,7 @@ import behavior from '../Images/behavior.jpg'
 export const assignments = [
 
     
-    {name: 'Intro to Careers and the Tech Field', img: `${tech}`, link:'/dashboard/coming-soon', assigns:['1: Use Evernote, a Google Sheet, or other organizer of your choice to start setting weekly goals for your job search.','2: Write our a paragrapg describing your priorities in a company and what type of environment would be the best fit for you.',"3: If you haven't already, joing #career_help to get career tips from peers and be in the know about Career Coach-led office hours."] },
+    {name: 'Intro to Careers and the Tech Field', img: `${tech}`, link:'/dashboard/coming-soon', assigns:['1: Use Evernote, a Google Sheet, or other organizer of your choice to start setting weekly goals for your job search.','2: Write our a paragraph describing your priorities in a company and what type of environment would be the best fit for you.',"3: If you haven't already, joing #career_help to get career tips from peers and be in the know about Career Coach-led office hours."] },
     {name: 'Financial Planning and Knowing Your Worth', img: `${financial}`, link:'/dashboard/coming-soon', assigns:['Do Things'] },
     {name: 'Team Dynamics and Feedback: success working in a group',img: `${group}`, link:'/dashboard/coming-soon', assigns:['Do Things','Do Stuff','Do More']},
     {name: 'Social Media in Tech',  img: `${social}`, link:'/dashboard/cold-outreach', assigns:['Do Things','Do Stuff','Do More']},
