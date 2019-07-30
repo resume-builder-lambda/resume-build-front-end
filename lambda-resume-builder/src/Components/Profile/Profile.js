@@ -1,66 +1,65 @@
-import React, { useEffect } from 'react'
-import { Checkbox, Paper, Grid } from '@material-ui/core'
-import avatar from '../Images/avataaars.png'
-import { assignments } from '../Assignments/AssignmentList'
-import Accord from '../Accordian/Accordian'
-import { makeStyles } from '@material-ui/styles'
-import Swal from 'sweetalert2'
+import React, { useEffect } from 'react';
+import { Checkbox, Paper, Grid } from '@material-ui/core';
+import avatar from '../Images/avataaars.png';
+import { assignments } from '../Assignments/AssignmentList';
+import Accord from '../Accordian/Accordian';
+import { makeStyles } from '@material-ui/styles';
+import Swal from 'sweetalert2';
 
-import './profile.scss'
+import './profile.scss';
 
-const Profile = props => {
-
-	const [checkState, setCheckState] = React.useState({
-		checkedA: false,
-		checkedB: false,
-		checkedC: false,
-		checkedD: false
-	})
+const Profile = (props) => {
+	const [ checkState, setCheckState ] = React.useState({
+		checkedA : false,
+		checkedB : false,
+		checkedC : false,
+		checkedD : false
+	});
 
 	const handleChange = (name) => (event) => {
-		event.stopPropagation()
-		setCheckState({ ...checkState, [name]: event.target.checked })
-	}
+		event.stopPropagation();
+		setCheckState({ ...checkState, [name]: event.target.checked });
+	};
 
 	const useStyles = makeStyles((theme) => ({
-		root: {}
-	}))
+		root : {}
+	}));
 
 	useEffect(
 		() => {
 			const success = () => {
 				Swal.fire({
-					type: 'success',
-					title: 'Wow!',
-					text: 'You Have Completed Your Goals',
-					footer: '<a href>Keep Up The Great Work!!!</a>'
-				})
-			}
+					type   : 'success',
+					title  : 'Wow!',
+					text   : 'You Have Completed Your Goals',
+					footer : '<a href>Keep Up The Great Work!!!</a>'
+				});
+			};
 			if (
 				checkState.checkedA === true &&
 				checkState.checkedB === true &&
 				checkState.checkedC === true &&
 				checkState.checkedD === true
 			) {
-				success()
+				success();
 			}
 		},
-		[checkState.checkedA, checkState.checkedB, checkState.checkedC, checkState.checkedD]
-	)
+		[ checkState.checkedA, checkState.checkedB, checkState.checkedC, checkState.checkedD ]
+	);
 
-	const classes = useStyles()
+	const classes = useStyles();
 
 	return (
 		<div style={{ marginBottom: '100px' }}>
 			<div style={{ marginBottom: '30px' }}>
 				<img
-					alt='Pirate Josh Knell'
-					title='Pirate Josh Knell'
+					alt="Pirate Josh Knell"
+					title="Pirate Josh Knell"
 					src={avatar}
 					style={{
-						height: '200px',
-						width: '200px',
-						marginBottom: '30px'
+						height       : '200px',
+						width        : '200px',
+						marginBottom : '30px'
 					}}
 				/>
 				<p>Student McStudent</p>
@@ -97,7 +96,7 @@ const Profile = props => {
 									value="checkedA"
 									color="primary"
 									inputProps={{
-										'aria-label': 'secondary checkbox'
+										'aria-label' : 'secondary checkbox'
 									}}
 								/>
 							</Paper>
@@ -116,7 +115,7 @@ const Profile = props => {
 									value="checkedB"
 									color="primary"
 									inputProps={{
-										'aria-label': 'secondary checkbox'
+										'aria-label' : 'secondary checkbox'
 									}}
 								/>
 							</Paper>
@@ -135,7 +134,7 @@ const Profile = props => {
 									value="checkedC"
 									color="primary"
 									inputProps={{
-										'aria-label': 'secondary checkbox'
+										'aria-label' : 'secondary checkbox'
 									}}
 								/>
 							</Paper>
@@ -154,7 +153,7 @@ const Profile = props => {
 									value="checkedD"
 									color="primary"
 									inputProps={{
-										'aria-label': 'secondary checkbox'
+										'aria-label' : 'secondary checkbox'
 									}}
 								/>
 							</Paper>
@@ -170,14 +169,17 @@ const Profile = props => {
 
 				<div style={{ width: '48%' }} className="profile-assignments">
 					{assignments.map((assignment, index) => (
-						<Accord key={index} assigns={assignment.assigns} title={assignment.name} />
+						<Accord
+							key={index}
+							assigns={assignment.assigns}
+							title={assignment.name}
+							link={assignment.link}
+						/>
 					))}
 				</div>
 			</div>
 		</div>
+	);
+};
 
-	)
-
-}
-
-export default Profile
+export default Profile;
