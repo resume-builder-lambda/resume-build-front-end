@@ -43,7 +43,7 @@ export const assignments = [
 			{
 				name: `1. Complete the budgeting spreadsheet (or budgeting app/tool of your choice) and prepare a paragraph to discuss with your PM and group what you learned about your current or goal financial habits in your end-of-sprint standup meeting (you should not share your actual budget with your PM, or any personal information that makes you uncomfortable! Budgeting spreadsheet:`,
 
-				url: `docs.google.com/spreadsheets/d/1Avpn9zSrcvMbWCr7FomzHRuPHGAOTnc3tZ_x7nwNb2c/edit?usp=sharing`,
+				url: `https://docs.google.com/spreadsheets/d/1Avpn9zSrcvMbWCr7FomzHRuPHGAOTnc3tZ_x7nwNb2c/edit?usp=sharing`,
 				complete: false
 			},
 
@@ -308,7 +308,7 @@ export const assignments = [
 			{
 				name: `1. Complete the budgeting spreadsheet (or budgeting app/tool of your choice) and prepare a paragraph to discuss with your PM and group what you learned about your current or goal financial habits in your end-of-sprint standup meeting (you should not share your actual budget with your PM, or any personal information that makes you uncomfortable! Budgeting spreadsheet:`,
 
-				url: `docs.google.com/spreadsheets/d/1Avpn9zSrcvMbWCr7FomzHRuPHGAOTnc3tZ_x7nwNb2c/edit?usp=sharing`,
+				url: `https://docs.google.com/spreadsheets/d/1Avpn9zSrcvMbWCr7FomzHRuPHGAOTnc3tZ_x7nwNb2c/edit?usp=sharing`,
 				complete: false
 			},
 

@@ -21,7 +21,7 @@ const AssignmentCheck = props => {
 				{props.assignment}
 			</span>
 
-			{props.url && <a href={`${props.url}`}>{props.url}</a>}
+			{props.url && <a href={`${props.url}`} target='_blank'>{props.url}</a>}
 		</div>
 	)
 }
