@@ -1,16 +1,17 @@
 import React from 'react'
 import { connect } from "react-redux"
-import { register, createGoogleUser } from "../../Actions"
 import { CssBaseline, FormControl, Input, InputLabel, Paper, Button } from '@material-ui/core'
-import Logo from '../Images/Lamda_Logo.svg'
+import GoogleLogin from 'react-google-login'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
-import GLogo from '../Images/G-Sign-In-Normal.png'
-import './register.scss'
-import GoogleLogin from 'react-google-login'
 
 import { login as styles, withStyles, lambdaLogo } from '../../MaterialUI/styles'
+import { register, createGoogleUser } from "../../Actions"
 
+import GLogo from '../Images/G-Sign-In-Normal.png'
+import Logo from '../Images/Lamda_Logo.svg'
+
+import './register.scss'
 
 const Register = props => {
 
@@ -43,31 +44,28 @@ const Register = props => {
   }
 
   return (
+
     <main className={classes.main}>
-
       <CssBaseline />
-
       <p style={{ width: '100%' }}></p>
-
       <Paper className={classes.paper} >
-
-        <img alt='Lambda Logo' style={lambdaLogo} src={Logo} />
-
+        <img
+          alt='Lambda Logo'
+          style={lambdaLogo}
+          src={Logo}
+        />
         <span>Career Readiness Portal</span>
 
         <form
           onSubmit={(e) => submit(e)}
           className={classes.form}
         >
-
           <FormControl
             margin="normal"
             required
             fullWidth
           >
-
             <InputLabel htmlFor="email">Email:</InputLabel>
-
             <Input
               id="email"
               name="email"
@@ -75,7 +73,6 @@ const Register = props => {
               onChange={handleChanges} autoComplete="email"
               autoFocus
             />
-
           </FormControl>
 
           <FormControl
@@ -83,9 +80,7 @@ const Register = props => {
             required
             fullWidth
           >
-
             <InputLabel htmlFor="password">New Password</InputLabel>
-
             <Input
               name="password"
               type="password"
@@ -93,15 +88,18 @@ const Register = props => {
               id="password"
               autoComplete="current-password"
             />
-
           </FormControl>
 
-          <Button variant="outlined" color="secondary" className={classes.submit} type="submit" fullWidth style={{ padding: '8px' }} >
-            Register
-          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            className={classes.submit}
+            type="submit"
+            fullWidth
+            style={{ padding: '8px' }}
+          >Register</Button>
 
           <div style={{ marginTop: '25px' }}>
-
             <GoogleLogin
               clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
               render={renderProps => (
@@ -112,27 +110,24 @@ const Register = props => {
               cookiePolicy={'single_host_origin'}
             />
           </div>
-
         </form>
 
         <p>Already have an account?</p>
-
         <NavLink to='/'>Log In</NavLink>
-
       </Paper>
-
     </main>
+
   )
 
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
-    linkedIn: state.linkedIn
+    github: state.github
   }
 }
 
-
-
-export default connect(mapStateToProps, { register, createGoogleUser })(withStyles(styles)(Register))
+export default connect(
+  mapStateToProps,
+  { register, createGoogleUser }
+)(withStyles(styles)(Register))

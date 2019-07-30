@@ -92,6 +92,7 @@ const SchoolInfo = props => {
     </>
 
   )
+
 }
 
 export default SchoolInfo
