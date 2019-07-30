@@ -1,7 +1,9 @@
 import React from 'react';
 
-const AssignmentCheck = (props) => {
+const AssignmentCheck = props => {
+
 	return (
+
 		<div
 			style={{
 				color          : props.complete ? 'green' : 'black',
@@ -24,5 +26,6 @@ const AssignmentCheck = (props) => {
 		</div>
 	);
 };
+
 
 export default AssignmentCheck;
