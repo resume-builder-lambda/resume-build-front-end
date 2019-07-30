@@ -1,182 +1,110 @@
-import React from 'react'
-import { withStyles, makeStyles } from '@material-ui/styles'
-import { Table, TableBody, TableCell, TableHead, TableRow, Paper, Input, InputLabel, MenuItem, FormControl, Select, Button } from '@material-ui/core/'
+import React, { useState, useEffect } from 'react';
+import { withStyles, makeStyles } from '@material-ui/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined';
+import HomeIcon from '@material-ui/icons/CreateOutlined';
+import Form from './Form';
 
-const StyledTableCell = withStyles(theme => ({
+const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: '#2F2C4B',
     color: 'white',
     fontSize: '12px'
   },
   body: {
-    fontSize: 14,
-  },
-}))(TableCell)
+    fontSize: 14
+  }
+}))(TableCell);
 
-const StyledTableRow = withStyles(theme => ({
+const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {
       backgroundColor: 'white'
-    },
-  },
-}))(TableRow)
+    }
+  }
+}))(TableRow);
 
-function createData(name, Position, Location, Applied, Interview, Offer) {
-  return { name, Position, Location, Applied, Interview, Offer }
-}
-
-const rows = [
-  createData('Google', 'FE Dev', 'SF', 'Yes', 'Yes', 'No'),
-  createData('Amazon', 'FS Dev', 'SF', 'No', 'No', 'No'),
-  createData('Uber', 'FE Dev', 'SF', 'No', 'No', 'No'),
-  createData('Facebook', 'BE Dev', 'SF', 'Yes', 'No', 'No'),
-  createData('Twitter', 'BE Dev', 'SF', 'Yes', 'No', 'No'),
-]
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    overflowX: 'auto',
+    overflowX: 'auto'
   },
   table: {
-    minWidth: 700,
-  },
-}))
+    minWidth: 700
+  }
+}));
 
-export default function CustomizedTables() {
-  const classes = useStyles()
+export default function CustomizedTables(props) {
+  const classes = useStyles();
 
-  const [values, setValues] = React.useState({
-    applied: '',
-    interview: '',
-    offer: '',
-    Yes: 'Yes',
-    No: 'No'
-  })
+  const [rows, setRows] = useState([]);
 
-  function handleChange(event) {
-    setValues(oldValues => ({
-      ...oldValues,
-      [event.target.name]: event.target.value,
-    }))
+  function createData(name, Position, Location, Applied, Interview, Offer) {
+    console.log('create data function', name, Position, Location, Applied, Interview, Offer);
+    return { name, Position, Location, Applied, Interview, Offer };
+  }
+
+  function addRow(values) {
+    console.log('values', values);
+    setRows([
+      ...rows,
+      createData(
+        values.company,
+        values.position,
+        values.location,
+        values.applied,
+        values.interview,
+        values.offer
+      )
+    ]);
   }
 
   return (
-
     <div>
-      <div style={{ marginBottom: '25px', fontSize: '13px' }}>
-        <form>
-          <Input
-            style={{ margin: '15px', width: '150px' }}
-            placeholder="Company"
-            className={classes.input}
-            inputProps={{
-              'aria-label': 'Description',
-            }}
-          />
-          <Input
-            style={{ margin: '15px', width: '150px' }}
-            placeholder="Position"
-            className={classes.input}
-            inputProps={{
-              'aria-label': 'Description',
-            }}
-          />
+      <Form addRow={addRow} />
 
-          <Input
-            style={{ margin: '15px', width: '150px' }}
-            placeholder="Location"
-            className={classes.input}
-            inputProps={{
-              'aria-label': 'Description',
-            }}
-          />
-
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="applied-check">Applied</InputLabel>
-            <Select
-              style={{ margin: '15px', width: '120px' }}
-              value={values.applied}
-              onChange={handleChange}
-              inputProps={{
-                name: 'applied',
-                id: 'applied-check',
-              }}
-            >
-              <MenuItem value={'Yes'}>Yes</MenuItem>
-              <MenuItem value={'No'}>No</MenuItem>
-
-            </Select>
-          </FormControl>
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="interview-check">Interview</InputLabel>
-            <Select
-              style={{ margin: '15px', width: '120px' }}
-              value={values.interview}
-              onChange={handleChange}
-              inputProps={{
-                name: 'interview',
-                id: 'interview-check',
-              }}
-            >
-              <MenuItem value={'Yes'}>Yes</MenuItem>
-              <MenuItem value={'No'}>No</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="offer-check">Offer</InputLabel>
-            <Select
-              style={{ margin: '15px', width: '120px' }}
-              value={values.offer}
-              onChange={handleChange}
-              inputProps={{
-                name: 'offer',
-                id: 'offer-check',
-              }}
-            >
-              <MenuItem value={'Yes'}>Yes</MenuItem>
-              <MenuItem value={'No'}>No</MenuItem>
-            </Select>
-          </FormControl>
-
-        </form>
-      </div>
-      <Button style={{ marginBottom: '25px' }} variant="outlined" color="primary" className={classes.button}>
-        Add
-      </Button>
       <div>
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
                 <StyledTableCell>Company</StyledTableCell>
-                <StyledTableCell align="right">Position</StyledTableCell>
-                <StyledTableCell align="right">Location</StyledTableCell>
-                <StyledTableCell align="right">Applied</StyledTableCell>
-                <StyledTableCell align="right">Interview</StyledTableCell>
-                <StyledTableCell align="right">Offer</StyledTableCell>
+                <StyledTableCell align="center">Position</StyledTableCell>
+                <StyledTableCell align="center">Location</StyledTableCell>
+                <StyledTableCell align="center">Applied</StyledTableCell>
+                <StyledTableCell align="center">Interview</StyledTableCell>
+                <StyledTableCell align="center">Offer</StyledTableCell>
+                <StyledTableCell align="center">Edit/Del</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(row => (
-                <StyledTableRow key={row.name}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.name}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">{row.Position}</StyledTableCell>
-                  <StyledTableCell align="right">{row.Location}</StyledTableCell>
-                  <StyledTableCell align="right">{row.Applied}</StyledTableCell>
-                  <StyledTableCell align="right">{row.Interview}</StyledTableCell>
-                  <StyledTableCell align="right">{row.Offer}</StyledTableCell>
-                </StyledTableRow>
-              ))}
+              {rows &&
+                rows.map((row) => (
+                  <StyledTableRow key={row.name}>
+                    <StyledTableCell component="th" scope="row">
+                      {row.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">{row.Position}</StyledTableCell>
+                    <StyledTableCell align="center">{row.Location}</StyledTableCell>
+                    <StyledTableCell align="center">{row.Applied}</StyledTableCell>
+                    <StyledTableCell align="center">{row.Interview}</StyledTableCell>
+                    <StyledTableCell align="center">{row.Offer}</StyledTableCell>
+                    <StyledTableCell align="center">
+                      <AppliedIcon />
+                      <span style={{ fontSize: '35px' }}>|</span>
+                      <HomeIcon />
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
             </TableBody>
           </Table>
         </Paper>
       </div>
-
     </div>
-
-  )
-
+  );
 }

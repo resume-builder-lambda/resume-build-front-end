@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+
 import LogIn from './Components/LogIn'
 import Register from './Components/Register'
 import PrivateRoute from './Components/PrivateRoute'
