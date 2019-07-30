@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
 import { ExpansionPanelSummary, ExpansionPanel, ExpansionPanelDetails, Typography } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
@@ -27,12 +28,17 @@ export default function Accord(props) {
 						{props.title}
 					</Typography>
 				</ExpansionPanelSummary>
-				<ExpansionPanelDetails>
+				<ExpansionPanelDetails style={{display: 'flex', flexDirection:'column'}}>
 					<Typography style={{ marginLeft: '0' }}>
 						{props.assigns.map((assignment, index) => (
 							<AssignCheck key={index} complete={assignment.complete} url={assignment.url} assignment={assignment.name} />
 						))}
 					</Typography>
+					<p style={{ fontSize: '10px' }}>
+						<Link style={{ color: '#BB1333' }} to={`${props.link}`}>
+							Go To Module
+						</Link>
+						</p>
 				</ExpansionPanelDetails>
 			</ExpansionPanel>
 		</div>
