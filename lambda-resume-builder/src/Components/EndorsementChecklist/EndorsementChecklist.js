@@ -2,12 +2,13 @@ import React from 'react'
 import Logo from './Logo'
 
 const EndorsementChecklist = props => {
-   
+
     return (
 
         <div>
-        <Logo className='logo '/>
+            <Logo className='logo ' />
         </div>
+
     )
 
 }

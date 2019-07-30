@@ -24,6 +24,7 @@ const Assignments = props => {
   return (
 
     <div className={'card-1'}>
+
       <Link to={props.link}>
         <Card className={classes.card}>
           <CardActionArea>
@@ -32,18 +33,20 @@ const Assignments = props => {
               image={props.image}
             />
             <CardContent>
+
               <Typography
                 gutterBottom
                 variant="h5"
-                component="h2">
-                {props.assignments.name}
+                component="h2"
+              >{props.assignments.name}
               </Typography>
+
             </CardContent>
           </CardActionArea>
         </Card>
       </Link>
-    </div>
 
+    </div>
 
   )
 
