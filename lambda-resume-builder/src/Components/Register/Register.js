@@ -1,22 +1,18 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from "react-redux"
-import { register, createGoogleUser, createGithubUser, createLinkedInUser } from "../../Actions"
+import { register, createGoogleUser } from "../../Actions"
 import { CssBaseline, FormControl, Input, InputLabel, Paper, Button } from '@material-ui/core'
 import Logo from '../Images/Lamda_Logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 import GLogo from '../Images/G-Sign-In-Normal.png'
-import linkedin from '../Images/linkedin.png'
-import GHLogo from '../Images/GitHub-Logo.png'
 import './register.scss'
 import GoogleLogin from 'react-google-login'
 
-import Cookies from 'js-cookie'
-
-import { login as styles, StyledButton, withStyles, lambdaLogo } from '../../MaterialUI/styles'
+import { login as styles, withStyles, lambdaLogo } from '../../MaterialUI/styles'
 
 
-const Register = (props) => {
+const Register = props => {
 
   const responseGoogle = res => {
 
@@ -45,49 +41,6 @@ const Register = (props) => {
     props.register(fields)
     setTimeout(() => window.location.pathname = '/dashboard/profile', 2000)
   }
-
-  const ghCookie = Cookies.get('github') &&
-    Cookies.get('github')
-
-  useEffect(() => {
-
-    const github = () => {
-
-      if (ghCookie) {
-
-        const code = window.location.href.match(/\?code=(.*)/) &&
-          window.location.href.match(/\?code=(.*)/)[1]
-
-        createGithubUser(code)
-
-      }
-
-    }
-
-    github()
-
-  }, [ghCookie])
-
-  useEffect(() => {
-
-    console.log(props)
-
-    const linkedIn = () => {
-
-      const code = window.location.href.match(/\?code=(.*)/) &&
-        window.location.href.match(/\?code=(.*)/)[1]
-
-      createLinkedInUser(code)
-
-    }
-
-    if (props.linkedIn) {
-
-      linkedIn()
-
-    }
-
-  }, [props.linkedIn])
 
   return (
     <main className={classes.main}>
@@ -143,27 +96,11 @@ const Register = (props) => {
 
           </FormControl>
 
-
           <Button variant="outlined" color="secondary" className={classes.submit} type="submit" fullWidth style={{ padding: '8px' }} >
             Register
           </Button>
 
-
           <div style={{ marginTop: '25px' }}>
-            <img
-              className={'oauth'}
-              alt='GitHub Logo'
-              src={GHLogo}
-              id='GitHub'
-              onClick={createGithubUser()}
-            />
-
-            <img
-              className={'oauth'}
-              alt='LinkedIn Logo'
-              src={linkedin}
-              onClick={createLinkedInUser()}
-            />
 
             <GoogleLogin
               clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
@@ -198,4 +135,4 @@ const mapStateToProps = state => {
 
 
 
-export default connect(mapStateToProps, { register, createGoogleUser, createGithubUser, createLinkedInUser })(withStyles(styles)(Register))
+export default connect(mapStateToProps, { register, createGoogleUser })(withStyles(styles)(Register))
