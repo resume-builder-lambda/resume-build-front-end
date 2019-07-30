@@ -30,7 +30,7 @@ export default function Accord(props) {
 				<ExpansionPanelDetails>
 					<Typography style={{ marginLeft: '0' }}>
 						{props.assigns.map((assignment, index) => (
-							<AssignCheck key={index} complete={assignment.complete} assignment={assignment.name} />
+							<AssignCheck key={index} complete={assignment.complete} url={assignment.url} assignment={assignment.name} />
 						))}
 					</Typography>
 				</ExpansionPanelDetails>
