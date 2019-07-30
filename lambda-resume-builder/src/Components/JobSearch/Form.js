@@ -1,53 +1,45 @@
-import React, { useState } from 'react';
-import { withStyles, makeStyles } from '@material-ui/styles';
-import Input from '@material-ui/core/Input';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import FilledInput from '@material-ui/core/FilledInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
+import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/styles'
+import { Input, InputLabel, MenuItem, FormControl, Select, Button } from '@material-ui/core'
 
-const useStyles = makeStyles((theme) => ({
-	root  : {
-		width     : '100%',
-		overflowX : 'auto'
+const useStyles = makeStyles(theme => ({
+	root: {
+		width: '100%',
+		overflowX: 'auto'
 	},
-	table : {
-		minWidth : 700
+	table: {
+		minWidth: 700
 	}
-}));
+}))
 
 const Form = (props) => {
-	const classes = useStyles();
+	const classes = useStyles()
 
-	const [ values, setValues ] = useState({
-		company   : '',
-		position  : '',
-		location  : '',
-		applied   : '',
-		interview : '',
-		offer     : ''
-	});
+	const [values, setValues] = useState({
+		company: '',
+		position: '',
+		location: '',
+		applied: '',
+		interview: '',
+		offer: ''
+	})
 
 	const handleSubmit = (event) => {
-		event.preventDefault();
-		props.addRow(values);
+		event.preventDefault()
+		props.addRow(values)
 		setValues({
-			company   : '',
-			position  : '',
-			location  : '',
-			applied   : '',
-			interview : '',
-			offer     : ''
-		});
-	};
+			company: '',
+			position: '',
+			location: '',
+			applied: '',
+			interview: '',
+			offer: ''
+		})
+	}
 
 	const handleChange = (event) => {
-		setValues({ ...values, [event.target.name]: event.target.value });
-	};
+		setValues({ ...values, [event.target.name]: event.target.value })
+	}
 
 	return (
 		<div style={{ marginBottom: '25px', fontSize: '13px' }}>
@@ -61,7 +53,7 @@ const Form = (props) => {
 					onChange={(event) => handleChange(event)}
 					value={values.company}
 					inputProps={{
-						'aria-label' : 'Description'
+						'aria-label': 'Description'
 					}}
 				/>
 				<Input
@@ -72,7 +64,7 @@ const Form = (props) => {
 					onChange={(event) => handleChange(event)}
 					value={values.position}
 					inputProps={{
-						'aria-label' : 'Description'
+						'aria-label': 'Description'
 					}}
 				/>
 
@@ -84,7 +76,7 @@ const Form = (props) => {
 					onChange={(event) => handleChange(event)}
 					value={values.location}
 					inputProps={{
-						'aria-label' : 'Description'
+						'aria-label': 'Description'
 					}}
 				/>
 
@@ -96,8 +88,8 @@ const Form = (props) => {
 						name="applied"
 						onChange={(event) => handleChange(event)}
 						inputProps={{
-							name : 'applied',
-							id   : 'applied-check'
+							name: 'applied',
+							id: 'applied-check'
 						}}
 					>
 						<MenuItem value={'Yes'}>Yes</MenuItem>
@@ -112,8 +104,8 @@ const Form = (props) => {
 						name="interview"
 						onChange={(event) => handleChange(event)}
 						inputProps={{
-							name : 'interview',
-							id   : 'interview-check'
+							name: 'interview',
+							id: 'interview-check'
 						}}
 					>
 						<MenuItem value={'Yes'}>Yes</MenuItem>
@@ -128,8 +120,8 @@ const Form = (props) => {
 						name="offer"
 						onChange={(event) => handleChange(event)}
 						inputProps={{
-							name : 'offer',
-							id   : 'offer-check'
+							name: 'offer',
+							id: 'offer-check'
 						}}
 					>
 						<MenuItem value={'Yes'}>Yes</MenuItem>
@@ -142,7 +134,7 @@ const Form = (props) => {
 				</Button>
 			</form>
 		</div>
-	);
-};
+	)
+}
 
-export default Form;
+export default Form

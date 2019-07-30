@@ -1,19 +1,8 @@
-import React from 'react';
-import Logo from './Logo';
-import './endorsement.scss';
+import React from 'react'
+import Logo from './Logo'
+import './endorsement.scss'
 
-<<<<<<< HEAD
 const EndorsementChecklist = props => {
-
-    return (
-
-        <div>
-            <Logo className='logo ' />
-        </div>
-
-    )
-=======
-const EndorsementChecklist = (props) => {
 	return (
 		<div>
 			<div style={{ marginBottom: '5px', marginTop: '0' }}>
@@ -122,8 +111,7 @@ const EndorsementChecklist = (props) => {
 				</div>
 			</div>
 		</div>
-	);
-};
->>>>>>> 85e8b99a975cd503b568552a0e729f93a6b4378c
+	)
+}
 
-export default EndorsementChecklist;
+export default EndorsementChecklist

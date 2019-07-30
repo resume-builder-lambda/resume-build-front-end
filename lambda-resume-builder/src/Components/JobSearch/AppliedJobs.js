@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { withStyles, makeStyles } from '@material-ui/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined';
-import HomeIcon from '@material-ui/icons/CreateOutlined';
-import Form from './Form';
+import React, { useState } from 'react'
+import { withStyles, makeStyles } from '@material-ui/styles'
+import { Table, TableBody, TableCell, TableHead, TableRow, Paper } from '@material-ui/core'
+import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined'
+import HomeIcon from '@material-ui/icons/CreateOutlined'
+
+import Form from './Form'
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -19,7 +15,7 @@ const StyledTableCell = withStyles((theme) => ({
   body: {
     fontSize: 14
   }
-}))(TableCell);
+}))(TableCell)
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
@@ -27,7 +23,7 @@ const StyledTableRow = withStyles((theme) => ({
       backgroundColor: 'white'
     }
   }
-}))(TableRow);
+}))(TableRow)
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,20 +33,20 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 700
   }
-}));
+}))
 
 export default function CustomizedTables(props) {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState([])
 
   function createData(name, Position, Location, Applied, Interview, Offer) {
-    console.log('create data function', name, Position, Location, Applied, Interview, Offer);
-    return { name, Position, Location, Applied, Interview, Offer };
+    console.log('create data function', name, Position, Location, Applied, Interview, Offer)
+    return { name, Position, Location, Applied, Interview, Offer }
   }
 
   function addRow(values) {
-    console.log('values', values);
+    console.log('values', values)
     setRows([
       ...rows,
       createData(
@@ -61,7 +57,7 @@ export default function CustomizedTables(props) {
         values.interview,
         values.offer
       )
-    ]);
+    ])
   }
 
   return (
@@ -106,5 +102,5 @@ export default function CustomizedTables(props) {
         </Paper>
       </div>
     </div>
-  );
+  )
 }
