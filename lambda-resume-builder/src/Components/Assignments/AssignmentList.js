@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import Assignments from './Assignments';
 import networking from '../Images/networking.jpg'
@@ -33,19 +34,23 @@ export const assignments = [
     {name: 'Job Search Strategy',  img: `${jobsearch}`,link:'/dashboard/coming-soon' , assigns:['Do Things','Do Stuff','Do More']},
    
 ]
+=======
+import React from 'react'
+import Assignments from './Assignments'
+import { assignments } from './list'
+>>>>>>> f64ea1a66ff676dda39cf94d9f0b3847f9a5bbc5
 
 const AssignmentsList = () => {
-    
-        console.log (assignments)
-        return (
-            <div>
-                {assignments.map(assignment => {
-                    return <Assignments assignments={assignment} image={assignment.img} link={assignment.link} />
-                })}
-            </div>
-        )
-    }
+
+    console.log(assignments)
+    return (
+        <div>
+            {assignments.map(assignment => <Assignments assignments={assignment} image={assignment.img} link={assignment.link} />)}
+        </div>
+    )
+
+}
 
 
-
-export default AssignmentsList;
+export { assignments }
+export default AssignmentsList
