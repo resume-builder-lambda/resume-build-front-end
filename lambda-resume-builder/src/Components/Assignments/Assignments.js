@@ -28,15 +28,12 @@ const Assignments = props => {
 
         <div className={'card-1'}>
             <Link to={props.link}>
-            {/* <img alt='' src={props.image} style={{ height: '250PX', width: '98.5%', margin: '.5%', borderRadius: '15px 15px 0 0 ', boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)' }} />
-            <hr />
-            <h4 ><strong>{props.assignments.name}</strong> </h4> */}
+           
             <Card className={classes.card}>
                 <CardActionArea>
                     <CardMedia
                     className={classes.media}
                     image={props.image}
-                    // title="Contemplative Reptile"
                     />
                     <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -45,14 +42,7 @@ const Assignments = props => {
                     
                     </CardContent>
                 </CardActionArea>
-                {/* <CardActions>
-                    <Button size="small" color="primary">
-                    Share
-                    </Button>
-                    <Button size="small" color="primary">
-                    Learn More
-                    </Button>
-                </CardActions> */}
+            
              </Card>
            
             </Link>

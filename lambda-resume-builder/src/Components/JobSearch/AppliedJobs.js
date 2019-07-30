@@ -52,12 +52,6 @@ export default function CustomizedTables(props) {
   }
   
  
-
-  // useEffect(() => {
-  
-    
-  // },[rows]);
-
   function addRow (values) {
     console.log('values', values)
     setRows([...rows, createData(`${values.company}`, `${values.position}`, `${values.location}`, `${values.applied}`, `${values.interview}`, `${values.offer}`)])

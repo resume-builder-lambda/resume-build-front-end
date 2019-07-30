@@ -36,12 +36,12 @@ Tech Stack | Tech | Tech | Tech </li>
  week, and labs projects, with a link for any deployed projects 
 ❏ Education, featuring Lambda School and any previous schooling 
 
-❏ Green GitHub with quality contributions, including: 
+<p><b>❏ Green GitHub with quality contributions, including: </b></p>
 ❏ A clear headshot and professional user handle 
 ❏ Top six pinned projects should include any open source contributions and your Build Week or Labs projects 
 ❏ Weekly contributions to show ongoing commitment to skills-building
 
-❏ Original portfolio website (no templates from drag & drop website builders like wix), including:
+<p><b>❏ Original portfolio website (no templates from drag & drop website builders like wix), including:</b></p>
 ❏ Your own domain name (no subdomains), purchased through namecheap or other site.  Ask a career coach for a free purchase code to namecheap.com. 
 ❏ Long-form written descriptions of your projects and technical learning/progress
 ❏ Links to LinkedIn, GitHub, Medium, and any other relevant artifacts
