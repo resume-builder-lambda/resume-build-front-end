@@ -42,10 +42,10 @@ const Form = (props) => {
 	};
 
 	return (
-		<div style={{ marginBottom: '25px', fontSize: '13px' }}>
+		<div style={{ margin: '25px', fontSize: '13px' }}>
 			<form onSubmit={(event) => handleSubmit(event)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 				<Input
-					style={{ margin: '15px', width: '250px' }}
+					style={{ marginBottom: '15px', width: '250px' }}
 					placeholder="Company"
 					name="company"
 					required
@@ -57,7 +57,7 @@ const Form = (props) => {
 					}}
 				/>
 				<Input
-					style={{ margin: '15px', width: '250px' }}
+					style={{ marginBottom: '15px', width: '250px' }}
 					placeholder="Position"
 					name="position"
 					className={classes.input}
@@ -69,7 +69,7 @@ const Form = (props) => {
 				/>
 
 				<Input
-					style={{ margin: '15px', width: '250px' }}
+					style={{ marginBottom: '15px', width: '250px' }}
 					placeholder="Location"
 					name="location"
 					className={classes.input}
@@ -83,7 +83,7 @@ const Form = (props) => {
 				<FormControl className={classes.formControl}>
 					<InputLabel htmlFor="applied-check">Applied</InputLabel>
 					<Select
-						style={{ margin: '15px', width: '150px' }}
+						style={{ marginBottom: '15px', width: '150px' }}
 						value={values.applied}
 						name="applied"
 						onChange={(event) => handleChange(event)}
@@ -99,7 +99,7 @@ const Form = (props) => {
 				<FormControl className={classes.formControl}>
 					<InputLabel htmlFor="interview-check">Interview</InputLabel>
 					<Select
-						style={{ margin: '15px', width: '150px' }}
+						style={{ marginBottom: '15px', width: '150px' }}
 						value={values.interview}
 						name="interview"
 						onChange={(event) => handleChange(event)}
@@ -115,7 +115,7 @@ const Form = (props) => {
 				<FormControl className={classes.formControl}>
 					<InputLabel htmlFor="offer-check">Offer</InputLabel>
 					<Select
-						style={{ margin: '15px', width: '150px' }}
+						style={{ marginBottom: '15px', width: '150px' }}
 						value={values.offer}
 						name="offer"
 						onChange={(event) => handleChange(event)}

@@ -10,7 +10,9 @@
   .modal-main {
     position:fixed;
     background: white;
-    width: 50%;
+    border: 2px solid #BB1433;
+    border-radius: 8px;
+    width: auto;
     height: auto;
     top:50%;
     left:50%;
