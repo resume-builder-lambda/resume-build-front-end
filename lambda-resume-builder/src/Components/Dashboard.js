@@ -12,6 +12,7 @@ import Applied from './JobSearch/AppliedJobs.js'
 import ComingSoon from './Assignments/ComingSoon/ComingSoon'
 import AssignmentList from './Assignments/AssignmentList'
 import Profile from './Profile/Profile'
+import Feedback from './Feedback'
 import Endorsement from './EndorsementChecklist/EndorsementChecklist'
 import { AssignmentUpload } from './AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
@@ -22,15 +23,15 @@ import Calendar from './Calendar'
 import Logo from '../Components/Images/Lambda_Logo_White.png'
 
 const Dashboard = (props) => {
-	const [ state, setState ] = useState({
-		open : false,
-		path : window.location.pathname.split('/')[2]
+	const [state, setState] = useState({
+		open: false,
+		path: window.location.pathname.split('/')[2]
 	})
 
 	const handleDrawer = () => {
 		setState({
 			...state,
-			open : !state.open
+			open: !state.open
 		})
 	}
 
@@ -56,7 +57,7 @@ const Dashboard = (props) => {
 
 					<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
 						<img alt="Lambda Logo" src={Logo} style={{ height: 'auto', width: '100px' }} />
-						<p> {moment().tz('America/Los_Angeles').format('MMMM Do YYYY, h:mm:ss a')}</p>
+						{/* <p> {moment().tz('America/Los_Angeles').format('MMMM Do YYYY, h:mm:ss a')}</p> */}
 					</Typography>
 
 					<IconButton color="inherit">
@@ -70,7 +71,7 @@ const Dashboard = (props) => {
 			<Drawer
 				variant="permanent"
 				classes={{
-					paper : classNames(classes.drawerPaper, !state.open && classes.drawerPaperClose)
+					paper: classNames(classes.drawerPaper, !state.open && classes.drawerPaperClose)
 				}}
 				open={state.open}
 			>
@@ -109,13 +110,15 @@ const Dashboard = (props) => {
 							return <ColdOutreach />
 						case 'coming-soon':
 							return <ComingSoon />
+						case 'feedback':
+							return <Feedback />
 						default:
 							return
 					}
 				})()}
 			</main>
 
-			<CookieConsent
+			{/* <CookieConsent
 				location="bottom"
 				enableDeclineButton={true}
 				// debug={true}
@@ -127,13 +130,14 @@ const Dashboard = (props) => {
 				expires={150}
 			>
 				This website uses cookies to enhance the user experience. <span style={{ fontSize: '10px' }} />
-			</CookieConsent>
+			</CookieConsent> */}
+
 		</div>
 	)
 }
 
 Dashboard.propTypes = {
-	classes : PropTypes.object.isRequired
+	classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(Dashboard)
