@@ -1,39 +1,39 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Input, InputLabel, MenuItem, FormControl, Select, Button } from '@material-ui/core';
+import { Input, InputLabel, MenuItem, FormControl, Select, Button, FormHelperText } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-	root  : {
-		width     : '100%',
-		overflowX : 'auto'
+	root: {
+		width: '100%',
+		overflowX: 'auto'
 	},
-	table : {
-		minWidth : 700
+	table: {
+		minWidth: 700
 	}
 }));
 
 const Form = (props) => {
 	const classes = useStyles();
 
-	const [ values, setValues ] = useState({
-		company   : '',
-		position  : '',
-		location  : '',
-		applied   : '',
-		interview : '',
-		offer     : ''
+	const [values, setValues] = useState({
+		company: '',
+		position: '',
+		location: '',
+		applied: '',
+		interview: '',
+		offer: ''
 	});
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		props.addRow(values);
 		setValues({
-			company   : '',
-			position  : '',
-			location  : '',
-			applied   : '',
-			interview : '',
-			offer     : ''
+			company: '',
+			position: '',
+			location: '',
+			applied: '',
+			interview: '',
+			offer: ''
 		});
 	};
 
@@ -43,9 +43,9 @@ const Form = (props) => {
 
 	return (
 		<div style={{ marginBottom: '25px', fontSize: '13px' }}>
-			<form onSubmit={(event) => handleSubmit(event)}>
+			<form onSubmit={(event) => handleSubmit(event)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 				<Input
-					style={{ margin: '15px', width: '150px' }}
+					style={{ margin: '15px', width: '250px' }}
 					placeholder="Company"
 					name="company"
 					required
@@ -53,43 +53,43 @@ const Form = (props) => {
 					onChange={(event) => handleChange(event)}
 					value={values.company}
 					inputProps={{
-						'aria-label' : 'Description'
+						'aria-label': 'Description'
 					}}
 				/>
 				<Input
-					style={{ margin: '15px', width: '150px' }}
+					style={{ margin: '15px', width: '250px' }}
 					placeholder="Position"
 					name="position"
 					className={classes.input}
 					onChange={(event) => handleChange(event)}
 					value={values.position}
 					inputProps={{
-						'aria-label' : 'Description'
+						'aria-label': 'Description'
 					}}
 				/>
 
 				<Input
-					style={{ margin: '15px', width: '150px' }}
+					style={{ margin: '15px', width: '250px' }}
 					placeholder="Location"
 					name="location"
 					className={classes.input}
 					onChange={(event) => handleChange(event)}
 					value={values.location}
 					inputProps={{
-						'aria-label' : 'Description'
+						'aria-label': 'Description'
 					}}
 				/>
 
 				<FormControl className={classes.formControl}>
 					<InputLabel htmlFor="applied-check">Applied</InputLabel>
 					<Select
-						style={{ margin: '15px', width: '120px' }}
+						style={{ margin: '15px', width: '150px' }}
 						value={values.applied}
 						name="applied"
 						onChange={(event) => handleChange(event)}
 						inputProps={{
-							name : 'applied',
-							id   : 'applied-check'
+							name: 'applied',
+							id: 'applied-check'
 						}}
 					>
 						<MenuItem value={'Yes'}>Yes</MenuItem>
@@ -99,13 +99,13 @@ const Form = (props) => {
 				<FormControl className={classes.formControl}>
 					<InputLabel htmlFor="interview-check">Interview</InputLabel>
 					<Select
-						style={{ margin: '15px', width: '120px' }}
+						style={{ margin: '15px', width: '150px' }}
 						value={values.interview}
 						name="interview"
 						onChange={(event) => handleChange(event)}
 						inputProps={{
-							name : 'interview',
-							id   : 'interview-check'
+							name: 'interview',
+							id: 'interview-check'
 						}}
 					>
 						<MenuItem value={'Yes'}>Yes</MenuItem>
@@ -115,13 +115,13 @@ const Form = (props) => {
 				<FormControl className={classes.formControl}>
 					<InputLabel htmlFor="offer-check">Offer</InputLabel>
 					<Select
-						style={{ margin: '15px', width: '120px' }}
+						style={{ margin: '15px', width: '150px' }}
 						value={values.offer}
 						name="offer"
 						onChange={(event) => handleChange(event)}
 						inputProps={{
-							name : 'offer',
-							id   : 'offer-check'
+							name: 'offer',
+							id: 'offer-check'
 						}}
 					>
 						<MenuItem value={'Yes'}>Yes</MenuItem>
