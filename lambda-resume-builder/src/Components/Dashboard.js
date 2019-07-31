@@ -57,7 +57,7 @@ const Dashboard = (props) => {
 
 					<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
 						<img alt="Lambda Logo" src={Logo} style={{ height: 'auto', width: '100px' }} />
-						<p> {moment().tz('America/Los_Angeles').format('MMMM Do YYYY, h:mm:ss a')}</p>
+						{/* <p> {moment().tz('America/Los_Angeles').format('MMMM Do YYYY, h:mm:ss a')}</p> */}
 					</Typography>
 
 					<IconButton color="inherit">

@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import { withStyles, makeStyles } from '@material-ui/styles'
-import { Table, TableBody, TableCell, TableHead, TableRow, Paper } from '@material-ui/core'
+import { Table, TableBody, TableCell, TableHead, TableRow, Paper, Fab } from '@material-ui/core'
+import AddIcon from '@material-ui/icons/Add';
+import Modal from './Modal'
 import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import HomeIcon from '@material-ui/icons/CreateOutlined'
 
-import Form from './Form'
+
+
+
+
+
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -32,11 +38,24 @@ const useStyles = makeStyles((theme) => ({
   },
   table: {
     minWidth: 700
-  }
+  },
+  fab: {
+    background: '#BB1433'
+  },
 }))
 
 export default function CustomizedTables(props) {
   const classes = useStyles()
+
+  const [show, setShow] = useState(false)
+
+  const showModal = () => {
+    setShow(!show);
+  };
+
+  const hideModal = () => {
+    setShow(false);
+  };
 
   const [rows, setRows] = useState([])
 
@@ -62,8 +81,9 @@ export default function CustomizedTables(props) {
 
   return (
     <div>
-      <Form addRow={addRow} />
 
+      <Modal show={show} handleClose={hideModal} addRow={addRow} />
+      <p style={{marginBottom: '30px'}}>A job search log is a great way to set goals and keep motivated to achieve them. You can look back and see how many jobs and for what positions you have applied for. This can also help you to see where you were successful and where you may need some improvements with your job search tools.</p>
       <div>
         <Paper className={classes.root}>
           <Table className={classes.table}>
@@ -101,6 +121,10 @@ export default function CustomizedTables(props) {
           </Table>
         </Paper>
       </div>
+      <Fab color="primary" aria-label="add" className={classes.fab} onClick={showModal} style={{ marginTop: '40px', float: 'right' }}>
+        <AddIcon />
+      </Fab>
+
     </div>
   )
 }
