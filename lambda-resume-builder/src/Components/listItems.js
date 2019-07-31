@@ -6,6 +6,7 @@ import CheckIcon from '@material-ui/icons/VerifiedUserOutlined'
 import CancelIcon from '@material-ui/icons/ExitToApp'
 import AppliedIcon from '@material-ui/icons/FindInPageOutlined'
 import HomeIcon from '@material-ui/icons/HomeOutlined'
+import FeedbackIcon from '@material-ui/icons/FeedbackOutlined'
 import { Link } from 'react-router-dom'
 
 import Cookies from 'js-cookie'
@@ -80,8 +81,22 @@ const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Log Out" />
     </ListItem>
+
+    <Link style={{ textDecoration: 'none' }} to="/dashboard/feedback">
+      <ListItem button>
+        <ListItemIcon style={{ color: "#bb1333" }}>
+          <Tooltip title='User Feedback' placement='right'>
+          <FeedbackIcon/>
+          </Tooltip>
+        </ListItemIcon>
+        <ListItemText primary="Feedback" />
+      </ListItem>
+    </Link>
+
   </div>
 )
+
+
 
 function handleLogOut() {
   Cookies.remove('github')
