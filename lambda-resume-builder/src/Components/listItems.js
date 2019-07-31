@@ -50,11 +50,11 @@ const mainListItems = (
     <Link style={{ textDecoration: 'none' }} to="/dashboard/applied-jobs">
       <ListItem button>
         <ListItemIcon style={{ color: "#bb1333" }}>
-          <Tooltip title='Job Search' placement='right'>
+          <Tooltip title='Job Tracker' placement='right'>
             <AppliedIcon />
           </Tooltip>
         </ListItemIcon>
-        <ListItemText primary="Job Search" />
+        <ListItemText primary="Job Tracker" />
       </ListItem>
     </Link>
 
@@ -86,7 +86,7 @@ const secondaryListItems = (
       <ListItem button>
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title='User Feedback' placement='right'>
-          <FeedbackIcon/>
+            <FeedbackIcon />
           </Tooltip>
         </ListItemIcon>
         <ListItemText primary="Feedback" />
