@@ -7,7 +7,7 @@ import './modal.css'
 
 const Modal = (props) => {
 
-    const showHideClassName = props.show ? "modal display-block" : "modal display-none";
+    const showHideClassName = props.show ? "modal display-block" : "modal display-none"
 
     return (
         <div className={showHideClassName}>
@@ -18,7 +18,7 @@ const Modal = (props) => {
                     </button>
             </section>
         </div>
-    );
-};
+    )
+}
 
 export default Modal

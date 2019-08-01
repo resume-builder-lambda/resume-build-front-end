@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { withStyles, makeStyles } from '@material-ui/styles'
 import { Table, TableBody, TableCell, TableHead, TableRow, Paper, Fab } from '@material-ui/core'
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from '@material-ui/icons/Add'
 import Modal from './Modal'
 import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import HomeIcon from '@material-ui/icons/CreateOutlined'
@@ -50,12 +50,12 @@ export default function CustomizedTables(props) {
   const [show, setShow] = useState(false)
 
   const showModal = () => {
-    setShow(!show);
-  };
+    setShow(!show)
+  }
 
   const hideModal = () => {
-    setShow(false);
-  };
+    setShow(false)
+  }
 
   const [rows, setRows] = useState([])
 
