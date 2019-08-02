@@ -2,17 +2,12 @@ import React, { useState } from 'react'
 import { withStyles, makeStyles } from '@material-ui/styles'
 import { Table, TableBody, TableCell, TableHead, TableRow, Paper, Fab } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
-import Modal from './Modal'
 import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import HomeIcon from '@material-ui/icons/CreateOutlined'
 
+import Modal from './Modal'
 
-
-
-
-
-
-const StyledTableCell = withStyles((theme) => ({
+const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: '#2F2C4B',
     color: 'white',
@@ -23,7 +18,7 @@ const StyledTableCell = withStyles((theme) => ({
   }
 }))(TableCell)
 
-const StyledTableRow = withStyles((theme) => ({
+const StyledTableRow = withStyles(theme => ({
   root: {
     '&:nth-of-type(odd)': {
       backgroundColor: 'white'
@@ -31,7 +26,7 @@ const StyledTableRow = withStyles((theme) => ({
   }
 }))(TableRow)
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     overflowX: 'auto'
@@ -49,41 +44,29 @@ export default function CustomizedTables(props) {
 
   const [show, setShow] = useState(false)
 
-  const showModal = () => {
-    setShow(!show)
-  }
-
-  const hideModal = () => {
-    setShow(false)
-  }
-
   const [rows, setRows] = useState([])
 
-  function createData(name, Position, Location, Applied, Interview, Offer) {
-    console.log('create data function', name, Position, Location, Applied, Interview, Offer)
-    return { name, Position, Location, Applied, Interview, Offer }
+  function createData(fields) {
+    const { name, position, location, applied, interview, offer } = fields
+    return {
+      company: name,
+      position,
+      location,
+      applied,
+      interview,
+      offer
+    }
   }
 
   function addRow(values) {
-    console.log('values', values)
-    setRows([
-      ...rows,
-      createData(
-        values.company,
-        values.position,
-        values.location,
-        values.applied,
-        values.interview,
-        values.offer
-      )
-    ])
+    setRows([...rows, createData(values)])
   }
 
   return (
     <div>
 
-      <Modal show={show} handleClose={hideModal} addRow={addRow} />
-      <p style={{marginBottom: '30px'}}>A job search log is a great way to set goals and keep motivated to achieve them. You can look back and see how many jobs and for what positions you have applied for. This can also help you to see where you were successful and where you may need some improvements with your job search tools.</p>
+      <Modal show={() => setShow(!show)} handleClose={() => setShow(!show)} addRow={addRow} />
+      <p style={{ marginBottom: '30px' }}>A job search log is a great way to set goals and keep motivated to achieve them. You can look back and see how many jobs and for what positions you have applied for. This can also help you to see where you were successful and where you may need some improvements with your job search tools.</p>
       <div>
         <Paper className={classes.root}>
           <Table className={classes.table}>
@@ -121,7 +104,7 @@ export default function CustomizedTables(props) {
           </Table>
         </Paper>
       </div>
-      <Fab color="primary" aria-label="add" className={classes.fab} onClick={showModal} style={{ marginTop: '40px', float: 'right' }}>
+      <Fab color="primary" aria-label="add" className={classes.fab} onClick={() => setShow(!show)} style={{ marginTop: '40px', float: 'right' }}>
         <AddIcon />
       </Fab>
 
