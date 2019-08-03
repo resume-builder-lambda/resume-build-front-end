@@ -11,3 +11,8 @@ export default () => {
         }
     })
 }
+
+export const handleError = err => console.error({
+    status: err.response.status,
+    message: err.response.data.errors[0].message
+})

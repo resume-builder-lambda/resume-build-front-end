@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 import jwt_decode from 'jwt-decode'
 import axios from 'axios'
-import axioken from '../Utilities/axioken'
+import axioken, { handleError } from '../Utilities'
 
 const SUCCESS = 'SUCCESS',
 	GETJOBS = 'GETJOBS'
@@ -33,10 +33,7 @@ const register = user => dispatch => {
 				window.location.pathname = '/dashboard/profile'
 			}
 		})
-		.catch(err => console.error({
-			status: err.response.status,
-			message: err.response.data.errors[0].message
-		}))
+		.catch(err => handleError(err))
 }
 
 const login = creds => dispatch => {
@@ -61,10 +58,7 @@ const login = creds => dispatch => {
 				window.location.pathname = '/dashboard/profile'
 			}
 		})
-		.catch(err => console.error({
-			status: err.response.status,
-			message: err.response.data.errors[0].message
-		}))
+		.catch(err => handleError(err))
 }
 
 const createGoogleUser = google => dispatch => {
@@ -94,10 +88,7 @@ const createGoogleUser = google => dispatch => {
 				window.location.pathname = '/dashboard/profile'
 			}
 		})
-		.catch(err => console.error({
-			status: err.response.status,
-			message: err.response.data.errors[0].message
-		}))
+		.catch(err => handleError(err))
 }
 
 const getJobs = () => dispatch => {
@@ -118,10 +109,7 @@ const getJobs = () => dispatch => {
         `
 	})
 		.then(res => dispatch({ type: GETJOBS, payload: res.data.data.jobs }))
-		.catch(err => console.error({
-			status: err.response.status,
-			message: err.response.data.errors[0].message
-		}))
+		.catch(err => handleError(err))
 
 }
 
@@ -144,10 +132,7 @@ const addJob = job => dispatch => {
         `
 	})
 		.then(() => getJobs())
-		.catch(err => console.error({
-			status: err.response.status,
-			message: err.response.data.errors[0].message
-		}))
+		.catch(err => handleError(err))
 
 }
 
@@ -174,10 +159,29 @@ const updateJob = job => dispatch => {
 			console.log(res.data.data.upJob)
 			getJobs()
 		})
-		.catch(err => console.error({
-			status: err.response.status,
-			message: err.response.data.errors[0].message
-		}))
+		.catch(err => handleError(err))
+
+}
+
+const delJob = id => dispatch => {
+
+	axioken().post(url, {
+		query: `
+		mutation{
+			delJob(_id: "${id}"){
+				_id
+				company
+				position
+				location
+				applied
+				interview
+				offer
+			}
+		}
+		`
+	})
+		.then(res => dispatch({ type: GETJOBS, payload: res.data.data.delJob }))
+		.catch(err => handleError(err))
 
 }
 
@@ -189,5 +193,6 @@ export {
 	createGoogleUser,
 	getJobs,
 	addJob,
-	updateJob
+	updateJob,
+	delJob
 }

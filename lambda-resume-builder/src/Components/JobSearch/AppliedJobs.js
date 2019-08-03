@@ -6,7 +6,7 @@ import AddIcon from '@material-ui/icons/Add'
 import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import HomeIcon from '@material-ui/icons/CreateOutlined'
 
-import { getJobs, addJob, updateJob } from '../../Actions'
+import { getJobs, addJob, updateJob, delJob } from '../../Actions'
 
 import Modal from './Modal'
 
@@ -129,7 +129,7 @@ function CustomizedTables(props) {
                   </StyledTableCell>
 
                 <StyledTableCell align="center">
-                  Edit/Del
+                  Delete/Edit
                   </StyledTableCell>
 
               </TableRow>
@@ -148,12 +148,20 @@ function CustomizedTables(props) {
                     <StyledTableCell align="center">{row.interview === true ? 'Yes' : 'No'}</StyledTableCell>
                     <StyledTableCell align="center">{row.offer === true ? 'Yes' : 'No'}</StyledTableCell>
                     <StyledTableCell align="center">
-                      <AppliedIcon />
+                      <AppliedIcon
+                        cursor='pointer'
+                        onClick={() => {
+                          props.delJob(row._id)
+                          setUpdated(false)
+                        }}
+                      />
                       <span style={{ fontSize: '35px' }}>|</span>
-                      <HomeIcon cursor='pointer' onClick={() => {
-                        setShow(true)
-                        setEditRow({ bool: true, row })
-                      }} />
+                      <HomeIcon
+                        cursor='pointer'
+                        onClick={() => {
+                          setShow(true)
+                          setEditRow({ bool: true, row })
+                        }} />
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
@@ -188,5 +196,6 @@ export default connect(
   mapStateToProps, {
     getJobs,
     addJob,
-    updateJob
+    updateJob,
+    delJob
   })(CustomizedTables)
