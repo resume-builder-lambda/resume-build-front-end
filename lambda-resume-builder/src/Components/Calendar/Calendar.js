@@ -71,6 +71,10 @@ export class Calendar extends SampleBase {
             </table>
           </PropertyPane>
         </div>
-      </div>)
+      </div>
+
+    )
+
   }
+
 }

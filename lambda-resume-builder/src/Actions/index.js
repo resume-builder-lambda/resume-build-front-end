@@ -1,13 +1,18 @@
 import Cookies from 'js-cookie'
 import jwt_decode from 'jwt-decode'
+import axios from 'axios'
+import axioken from '../Utilities/axioken'
 
-const SUCCESS = 'SUCCESS'
+const SUCCESS = 'SUCCESS',
+	GETJOBS = 'GETJOBS'
 
-const register = (user) => (dispatch) => {
-	let requestBody = {
-		query : `
+const url = 'https://lambda-crp.herokuapp.com/graphql'
+
+const register = user => dispatch => {
+	axios.post(url, {
+		query: `
       mutation{
-        createUser(userInput:{
+        createUser(userInput: {
           email:"${user.email}",
           password:"${user.password}",
           role: "${user.role}"
@@ -16,67 +21,57 @@ const register = (user) => (dispatch) => {
           token
           tokenExp
         }
-      }
-    `
-	}
-
-	fetch('https://lambda-crp.herokuapp.com/graphql', {
-		method  : 'POST',
-		body    : JSON.stringify(requestBody),
-		headers : { 'content-type': 'application/json' }
+	  }
+	  `
 	})
-		.then((res) => {
-			return res.json()
-		})
-		.then((res) => {
+		.then(res => {
 			console.log('REGISTERED', res)
-			Cookies.set('token', res.data.createUser.token)
+			const token = res.data.data.createUser.token
+			Cookies.set('token', token)
 			dispatch({ type: SUCCESS, payload: res.data })
+			if (token) {
+				window.location.pathname = '/dashboard/profile'
+			}
 		})
-		.catch((err) => {
-			console.log(err)
-		})
+		.catch(err => console.error({
+			status: err.response.status,
+			message: err.response.data.errors[0].message
+		}))
 }
 
-const login = (creds) => (dispatch) => {
-	let requestBody = {
-		query : `
+const login = creds => dispatch => {
+	axios.post(url, {
+		query: `
       query{
         login(email:"${creds.email}", password:"${creds.password}"){
           token
         }
-      }
-    `
-	}
-
-	fetch('https://lambda-crp.herokuapp.com/graphql', {
-		method  : 'POST',
-		body    : JSON.stringify(requestBody),
-		headers : { 'content-type': 'application/json' }
+	  }
+	  `
 	})
-		.then((res) => {
-			console.log('this is the response', res)
-			return res.json()
-		})
-		.then((res) => {
-			const { token } = res.data.login
+		.then(res => {
 			console.log('second response', res)
+			const { token } = res.data.data.login
 			Cookies.set('token', token)
 			Cookies.set('creds', JSON.stringify(creds))
 			const admin = jwt_decode(token)
 			console.log('admin', admin)
 			dispatch({ type: SUCCESS, payload: token })
+			if (token) {
+				window.location.pathname = '/dashboard/profile'
+			}
 		})
-		.catch((err) => console.log(err))
+		.catch(err => console.error({
+			status: err.response.status,
+			message: err.response.data.errors[0].message
+		}))
 }
 
-const createGoogleUser = (google) => (dispatch) => {
-	console.log(google)
-
-	let requestBody = {
-		query : `
+const createGoogleUser = google => dispatch => {
+	axios.post(url, {
+		query: `
       mutation{
-        createGoogleUser(googleData:{
+        createGoogleUser(googleData: {
           token: "${google.token}", 
           image: "${google.image}", 
           email: "${google.email}", 
@@ -87,27 +82,79 @@ const createGoogleUser = (google) => (dispatch) => {
           token
           tokenExp
         }
-      }
-  `
-	}
-
-	fetch('https://lambda-crp.herokuapp.com/graphql', {
-		method  : 'POST',
-		body    : JSON.stringify(requestBody),
-		headers : { 'content-type': 'application/json' }
+	  }
+	  `
 	})
-		.then((res) => {
-			return res.json()
-		})
-		.then((res) => {
+		.then(res => {
 			console.log('second response', res)
-			const { token } = res.data.createGoogleUser
-			localStorage.setItem('token', token)
+			const { token } = res.data.data.createGoogleUser
 			Cookies.set('token', token)
-			const admin = jwt_decode(token)
-			console.log('admin', admin)
 			dispatch({ type: SUCCESS, payload: token })
+			if (token) {
+				window.location.pathname = '/dashboard/profile'
+			}
 		})
+		.catch(err => console.error({
+			status: err.response.status,
+			message: err.response.data.errors[0].message
+		}))
 }
 
-export { SUCCESS, register, login, createGoogleUser }
+const getJobs = () => dispatch => {
+
+	axioken().post(url, {
+		query: `
+        {
+          jobs{
+            company
+            position
+            location
+            applied
+            interview
+            offer
+          }
+        }
+        `
+	})
+		.then(res => dispatch({ type: GETJOBS, payload: res.data.data.jobs }))
+		.catch(err => console.error(err, 'yeah'))
+
+}
+
+const addJob = job => dispatch => {
+
+	axioken().post(url, {
+		query: `
+        mutation{
+          addJob(jobInput: {
+            company: "${job.company}",
+            position: "${job.position}",
+            location: "${job.location}",
+            applied: ${job.applied === 'Yes'},
+            interview: ${job.interview === 'Yes'},
+            offer: ${job.offer === 'Yes'}
+          }){
+            company
+            position
+            location
+            applied
+            interview
+            offer
+          }
+        }
+        `
+	})
+		.then(() => getJobs())
+		.catch(err => console.error(err))
+
+}
+
+export {
+	GETJOBS,
+	SUCCESS,
+	register,
+	login,
+	createGoogleUser,
+	getJobs,
+	addJob
+}

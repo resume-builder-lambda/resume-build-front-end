@@ -1,18 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 import { withStyles, makeStyles } from '@material-ui/styles'
 import { Table, TableBody, TableCell, TableHead, TableRow, Paper, Fab } from '@material-ui/core'
-import AddIcon from '@material-ui/icons/Add';
-import Modal from './Modal'
+import AddIcon from '@material-ui/icons/Add'
 import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import HomeIcon from '@material-ui/icons/CreateOutlined'
 
+import { getJobs, addJob } from '../../Actions'
 
+import Modal from './Modal'
 
-
-
-
-
-const StyledTableCell = withStyles((theme) => ({
+const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: '#2F2C4B',
     color: 'white',
@@ -23,7 +21,7 @@ const StyledTableCell = withStyles((theme) => ({
   }
 }))(TableCell)
 
-const StyledTableRow = withStyles((theme) => ({
+const StyledTableRow = withStyles(theme => ({
   root: {
     '&:nth-of-type(odd)': {
       backgroundColor: 'white'
@@ -31,7 +29,7 @@ const StyledTableRow = withStyles((theme) => ({
   }
 }))(TableRow)
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     overflowX: 'auto'
@@ -44,72 +42,112 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function CustomizedTables(props) {
-  const classes = useStyles()
+function CustomizedTables(props) {
 
   const [show, setShow] = useState(false)
+  const [updated, setUpdated] = useState(false)
+  const [rows, setRows] = useState(props.jobs)
+  const [newRow, setNewRow] = useState(null)
 
-  const showModal = () => {
-    setShow(!show);
-  };
+  useEffect(() => {
 
-  const hideModal = () => {
-    setShow(false);
-  };
+    props.jobs.length !== 0 && setUpdated(true)
 
-  const [rows, setRows] = useState([])
+  }, [props.jobs])
 
-  function createData(name, Position, Location, Applied, Interview, Offer) {
-    console.log('create data function', name, Position, Location, Applied, Interview, Offer)
-    return { name, Position, Location, Applied, Interview, Offer }
-  }
+  useEffect(() => {
 
-  function addRow(values) {
-    console.log('values', values)
-    setRows([
-      ...rows,
-      createData(
-        values.company,
-        values.position,
-        values.location,
-        values.applied,
-        values.interview,
-        values.offer
-      )
-    ])
+    if (!updated || newRow) {
+
+      if (newRow) {
+
+        props.addJob(newRow)
+        setNewRow(null)
+        setUpdated(false)
+
+      } else props.getJobs()
+
+    } else setRows(props.jobs)
+
+  }, [updated, newRow])
+
+  const classes = useStyles()
+
+  const createData = fields => {
+
+    const { company, position, location, applied, interview, offer } = fields
+
+    setNewRow({
+      company,
+      position,
+      location,
+      applied,
+      interview,
+      offer
+    })
+
   }
 
   return (
+
     <div>
 
-      <Modal show={show} handleClose={hideModal} addRow={addRow} />
-      <p style={{marginBottom: '30px'}}>A job search log is a great way to set goals and keep motivated to achieve them. You can look back and see how many jobs and for what positions you have applied for. This can also help you to see where you were successful and where you may need some improvements with your job search tools.</p>
+      <Modal
+        show={show}
+        setShow={setShow}
+        addRow={createData}
+      />
+
+      <p style={{ marginBottom: '30px' }}>A job search log is a great way to set goals and keep motivated to achieve them. You can look back and see how many jobs and for what positions you have applied for. This can also help you to see where you were successful and where you may need some improvements with your job search tools.</p>
+
       <div>
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                <StyledTableCell>Company</StyledTableCell>
-                <StyledTableCell align="center">Position</StyledTableCell>
-                <StyledTableCell align="center">Location</StyledTableCell>
-                <StyledTableCell align="center">Applied</StyledTableCell>
-                <StyledTableCell align="center">Interview</StyledTableCell>
-                <StyledTableCell align="center">Offer</StyledTableCell>
-                <StyledTableCell align="center">Edit/Del</StyledTableCell>
+                <StyledTableCell>
+                  Company
+                  </StyledTableCell>
+
+                <StyledTableCell align="center">
+                  Position
+                  </StyledTableCell>
+
+                <StyledTableCell align="center">
+                  Location
+                  </StyledTableCell>
+
+                <StyledTableCell align="center">
+                  Applied
+                  </StyledTableCell>
+
+                <StyledTableCell align="center">
+                  Interview
+                  </StyledTableCell>
+
+                <StyledTableCell align="center">
+                  Offer
+                  </StyledTableCell>
+
+                <StyledTableCell align="center">
+                  Edit/Del
+                  </StyledTableCell>
+
               </TableRow>
             </TableHead>
+
             <TableBody>
               {rows &&
-                rows.map((row) => (
-                  <StyledTableRow key={row.name}>
+                rows.map((row, index) => (
+                  <StyledTableRow key={index * Math.random()}>
                     <StyledTableCell component="th" scope="row">
-                      {row.name}
+                      {row.company}
                     </StyledTableCell>
-                    <StyledTableCell align="center">{row.Position}</StyledTableCell>
-                    <StyledTableCell align="center">{row.Location}</StyledTableCell>
-                    <StyledTableCell align="center">{row.Applied}</StyledTableCell>
-                    <StyledTableCell align="center">{row.Interview}</StyledTableCell>
-                    <StyledTableCell align="center">{row.Offer}</StyledTableCell>
+                    <StyledTableCell align="center">{row.position}</StyledTableCell>
+                    <StyledTableCell align="center">{row.location}</StyledTableCell>
+                    <StyledTableCell align="center">{row.applied === true ? 'Yes' : 'No'}</StyledTableCell>
+                    <StyledTableCell align="center">{row.interview === true ? 'Yes' : 'No'}</StyledTableCell>
+                    <StyledTableCell align="center">{row.offer === true ? 'Yes' : 'No'}</StyledTableCell>
                     <StyledTableCell align="center">
                       <AppliedIcon />
                       <span style={{ fontSize: '35px' }}>|</span>
@@ -121,10 +159,27 @@ export default function CustomizedTables(props) {
           </Table>
         </Paper>
       </div>
-      <Fab color="primary" aria-label="add" className={classes.fab} onClick={showModal} style={{ marginTop: '40px', float: 'right' }}>
+
+      <Fab
+        color="primary"
+        aria-label="add"
+        className={classes.fab}
+        onClick={() => setShow(!show)}
+        style={{
+          marginTop: '40px',
+          float: 'right'
+        }}>
         <AddIcon />
       </Fab>
 
     </div>
+
   )
+
 }
+
+const mapStateToProps = state => ({
+  jobs: state.jobs
+})
+
+export default connect(mapStateToProps, { getJobs, addJob })(CustomizedTables)

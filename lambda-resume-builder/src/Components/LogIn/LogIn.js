@@ -38,7 +38,6 @@ function SignIn(props) {
     console.log(google)
 
     props.login(google)
-    setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
 
   }
 
@@ -51,7 +50,6 @@ function SignIn(props) {
 
     if (creds) {
       props.login(creds)
-      setTimeout(() => window.location.pathname = '/dashboard/profile', 1000)
     }
 
   }, [creds])
