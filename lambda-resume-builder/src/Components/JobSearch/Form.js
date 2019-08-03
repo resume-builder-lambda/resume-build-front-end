@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Input, InputLabel, MenuItem, FormControl, Select, Button } from '@material-ui/core'
 
@@ -24,9 +24,22 @@ const Form = (props) => {
 		offer: ''
 	})
 
+	useEffect(() => {
+
+		const { applied, interview, offer } = props.editRow.row
+
+		setValues({
+			...props.editRow.row,
+			applied: applied === true ? 'Yes' : applied === false && 'No',
+			interview: interview === true ? 'Yes' : interview === false && 'No',
+			offer: offer === true ? 'Yes' : offer === false && 'No'
+		})
+
+	}, [props.editRow])
+
 	const handleSubmit = event => {
 		event.preventDefault()
-		props.addRow(values)
+		props.createData(values)
 		props.setShow(!props.show)
 		setValues({
 			company: '',
@@ -150,7 +163,7 @@ const Form = (props) => {
 					variant="outlined"
 					color="primary"
 					className={classes.button}
-				>Add</Button>
+				>{props.editRow.bool ? 'Update' : 'Add'}</Button>
 			</form>
 		</div>
 	)

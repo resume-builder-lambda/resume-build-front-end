@@ -106,6 +106,7 @@ const getJobs = () => dispatch => {
 		query: `
         {
           jobs{
+			_id
             company
             position
             location
@@ -117,7 +118,10 @@ const getJobs = () => dispatch => {
         `
 	})
 		.then(res => dispatch({ type: GETJOBS, payload: res.data.data.jobs }))
-		.catch(err => console.error(err, 'yeah'))
+		.catch(err => console.error({
+			status: err.response.status,
+			message: err.response.data.errors[0].message
+		}))
 
 }
 
@@ -134,27 +138,56 @@ const addJob = job => dispatch => {
             interview: ${job.interview === 'Yes'},
             offer: ${job.offer === 'Yes'}
           }){
-            company
-            position
-            location
-            applied
-            interview
-            offer
+            _id
           }
         }
         `
 	})
 		.then(() => getJobs())
-		.catch(err => console.error(err))
+		.catch(err => console.error({
+			status: err.response.status,
+			message: err.response.data.errors[0].message
+		}))
+
+}
+
+const updateJob = job => dispatch => {
+
+	axioken().post(url, {
+		query: `
+		mutation{
+			updateJob(upJob: {
+				_id: "${job._id}",
+				company: "${job.company}",
+				position: "${job.position}",
+				location: "${job.location}",
+				applied: ${job.applied === 'Yes'},
+				interview: ${job.interview === 'Yes'},
+				offer: ${job.offer === 'Yes'}
+			}){
+				_id
+			}
+		}
+		`
+	})
+		.then(res => {
+			console.log(res.data.data.upJob)
+			getJobs()
+		})
+		.catch(err => console.error({
+			status: err.response.status,
+			message: err.response.data.errors[0].message
+		}))
 
 }
 
 export {
-	GETJOBS,
 	SUCCESS,
+	GETJOBS,
 	register,
 	login,
 	createGoogleUser,
 	getJobs,
-	addJob
+	addJob,
+	updateJob
 }

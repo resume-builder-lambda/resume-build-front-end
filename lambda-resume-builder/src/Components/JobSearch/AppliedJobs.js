@@ -6,7 +6,7 @@ import AddIcon from '@material-ui/icons/Add'
 import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import HomeIcon from '@material-ui/icons/CreateOutlined'
 
-import { getJobs, addJob } from '../../Actions'
+import { getJobs, addJob, updateJob } from '../../Actions'
 
 import Modal from './Modal'
 
@@ -48,6 +48,7 @@ function CustomizedTables(props) {
   const [updated, setUpdated] = useState(false)
   const [rows, setRows] = useState(props.jobs)
   const [newRow, setNewRow] = useState(null)
+  const [editRow, setEditRow] = useState({ bool: false, row: {} })
 
   useEffect(() => {
 
@@ -57,13 +58,24 @@ function CustomizedTables(props) {
 
   useEffect(() => {
 
-    if (!updated || newRow) {
+    if (!updated || newRow || editRow.bool) {
 
       if (newRow) {
 
-        props.addJob(newRow)
-        setNewRow(null)
-        setUpdated(false)
+        if (editRow.bool) {
+
+          props.updateJob(newRow)
+          setNewRow(null)
+          setEditRow({ bool: false, row: {} })
+          setUpdated(false)
+
+        } else {
+
+          props.addJob(newRow)
+          setNewRow(null)
+          setUpdated(false)
+
+        }
 
       } else props.getJobs()
 
@@ -73,21 +85,6 @@ function CustomizedTables(props) {
 
   const classes = useStyles()
 
-  const createData = fields => {
-
-    const { company, position, location, applied, interview, offer } = fields
-
-    setNewRow({
-      company,
-      position,
-      location,
-      applied,
-      interview,
-      offer
-    })
-
-  }
-
   return (
 
     <div>
@@ -95,7 +92,9 @@ function CustomizedTables(props) {
       <Modal
         show={show}
         setShow={setShow}
-        addRow={createData}
+        createData={setNewRow}
+        editRow={editRow}
+        setEditRow={setEditRow}
       />
 
       <p style={{ marginBottom: '30px' }}>A job search log is a great way to set goals and keep motivated to achieve them. You can look back and see how many jobs and for what positions you have applied for. This can also help you to see where you were successful and where you may need some improvements with your job search tools.</p>
@@ -151,7 +150,10 @@ function CustomizedTables(props) {
                     <StyledTableCell align="center">
                       <AppliedIcon />
                       <span style={{ fontSize: '35px' }}>|</span>
-                      <HomeIcon />
+                      <HomeIcon cursor='pointer' onClick={() => {
+                        setShow(true)
+                        setEditRow({ bool: true, row })
+                      }} />
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
@@ -182,4 +184,9 @@ const mapStateToProps = state => ({
   jobs: state.jobs
 })
 
-export default connect(mapStateToProps, { getJobs, addJob })(CustomizedTables)
+export default connect(
+  mapStateToProps, {
+    getJobs,
+    addJob,
+    updateJob
+  })(CustomizedTables)

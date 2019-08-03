@@ -1,25 +1,29 @@
 import React from 'react'
 import Form from './Form'
 
-import './modal.css'
+import './modal.scss'
 
 
 
 const Modal = props => {
 
-    const showHideClassName = props.show ? "modal display-block" : "modal display-none"
-
     return (
-        <div className={showHideClassName}>
+        <div
+            className='modal'
+            style={{ display: props.show ? 'block' : 'none' }}>
             <section className="modal-main">
                 <Form
-                    addRow={props.addRow}
+                    createData={props.createData}
                     setShow={props.setShow}
                     show={props.show}
+                    editRow={props.editRow}
                 />
                 <button
                     type="button"
-                    onClick={() => props.setShow(!props.show)}
+                    onClick={() => {
+                        props.setEditRow({ bool: false, row: {} })
+                        props.setShow(!props.show)
+                    }}
                     style={{
                         marginTop: '25px',
                         background: '#0B3D91',
@@ -28,7 +32,7 @@ const Modal = props => {
                         borderRadius: '5px',
                         padding: '7px',
                         marginBottom: '15px'
-                    }}>close</button>
+                    }}>Close</button>
             </section>
         </div>
     )
