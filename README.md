@@ -35,12 +35,18 @@ You can find the project at :
 * React
 * SCSS
 * Material UI
-* GraphQL
+* Redux
+* React Router
+* Cookies
+* SyncFusion
 
 #### [Back end] built using:
 * GraphQL
 * MongoDB Atlas
-* OAuth
+* Mongoose
+* Express
+* Google OAuth
+* JSON Web Token
 
 # APIs
 
