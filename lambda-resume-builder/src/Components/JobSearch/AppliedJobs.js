@@ -92,7 +92,7 @@ function CustomizedTables(props) {
       <Modal
         show={show}
         setShow={setShow}
-        createData={setNewRow}
+        setNewRow={setNewRow}
         editRow={editRow}
         setEditRow={setEditRow}
       />

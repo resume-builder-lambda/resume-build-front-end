@@ -13,7 +13,7 @@ const Modal = props => {
             style={{ display: props.show ? 'block' : 'none' }}>
             <section className="modal-main">
                 <Form
-                    createData={props.createData}
+                    setNewRow={props.setNewRow}
                     setShow={props.setShow}
                     show={props.show}
                     editRow={props.editRow}

@@ -39,7 +39,7 @@ const Form = (props) => {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		props.createData(values)
+		props.setNewRow(values)
 		props.setShow(!props.show)
 		setValues({
 			company: '',
