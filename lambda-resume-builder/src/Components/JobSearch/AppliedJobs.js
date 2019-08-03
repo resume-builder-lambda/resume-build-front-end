@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import axioken from '../../Utilities/axioken'
+import { connect } from 'react-redux'
 import { withStyles, makeStyles } from '@material-ui/styles'
 import { Table, TableBody, TableCell, TableHead, TableRow, Paper, Fab } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import HomeIcon from '@material-ui/icons/CreateOutlined'
+
+import { getJobs, addJob } from '../../Actions'
 
 import Modal from './Modal'
 
@@ -40,85 +42,38 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function CustomizedTables(props) {
+function CustomizedTables(props) {
 
   const [show, setShow] = useState(false)
-
-  const [rows, setRows] = useState([])
-
+  const [updated, setUpdated] = useState(false)
+  const [rows, setRows] = useState(props.jobs)
   const [newRow, setNewRow] = useState(null)
 
   useEffect(() => {
 
-    if (newRow) {
+    props.jobs.length !== 0 && setUpdated(true)
 
-      axioken().post('https://lambda-crp.herokuapp.com/graphql', {
-        query: `
-        mutation{
-          addJob(jobInput: {
-            company: "${newRow.company}",
-            position: "${newRow.position}",
-            location: "${newRow.location}",
-            applied: ${newRow.applied === 'Yes'},
-            interview: ${newRow.interview === 'Yes'},
-            offer: ${newRow.offer === 'Yes'}
-          }){
-            company
-            position
-            location
-            applied
-            interview
-            offer
-          }
-        }
-        `
-      })
-        .then(() => {
-          axioken().post('https://lambda-crp.herokuapp.com/graphql', {
-            query: `
-          {
-            jobs{
-              company
-              position
-              location
-              applied
-              interview
-              offer
-            }
-          }
-          `
-          })
-            .then(res => setRows(res.data.data.jobs))
-        })
-        .catch(err => console.error(err))
+  }, [props.jobs])
 
-    } else {
+  useEffect(() => {
 
-      axioken().post('https://lambda-crp.herokuapp.com/graphql', {
-        query: `
-        {
-          jobs{
-            company
-            position
-            location
-            applied
-            interview
-            offer
-          }
-        }
-        `
-      })
-        .then(res => setRows(res.data.data.jobs))
-        .catch(err => console.error(err, 'yeah'))
+    if (!updated || newRow) {
 
-    }
+      if (newRow) {
 
+        props.addJob(newRow)
+        setNewRow(null)
+        setUpdated(false)
 
-  }, [newRow])
+      } else props.getJobs()
+
+    } else setRows(props.jobs)
+
+  }, [updated, newRow])
 
   const classes = useStyles()
 
-  function createData(fields) {
+  const createData = fields => {
 
     const { company, position, location, applied, interview, offer } = fields
 
@@ -222,3 +177,9 @@ export default function CustomizedTables(props) {
   )
 
 }
+
+const mapStateToProps = state => ({
+  jobs: state.jobs
+})
+
+export default connect(mapStateToProps, { getJobs, addJob })(CustomizedTables)

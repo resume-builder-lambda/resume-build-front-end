@@ -1,8 +1,10 @@
 import Cookies from 'js-cookie'
 import jwt_decode from 'jwt-decode'
 import axios from 'axios'
+import axioken from '../Utilities/axioken'
 
-const SUCCESS = 'SUCCESS'
+const SUCCESS = 'SUCCESS',
+	GETJOBS = 'GETJOBS'
 
 const url = 'https://lambda-crp.herokuapp.com/graphql'
 
@@ -98,4 +100,61 @@ const createGoogleUser = google => dispatch => {
 		}))
 }
 
-export { SUCCESS, register, login, createGoogleUser }
+const getJobs = () => dispatch => {
+
+	axioken().post(url, {
+		query: `
+        {
+          jobs{
+            company
+            position
+            location
+            applied
+            interview
+            offer
+          }
+        }
+        `
+	})
+		.then(res => dispatch({ type: GETJOBS, payload: res.data.data.jobs }))
+		.catch(err => console.error(err, 'yeah'))
+
+}
+
+const addJob = job => dispatch => {
+
+	axioken().post(url, {
+		query: `
+        mutation{
+          addJob(jobInput: {
+            company: "${job.company}",
+            position: "${job.position}",
+            location: "${job.location}",
+            applied: ${job.applied === 'Yes'},
+            interview: ${job.interview === 'Yes'},
+            offer: ${job.offer === 'Yes'}
+          }){
+            company
+            position
+            location
+            applied
+            interview
+            offer
+          }
+        }
+        `
+	})
+		.then(() => getJobs())
+		.catch(err => console.error(err))
+
+}
+
+export {
+	GETJOBS,
+	SUCCESS,
+	register,
+	login,
+	createGoogleUser,
+	getJobs,
+	addJob
+}
