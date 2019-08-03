@@ -66,7 +66,17 @@ function CustomizedTables(props) {
 
           props.updateJob(newRow)
           setNewRow(null)
-          setEditRow({ bool: false, row: {} })
+          setEditRow({
+            bool: false,
+            row: {
+              company: '',
+              position: '',
+              location: '',
+              applied: null,
+              interview: null,
+              offer: null
+            }
+          })
           setUpdated(false)
 
         } else {

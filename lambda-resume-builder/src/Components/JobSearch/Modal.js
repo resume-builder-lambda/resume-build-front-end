@@ -21,7 +21,17 @@ const Modal = props => {
                 <button
                     type="button"
                     onClick={() => {
-                        props.setEditRow({ bool: false, row: {} })
+                        props.setEditRow({
+                            bool: false,
+                            row: {
+                                company: '',
+                                position: '',
+                                location: '',
+                                applied: null,
+                                interview: null,
+                                offer: null
+                            }
+                        })
                         props.setShow(!props.show)
                     }}
                     style={{
