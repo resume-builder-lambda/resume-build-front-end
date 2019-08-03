@@ -10,7 +10,7 @@ const register = user => dispatch => {
 	axios.post(url, {
 		query: `
       mutation{
-        createUser(userInput:{
+        createUser(userInput: {
           email:"${user.email}",
           password:"${user.password}",
           role: "${user.role}"
@@ -69,7 +69,7 @@ const createGoogleUser = google => dispatch => {
 	axios.post(url, {
 		query: `
       mutation{
-        createGoogleUser(googleData:{
+        createGoogleUser(googleData: {
           token: "${google.token}", 
           image: "${google.image}", 
           email: "${google.email}", 
@@ -86,10 +86,7 @@ const createGoogleUser = google => dispatch => {
 		.then(res => {
 			console.log('second response', res)
 			const { token } = res.data.data.createGoogleUser
-			localStorage.setItem('token', token)
 			Cookies.set('token', token)
-			const admin = jwt_decode(token)
-			console.log('admin', admin)
 			dispatch({ type: SUCCESS, payload: token })
 			if (token) {
 				window.location.pathname = '/dashboard/profile'

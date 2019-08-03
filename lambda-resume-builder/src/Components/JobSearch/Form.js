@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { Input, InputLabel, MenuItem, FormControl, Select, Button, FormHelperText } from '@material-ui/core';
+import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/styles'
+import { Input, InputLabel, MenuItem, FormControl, Select, Button } from '@material-ui/core'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
 	root: {
 		width: '100%',
 		overflowX: 'auto'
@@ -10,10 +10,10 @@ const useStyles = makeStyles((theme) => ({
 	table: {
 		minWidth: 700
 	}
-}));
+}))
 
 const Form = (props) => {
-	const classes = useStyles();
+	const classes = useStyles()
 
 	const [values, setValues] = useState({
 		company: '',
@@ -22,11 +22,12 @@ const Form = (props) => {
 		applied: '',
 		interview: '',
 		offer: ''
-	});
+	})
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		props.addRow(values);
+	const handleSubmit = event => {
+		event.preventDefault()
+		props.addRow(values)
+		props.setShow(!props.show)
 		setValues({
 			company: '',
 			position: '',
@@ -34,18 +35,30 @@ const Form = (props) => {
 			applied: '',
 			interview: '',
 			offer: ''
-		});
-	};
+		})
+	}
 
-	const handleChange = (event) => {
-		setValues({ ...values, [event.target.name]: event.target.value });
-	};
+	const handleChange = event => {
+		setValues({ ...values, [event.target.name]: event.target.value })
+	}
 
 	return (
-		<div style={{ margin: '25px', fontSize: '13px' }}>
-			<form onSubmit={(event) => handleSubmit(event)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+		<div style={{
+			margin: '25px',
+			fontSize: '13px'
+		}}>
+			<form
+				onSubmit={event => handleSubmit(event)}
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center'
+				}}>
 				<Input
-					style={{ marginBottom: '15px', width: '250px' }}
+					style={{
+						marginBottom: '15px',
+						width: '250px'
+					}}
 					placeholder="Company"
 					name="company"
 					required
@@ -57,7 +70,10 @@ const Form = (props) => {
 					}}
 				/>
 				<Input
-					style={{ marginBottom: '15px', width: '250px' }}
+					style={{
+						marginBottom: '15px',
+						width: '250px'
+					}}
 					placeholder="Position"
 					name="position"
 					className={classes.input}
@@ -129,12 +145,15 @@ const Form = (props) => {
 					</Select>
 				</FormControl>
 
-				<Button type="submit" variant="outlined" color="primary" className={classes.button}>
-					Add
-				</Button>
+				<Button
+					type="submit"
+					variant="outlined"
+					color="primary"
+					className={classes.button}
+				>Add</Button>
 			</form>
 		</div>
-	);
-};
+	)
+}
 
-export default Form;
+export default Form
