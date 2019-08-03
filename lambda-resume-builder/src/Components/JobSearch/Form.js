@@ -19,21 +19,14 @@ const Form = (props) => {
 		company: '',
 		position: '',
 		location: '',
-		applied: '',
-		interview: '',
-		offer: ''
+		applied: null,
+		interview: null,
+		offer: null
 	})
 
 	useEffect(() => {
 
-		const { applied, interview, offer } = props.editRow.row
-
-		setValues({
-			...props.editRow.row,
-			applied: applied === true ? 'Yes' : applied === false && 'No',
-			interview: interview === true ? 'Yes' : interview === false && 'No',
-			offer: offer === true ? 'Yes' : offer === false && 'No'
-		})
+		setValues({ ...props.editRow.row })
 
 	}, [props.editRow])
 
@@ -45,9 +38,9 @@ const Form = (props) => {
 			company: '',
 			position: '',
 			location: '',
-			applied: '',
-			interview: '',
-			offer: ''
+			applied: null,
+			interview: null,
+			offer: null
 		})
 	}
 
@@ -121,8 +114,8 @@ const Form = (props) => {
 							id: 'applied-check'
 						}}
 					>
-						<MenuItem value={'Yes'}>Yes</MenuItem>
-						<MenuItem value={'No'}>No</MenuItem>
+						<MenuItem value={true}>Yes</MenuItem>
+						<MenuItem value={false}>No</MenuItem>
 					</Select>
 				</FormControl>
 				<FormControl className={classes.formControl}>
@@ -131,14 +124,14 @@ const Form = (props) => {
 						style={{ marginBottom: '15px', width: '150px' }}
 						value={values.interview}
 						name="interview"
-						onChange={(event) => handleChange(event)}
+						onChange={event => handleChange(event)}
 						inputProps={{
 							name: 'interview',
 							id: 'interview-check'
 						}}
 					>
-						<MenuItem value={'Yes'}>Yes</MenuItem>
-						<MenuItem value={'No'}>No</MenuItem>
+						<MenuItem value={true}>Yes</MenuItem>
+						<MenuItem value={false}>No</MenuItem>
 					</Select>
 				</FormControl>
 				<FormControl className={classes.formControl}>
@@ -153,8 +146,8 @@ const Form = (props) => {
 							id: 'offer-check'
 						}}
 					>
-						<MenuItem value={'Yes'}>Yes</MenuItem>
-						<MenuItem value={'No'}>No</MenuItem>
+						<MenuItem value={true}>Yes</MenuItem>
+						<MenuItem value={false}>No</MenuItem>
 					</Select>
 				</FormControl>
 

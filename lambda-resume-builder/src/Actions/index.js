@@ -122,9 +122,9 @@ const addJob = job => dispatch => {
             company: "${job.company}",
             position: "${job.position}",
             location: "${job.location}",
-            applied: ${job.applied === 'Yes'},
-            interview: ${job.interview === 'Yes'},
-            offer: ${job.offer === 'Yes'}
+            applied: ${job.applied},
+            interview: ${job.interview},
+            offer: ${job.offer}
           }){
             _id
           }
@@ -146,19 +146,16 @@ const updateJob = job => dispatch => {
 				company: "${job.company}",
 				position: "${job.position}",
 				location: "${job.location}",
-				applied: ${job.applied === 'Yes'},
-				interview: ${job.interview === 'Yes'},
-				offer: ${job.offer === 'Yes'}
+				applied: ${job.applied},
+				interview: ${job.interview},
+				offer: ${job.offer}
 			}){
 				_id
 			}
 		}
 		`
 	})
-		.then(res => {
-			console.log(res.data.data.upJob)
-			getJobs()
-		})
+		.then(() => getJobs())
 		.catch(err => handleError(err))
 
 }
