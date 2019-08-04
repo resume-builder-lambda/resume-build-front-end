@@ -14,7 +14,6 @@ import ComingSoon from './Assignments/ComingSoon/ComingSoon'
 import AssignmentList from './Assignments/AssignmentList'
 import Profile from './Profile/Profile'
 import Endorsement from './EndorsementChecklist/EndorsementChecklist'
-import { AssignmentUpload } from './AssignmentUpload/AssignmentUpload.js'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 import ColdOutreach from './Assignments/ColdOutreach/ColdOutreach'
 import { mainListItems, secondaryListItems } from './listItems'
@@ -96,7 +95,6 @@ const Dashboard = (props) => {
 					<Route path='/dashboard/assignments' component={AssignmentList} />
 					<Route path='/dashboard/calendar' component={Calendar} />
 					<Route path='/dashboard/endorsement' component={Endorsement} />
-					<Route path='/dashboard/assignment-upload' component={AssignmentUpload} />
 					<Route path='/dashboard/applied-jobs' component={Applied} />
 					<Route path='/dashboard/cold-outreach' component={ColdOutreach} />
 					<Route path='/dashboard/coming-soon' component={ComingSoon} />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { AssignmentUpload } from '../../AssignmentUpload/AssignmentUpload'
+import Upload from '../../Upload/Upload'
 import './cold-outreach.scss'
 
 const ColdOutreach = () => {
@@ -57,8 +57,10 @@ const ColdOutreach = () => {
 
             </ul>
 
-            <div style={{ marginTop: '50px' }}>
-                <AssignmentUpload className='aupload' />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <div id={'CardUpload'}  >
+                    <Upload />
+                </div>
             </div>
 
         </div>

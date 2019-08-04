@@ -1,14 +1,13 @@
 import React from 'react'
-import { AssignmentUpload } from '../../AssignmentUpload/AssignmentUpload'
+import Upload from '../../Upload/Upload'
 
 const ComingSoon = () => {
-
 
   return (
     <div>
       <p>Training Module Coming Soon...</p>
       <div style={{ marginTop: '50px' }}>
-        <AssignmentUpload />
+        <Upload />
       </div>
     </div>
   )
