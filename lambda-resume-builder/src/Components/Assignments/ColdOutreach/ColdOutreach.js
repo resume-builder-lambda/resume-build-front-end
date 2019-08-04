@@ -57,7 +57,7 @@ const ColdOutreach = () => {
 
             </ul>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <div className='Card'  >
+                <div className='Card_Upload'  >
                     <Upload />
                 </div>
             </div>

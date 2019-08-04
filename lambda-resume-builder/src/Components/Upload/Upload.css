@@ -17,6 +17,8 @@
 
 .Title{
 align-self: center;
+color: #555;
+margin-bottom: 10px;
 }
 
 .Files {
@@ -36,10 +38,6 @@ align-self: center;
   margin-top: 32px;
 }
 
-.Title {
-  margin-bottom: 32px;
-  color: #555;
-}
 
 .Filename {
   margin-bottom: 8px;
