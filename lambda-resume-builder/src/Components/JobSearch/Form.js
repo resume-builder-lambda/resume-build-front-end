@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Input, InputLabel, MenuItem, FormControl, Select, Button } from '@material-ui/core'
 
@@ -19,22 +19,28 @@ const Form = (props) => {
 		company: '',
 		position: '',
 		location: '',
-		applied: '',
-		interview: '',
-		offer: ''
+		applied: null,
+		interview: null,
+		offer: null
 	})
+
+	useEffect(() => {
+
+		setValues({ ...props.editRow.row })
+
+	}, [props.editRow])
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		props.addRow(values)
+		props.setNewRow(values)
 		props.setShow(!props.show)
 		setValues({
 			company: '',
 			position: '',
 			location: '',
-			applied: '',
-			interview: '',
-			offer: ''
+			applied: null,
+			interview: null,
+			offer: null
 		})
 	}
 
@@ -108,8 +114,8 @@ const Form = (props) => {
 							id: 'applied-check'
 						}}
 					>
-						<MenuItem value={'Yes'}>Yes</MenuItem>
-						<MenuItem value={'No'}>No</MenuItem>
+						<MenuItem value={true}>Yes</MenuItem>
+						<MenuItem value={false}>No</MenuItem>
 					</Select>
 				</FormControl>
 				<FormControl className={classes.formControl}>
@@ -118,14 +124,14 @@ const Form = (props) => {
 						style={{ marginBottom: '15px', width: '150px' }}
 						value={values.interview}
 						name="interview"
-						onChange={(event) => handleChange(event)}
+						onChange={event => handleChange(event)}
 						inputProps={{
 							name: 'interview',
 							id: 'interview-check'
 						}}
 					>
-						<MenuItem value={'Yes'}>Yes</MenuItem>
-						<MenuItem value={'No'}>No</MenuItem>
+						<MenuItem value={true}>Yes</MenuItem>
+						<MenuItem value={false}>No</MenuItem>
 					</Select>
 				</FormControl>
 				<FormControl className={classes.formControl}>
@@ -140,8 +146,8 @@ const Form = (props) => {
 							id: 'offer-check'
 						}}
 					>
-						<MenuItem value={'Yes'}>Yes</MenuItem>
-						<MenuItem value={'No'}>No</MenuItem>
+						<MenuItem value={true}>Yes</MenuItem>
+						<MenuItem value={false}>No</MenuItem>
 					</Select>
 				</FormControl>
 
@@ -150,7 +156,7 @@ const Form = (props) => {
 					variant="outlined"
 					color="primary"
 					className={classes.button}
-				>Add</Button>
+				>{props.editRow.bool ? 'Update' : 'Add'}</Button>
 			</form>
 		</div>
 	)

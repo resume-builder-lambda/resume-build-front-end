@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Badge, IconButton, Divider, Typography, List, Toolbar, AppBar, Drawer, CssBaseline } from '@material-ui/core'
@@ -24,16 +24,15 @@ import Logo from '../Components/Images/Lambda_Logo_White.png'
 
 const Dashboard = (props) => {
 	const [state, setState] = useState({
-		open: false,
+		open: true,
 		path: window.location.pathname.split('/')[2]
 	})
 
-	const handleDrawer = () => {
-		setState({
-			...state,
-			open: !state.open
-		})
-	}
+	const handleDrawer = () => setState({ ...state, open: !state.open })
+
+	useEffect(() => {
+		if (state.open) setTimeout(() => { handleDrawer() }, 5000)
+	}, [state.open])
 
 	const { classes } = props
 
