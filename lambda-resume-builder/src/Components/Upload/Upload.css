@@ -45,7 +45,7 @@ margin-bottom: 10px;
   color: #555;
 }
 
-.Row {
+#RowUpload {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -68,7 +68,7 @@ margin-bottom: 10px;
   align-items: center;
 }
 
-button {
+.uploadButton {
   font-family: "Roboto medium", sans-serif;
   font-size: 14px;
   display: inline-block;

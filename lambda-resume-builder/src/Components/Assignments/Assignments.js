@@ -5,11 +5,11 @@ import { makeStyles } from '@material-ui/styles'
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles({
-	card  : {
-		maxWidth : 500
+	card: {
+		maxWidth: 500
 	},
-	media : {
-		height : 300
+	media: {
+		height: 300
 	}
 })
 
@@ -19,7 +19,7 @@ const Assignments = (props) => {
 	console.log('props', props)
 
 	return (
-		<div className={'card-1'}>
+		<div id={'card-1'}>
 			<Link to={props.link}>
 				<Card className={classes.card}>
 					<CardActionArea>
