@@ -1,5 +1,5 @@
 import React from 'react'
-import { AssignmentUpload } from '../../AssignmentUpload/AssignmentUpload'
+
 
 const ComingSoon = () => {
 
@@ -8,7 +8,7 @@ const ComingSoon = () => {
     <div>
       <p>Training Module Coming Soon...</p>
       <div style={{ marginTop: '50px' }}>
-        <AssignmentUpload />
+
       </div>
     </div>
   )
