@@ -4,7 +4,7 @@
 
  ⚫️ | ⚫️ | ⚫️ | ⚫️ | ⚫️ | ️️:black_circle:
  :---: | :---: | :---: | :---: | :---: | :---: 
- [Brandon Allison](https://github.com/BrandonJAllison) | [Will Umstead](https://github.com/brellin) | [Nick Ballenger](https://github.com/Nick-Ballenger) | [Pat Palmerston](https://github.com/patpalmerston) | [Austin Powell](https://github.com/A-Powell) | [Darren "OAuth" Richardson](https://github.com/AntonioUniverse)
+ [Brandon ".then" Allison](https://github.com/BrandonJAllison) | [Will Umstead](https://github.com/brellin) | [Nick Ballenger](https://github.com/Nick-Ballenger) | [Pat Palmerston](https://github.com/patpalmerston) | [Austin Powell](https://github.com/A-Powell) | [Darren "OAuth" Richardson](https://github.com/AntonioUniverse)
  [<img src="https://avatars1.githubusercontent.com/u/47340734?s=460&v=4" width = "125" />](https://github.com/BrandonJAllison) | [<img src="https://avatars2.githubusercontent.com/u/46138601?s=460&v=4" width = "125" />](https://willujr.com) | [<img src="https://avatars3.githubusercontent.com/u/46663387?s=460&v=4" width = "125" />](https://github.com/Nick-Ballenger) | [<img src="https://avatars2.githubusercontent.com/u/45890605?s=460&v=4" width = "125" />](https://github.com/patpalmerston) | [<img src="https://avatars2.githubusercontent.com/u/13793846?s=460&v=4" width = "125" />](https://github.com/A-Powell) | [<img src="https://avatars0.githubusercontent.com/u/43352876?s=460&v=4" width = "125" />](https://github.com/AntonioUniverse)     
  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/BrandonJAllison) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/brellin) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Nick-Ballenger) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/patpalmerston) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/A-Powell) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AntonioUniverse)       
  [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brandon-allison-129987124/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brellin) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/nicholas-ballenger-b7704982) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/patpalmerston) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/austin-powell-617b92180) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/darren-richardson-86635817b)
@@ -35,12 +35,18 @@ You can find the project at :
 * React
 * SCSS
 * Material UI
-* GraphQL
+* Redux
+* React Router
+* Cookies
+* SyncFusion
 
 #### [Back end] built using:
 * GraphQL
 * MongoDB Atlas
-* OAuth
+* Mongoose
+* Express
+* Google OAuth
+* JSON Web Token
 
 # APIs
 
