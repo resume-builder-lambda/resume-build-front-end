@@ -54,7 +54,7 @@ function SignIn(props) {
 
   }, [creds])
 
-
+  console.log(props)
 
   return (
 
