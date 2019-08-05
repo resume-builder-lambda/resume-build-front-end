@@ -1,5 +1,5 @@
 import React from 'react'
-import { AssignmentUpload } from '../../AssignmentUpload/AssignmentUpload'
+import Upload from '../../Upload/Upload'
 import './cold-outreach.scss'
 
 const ColdOutreach = () => {
@@ -13,9 +13,9 @@ const ColdOutreach = () => {
                 height="315"
                 title='ass ign ment'
                 src="https://www.youtube.com/embed/2uqgQ3i1EEU"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer autoplay encrypted-media gyroscope picture-in-picture"
-                allowfullscreen
+                allowFullScreen
             />
 
             <div style={{
@@ -57,8 +57,10 @@ const ColdOutreach = () => {
 
             </ul>
 
-            <div style={{ marginTop: '50px' }}>
-                <AssignmentUpload className='aupload' />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <div id={'CardUpload'}  >
+                    <Upload />
+                </div>
             </div>
 
         </div>

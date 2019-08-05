@@ -1,16 +1,10 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import { makeStyles } from '@material-ui/styles'
+import { Link } from 'react-router-dom'
 import { ExpansionPanelSummary, ExpansionPanel, ExpansionPanelDetails, Typography } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import AssignCheck from '../Assignments/AssignmentCheck'
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		width: '100%',
-		margin: '5px'
-	}
-}))
+import { useStyles } from './styles'
+import { AssignmentCheck } from '../Assignments'
 
 export default function Accord(props) {
 	console.log(props)
@@ -28,17 +22,24 @@ export default function Accord(props) {
 						{props.title}
 					</Typography>
 				</ExpansionPanelSummary>
-				<ExpansionPanelDetails style={{display: 'flex', flexDirection:'column'}}>
-					<Typography style={{ marginLeft: '0' }}>
-						{props.assigns.map((assignment, index) => (
-							<AssignCheck key={index} complete={assignment.complete} url={assignment.url} assignment={assignment.name} />
-						))}
-					</Typography>
-					<p style={{ fontSize: '10px' }}>
-						<Link style={{ color: '#BB1333' }} to={`${props.link}`}>
+
+				<ExpansionPanelDetails style={{ display: 'flex', flexDirection: 'column' }}>
+
+					{props.assigns.map((assignment, index) => (
+						<AssignmentCheck
+							key={index}
+							complete={assignment.complete}
+							url={assignment.url}
+							assignment={assignment.name}
+						/>
+					))}
+
+					<Link style={{ color: '#BB1333' }} to={`${props.link}`}>
+						<p style={{ fontSize: '10px' }}>
 							Go To Module
-						</Link>
 						</p>
+					</Link>
+
 				</ExpansionPanelDetails>
 			</ExpansionPanel>
 		</div>
