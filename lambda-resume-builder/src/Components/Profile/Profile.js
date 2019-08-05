@@ -1,55 +1,50 @@
-import React, { useEffect } from 'react';
-import { Checkbox, Paper, Grid } from '@material-ui/core';
-import avatar from '../Images/avataaars.png';
-import { assignments } from '../Assignments/AssignmentList';
-import Accord from '../Accordian/Accordian';
-import { makeStyles } from '@material-ui/styles';
-import Swal from 'sweetalert2';
+import React, { useEffect } from 'react'
+import { Checkbox, Paper, Grid } from '@material-ui/core'
 
-import './profile.scss';
+import {useStyles} from './styles'
+import { assignments } from '../Assignments'
+import Accord from '../Accordian'
+import Swal from 'sweetalert2'
 
-const Profile = (props) => {
-	const [ checkState, setCheckState ] = React.useState({
-		checkedA : false,
-		checkedB : false,
-		checkedC : false,
-		checkedD : false
-	});
+import avatar from '../Images/avataaars.png'
 
-	const handleChange = (name) => (event) => {
-		event.stopPropagation();
-		setCheckState({ ...checkState, [name]: event.target.checked });
-	};
+import './profile.scss'
 
-	const useStyles = makeStyles((theme) => ({
-		root : {}
-	}));
+const Profile = props => {
 
-	useEffect(
-		() => {
-			const success = () => {
-				Swal.fire({
-					type   : 'success',
-					title  : 'Wow!',
-					text   : 'You Have Completed Your Goals',
-					footer : '<a href>Keep Up The Great Work!!!</a>'
-				});
-			};
-			if (
-				checkState.checkedA === true &&
-				checkState.checkedB === true &&
-				checkState.checkedC === true &&
-				checkState.checkedD === true
-			) {
-				success();
-			}
-		},
-		[ checkState.checkedA, checkState.checkedB, checkState.checkedC, checkState.checkedD ]
-	);
+	const [checkState, setCheckState] = React.useState({
+		checkedA: false,
+		checkedB: false,
+		checkedC: false,
+		checkedD: false
+	})
 
-	const classes = useStyles();
+	const handleChange = name => event => {
+		event.stopPropagation()
+		setCheckState({ ...checkState, [name]: event.target.checked })
+	}
+
+	useEffect(() => {
+		const success = () => {
+			Swal.fire({
+				type: 'success',
+				title: 'Wow!',
+				text: 'You Have Completed Your Goals',
+				footer: '<a href>Keep Up The Great Work!!!</a>'
+			})
+		}
+		if (checkState.checkedA &&
+			checkState.checkedB &&
+			checkState.checkedC &&
+			checkState.checkedD)
+			success()
+
+	}, [checkState])
+
+	const classes = useStyles()
 
 	return (
+
 		<div style={{ marginBottom: '100px' }}>
 			<div style={{ marginBottom: '30px' }}>
 				<img
@@ -57,18 +52,27 @@ const Profile = (props) => {
 					title="Pirate Josh Knell"
 					src={avatar}
 					style={{
-						height       : '200px',
-						width        : '200px',
-						marginBottom : '30px'
+						height: '200px',
+						width: '200px',
+						marginBottom: '30px'
 					}}
 				/>
 				<p>Student McStudent</p>
 				<p>Web18</p>
 			</div>
 
-			<div style={{ display: 'flex' }} className="profile">
-				<div style={{ width: '48%', marginTop: '5px' }} className="smart-goals">
+			<div
+				style={{ display: 'flex' }}
+				className="profile"
+			>
+				<div
+					style={{
+						width: '48%',
+						marginTop: '5px'
+					}}
+					className="smart-goals">
 					<Grid container spacing={3}>
+
 						<Grid item xs={12}>
 							<Paper
 								className={classes.paper}
@@ -77,16 +81,19 @@ const Profile = (props) => {
 								Career Goal Checkup
 							</Paper>
 						</Grid>
+
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '10px', margin: '5px' }}>
 								<b>SMART Goals</b>
 							</Paper>
 						</Grid>
+
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '10px', margin: '5px' }}>
 								<b>Stats</b>
 							</Paper>
 						</Grid>
+
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '10px', margin: '5px' }}>
 								Goal #1{' '}
@@ -96,16 +103,18 @@ const Profile = (props) => {
 									value="checkedA"
 									color="primary"
 									inputProps={{
-										'aria-label' : 'secondary checkbox'
+										'aria-label': 'secondary checkbox'
 									}}
 								/>
 							</Paper>
 						</Grid>
+
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '23px 10px', margin: '5px' }}>
 								Lessons: 2/12
 							</Paper>
 						</Grid>
+
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '10px', margin: '5px' }}>
 								Goal #2{' '}
@@ -115,16 +124,18 @@ const Profile = (props) => {
 									value="checkedB"
 									color="primary"
 									inputProps={{
-										'aria-label' : 'secondary checkbox'
+										'aria-label': 'secondary checkbox'
 									}}
 								/>
 							</Paper>
 						</Grid>
+
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '23px 10px', margin: '5px' }}>
 								Resume: Complete
 							</Paper>
 						</Grid>
+
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '10px', margin: '5px' }}>
 								Goal #3{' '}
@@ -134,16 +145,18 @@ const Profile = (props) => {
 									value="checkedC"
 									color="primary"
 									inputProps={{
-										'aria-label' : 'secondary checkbox'
+										'aria-label': 'secondary checkbox'
 									}}
 								/>
 							</Paper>
 						</Grid>
+
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '23px 10px', margin: '5px' }}>
 								Portfolio: *In Progress*
 							</Paper>
 						</Grid>
+
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '10px', margin: '5px' }}>
 								Goal #4{' '}
@@ -153,17 +166,23 @@ const Profile = (props) => {
 									value="checkedD"
 									color="primary"
 									inputProps={{
-										'aria-label' : 'secondary checkbox'
+										'aria-label': 'secondary checkbox'
 									}}
 								/>
 							</Paper>
 						</Grid>
+
 						<Grid item xs={12} sm={6}>
 							<Paper
 								className={classes.paper}
-								style={{ padding: '10px', margin: '5px', visibility: 'hidden' }}
+								style={{
+									padding: '10px',
+									margin: '5px',
+									visibility: 'hidden'
+								}}
 							/>
 						</Grid>
+
 					</Grid>
 				</div>
 
@@ -179,7 +198,9 @@ const Profile = (props) => {
 				</div>
 			</div>
 		</div>
-	);
-};
 
-export default Profile;
+	)
+
+}
+
+export default Profile

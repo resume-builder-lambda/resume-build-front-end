@@ -11,15 +11,16 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 
 import Applied from './JobSearch'
 import AssignmentList, { ComingSoon, ColdOutreach } from './Assignments'
-import Profile from './Profile/Profile'
-import Endorsement from './EndorsementChecklist/EndorsementChecklist'
+import Profile from './Profile'
+import Endorsement from './EndorsementChecklist'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 import { mainListItems, secondaryListItems } from './listItems'
 import Calendar from './Calendar'
 
 import Logo from '../Components/Images/Lambda_Logo_White.png'
 
-const Dashboard = (props) => {
+const Dashboard = props => {
+
 	const [state, setState] = useState({
 		open: true,
 		path: window.location.pathname.split('/')[2]
@@ -34,6 +35,7 @@ const Dashboard = (props) => {
 	const { classes } = props
 
 	return (
+
 		<div className={classes.root}>
 			<CssBaseline />
 			<AppBar
@@ -51,8 +53,20 @@ const Dashboard = (props) => {
 						<MenuIcon />
 					</IconButton>
 
-					<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-						<img alt="Lambda Logo" src={Logo} style={{ height: 'auto', width: '100px' }} />
+					<Typography
+						component="h1"
+						variant="h6"
+						color="inherit"
+						noWrap
+						className={classes.title}
+					>
+						<img
+							alt="Lambda Logo"
+							src={Logo}
+							style={{
+								height: 'auto',
+								width: '100px'
+							}} />
 						<p> {moment().tz('America/Los_Angeles').format('MMMM Do YYYY, h:mm:ss a')}</p>
 					</Typography>
 
@@ -113,7 +127,9 @@ const Dashboard = (props) => {
 				This website uses cookies to enhance the user experience. <span style={{ fontSize: '10px' }} />
 			</CookieConsent>
 		</div>
+
 	)
+
 }
 
 Dashboard.propTypes = {

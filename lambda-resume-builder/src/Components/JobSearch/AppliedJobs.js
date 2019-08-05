@@ -115,17 +115,35 @@ function AppliedJobs(props) {
             </TableHead>
 
             <TableBody>
+
               {rows &&
                 rows.map((row, index) => (
                   <StyledTableRow key={index * Math.random()}>
+
                     <StyledTableCell component="th" scope="row">
                       {row.company}
                     </StyledTableCell>
-                    <StyledTableCell align="center">{row.position}</StyledTableCell>
-                    <StyledTableCell align="center">{row.location}</StyledTableCell>
-                    <StyledTableCell align="center">{row.applied === true ? 'Yes' : 'No'}</StyledTableCell>
-                    <StyledTableCell align="center">{row.interview === true ? 'Yes' : 'No'}</StyledTableCell>
-                    <StyledTableCell align="center">{row.offer === true ? 'Yes' : 'No'}</StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {row.position}
+                    </StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {row.location}
+                    </StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {row.applied === true ? 'Yes' : 'No'}
+                    </StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {row.interview === true ? 'Yes' : 'No'}
+                    </StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {row.offer === true ? 'Yes' : 'No'}
+                    </StyledTableCell>
+
                     <StyledTableCell align="center">
                       <AppliedIcon
                         cursor='pointer'
@@ -143,8 +161,10 @@ function AppliedJobs(props) {
                           setEditRow({ bool: true, row })
                         }} />
                     </StyledTableCell>
+
                   </StyledTableRow>
                 ))}
+
             </TableBody>
           </Table>
         </Paper>

@@ -6,8 +6,6 @@ import Register from './Components/Register'
 import PrivateRoute from './Components/PrivateRoute'
 import Dashboard from './Components/Dashboard'
 
-
-
 import './App.scss'
 
 const App = props => {
@@ -26,7 +24,7 @@ const App = props => {
       />
 
       <PrivateRoute
-        path="/dashboard/"
+        path="/dashboard"
         component={() => <Dashboard data={props.data} />}
       />
 
