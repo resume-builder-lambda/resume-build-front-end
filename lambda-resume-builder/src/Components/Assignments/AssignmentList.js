@@ -5,8 +5,13 @@ import { assignments } from './list'
 const AssignmentsList = () => {
 	return (
 		<div>
-			{assignments.map((assignment) => (
-				<Assignments assignments={assignment} image={assignment.img} link={assignment.link} />
+			{assignments.map((assignment, id) => (
+				<Assignments
+					assignments={assignment}
+					image={assignment.img}
+					link={assignment.link}
+					key={id * Math.random()}
+				/>
 			))}
 		</div>
 	)

@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import { Checkbox, Paper, Grid } from '@material-ui/core'
 
-import {useStyles} from './styles'
+import { useStyles } from './styles'
 import { assignments } from '../Assignments'
 import Accord from '../Accordian'
 import Swal from 'sweetalert2'
-
 import avatar from '../Images/avataaars.png'
 
 import './profile.scss'
@@ -71,7 +70,7 @@ const Profile = props => {
 						marginTop: '5px'
 					}}
 					className="smart-goals">
-					<Grid container spacing={3}>
+					<Grid container spacing={8}>
 
 						<Grid item xs={12}>
 							<Paper

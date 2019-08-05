@@ -13,9 +13,9 @@ const ColdOutreach = () => {
                 height="315"
                 title='ass ign ment'
                 src="https://www.youtube.com/embed/2uqgQ3i1EEU"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer autoplay encrypted-media gyroscope picture-in-picture"
-                allowfullscreen
+                allowFullScreen
             />
 
             <div style={{
