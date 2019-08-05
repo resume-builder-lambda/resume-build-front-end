@@ -1,17 +1,10 @@
 import React from 'react'
-import './Assignments.scss'
 import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/styles'
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core'
 
-const useStyles = makeStyles({
-	card  : {
-		maxWidth : 500
-	},
-	media : {
-		height : 300
-	}
-})
+import { useStyles } from './styles'
+
+import './Assignments.scss'
 
 const Assignments = (props) => {
 	const classes = useStyles()

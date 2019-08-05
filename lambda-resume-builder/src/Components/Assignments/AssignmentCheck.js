@@ -17,11 +17,14 @@ const AssignmentCheck = props => {
 					width: '100%',
 					fontSize: '13px'
 				}}
-			>
-				{props.assignment}
-			</span>
+			>{props.assignment}</span>
 
-			{props.url && <a href={`${props.url}`} target='_blank'>{props.url}</a>}
+			{props.url &&
+				<a
+					href={props.url}
+					target='_blank'
+					rel='noopener noreferrer'
+				>{props.url}</a>}
 		</div>
 	)
 }
