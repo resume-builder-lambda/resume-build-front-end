@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from './Logo';
 import './endorsement.scss';
 
-const EndorsementChecklist = (props) => {
+const EndorsementChecklist = props => {
 	return (
 		<div>
 			<div style={{ marginBottom: '5px', marginTop: '0' }}>
