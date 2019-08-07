@@ -8,14 +8,14 @@ const SUCCESS = 'SUCCESS',
 
 const url = 'https://lambda-crp.herokuapp.com/graphql'
 
-const register = user => dispatch => {
+const register = (user, bool) => dispatch => {
 	axios.post(url, {
 		query: `
       mutation{
         createUser(userInput: {
           email:"${user.email}",
           password:"${user.password}",
-          role: "${user.role}"
+          role: "${bool ? 'Admin' : 'Student'}"
         }){
           _id
           token
@@ -29,9 +29,8 @@ const register = user => dispatch => {
 			const token = res.data.data.createUser.token
 			Cookies.set('token', token)
 			dispatch({ type: SUCCESS, payload: res.data })
-			if (token) {
-				window.location.pathname = '/dashboard/profile'
-			}
+			if (jwt_decode(token).role === "Admin") window.location.pathname = '/admin/dashboard'
+			else if (token) window.location.pathname = '/dashboard/profile'
 		})
 		.catch(err => handleError(err))
 }
@@ -54,9 +53,8 @@ const login = creds => dispatch => {
 			const admin = jwt_decode(token)
 			console.log('admin', admin)
 			dispatch({ type: SUCCESS, payload: token })
-			if (token) {
-				window.location.pathname = '/dashboard/profile'
-			}
+			if (jwt_decode(token).role === "Admin") window.location.pathname = '/admin/dashboard'
+			else if (token) window.location.pathname = '/dashboard/profile'
 		})
 		.catch(err => handleError(err))
 }
