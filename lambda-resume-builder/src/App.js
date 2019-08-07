@@ -1,26 +1,27 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import LogIn from './Components/LogIn'
 import Register from './Components/Register'
 import PrivateRoute from './Components/PrivateRoute'
 import Dashboard from './Components/Dashboard'
+import AdminDashboard from './Components/AdminDashboard'
 
 import './App.scss'
 
 const App = props => {
 
-  return (
+  return <div className="App">
 
-    <div className="App">
+    <Switch>
 
-      <Route exact path="/"
-        render={props => {
-          return (<LogIn {...props} />)
-        }} />
+      <Route
+        exact path="/"
+        render={props => <LogIn {...props} />}
+      />
 
       <Route path="/register"
-        component={Register}
+        render={props => <Register {...props} admin={false} />}
       />
 
       <PrivateRoute
@@ -28,9 +29,19 @@ const App = props => {
         component={() => <Dashboard data={props.data} />}
       />
 
-    </div>
+      <Route
+        exact path='/admin'
+        render={props => <Register {...props} admin={true} />}
+      />
 
-  )
+      <PrivateRoute
+        path="/admin/dashboard"
+        render={props => <AdminDashboard {...props} />}
+      />
+
+    </Switch>
+
+  </div>
 
 }
 

@@ -54,8 +54,6 @@ function SignIn(props) {
 
   }, [creds])
 
-  console.log(props)
-
   return (
 
     <main className={classes.main}>
