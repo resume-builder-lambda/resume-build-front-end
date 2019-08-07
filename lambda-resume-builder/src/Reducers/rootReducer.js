@@ -19,11 +19,11 @@ const rootReducer = (state = initialState, action) => {
                 savingUser: true,
                 user: action.payload
             }
-        
+
         case GETJOBS:
             return {
                 ...state,
-                jobs: action.payload
+                jobs: action.payload ? action.payload : []
             }
 
         default:

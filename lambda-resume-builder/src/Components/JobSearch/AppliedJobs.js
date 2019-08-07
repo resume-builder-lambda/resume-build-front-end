@@ -1,58 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { withStyles, makeStyles } from '@material-ui/styles'
-import { Table, TableBody, TableCell, TableHead, TableRow, Paper, Fab } from '@material-ui/core'
+import { Table, TableBody, TableHead, TableRow, Paper, Fab } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import DeleteIcon from '@material-ui/icons/DeleteForeverSharp'
 import EditIcon from '@material-ui/icons/CreateSharp'
 
+import { StyledTableCell, StyledTableRow, useStyles } from './styles'
 import { getJobs, addJob, updateJob, delJob } from '../../Actions'
 
 import Modal from './Modal'
 
-const StyledTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: '#2F2C4B',
-    color: 'white',
-    fontSize: '12px'
-  },
-  body: {
-    fontSize: 14
-  }
-}))(TableCell)
-
-const StyledTableRow = withStyles(theme => ({
-  root: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: 'white'
-    }
-  }
-}))(TableRow)
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    overflowX: 'auto'
-  },
-  table: {
-    minWidth: 700
-  },
-  fab: {
-    background: '#BB1433'
-  },
-}))
-
-function CustomizedTables(props) {
+function AppliedJobs(props) {
 
   const [show, setShow] = useState(false)
   const [updated, setUpdated] = useState(false)
   const [rows, setRows] = useState(props.jobs)
   const [newRow, setNewRow] = useState(null)
-  const [editRow, setEditRow] = useState({ bool: false, row: {} })
+  const [editRow, setEditRow] = useState({ bool: false })
 
   useEffect(() => {
 
-    props.jobs.length !== 0 && setUpdated(true)
+    props.jobs.length !== 0 &&
+      setUpdated(true)
 
   }, [props.jobs])
 
@@ -146,23 +115,42 @@ function CustomizedTables(props) {
             </TableHead>
 
             <TableBody>
+
               {rows &&
                 rows.map((row, index) => (
                   <StyledTableRow key={index * Math.random()}>
+
                     <StyledTableCell component="th" scope="row">
                       {row.company}
                     </StyledTableCell>
-                    <StyledTableCell align="center">{row.position}</StyledTableCell>
-                    <StyledTableCell align="center">{row.location}</StyledTableCell>
-                    <StyledTableCell align="center">{row.applied === true ? 'Yes' : 'No'}</StyledTableCell>
-                    <StyledTableCell align="center">{row.interview === true ? 'Yes' : 'No'}</StyledTableCell>
-                    <StyledTableCell align="center">{row.offer === true ? 'Yes' : 'No'}</StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {row.position}
+                    </StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {row.location}
+                    </StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {row.applied === true ? 'Yes' : 'No'}
+                    </StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {row.interview === true ? 'Yes' : 'No'}
+                    </StyledTableCell>
+
+                    <StyledTableCell align="center">
+                      {row.offer === true ? 'Yes' : 'No'}
+                    </StyledTableCell>
+
                     <StyledTableCell align="center">
                       <DeleteIcon
                         cursor='pointer'
                         onClick={() => {
                           props.delJob(row._id)
                           setUpdated(false)
+                          setRows(...rows.filter(roww => roww._id !== row._id))
                         }}
                       />
                       <span style={{ fontSize: '35px' }}>|</span>
@@ -173,8 +161,10 @@ function CustomizedTables(props) {
                           setEditRow({ bool: true, row })
                         }} />
                     </StyledTableCell>
+
                   </StyledTableRow>
                 ))}
+
             </TableBody>
           </Table>
         </Paper>
@@ -208,4 +198,4 @@ export default connect(
     addJob,
     updateJob,
     delJob
-  })(CustomizedTables)
+  })(AppliedJobs)

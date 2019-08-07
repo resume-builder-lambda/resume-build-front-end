@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
-import Dropzone from '../Dropzone/Dropzone'
-import Progress from "../Progress/Progress"
+import Dropzone from '../Dropzone'
+import Progress from '../Progress'
 
 import "./Upload.css"
 
