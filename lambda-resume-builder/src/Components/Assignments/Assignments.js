@@ -2,20 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core'
 
-<<<<<<< HEAD
-const useStyles = makeStyles({
-	card: {
-		maxWidth: 500
-	},
-	media: {
-		height: 300
-	}
-})
-=======
 import { useStyles } from './styles'
 
 import './Assignments.scss'
->>>>>>> 6f4ef911778a831c4397312fbce0a8bebfd2c6f2
 
 const Assignments = (props) => {
 	const classes = useStyles()
