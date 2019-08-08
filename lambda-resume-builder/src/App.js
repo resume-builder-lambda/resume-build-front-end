@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom'
 import LogIn from './Components/LogIn'
 import Register from './Components/Register'
 import PrivateRoute from './Components/PrivateRoute'
-import Dashboard from './Components/Dashboard'
 
 import './App.scss'
 
@@ -23,18 +22,25 @@ const App = props => {
           component={Register}
         />
 
-        <PrivateRoute
+        {/* <PrivateRoute
           path="/dashboard"
           component={() => <Dashboard data={props.data} />}
+        /> */}
+
+        <PrivateRoute path="/dashboard" />
+
+        <Route
+          exact path='/admin'
+          render={props => <Register {...props} admin={true} />}
         />
 
-        <Route path="admin"
-          render={props => { return (<LogIn {...props} admin={true} />) }} />
+        <PrivateRoute path="/admin/dashboard" />
+
       </Switch>
+
     </div>
 
   )
-
 }
 
 export default App

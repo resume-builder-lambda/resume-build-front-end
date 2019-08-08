@@ -11,10 +11,10 @@ import { Link } from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
-const mainListItems = (
+const mainListItems = bool => (
   <div>
 
-    <Link style={{ textDecoration: 'none' }} to="/dashboard/profile">
+    {!bool && (<Link style={{ textDecoration: 'none' }} to="/dashboard/profile">
       <ListItem button >
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title="Home" placement='right'>
@@ -23,9 +23,9 @@ const mainListItems = (
         </ListItemIcon >
         <ListItemText primary="Home" />
       </ListItem>
-    </Link>
+    </Link>)}
 
-    <Link style={{ textDecoration: 'none' }} to="/dashboard/assignments">
+    {!bool && (<Link style={{ textDecoration: 'none' }} to="/dashboard/assignments">
       <ListItem button >
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title="Training Modules" placement='right'>
@@ -34,9 +34,9 @@ const mainListItems = (
         </ListItemIcon >
         <ListItemText primary="Training Modules" />
       </ListItem>
-    </Link>
+    </Link>)}
 
-    <Link style={{ textDecoration: 'none' }} to="/dashboard/calendar">
+    <Link style={{ textDecoration: 'none' }} to={bool ? '/admin/dashboard/calendar' : "/dashboard/calendar"}>
       <ListItem button>
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title='Calendar' placement='right'>
@@ -47,7 +47,7 @@ const mainListItems = (
       </ListItem>
     </Link>
 
-    <Link style={{ textDecoration: 'none' }} to="/dashboard/applied-jobs">
+    {!bool && (<Link style={{ textDecoration: 'none' }} to="/dashboard/applied-jobs">
       <ListItem button>
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title='Job Tracker' placement='right'>
@@ -56,9 +56,9 @@ const mainListItems = (
         </ListItemIcon>
         <ListItemText primary="Job Tracker" />
       </ListItem>
-    </Link>
+    </Link>)}
 
-    <Link style={{ textDecoration: 'none' }} to="/dashboard/endorsement">
+    <Link style={{ textDecoration: 'none' }} to={bool ? '/admin/dashboard/endorsement' : "/dashboard/endorsement"}>
       <ListItem button>
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title='Endorsement Verification' placement='right'>
