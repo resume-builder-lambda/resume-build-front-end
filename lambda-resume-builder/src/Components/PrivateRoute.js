@@ -2,19 +2,28 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import decode from 'jwt-decode'
+import AdminDashboard from './AdminDashboard'
+import Dashboard from './Dashboard'
 
 
-const PrivateRoute = ({ component: Component, path }) => {
+const PrivateRoute = ({ ...rest }) => {
+
+    console.log(rest)
 
     const token = Cookies.get('token')
     const decoded = token && decode(token)
 
-    return (
+    if (!token || Date.now() > decoded.exp * 1000) Cookies.set('location', rest.location.pathname)
 
-        <Route {...path} render={props => {
-            // if (path === '/admin') return <Component {...props} />
-            if (!token || Date.now() > decoded.exp * 1000) return <Redirect to="/" />
-            else return <Component {...props} />
+    return (
+        <Route {...rest} render={props => {
+            return (!token || Date.now() > decoded.exp * 1000) ?
+                <Redirect to="/" />
+                :
+                decoded.role === 'Admin' ?
+                    <AdminDashboard {...props} admin={true} />
+                    :
+                    <Dashboard {...props} admin={false} />
         }} />
     )
 

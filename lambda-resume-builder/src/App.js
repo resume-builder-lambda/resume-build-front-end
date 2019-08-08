@@ -1,36 +1,45 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import LogIn from './Components/LogIn'
 import Register from './Components/Register'
 import PrivateRoute from './Components/PrivateRoute'
-import Dashboard from './Components/Dashboard'
 
 import './App.scss'
 
 const App = props => {
 
-  return (
+  window.addEventListener('beforeunload', () => {
+    Cookies.remove('creds')
+    Cookies.remove('location')
+  })
 
-    <div className="App">
+  return <div className="App">
 
-      <Route exact path="/"
-        render={props => {
-          return (<LogIn {...props} />)
-        }} />
+    <Switch>
+
+      <Route
+        exact path="/"
+        render={props => <LogIn {...props} />}
+      />
 
       <Route path="/register"
-        component={Register}
+        render={props => <Register {...props} admin={false} />}
       />
 
-      <PrivateRoute
-        path="/dashboard"
-        component={() => <Dashboard data={props.data} />}
+      <PrivateRoute path="/dashboard" />
+
+      <Route
+        exact path='/admin'
+        render={props => <Register {...props} admin={true} />}
       />
 
-    </div>
+      <PrivateRoute path="/admin/dashboard" />
 
-  )
+    </Switch>
+
+  </div>
 
 }
 

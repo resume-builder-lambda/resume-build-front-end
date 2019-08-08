@@ -39,7 +39,7 @@ const Register = props => {
   const { classes } = props
 
   function handleSubmit() {
-    props.register(fields)
+    props.register(fields, props.admin)
     setTimeout(() => window.location.pathname = '/dashboard/profile', 2000)
   }
 
@@ -99,17 +99,18 @@ const Register = props => {
             style={{ padding: '8px' }}
           >Register</Button>
 
-          <div style={{ marginTop: '25px' }}>
-            <GoogleLogin
-              clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
-              render={renderProps => (
-                <img className={'oauth'} onClick={renderProps.onClick} alt='Google Logo' src={GLogo} />
-              )}
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
-          </div>
+          {!props.admin &&
+            <div style={{ marginTop: '25px' }}>
+              <GoogleLogin
+                clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
+                render={renderProps => (
+                  <img className={'oauth'} onClick={renderProps.onClick} alt='Google Logo' src={GLogo} />
+                )}
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+              />
+            </div>}
         </form>
 
         <p>Already have an account?</p>
