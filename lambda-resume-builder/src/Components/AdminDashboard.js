@@ -8,7 +8,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 import AppBar from '../MaterialUI/appbar'
-import { mainListItems, secondaryListItems } from './listItems'
+import { MainListItems, SecondaryListItems } from './ListItems'
 import Endorsement from './EndorsementChecklist'
 import Calendar from './Calendar'
 import Feedback from './Feedback'
@@ -53,11 +53,11 @@ const AdminDashboard = props => {
 
                 <Divider />
 
-                <List>{mainListItems(props.admin)}</List>
+                <MainListItems admin={props.admin} />
 
                 <Divider />
 
-                <List>{secondaryListItems}</List>
+                <SecondaryListItems />
             </Drawer>
 
             <main className={classes.content}>

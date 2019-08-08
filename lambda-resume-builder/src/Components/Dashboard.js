@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { IconButton, Divider, List, Drawer, CssBaseline } from '@material-ui/core'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import CookieConsent from 'react-cookie-consent'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
@@ -12,7 +12,7 @@ import Profile from './Profile'
 import Endorsement from './EndorsementChecklist'
 import AppBar from '../MaterialUI/appbar'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
-import { mainListItems, secondaryListItems } from './listItems'
+import { MainListItems, SecondaryListItems } from './ListItems'
 import Calendar from './Calendar'
 import Feedback from './Feedback'
 
@@ -56,11 +56,11 @@ const Dashboard = props => {
 
 				<Divider />
 
-				<List>{mainListItems(props.admin)}</List>
+				<MainListItems />
 
 				<Divider />
 
-				<List>{secondaryListItems}</List>
+				<SecondaryListItems admin={props.admin} history={props.history} />
 			</Drawer>
 
 			<main className={classes.content}>
