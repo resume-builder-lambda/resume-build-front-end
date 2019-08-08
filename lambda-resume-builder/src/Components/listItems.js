@@ -11,10 +11,10 @@ import { Link } from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
-const mainListItems = bool => (
+const mainListItems = admin => (
   <div>
 
-    {!bool && (<Link style={{ textDecoration: 'none' }} to="/dashboard/profile">
+    {!admin && (<Link style={{ textDecoration: 'none' }} to="/dashboard/profile">
       <ListItem button >
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title="Home" placement='right'>
@@ -25,7 +25,7 @@ const mainListItems = bool => (
       </ListItem>
     </Link>)}
 
-    {!bool && (<Link style={{ textDecoration: 'none' }} to="/dashboard/assignments">
+    {!admin && (<Link style={{ textDecoration: 'none' }} to="/dashboard/assignments">
       <ListItem button >
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title="Training Modules" placement='right'>
@@ -36,7 +36,7 @@ const mainListItems = bool => (
       </ListItem>
     </Link>)}
 
-    <Link style={{ textDecoration: 'none' }} to={bool ? '/admin/dashboard/calendar' : "/dashboard/calendar"}>
+    <Link style={{ textDecoration: 'none' }} to={admin ? '/admin/dashboard/calendar' : "/dashboard/calendar"}>
       <ListItem button>
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title='Calendar' placement='right'>
@@ -47,7 +47,7 @@ const mainListItems = bool => (
       </ListItem>
     </Link>
 
-    {!bool && (<Link style={{ textDecoration: 'none' }} to="/dashboard/applied-jobs">
+    {!admin && (<Link style={{ textDecoration: 'none' }} to="/dashboard/applied-jobs">
       <ListItem button>
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title='Job Tracker' placement='right'>
@@ -58,7 +58,7 @@ const mainListItems = bool => (
       </ListItem>
     </Link>)}
 
-    <Link style={{ textDecoration: 'none' }} to={bool ? '/admin/dashboard/endorsement' : "/dashboard/endorsement"}>
+    <Link style={{ textDecoration: 'none' }} to={admin ? '/admin/dashboard/endorsement' : "/dashboard/endorsement"}>
       <ListItem button>
         <ListItemIcon style={{ color: "#bb1333" }}>
           <Tooltip title='Endorsement Verification' placement='right'>
