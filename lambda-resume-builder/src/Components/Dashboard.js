@@ -14,6 +14,7 @@ import AppBar from '../MaterialUI/appbar'
 import { dashboard as styles, withStyles } from '../MaterialUI/styles'
 import { mainListItems, secondaryListItems } from './listItems'
 import Calendar from './Calendar'
+import Feedback from './Feedback'
 
 const Dashboard = props => {
 
@@ -72,6 +73,7 @@ const Dashboard = props => {
 					<Route path='/dashboard/applied-jobs' component={Applied} />
 					<Route path='/dashboard/cold-outreach' component={ColdOutreach} />
 					<Route path='/dashboard/coming-soon' component={ComingSoon} />
+					<Route path='/dashboard/feedback' component={Feedback} />
 				</Switch>
 			</main>
 

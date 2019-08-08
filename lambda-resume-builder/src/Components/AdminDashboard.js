@@ -11,6 +11,7 @@ import AppBar from '../MaterialUI/appbar'
 import { mainListItems, secondaryListItems } from './listItems'
 import Endorsement from './EndorsementChecklist'
 import Calendar from './Calendar'
+import Feedback from './Feedback'
 
 const AdminDashboard = props => {
 
@@ -64,6 +65,7 @@ const AdminDashboard = props => {
                 <Switch>
                     <Route path='/admin/dashboard/calendar' component={Calendar} />
                     <Route path='/admin/dashboard/endorsement' component={Endorsement} />
+                    <Route path='/dashboard/feedback' component={Feedback} />
                 </Switch>
             </main>
 
