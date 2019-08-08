@@ -56,9 +56,13 @@ const login = (creds, route) => dispatch => {
 			const admin = jwt_decode(token)
 			console.log('admin', admin)
 			dispatch({ type: SUCCESS, payload: token })
-			if (token && route.length > 2) return route.goBack()
-			else if (jwt_decode(token).role === "Admin") window.location.pathname = '/admin/dashboard'
-			else if (token) window.location.pathname = '/dashboard/profile'
+			window.location.pathname = `${
+				jwt_decode(token).role === "Admin" ?
+					'/admin/dashboard'
+					:
+					token &&
+					'/dashboard/profile'
+				}`
 		})
 		.catch(err => handleError(err))
 }

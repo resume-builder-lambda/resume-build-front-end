@@ -12,7 +12,10 @@ export default () => {
     })
 }
 
-export const handleError = err => console.error({
-    status: err.response && err.response.status,
-    message: err.response && err.response.data.errors[0].message
-})
+export const handleError = err => {
+    if (err.response) return console.error({
+        status: err.response.status,
+        message: err.response.data.errors[0].message
+    })
+    else return console.error(err)
+}
