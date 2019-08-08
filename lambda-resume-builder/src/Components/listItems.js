@@ -99,9 +99,9 @@ const secondaryListItems = (
 
 
 function handleLogOut() {
-  Cookies.remove('github')
   Cookies.remove('creds')
   Cookies.remove('token')
+  Cookies.set('location', window.location.pathname)
   window.location.pathname = '/'
 }
 
