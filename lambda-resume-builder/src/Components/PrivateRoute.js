@@ -8,11 +8,14 @@ import Dashboard from './Dashboard'
 
 const PrivateRoute = ({ ...rest }) => {
 
+    console.log(rest)
+
     const token = Cookies.get('token')
     const decoded = token && decode(token)
 
-    return (
+    if (!token || Date.now() > decoded.exp * 1000) Cookies.set('location', rest.location.pathname)
 
+    return (
         <Route {...rest} render={props => {
             return (!token || Date.now() > decoded.exp * 1000) ?
                 <Redirect to="/" />

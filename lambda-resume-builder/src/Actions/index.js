@@ -55,13 +55,16 @@ const login = (creds, route) => dispatch => {
 			Cookies.set('creds', JSON.stringify(creds))
 			const admin = jwt_decode(token)
 			console.log('admin', admin)
+			const location = Cookies.get('location')
 			dispatch({ type: SUCCESS, payload: token })
 			window.location.pathname = `${
-				jwt_decode(token).role === "Admin" ?
-					'/admin/dashboard'
+				token &&
+					location ? location
 					:
-					token &&
-					'/dashboard/profile'
+					jwt_decode(token).role === "Admin" ?
+						'/admin/dashboard'
+						:
+						'/dashboard/profile'
 				}`
 		})
 		.catch(err => handleError(err))
