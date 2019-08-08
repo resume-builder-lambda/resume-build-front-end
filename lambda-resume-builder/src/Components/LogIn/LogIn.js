@@ -37,12 +37,12 @@ function SignIn(props) {
 
     console.log(google)
 
-    props.login(google)
+    props.login(google, props.history)
 
   }
 
   function handleSubmit() {
-    props.login(fields)
+    props.login(fields, props.history)
   }
 
 

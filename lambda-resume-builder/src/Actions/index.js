@@ -35,7 +35,10 @@ const register = (user, bool) => dispatch => {
 		.catch(err => handleError(err))
 }
 
-const login = creds => dispatch => {
+const login = (creds, route) => dispatch => {
+
+	console.log(route)
+
 	axios.post(url, {
 		query: `
       query{
@@ -53,7 +56,8 @@ const login = creds => dispatch => {
 			const admin = jwt_decode(token)
 			console.log('admin', admin)
 			dispatch({ type: SUCCESS, payload: token })
-			if (jwt_decode(token).role === "Admin") window.location.pathname = '/admin/dashboard'
+			if (token && route.length > 2) return route.goBack()
+			else if (jwt_decode(token).role === "Admin") window.location.pathname = '/admin/dashboard'
 			else if (token) window.location.pathname = '/dashboard/profile'
 		})
 		.catch(err => handleError(err))

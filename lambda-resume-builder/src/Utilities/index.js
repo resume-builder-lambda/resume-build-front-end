@@ -13,6 +13,6 @@ export default () => {
 }
 
 export const handleError = err => console.error({
-    status: err.response.status,
-    message: err.response.data.errors[0].message
+    status: err.response && err.response.status,
+    message: err.response && err.response.data.errors[0].message
 })
