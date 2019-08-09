@@ -2,7 +2,7 @@ import React from 'react'
 import { ListItem, ListItemIcon, ListItemText, Tooltip, List } from '@material-ui/core'
 import CancelIcon from '@material-ui/icons/ExitToApp'
 import FeedbackIcon from '@material-ui/icons/FeedbackOutlined'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 

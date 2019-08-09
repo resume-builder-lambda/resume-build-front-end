@@ -34,7 +34,7 @@ export default props => {
                 </ListItem>
             </Link>)}
 
-            <Link style={{ textDecoration: 'none' }} to={props.admin ? '/props.admin/dashboard/calendar' : "/dashboard/calendar"}>
+            <Link style={{ textDecoration: 'none' }} to={props.admin ? '/admin/dashboard/calendar' : "/dashboard/calendar"}>
                 <ListItem button>
                     <ListItemIcon style={{ color: "#bb1333" }}>
                         <Tooltip title='Calendar' placement='right'>
@@ -56,7 +56,7 @@ export default props => {
                 </ListItem>
             </Link>)}
 
-            <Link style={{ textDecoration: 'none' }} to={props.admin ? '/props.admin/dashboard/endorsement' : "/dashboard/endorsement"}>
+            <Link style={{ textDecoration: 'none' }} to={props.admin ? '/admin/dashboard/endorsement' : "/dashboard/endorsement"}>
                 <ListItem button>
                     <ListItemIcon style={{ color: "#bb1333" }}>
                         <Tooltip title='Endorsement Verification' placement='right'>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { IconButton, Divider, List, Drawer, CssBaseline } from '@material-ui/core'
-import { Switch, Route, withRouter } from 'react-router-dom'
+import { IconButton, Divider, Drawer, CssBaseline } from '@material-ui/core'
+import { Switch, Route } from 'react-router-dom'
 import CookieConsent from 'react-cookie-consent'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
