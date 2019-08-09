@@ -14,7 +14,7 @@ const dashboard = theme => {
     return ({
         root: {
             display: 'flex',
-            
+
         },
         toolbar: {
             paddingRight: 24,
@@ -32,7 +32,7 @@ const dashboard = theme => {
             transition: theme.transitions.create(['width', 'margin'], {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,
-                
+
             }),
             backgroundColor: '#BB1333'
         },
@@ -240,7 +240,7 @@ const login = theme => {
             marginTop: theme.spacing.unit * 3,
             border: '1px solid #BB1333 ',
             color: '#BB1333'
-        },
+        }
     })
 
 }
