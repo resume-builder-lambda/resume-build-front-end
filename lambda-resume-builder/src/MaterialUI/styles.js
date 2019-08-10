@@ -1,5 +1,6 @@
 import Button from '@material-ui/core/Button';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { shadows } from '@material-ui/system';
 
 const drawerWidth = 200
 
@@ -238,8 +239,15 @@ const login = theme => {
         },
         submit: {
             marginTop: theme.spacing.unit * 6,
-            border: '1px solid #BB1333 ',
-            color: '#BB1333',
+            border: '1px solid #BB1333',
+            background: '#BD002F',
+            '&:hover': {
+                background: '#BB1333',
+                color: '#fff',
+                transition: '0.7s',
+                transform: 'scale(1.04)',
+            },
+            color: '#fff',
             fontSize: 14,
         },
     })

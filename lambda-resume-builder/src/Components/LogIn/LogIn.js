@@ -59,7 +59,7 @@ function SignIn(props) {
     <main className={classes.main}>
       <CssBaseline />
       <Paper className={classes.paper}>
-        <img alt='Logo' style={{ height: '150px', width: '150px' }} src={Logo1} />
+        <img alt='Logo' style={{ height: '175px', width: '175px' }} src={Logo1} />
         <form
           onSubmit={(e) => submit(e)}
           className={classes.form}
@@ -70,7 +70,7 @@ function SignIn(props) {
             required
             fullWidth
           >
-            <InputLabel htmlFor="email">Email:</InputLabel>
+            <InputLabel htmlFor="email" style={{ fontSize: 14, color: '#BD002F' }}>Email</InputLabel>
             <Input
               id="email"
               name="email"
@@ -78,6 +78,7 @@ function SignIn(props) {
               autoComplete="email"
               onChange={handleChanges}
               autoFocus
+              style={{ fontSize: 16 }}
             />
           </FormControl>
 
@@ -86,13 +87,14 @@ function SignIn(props) {
             required
             fullWidth
           >
-            <InputLabel htmlFor="password">Password</InputLabel>
+            <InputLabel htmlFor="password" style={{ fontSize: 14, color: '#BD002F' }}>Password</InputLabel>
             <Input
               name="password"
               type="password"
               id="password"
               autoComplete="current-password"
               onChange={handleChanges}
+              style={{ fontSize: 18 }}
             />
           </FormControl>
 
@@ -102,7 +104,7 @@ function SignIn(props) {
             className={classes.submit}
             type="submit"
             fullWidth
-            style={{ padding: '8px' }}
+            style={{ padding: '10px' }}
           >Sign in</Button>
 
           <div style={{ marginTop: '25px' }}>
