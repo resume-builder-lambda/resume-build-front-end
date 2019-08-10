@@ -70,7 +70,7 @@ function SignIn(props) {
             required
             fullWidth
           >
-            <InputLabel htmlFor="email" style={{ fontSize: 14, color: '#BD002F' }}>Email</InputLabel>
+            <InputLabel htmlFor="email" style={{ fontSize: 14, color: '#999' }}>Email</InputLabel>
             <Input
               id="email"
               name="email"
@@ -87,7 +87,7 @@ function SignIn(props) {
             required
             fullWidth
           >
-            <InputLabel htmlFor="password" style={{ fontSize: 14, color: '#BD002F' }}>Password</InputLabel>
+            <InputLabel htmlFor="password" style={{ fontSize: 14, color: '#999' }}>Password</InputLabel>
             <Input
               name="password"
               type="password"
