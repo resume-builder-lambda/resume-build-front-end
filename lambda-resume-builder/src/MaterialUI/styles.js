@@ -237,10 +237,11 @@ const login = theme => {
             marginTop: theme.spacing.unit,
         },
         submit: {
-            marginTop: theme.spacing.unit * 3,
+            marginTop: theme.spacing.unit * 6,
             border: '1px solid #BB1333 ',
-            color: '#BB1333'
-        }
+            color: '#BB1333',
+            fontSize: 14,
+        },
     })
 
 }
