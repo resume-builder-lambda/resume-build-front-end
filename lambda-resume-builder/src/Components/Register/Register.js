@@ -65,7 +65,7 @@ const Register = props => {
             required
             fullWidth
           >
-            <InputLabel htmlFor="email">Email:</InputLabel>
+            <InputLabel htmlFor="email" style={{ fontSize: 14, color: '#999' }}>Email:</InputLabel>
             <Input
               id="email"
               name="email"
@@ -80,7 +80,7 @@ const Register = props => {
             required
             fullWidth
           >
-            <InputLabel htmlFor="password">New Password</InputLabel>
+            <InputLabel htmlFor="password" style={{ fontSize: 14, color: '#999' }}>New Password</InputLabel>
             <Input
               name="password"
               type="password"
