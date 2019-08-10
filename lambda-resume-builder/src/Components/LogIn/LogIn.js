@@ -74,6 +74,7 @@ function SignIn(props) {
             <Input
               id="email"
               name="email"
+              type='email'
               autoComplete="email"
               onChange={handleChanges}
               autoFocus
