@@ -57,7 +57,7 @@ const AdminDashboard = props => {
 
                 <Divider />
 
-                <SecondaryListItems />
+                <SecondaryListItems admin={props.admin} history={props.history} />
             </Drawer>
 
             <main className={classes.content}>
