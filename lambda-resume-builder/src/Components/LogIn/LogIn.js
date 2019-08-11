@@ -54,7 +54,9 @@ function SignIn(props) {
 
   }, [creds])
 
-  return (
+  if (props.loggingIn) return <h1>Loading...</h1>
+
+  else return (
 
     <main className={classes.main}>
       <CssBaseline />
@@ -133,10 +135,7 @@ function SignIn(props) {
 
 }
 
-const mapStateToProps = state => ({
-  ...state,
-  github: state.github
-})
+const mapStateToProps = state => ({ ...state })
 
 export default connect(
   mapStateToProps,
