@@ -1,68 +1,91 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Career Readiness Portal
 
-## Available Scripts
+## Contributors
 
-In the project directory, you can run:
+ ⚫️ | ⚫️ | ⚫️ | ⚫️ | ⚫️ | ️️⚫️
+ :---: | :---: | :---: | :---: | :---: | :---: 
+ [Brandon ".then" Allison](https://github.com/BrandonJAllison) | [Will Umstead](https://github.com/brellin) | [Nick Ballenger](https://github.com/Nick-Ballenger) | [Pat Palmerston](https://github.com/patpalmerston) | [Brandi Bailey](https://github.com/blubrandi) | [Darren "OAuth" Richardson](https://github.com/AntonioUniverse)
+ [<img src="https://avatars1.githubusercontent.com/u/47340734?s=460&v=4" width = "125" />](https://github.com/BrandonJAllison) | [<img src="https://avatars2.githubusercontent.com/u/46138601?s=460&v=4" width = "125" />](https://willujr.com) | [<img src="https://avatars3.githubusercontent.com/u/46663387?s=460&v=4" width = "125" />](https://github.com/Nick-Ballenger) | [<img src="https://avatars2.githubusercontent.com/u/45890605?s=460&v=4" width = "125" />](https://github.com/patpalmerston) | [<img src="https://avatars2.githubusercontent.com/u/17956418?s=460&v=4" width = "125" />](https://github.com/blubrandi) | [<img src="https://avatars0.githubusercontent.com/u/43352876?s=460&v=4" width = "125" />](https://github.com/AntonioUniverse)     
+ [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/BrandonJAllison) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/brellin) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Nick-Ballenger) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/patpalmerston) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/blubrandi) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AntonioUniverse)       
+ [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brandon-allison-129987124/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brellin) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/nicholas-ballenger-b7704982) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/patpalmerston) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brandi-b-31323842) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/darren-richardson-86635817b)
 
-### `npm start`
+<br>
+<br>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
+![version](https://img.shields.io/badge/Version-1.0.0-red.svg)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Overview
 
-### `npm test`
+Career Readiness Portal aims to solve the issue of keeping careers preparation training in the front seat next to the technical curriculum.  This portal provides a one stop for all careers prep.  Students will have the ability to submit assignments, check calendar for upcoming deadlines, view careers videos and material, as well as interact with careers staff.  
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can find the project at :
 
-### `npm run build`
+### Key Features
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    * Login with Google
+    * Submit Assignments
+    * Recieve notifications from careers team
+    * View material from careers presentaions
+    * Interact with careers staff
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Frameworks and Libraries
+#### Front end built using:
+* React
+* SCSS
+* Material UI
+* Redux
+* React Router
+* Cookies
+* SyncFusion
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### [Back end] built using:
+* GraphQL
+* MongoDB Atlas
+* Mongoose
+* Express
+* Google OAuth
+* JSON Web Token
 
-### `npm run eject`
+# APIs
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## _Authentication API here_
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Replace text below with a description of the API
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Installation
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Install Node.js on your machine. 
+2. To begin, clone the Frontend repository from https://github.com/resume-builder-lambda and download it on your local machine.  
+3. In the Frontend, `cd` into CRP-Frontend then lambda-resume-builderdirectory and run `yarn`. 
+4. While still in the lambda-resume-builder, run `yarn start`. 
+5. Navigate to http://localhost:3000 to view the locally deployed site.
 
-## Learn More
+# Environment Variables
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+In order for the app to function correctly, the user must set up their own environment variables. In front-end, create an .env file in the root of the directory containing the following:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    * HIDDEN *
+    
+ Additionally, outside the root of the .src directory, create a .env file with the text below:
 
-### Code Splitting
+# Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
-### Analyzing the Bundle Size
+Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Feature Requests
 
-### Making a Progressive Web App
+We would love to hear from you about new features which would improve this app and further the aims of our project. Please provide as much detail and information as possible to show us why you think your new feature should be implemented.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Pull Requests
 
-### Advanced Configuration
+If you have developed a patch, bug fix, or new feature that would improve this app, please submit a pull request. It is best to communicate your ideas with the developers first before investing a great deal of time into a pull request to ensure that it will mesh smoothly with the project.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. Remember this project is licensed under the MIT license, and by submitting a pull request, your changes should follow the guideline.
+2. Update the README.md with details of your code.
+3. Submit a pull request with your changes after carefully reviewing and testing your code.
+##
+### Documentation can be found here: (https://github.com/resume-builder-lambda/CRP-Frontend)
