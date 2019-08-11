@@ -1,8 +1,7 @@
-import { SUCCESS, GETJOBS } from '../Actions'
+import { SUCCESS, GETJOBS, REQUEST } from '../Actions'
 
 const initialState = {
 
-    savingUser: false,
     loggingIn: false,
     loggedIn: false,
     jobs: []
@@ -12,11 +11,16 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
+        case REQUEST:
+            return {
+                ...state,
+                loggingIn: true
+            }
+
         case SUCCESS:
             return {
                 ...state,
                 loggedIn: true,
-                savingUser: true,
                 user: action.payload
             }
 

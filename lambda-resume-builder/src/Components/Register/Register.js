@@ -5,7 +5,7 @@ import GoogleLogin from 'react-google-login'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 
-import { login as styles, withStyles, lambdaLogo } from '../../MaterialUI/styles'
+import { login as styles, withStyles } from '../../MaterialUI/styles'
 import { register, createGoogleUser } from "../../Actions"
 
 import GLogo from '../Images/G-Sign-In-Normal.png'
@@ -124,11 +124,7 @@ const Register = props => {
 
 }
 
-const mapStateToProps = state => {
-  return {
-    github: state.github
-  }
-}
+const mapStateToProps = state => ({ ...state })
 
 export default connect(
   mapStateToProps,
