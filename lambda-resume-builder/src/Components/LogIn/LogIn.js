@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { CssBaseline, FormControl, Input, InputLabel, Paper, Button, withStyles } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
-
+import Loader from 'react-loader-spinner'
 import { login } from "../../Actions"
 import styles from './styles'
 
@@ -54,7 +54,21 @@ function SignIn(props) {
 
   }, [creds])
 
-  if (props.loggingIn) return <h1>Loading...</h1>
+  if (props.loggingIn) return (
+    <main className={classes.main}>
+      <CssBaseline />
+      <Paper className={classes.paper} style={{ height: '600px', display: 'flex' }}>
+        <Loader
+          style={{ paddingTop: '225px' }}
+          type="Circles"
+          color="#BB1333"
+          height="100"
+          width="100"
+        />
+      </Paper>
+    </main>
+
+  )
 
   else return (
 
