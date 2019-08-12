@@ -1,9 +1,12 @@
+import { variables } from '../../../Utilities'
+
 export default theme => ({
     root: {
         display: 'flex',
     },
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
+        backgroundColor: variables.lambdaBlue
     },
     toolbarIcon: {
         display: 'flex',

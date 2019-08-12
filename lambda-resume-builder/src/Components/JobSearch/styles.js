@@ -1,9 +1,10 @@
 import { TableCell, TableRow } from '@material-ui/core'
 import { withStyles, makeStyles } from '@material-ui/styles'
+import { variables } from '../../Utilities'
 
 const StyledTableCell = withStyles(theme => ({
     head: {
-        backgroundColor: '#2F2C4B',
+        backgroundColor: variables.lambdaBlue,
         color: 'white',
         fontSize: '12px'
     },
@@ -33,4 +34,4 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export {StyledTableCell, StyledTableRow, useStyles}
+export { StyledTableCell, StyledTableRow, useStyles }

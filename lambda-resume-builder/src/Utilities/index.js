@@ -19,3 +19,9 @@ export const handleError = err => {
     })
     else return console.error(err)
 }
+
+export const variables = {
+    lambdaRed: '#BB1333',
+    lambdaBlue: '#0c3c78',
+    lambdaLightBlue: '#1a61b0',
+}

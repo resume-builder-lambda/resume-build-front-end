@@ -54,21 +54,18 @@ function SignIn(props) {
 
   }, [creds])
 
-  if (props.loggingIn) return (
-    <main className={classes.main}>
-      <CssBaseline />
-      <Paper className={classes.paper} style={{ height: '600px', display: 'flex' }}>
-        <Loader
-          style={{ paddingTop: '225px' }}
-          type="Circles"
-          color="#BB1333"
-          height="100"
-          width="100"
-        />
-      </Paper>
-    </main>
-
-  )
+  if (props.loggingIn) return <main className={classes.main}>
+    <CssBaseline />
+    <Paper className={classes.paper} style={{ height: '600px', display: 'flex' }}>
+      <Loader
+        style={{ paddingTop: '225px' }}
+        type="Circles"
+        color="#BB1333"
+        height="100"
+        width="100"
+      />
+    </Paper>
+  </main>
 
   else return (
 
