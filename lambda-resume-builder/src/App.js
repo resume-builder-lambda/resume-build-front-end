@@ -15,32 +15,38 @@ const App = props => {
     Cookies.remove('location')
   })
 
-  return <div className="App">
+  return (
 
-    <Switch>
+    <div className="App">
+      <Switch>
+        <Route exact path="/"
+          render={props => {
+            return (<LogIn {...props} />)
+          }} />
 
-      <Route
-        exact path="/"
-        render={props => <LogIn {...props} />}
-      />
+        <Route path="/register"
+          component={Register}
+        />
 
-      <Route path="/register"
-        render={props => <Register {...props} admin={false} />}
-      />
+        {/* <PrivateRoute
+          path="/dashboard"
+          component={() => <Dashboard data={props.data} />}
+        /> */}
 
-      <PrivateRoute path="/dashboard" />
+        <PrivateRoute path="/dashboard" />
 
-      <Route
-        exact path='/admin'
-        render={props => <Register {...props} admin={true} />}
-      />
+        <Route
+          exact path='/admin'
+          render={props => <Register {...props} admin={true} />}
+        />
 
-      <PrivateRoute path="/admin/dashboard" />
+        <PrivateRoute path="/admin/dashboard" />
 
-    </Switch>
+      </Switch>
 
-  </div>
+    </div>
 
+  )
 }
 
 export default App

@@ -4,9 +4,9 @@ import moment from 'moment-timezone'
 import classNames from 'classnames'
 import MenuIcon from '@material-ui/icons/Menu'
 import NotificationsIcon from '@material-ui/icons/Notifications'
+import { variables } from '../../../Utilities'
 
-import Logo from '../Components/Images/Lambda_Logo_White.png'
-
+import Logo from '../../Images/Lambda_Logo_White.png'
 
 export default props => {
 
@@ -44,7 +44,10 @@ export default props => {
             </Typography>
 
             <IconButton color="inherit">
-                <Badge badgeContent={1} color="primary">
+                <Badge
+                    badgeContent={1}
+                    color={props.admin ? 'secondary' : 'primary'}
+                >
                     <NotificationsIcon />
                 </Badge>
             </IconButton>

@@ -12,7 +12,7 @@ const Assignments = (props) => {
 	console.log('props', props)
 
 	return (
-		<div className={'card-1'}>
+		<div id={'card-1'}>
 			<Link to={props.link}>
 				<Card className={classes.card}>
 					<CardActionArea>

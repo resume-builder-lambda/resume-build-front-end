@@ -301,5 +301,4 @@ export const assignments = [
 			}
 		]
 	},
-
 ]

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Table, TableBody, TableHead, TableRow, Paper, Fab } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
-import AppliedIcon from '@material-ui/icons/DeleteForeverOutlined'
-import HomeIcon from '@material-ui/icons/CreateOutlined'
+import DeleteIcon from '@material-ui/icons/DeleteForeverSharp'
+import EditIcon from '@material-ui/icons/CreateSharp'
 
 import { StyledTableCell, StyledTableRow, useStyles } from './styles'
 import { getJobs, addJob, updateJob, delJob } from '../../Actions'
@@ -145,7 +145,7 @@ function AppliedJobs(props) {
                     </StyledTableCell>
 
                     <StyledTableCell align="center">
-                      <AppliedIcon
+                      <DeleteIcon
                         cursor='pointer'
                         onClick={() => {
                           props.delJob(row._id)
@@ -154,7 +154,7 @@ function AppliedJobs(props) {
                         }}
                       />
                       <span style={{ fontSize: '35px' }}>|</span>
-                      <HomeIcon
+                      <EditIcon style={{ fontWeight: 'lighter' }}
                         cursor='pointer'
                         onClick={() => {
                           setShow(true)

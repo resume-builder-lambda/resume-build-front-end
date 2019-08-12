@@ -1,3 +1,5 @@
+import { variables } from '../../../Utilities'
+
 export default theme => ({
     root: {
         display: 'flex',
@@ -5,7 +7,7 @@ export default theme => ({
     },
     toolbar: {
         paddingRight: 24,
-        backgroundColor: '#BB1333'
+        backgroundColor: variables.lambdaRed
     },
     toolbarIcon: {
         display: 'flex',
