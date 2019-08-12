@@ -3,12 +3,16 @@ import jwt_decode from 'jwt-decode'
 import axios from 'axios'
 import axioken, { handleError } from '../Utilities'
 
-const SUCCESS = 'SUCCESS',
+const REQUEST = 'REQUEST',
+	SUCCESS = 'SUCCESS',
 	GETJOBS = 'GETJOBS'
 
 const url = 'https://lambda-crp.herokuapp.com/graphql'
 
 const register = (user, bool) => dispatch => {
+
+	dispatch({ type: REQUEST })
+
 	axios.post(url, {
 		query: `
       mutation{
@@ -35,7 +39,10 @@ const register = (user, bool) => dispatch => {
 		.catch(err => handleError(err))
 }
 
-const login = creds => dispatch => {
+const login = (creds) => dispatch => {
+
+	dispatch({ type: REQUEST })
+
 	axios.post(url, {
 		query: `
       query{
@@ -52,9 +59,17 @@ const login = creds => dispatch => {
 			Cookies.set('creds', JSON.stringify(creds))
 			const admin = jwt_decode(token)
 			console.log('admin', admin)
+			const location = Cookies.get('location')
 			dispatch({ type: SUCCESS, payload: token })
-			if (jwt_decode(token).role === "Admin") window.location.pathname = '/admin/dashboard'
-			else if (token) window.location.pathname = '/dashboard/profile'
+			window.location.pathname = `${
+				token &&
+					location ? location
+					:
+					jwt_decode(token).role === "Admin" ?
+						'/admin/dashboard'
+						:
+						'/dashboard/profile'
+				}`
 		})
 		.catch(err => handleError(err))
 }
@@ -181,6 +196,7 @@ const delJob = id => dispatch => {
 }
 
 export {
+	REQUEST,
 	SUCCESS,
 	GETJOBS,
 	register,

@@ -2,17 +2,19 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import decode from 'jwt-decode'
-import AdminDashboard from './AdminDashboard'
-import Dashboard from './Dashboard'
+import { AdminDashboard, Dashboard } from './Dashboards'
 
 
 const PrivateRoute = ({ ...rest }) => {
 
+    console.log(rest)
+
     const token = Cookies.get('token')
     const decoded = token && decode(token)
 
-    return (
+    if (!token || Date.now() > decoded.exp * 1000) Cookies.set('location', rest.location.pathname)
 
+    return (
         <Route {...rest} render={props => {
             return (!token || Date.now() > decoded.exp * 1000) ?
                 <Redirect to="/" />

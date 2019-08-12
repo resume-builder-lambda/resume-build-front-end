@@ -13,6 +13,7 @@ import jobsearch from '../Images/jobsearch.jpg'
 import behavior from '../Images/behavior.jpg'
 
 export const assignments = [
+
 	{
 		name: 'Intro to Careers and the Tech Field',
 		img: `${tech}`,

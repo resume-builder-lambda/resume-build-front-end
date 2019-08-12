@@ -1,5 +1,6 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import LogIn from './Components/LogIn'
 import Register from './Components/Register'
@@ -8,6 +9,11 @@ import PrivateRoute from './Components/PrivateRoute'
 import './App.scss'
 
 const App = props => {
+
+  window.addEventListener('beforeunload', () => {
+    Cookies.remove('creds')
+    Cookies.remove('location')
+  })
 
   return (
 

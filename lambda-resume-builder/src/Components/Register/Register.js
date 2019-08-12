@@ -1,15 +1,16 @@
 import React from 'react'
 import { connect } from "react-redux"
-import { CssBaseline, FormControl, Input, InputLabel, Paper, Button } from '@material-ui/core'
+import { CssBaseline, FormControl, Input, InputLabel, Paper, Button, withStyles } from '@material-ui/core'
 import GoogleLogin from 'react-google-login'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 
-import { login as styles, withStyles, lambdaLogo } from '../../MaterialUI/styles'
+import styles from './styles'
 import { register, createGoogleUser } from "../../Actions"
 
 import GLogo from '../Images/G-Sign-In-Normal.png'
-import Logo from '../Images/Lamda_Logo.svg'
+// import Logo from '../Images/Lamda_Logo.svg'
+import Logo1 from '../Images/final.png'
 
 import './register.scss'
 
@@ -43,18 +44,21 @@ const Register = props => {
     setTimeout(() => window.location.pathname = '/dashboard/profile', 2000)
   }
 
-  return (
+  if (props.loggingIn) return <h1>Loading...</h1>
+
+  else return (
 
     <main className={classes.main}>
       <CssBaseline />
       <p style={{ width: '100%' }}></p>
       <Paper className={classes.paper} >
-        <img
+        <img alt='Logo' style={{ height: '175px', width: '175px' }} src={Logo1} />
+        {/* <img
           alt='Lambda Logo'
           style={lambdaLogo}
           src={Logo}
-        />
-        <span>Career Readiness Portal</span>
+        /> */}
+        {/* <span>Career Readiness Portal</span> */}
 
         <form
           onSubmit={(e) => submit(e)}
@@ -65,7 +69,7 @@ const Register = props => {
             required
             fullWidth
           >
-            <InputLabel htmlFor="email">Email:</InputLabel>
+            <InputLabel htmlFor="email" style={{ fontSize: 14, color: '#999' }}>Email:</InputLabel>
             <Input
               id="email"
               name="email"
@@ -80,7 +84,7 @@ const Register = props => {
             required
             fullWidth
           >
-            <InputLabel htmlFor="password">New Password</InputLabel>
+            <InputLabel htmlFor="password" style={{ fontSize: 14, color: '#999' }}>New Password</InputLabel>
             <Input
               name="password"
               type="password"
@@ -122,11 +126,7 @@ const Register = props => {
 
 }
 
-const mapStateToProps = state => {
-  return {
-    github: state.github
-  }
-}
+const mapStateToProps = state => ({ ...state })
 
 export default connect(
   mapStateToProps,

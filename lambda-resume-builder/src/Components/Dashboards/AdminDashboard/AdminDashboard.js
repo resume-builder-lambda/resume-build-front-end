@@ -1,29 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { IconButton, Divider, List, Drawer, CssBaseline } from '@material-ui/core'
+import { IconButton, Divider, Drawer, CssBaseline, withStyles } from '@material-ui/core'
 import { Switch, Route } from 'react-router-dom'
 import CookieConsent from 'react-cookie-consent'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
-import { dashboard as styles, withStyles } from '../MaterialUI/styles'
-import AppBar from '../MaterialUI/appbar'
-import { mainListItems, secondaryListItems } from './listItems'
-import Endorsement from './EndorsementChecklist'
-import Calendar from './Calendar'
-import Feedback from './Feedback'
+import AppBar from '../../../MaterialUI/appbar'
+import { MainListItems, SecondaryListItems } from '../ListItems'
+import Endorsement from '../../EndorsementChecklist'
+import Calendar from '../../Calendar'
+import Feedback from '../../Feedback'
+import styles from './styles'
 
 const AdminDashboard = props => {
 
-    const [state, setState] = useState({
-        open: true
-    })
+    const [open, setOpen] = useState(true)
 
-    const handleDrawer = () => setState({ open: !state.open })
+    const handleDrawer = () => setOpen(!open)
 
-    useEffect(() => {
-        if (state.open) setTimeout(() => { handleDrawer() }, 5000)
-    }, [state.open])
+    useEffect(() => { open && setTimeout(() => { handleDrawer() }, 5000) }, [open])
 
     const { classes } = props
 
@@ -34,30 +30,30 @@ const AdminDashboard = props => {
 
             <AppBar {...props}
                 classes={classes}
-                state={state}
+                open={open}
                 handleDrawer={handleDrawer}
             />
 
             <Drawer
                 variant="permanent"
                 classes={{
-                    paper: classNames(classes.drawerPaper, !state.open && classes.drawerPaperClose)
+                    paper: classNames(classes.drawerPaper, !open && classes.drawerPaperClose)
                 }}
-                open={state.open}
+                open={open}
             >
                 <div className={classes.toolbarIcon}>
-                    <IconButton onClick={handleDrawer}>
+                    <IconButton onClick={() => handleDrawer()}>
                         <ChevronLeftIcon />
                     </IconButton>
                 </div>
 
                 <Divider />
 
-                <List>{mainListItems(props.admin)}</List>
+                <MainListItems admin={props.admin} />
 
                 <Divider />
 
-                <List>{secondaryListItems}</List>
+                <SecondaryListItems admin={props.admin} history={props.history} />
             </Drawer>
 
             <main className={classes.content}>
