@@ -16,19 +16,13 @@ const App = props => {
 
     <div className="App">
       <Switch>
+
         <Route exact path="/"
-          render={props => {
-            return (<LogIn {...props} />)
-          }} />
+          render={props => <LogIn {...props} />} />
 
         <Route path="/register"
           component={Register}
         />
-
-        {/* <PrivateRoute
-          path="/dashboard"
-          component={() => <Dashboard data={props.data} />}
-        /> */}
 
         <PrivateRoute path="/dashboard" />
 
@@ -40,7 +34,6 @@ const App = props => {
         <PrivateRoute path="/admin/dashboard" />
 
       </Switch>
-
     </div>
 
   )
