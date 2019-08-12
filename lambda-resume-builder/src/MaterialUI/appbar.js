@@ -13,15 +13,15 @@ export default props => {
     return <AppBar
         position="absolute"
         // color="secondary"
-        className={classNames(props.classes.appBar, props.state.open &&
+        className={classNames(props.classes.appBar, props.open &&
             props.classes.appBarShift)}
     >
-        <Toolbar disableGutters={!props.state.open} className={props.classes.toolbar}>
+        <Toolbar disableGutters={!props.open} className={props.classes.toolbar}>
             <IconButton
                 color="inherit"
                 aria-label="Open drawer"
                 onClick={props.handleDrawer}
-                className={classNames(props.classes.menuButton, props.state.open && props.classes.menuButtonHidden)}
+                className={classNames(props.classes.menuButton, props.open && props.classes.menuButtonHidden)}
             >
                 <MenuIcon />
             </IconButton>

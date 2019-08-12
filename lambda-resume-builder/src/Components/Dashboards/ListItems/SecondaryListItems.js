@@ -2,6 +2,7 @@ import React from 'react'
 import { ListItem, ListItemIcon, ListItemText, Tooltip, List } from '@material-ui/core'
 import CancelIcon from '@material-ui/icons/ExitToApp'
 import FeedbackIcon from '@material-ui/icons/FeedbackOutlined'
+import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
 
 import Cookies from 'js-cookie'
@@ -9,10 +10,22 @@ import Cookies from 'js-cookie'
 export default props => {
 
     function handleLogOut() {
-        Cookies.remove('creds')
-        Cookies.remove('token')
-        Cookies.set('location', window.location.pathname)
-        props.history.push('/')
+        Swal.fire({
+            title: 'Are you sure you want to log out?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#BB1333',
+            confirmButtonText: 'Yes, log me out!'
+        })
+            .then((res) => {
+                if (res.value) {
+                    Cookies.remove('creds')
+                    Cookies.remove('token')
+                    Cookies.set('location', window.location.pathname)
+                    props.history.push('/')
+                }
+            })
     }
 
     return <List>

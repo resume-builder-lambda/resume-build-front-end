@@ -2,8 +2,7 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import decode from 'jwt-decode'
-import AdminDashboard from './AdminDashboard'
-import Dashboard from './Dashboard'
+import { AdminDashboard, Dashboard } from './Dashboards'
 
 
 const PrivateRoute = ({ ...rest }) => {
