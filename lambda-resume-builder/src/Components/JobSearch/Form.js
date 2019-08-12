@@ -49,6 +49,7 @@ const Form = (props) => {
 	}
 
 	return (
+
 		<div style={{
 			margin: '25px',
 			fontSize: '13px'
@@ -159,6 +160,7 @@ const Form = (props) => {
 				>{props.editRow.bool ? 'Update' : 'Add'}</Button>
 			</form>
 		</div>
+
 	)
 }
 

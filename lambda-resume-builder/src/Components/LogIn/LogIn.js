@@ -14,7 +14,7 @@ import Logo1 from '../Images/final.png'
 
 import './login.scss'
 
-function SignIn(props) {
+function LogIn(props) {
 
   const { fields, handleChanges, submit } = useForm(handleSubmit)
 
@@ -46,13 +46,7 @@ function SignIn(props) {
   }
 
 
-  useEffect(() => {// Attempts to log in with creds stored in cookies
-
-    if (creds) {
-      props.login(creds)
-    }
-
-  }, [creds])
+  useEffect(() => creds && props.login(creds), [creds])
 
   if (props.loggingIn) return <main className={classes.main}>
     <CssBaseline />
@@ -151,4 +145,4 @@ const mapStateToProps = state => ({ ...state })
 export default connect(
   mapStateToProps,
   { login }
-)(withStyles(styles)(SignIn))
+)(withStyles(styles)(LogIn))

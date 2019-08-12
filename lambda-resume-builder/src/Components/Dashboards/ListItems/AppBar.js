@@ -4,7 +4,6 @@ import moment from 'moment-timezone'
 import classNames from 'classnames'
 import MenuIcon from '@material-ui/icons/Menu'
 import NotificationsIcon from '@material-ui/icons/Notifications'
-import { variables } from '../../../Utilities'
 
 import Logo from '../../Images/Lambda_Logo_White.png'
 

@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Table, TableBody, TableHead, TableRow, Paper, Fab } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
-import DeleteIcon from '@material-ui/icons/DeleteForeverSharp'
-import EditIcon from '@material-ui/icons/CreateSharp'
 
-import { StyledTableCell, StyledTableRow, useStyles } from './styles'
+import { StyledTableCell, useStyles } from './styles'
 import { getJobs, addJob, updateJob, delJob } from '../../Actions'
-
+import Job from './Job'
 import Modal from './Modal'
 
 function AppliedJobs(props) {
@@ -116,54 +114,15 @@ function AppliedJobs(props) {
 
             <TableBody>
 
-              {rows &&
-                rows.map((row, index) => (
-                  <StyledTableRow key={index * Math.random()}>
-
-                    <StyledTableCell component="th" scope="row">
-                      {row.company}
-                    </StyledTableCell>
-
-                    <StyledTableCell align="center">
-                      {row.position}
-                    </StyledTableCell>
-
-                    <StyledTableCell align="center">
-                      {row.location}
-                    </StyledTableCell>
-
-                    <StyledTableCell align="center">
-                      {row.applied === true ? 'Yes' : 'No'}
-                    </StyledTableCell>
-
-                    <StyledTableCell align="center">
-                      {row.interview === true ? 'Yes' : 'No'}
-                    </StyledTableCell>
-
-                    <StyledTableCell align="center">
-                      {row.offer === true ? 'Yes' : 'No'}
-                    </StyledTableCell>
-
-                    <StyledTableCell align="center">
-                      <DeleteIcon
-                        cursor='pointer'
-                        onClick={() => {
-                          props.delJob(row._id)
-                          setUpdated(false)
-                          setRows(...rows.filter(roww => roww._id !== row._id))
-                        }}
-                      />
-                      <span style={{ fontSize: '35px' }}>|</span>
-                      <EditIcon style={{ fontWeight: 'lighter' }}
-                        cursor='pointer'
-                        onClick={() => {
-                          setShow(true)
-                          setEditRow({ bool: true, row })
-                        }} />
-                    </StyledTableCell>
-
-                  </StyledTableRow>
-                ))}
+              {rows && rows.map((row, index) => <Job
+                row={row}
+                setUpdated={setUpdated}
+                setEditRow={setEditRow}
+                setShow={setShow}
+                setRows={setRows}
+                rows={rows}
+                key={index * Math.random()}
+              />)}
 
             </TableBody>
           </Table>

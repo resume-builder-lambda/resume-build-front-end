@@ -9,7 +9,7 @@ import styles from './styles'
 import { register, createGoogleUser } from "../../Actions"
 
 import GLogo from '../Images/G-Sign-In-Normal.png'
-// import Logo from '../Images/Lamda_Logo.svg'
+import Loader from 'react-loader-spinner'
 import Logo1 from '../Images/final.png'
 
 import './register.scss'
@@ -44,7 +44,18 @@ const Register = props => {
     setTimeout(() => window.location.pathname = '/dashboard/profile', 2000)
   }
 
-  if (props.loggingIn) return <h1>Loading...</h1>
+  if (props.loggingIn) return <main className={classes.main}>
+    <CssBaseline />
+    <Paper className={classes.paper} style={{ height: '600px', display: 'flex' }}>
+      <Loader
+        style={{ paddingTop: '225px' }}
+        type="Circles"
+        color="#BB1333"
+        height="100"
+        width="100"
+      />
+    </Paper>
+  </main>
 
   else return (
 

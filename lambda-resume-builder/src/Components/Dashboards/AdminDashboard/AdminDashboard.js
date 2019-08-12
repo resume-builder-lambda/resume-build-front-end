@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { IconButton, Divider, Drawer, CssBaseline, withStyles } from '@material-ui/core'
 import { Switch, Route } from 'react-router-dom'
@@ -81,10 +80,6 @@ const AdminDashboard = props => {
 
     )
 
-}
-
-AdminDashboard.propTypes = {
-    classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(AdminDashboard)
