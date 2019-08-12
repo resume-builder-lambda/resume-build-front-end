@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import Cookies from 'js-cookie'
 import { connect } from "react-redux"
-import { CssBaseline, FormControl, Input, InputLabel, Paper, Button } from '@material-ui/core'
+import { CssBaseline, FormControl, Input, InputLabel, Paper, Button, withStyles } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 
 import { login } from "../../Actions"
-import { login as styles, withStyles } from '../../MaterialUI/styles'
+import styles from './styles'
 
 import GLogo from '../Images/G-Sign-In-Normal.png'
 import GoogleLogin from 'react-google-login'

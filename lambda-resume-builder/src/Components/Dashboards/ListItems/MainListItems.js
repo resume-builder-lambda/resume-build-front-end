@@ -18,7 +18,7 @@ export default props => {
                         <Tooltip title="Home" placement='right'>
                             <HomeIcon />
                         </Tooltip>
-                    </ListItemIcon >
+                    </ListItemIcon>
                     <ListItemText primary="Home" />
                 </ListItem>
             </Link>)}
@@ -29,7 +29,7 @@ export default props => {
                         <Tooltip title="Training Modules" placement='right'>
                             <AssignmentIcon />
                         </Tooltip>
-                    </ListItemIcon >
+                    </ListItemIcon>
                     <ListItemText primary="Training Modules" />
                 </ListItem>
             </Link>)}

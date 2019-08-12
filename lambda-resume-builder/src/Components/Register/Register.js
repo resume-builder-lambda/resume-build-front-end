@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from "react-redux"
-import { CssBaseline, FormControl, Input, InputLabel, Paper, Button } from '@material-ui/core'
+import { CssBaseline, FormControl, Input, InputLabel, Paper, Button, withStyles } from '@material-ui/core'
 import GoogleLogin from 'react-google-login'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 
-import { login as styles, withStyles } from '../../MaterialUI/styles'
+import styles from './styles'
 import { register, createGoogleUser } from "../../Actions"
 
 import GLogo from '../Images/G-Sign-In-Normal.png'
@@ -44,7 +44,9 @@ const Register = props => {
     setTimeout(() => window.location.pathname = '/dashboard/profile', 2000)
   }
 
-  return (
+  if (props.loggingIn) return <h1>Loading...</h1>
+
+  else return (
 
     <main className={classes.main}>
       <CssBaseline />
