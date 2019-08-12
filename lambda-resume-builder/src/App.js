@@ -10,10 +10,7 @@ import './App.scss'
 
 const App = props => {
 
-  window.addEventListener('beforeunload', () => {
-    Cookies.remove('creds')
-    Cookies.remove('location')
-  })
+  window.addEventListener('beforeunload', () => Cookies.remove('location'))
 
   return (
 
