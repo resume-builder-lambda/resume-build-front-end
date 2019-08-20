@@ -1,19 +1,16 @@
-import * as React from 'react'
-export class PropertyPane extends React.Component {
+import React from 'react'
 
-    render() {
+export default props => {
 
-        return (
-            <div className='property-panel-section'>
-                <div className="property-panel-header">
-                    {this.props.title}
-                </div>
-                <div className="property-panel-content">
-                    {this.props.children}
-                </div>
+    return (
+        <div className='property-panel-section'>
+            <div className="property-panel-header">
+                {props.title}
             </div>
-        )
-
-    }
+            <div className="property-panel-content">
+                {props.children}
+            </div>
+        </div>
+    )
 
 }
