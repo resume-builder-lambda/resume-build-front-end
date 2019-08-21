@@ -70,7 +70,7 @@
 // }
 
 import React from 'react'
-import Cal from 'calendar-for-react'
+import Cal from './Cal'
 
 const Calendar = () => <Cal />
 
